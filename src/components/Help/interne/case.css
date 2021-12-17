@@ -1,0 +1,111 @@
+
+@media only screen and (min-width:992px)
+{
+    .help-option{
+        width: 71%;display: flex;
+        height: 151px;
+        margin-top: 67px;
+        color: dimgrey;
+        margin: 35px auto;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;        
+        opacity: 1;
+    }
+    .help-option:hover{
+        width: 71%;
+        display: flex;
+        height: 151px;
+        margin-top: 67px;
+        color: dimgrey;
+        margin: 35px auto;
+        cursor: pointer;
+        transform: scale(1.05);
+        transition: ease-in;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        transition: 0.3s;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;        
+        opacity: 1;
+    }
+    .helpIcon{
+        height: 100%;margin-top: auto;margin-bottom: auto;
+        width: 20%;padding: 40px;
+    }
+    .helpDemarrer{
+        margin-top: auto;margin-bottom: auto;
+        height: 100%;
+        width: 80%;
+    }
+    .help-demarrer-content{
+        display:flex;
+    }
+    .ipercash-fot{
+        width: 60px;height: 60px;
+    }
+}
+
+@media only screen and (max-width:992px)
+{
+    .ipercash-fot{
+        width: 85px;height: 85px; margin: 7px;
+    }
+    .help-option{
+        width: 71%;
+        margin-top:100px;
+        color: dimgrey;
+        margin: 35px auto;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 7px 14px #00000029;
+        opacity: 1;
+    }
+    .help-demarrer-content{
+        display:flex;
+    }
+    .ipercas-fot{
+        width: 60px;height: 60px;margin-left: 10px;
+        
+    }
+}
+@media only screen and (max-width:778px)
+{
+    .ipercas-fot{
+        width: 85px;height: 85px;margin-left: 10px;
+        
+    }
+    .help-option{
+        width: 75%;
+        margin-top:80px;
+        color: dimgrey;
+        margin: 35px auto;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 7px 14px #00000029;
+        opacity: 1;
+    }
+    .help-demarrer-content{
+        display:flex;
+    }
+    .case-paragraph{
+        padding-right: 10px;
+    }
+}
+
+
+@media only screen and (max-width:576px){
+    
+    .help-option{
+        width: 75%;
+        padding: 15px;
+        color: dimgrey;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 7px 14px #00000029;
+        opacity: 1;
+    }
+    .help-demarrer-content{
+        display:flex;
+    }.case-paragraph{
+        padding-right: 0px;
+    }
+    .ipercash-fot{
+        display: none;visibility: hidden;
+        
+    }
+}

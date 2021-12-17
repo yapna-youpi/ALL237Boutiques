@@ -1,0 +1,10 @@
+const crypto=require('crypto')
+
+const okay="-----BEGIN PUBLIC KEY-----MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAtn2Y3eTs3ZXLcC1m3BtUALSYisaQ4/0W8kAXO6biDrjqLvHc0Gax5xHdZQpw6BDa/OL1J2kAMJ4PNvYpT2DMcMduMgap41cCh7Lzm5Jq2Bm/aJECBJQXVoa7gLqdiqeTMY3SqDTafmpIlziRivxYR2RbIx0Fy+xgkH6mIvKf3NhViPcfBCaNy1IIIujqMzkLGCzG6doafpUTVYU9wVBlJWn16IqM2fVr4UDpkYW3zXlesZqDDRCEoX1IyN2SKtx6uXQAiQ6Og8wV19pVWIk3bx/tWziz/10URXGZlN6IlSSxIb/1nQaCPSNPelHlOBV0iq2hmeeOc4LUW8YVlryMaclbefXHJZ5CmUM1REZgu6mchWxg1g0LwlFe3uWlxeVvJNSBZ3D62NMC+foIX+fQYUdrWjkieYLP519p7NF68mdn/MT7MJRwhhUoEZ1c06jyguvSXv1r2k9+NSv2sDJdzku8wXYzPkplwIa5x7LGqJqmIzPKKYapCJeiCN+NI1k2inPgoXZnfDP1udYoc0NYNZa6oyKueEj3tTR9rNeMOGfAwbwFQTkZJNWMJqyUGmnUvqvteMAdvtAadbe/hrSqblF7buA4XEgMKNz2SZccPfmUs6Zjge+siU9fKi8F8Rr9DAeSoak71Nt4ZJmAYjOdbx6lQwWrn6QzgL0bC8AuLJECAwEAAQ==-----END PUBLIC KEY-----"
+
+const crypt=(message)=>{
+    var encrypt = Buffer.from(message)
+    return crypto.publicEncrypt(okay,encrypt).toString('base64')
+}
+
+export default crypt

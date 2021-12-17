@@ -1,0 +1,42 @@
+/* @font-face {
+    font-family: 'proxima-nova';
+    src: url('../assets/font/proxima-nova.otf');
+} */
+.more{
+    background-color: rgba(22,22,22,0.10);
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+.more .more-section{
+    width: 70%;
+  margin: 0px auto;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 40px;
+}
+.more .more-section .ligne-rouge{
+    width: 10%;text-align: left;padding-bottom: 5px;
+    border-bottom:2px solid #ee5253;
+}
+
+.more-title{
+    text-align: center;
+}
+.more-mot{
+    text-align: left;
+    padding: 5%;
+    border-bottom: 2px solid var(--red);
+}
+.more .player{
+    display: flex;
+    justify-content: center;align-items: center;
+    margin: 20px auto;
+}
+.more .img-phone{
+    display: inline-block;
+    padding: 5px;
+    width: 20px;
+}
+.more .more-section p,li{
+    text-align: left;
+}

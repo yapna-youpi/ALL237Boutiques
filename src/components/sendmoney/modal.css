@@ -1,0 +1,70 @@
+.customOverlay {
+}
+.customModal {
+    width: 70vw;
+    max-width: 350px;
+    margin: auto;
+    padding: 1%;
+    text-align: center;
+    border-radius: 10px;
+    outline: 0;
+}
+.content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+.head-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 4% 0px;
+    border-bottom: 2px solid var(--transparent2);
+}
+.content h2 {
+    margin: 5px auto;
+    font-size: 1.2em;
+    /* border-bottom: 2px solid var(--transparent2); */
+}
+.head-content button {
+    background: var(--no-value);
+    border: var(--no-value);
+    font-size: 1.4em;
+    font-weight: bold;
+}
+.body-content {
+    width: 100%;
+    padding: 2%;
+}
+.body-content p {
+    font-size: 1.1em;
+}
+.body-content .tid {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--red);
+    cursor: pointer;
+}
+.iid {
+    display: inline-block;
+    max-width: 150px;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--red);
+}
+.spinner {
+    display: flex;
+    justify-content: center;
+    padding: 8% 3%;
+}
+.body-content p:nth-child(5) {
+    font-weight: bold;
+}
+
+

@@ -1,0 +1,93 @@
+.buycrypto {
+  padding: 5%;
+}
+.buycrypto h1 {
+  text-align: center;
+}
+.modal-confirm {
+  padding: 1%;
+  text-align: center;
+}
+.transparent-modal {
+  background-color: transparent;
+  box-shadow: none;
+}
+.modal-confirm .load {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.modal-confirm span {
+  padding: 1%;
+  color: var(--red);
+  border-bottom: 1px solid;
+}
+.buycrypto .rate {
+  margin: 25px 0px;
+  padding: 5%;
+  text-align: center;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  border-radius: 5px;
+}
+.buycrypto .rate div {
+  color: var(--red);
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.rate span {
+  display: block;
+  margin-top: 10px;
+  color: var(--red);
+  font-size: 0.6em;
+  text-align: right;
+}
+.wallet-div {
+  border: 1px solid #000;
+}
+.buycrypto .form {
+  padding: 5%;
+  /* box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,rgba(17, 17, 26, 0.05) 0px 8px 32px; */
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 5px;
+}
+.buycrypto .form-group {
+  margin: 20px 0px;
+}
+.buycrypto button {
+  display: block;
+  width: 100%;
+  height: 50px;
+  background: var(--red);
+  border: var(--no-value);
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--white);
+  transition: all 1s ease-out;
+}
+.buycrypto button:disabled {
+  cursor: not-allowed;
+  background: var(--transparent2);
+}
+.opid {
+  text-align: center;
+}
+.opid h3 {
+  margin: 5px;
+  color: var(--red);
+}
+
+@media screen and (min-width: 768px) {
+  .buy-container {
+    width: 80%;
+    margin: auto;
+    font-size: 1.5em;
+  }
+  .buycrypto .rate {
+    padding: 3%;
+  }
+  .modal-confirm span {
+    cursor: pointer;
+  }
+}

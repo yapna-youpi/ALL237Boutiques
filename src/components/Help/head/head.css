@@ -1,0 +1,321 @@
+
+.help-Logo,.help-Right{
+    cursor:pointer
+}
+@media only screen and (min-width:992px)
+{
+    .help-hd{
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 260px;
+        background: #CC1616 0% 0% no-repeat padding-box;
+        opacity: 1;
+        display: flex;flex-direction: column;
+        justify-content:flex-start;align-items: center;
+        padding-top: 45px;
+    }
+    .help-Go{
+        padding-bottom: 25px;
+        width: 70%;color: #ffffff;
+    }
+    .help-hd .help-Go .help-Logo{
+        text-align: left;
+        float: left;
+        color: white;
+        font: normal normal bold 40px 'Segeo UI';
+    }
+    .help-Right{
+        text-align: left;
+        font: normal normal normal 20px 'Segoe UI';
+        line-height: 25px;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+        margin-top: -15px;
+        padding: auto;
+        float: right;
+        margin-top: 2px;
+    }
+    .Help-Mot1{
+        width: 71%;
+        height: 53px;margin-bottom: 25px!important;
+        color: #ffffff;
+        text-align: left; 
+        font: normal 60 25px 'Segoe UI'!important;
+        opacity: 1;
+        
+    }
+    .onglet-recherche{
+        display: flex;
+        width: 100%;
+        font: normal normal 600 18px 'Segoe UI';
+        border: none;
+        border-radius: 8px;
+        margin-top: 25px;
+        background: #DC6060 no-repeat padding-box;
+        opacity: 1;color: #ffffff;
+    }
+    .onglet-recherche .img-search{
+        width: 35px;height: 35px;
+        opacity: 1;
+    }
+    .onglet-recherche .help-Search{
+        width: 90%;
+        text-align: left;padding: 20px 10px 16px 20px;
+        font: normal normal 600 21px 'Segoe UI';
+        border: none;
+        background: #DC6060 no-repeat padding-box;
+        color: #ffffff;border-radius: 0 8px 8px 0 ;
+    }
+    .btnh-imag{
+        width: 10%;
+        display: flex;justify-content: center;align-items: center;
+        background: #DC6060 no-repeat padding-box;
+        border-radius: 8px;
+    }
+    .searche{
+        width: 95px;height: 95px;
+    }
+
+}
+
+@media only screen and (max-width:992px)
+{
+    .help-hd{
+        width: 100%;
+        height: 240px;
+        background: #CC1616 0% 0% no-repeat padding-box;
+        opacity: 1;
+        display: flex;flex-direction: column;
+        justify-content:flex-start;align-items: center;
+        top: 0;
+    }
+    .help-Go{
+        margin-top: 30px;
+        justify-content: space-around;margin-bottom: 20px!important;
+        width: 70%;color: #ffffff;align-items: center;
+    }
+    .help-hd .help-Go .help-Logo{
+        text-align: left;
+        float: left;font-size: 23px;
+        font-weight: bold;
+        font-family:  'Segeo UI';
+    }
+    .help-Right{
+        text-align: left;
+        font-family: 'Segoe UI';
+        font-weight: bold;
+        font-size: 23px;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+        float: right;
+        margin-top: 2px;
+    }
+    .Help-Mot1{
+        width: 71%;
+        height: 70px;
+        color: #ffffff;
+        text-align: left;
+        overflow: hidden; 
+        font: normal normal 600 18px 'Segoe UI';
+        opacity: 1;margin-bottom: 18px;
+    }
+    .onglet-recherche{
+        display: flex;
+        width: 100%;
+        font: normal normal 600 18px 'Segoe UI';
+        border: none;
+        border-radius: 8px;
+        background: #DC6060 no-repeat padding-box;
+        opacity: 1;color: #ffffff;
+    }
+    .onglet-recherche .img-search{
+        width: 35px;height: 35px;
+        opacity: 1;
+    }
+    .onglet-recherche .help-Search{
+        text-align: left;
+        width: 90%;
+        overflow: hidden;
+        opacity: 1;
+        padding: 10px 10px 10px 10px;
+        font: normal normal 400 18px 'Segoe UI';
+        border: none;
+        background: #DC6060 no-repeat padding-box;
+        color: #ffffff;
+        border-radius: 0 8px 8px 0 ;
+    }
+    .btnh-imag{
+        width: 10%;
+        display: flex;justify-content: center;align-items: center;
+        background: #DC6060 no-repeat padding-box;
+        border-radius: 8px;
+    }
+    .searche{
+        width: 75px;height: 75px;margin-top: 15px;
+        margin-left: 45%;
+    }
+}
+@media only screen and (max-width:778px)
+{
+    .help-hd{
+        width: 100%;
+        height: 240px;
+        background: #CC1616 0% 0% no-repeat padding-box;
+        opacity: 1;
+        display: flex;flex-direction: column;
+        padding-bottom: 10px;
+        justify-content:flex-start;align-items: center;
+    }
+    .help-Go{
+        margin-top: 30px;
+        justify-content: space-around;margin-bottom: 30px!important;
+        width: 70%;color: #ffffff;align-items: center;
+    }
+    .help-hd .help-Go .help-Logo{
+        text-align: left;
+        float: left;font-size: 23px;
+        font-weight: bold;
+        font-family:  'Segeo UI';
+    }
+    .help-Right{
+        text-align: left;
+        font-family: 'Segoe UI';
+        font-weight: bold;
+        font-size: 23px;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+        float: right;margin-top: 2px;
+    }
+    .Help-Mot1{
+        width: 71%;
+        height: 63px;
+        color: #ffffff;
+        text-align: left;
+        overflow: hidden; 
+        font: normal normal 600 18px 'Segoe UI';
+        opacity: 1;margin-bottom: 18px;
+    }
+    .onglet-recherche{
+        display: flex;
+        width: 100%;
+        font: normal normal 600 18px 'Segoe UI';
+        border: none;
+        border-radius: 8px;
+        background: #DC6060 no-repeat padding-box;
+        opacity: 1;color: #ffffff;
+    }
+    .onglet-recherche .img-search{
+        width: 25px;height: 25px;
+        opacity: 1;
+    }
+    .onglet-recherche .help-Search{
+        width: 90%;
+        text-align: left;
+        overflow: hidden;
+        font: normal normal 400 18px 'Segoe UI';
+        border: 1px solid #707070;
+        border-radius: 5px;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        opacity:1;color: #ffffff;margin-top: 0px;
+        font: normal normal 600 18px 'Segoe UI';
+        border: none;
+        background: #DC6060 no-repeat padding-box;
+        color: #ffffff;border-radius: 0 8px 8px 0 ;
+    }
+    .btnh-imag{
+        width: 10%;
+        display: flex;justify-content: center;align-items: center;
+        background: #DC6060 no-repeat padding-box;
+        border-radius: 8px;
+    }
+    .searche{
+        width: 75px;height: 75px;margin-top: 15px;
+        margin-left: 40%;
+    }
+}
+
+
+@media only screen and (max-width:576px){
+    
+    .help-hd{
+        width: 100%;
+        height: 215px;
+        background: #CC1616 0% 0% no-repeat padding-box;
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .help-hd .help-Go{
+        margin-top: 25px;
+        width: 85%;color: #ffffff;align-items: center;
+
+    }
+    .help-hd .help-Go .help-Logo{
+        text-align: left;
+        float: left;font-size: 21px;
+        font-weight: bold;
+        font-family:  'Segeo UI';
+    }
+    .help-hd .help-Go .help-Right{
+        text-align: left;
+        font-family: 'Segoe UI';
+        font-weight: bold;
+        font-size: 20px;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+        float: right;
+    }
+    .help-hd .Help-Mot1{
+        width: 84%;
+        margin-top: -5px;
+        padding-top: 21px;
+        height: 60px;
+        color: #ffffff;
+        text-align: left;
+        overflow: hidden;
+        font: 'Segoe UI';
+        font-size: 13px;
+        opacity: 1;
+        margin-top: -35px;
+        padding: 5px;
+        
+    }
+    .onglet-recherche{
+        display: flex;
+        width: 100%;
+        font: normal normal 600 18px 'Segoe UI';
+        border: none;
+        border-radius: 8px;
+        background: #DC6060 no-repeat padding-box;
+        opacity: 1;color: #ffffff;
+    }
+    .onglet-recherche .img-search{
+        width: 20px;height: 20px;
+        opacity: 1;
+    }
+    .onglet-recherche .help-Search{
+        text-align: left;
+        width: 90%;
+        text-align: left;
+        font: normal normal 400 12px 'Segoe UI';
+        border: none;
+        background: #DC6060 no-repeat 0% 0% no-repeat padding-box;
+        color: #ffffff;
+    }
+    .btnh-imag{
+        width: 10%;
+        padding: 6px 6px 6px 6px;
+        display: flex;justify-content: center;align-items: center;
+        background: #DC6060 no-repeat padding-box;
+        border-radius: 8px;
+    }
+    .searche{
+        width: 75px;height: 75px;margin-top: 15px;margin-left: 30%;
+    }
+}

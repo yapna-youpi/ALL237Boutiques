@@ -1,0 +1,124 @@
+/*--site mode tablette--*/
+.signup {
+  /*--principal--*/
+  width: 90%;
+  min-height: 65vh;
+  margin: 50px auto;
+  padding: 2%;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+.signup .signup-content {
+  /*--div droite--*/
+  width: 100%;
+  padding: 0 5% 2% 5%;
+}
+.signup .signup-image {
+  /*--div gauche--*/
+  display: none;
+}
+.signup  .MuiFormControl-root{
+  margin: 5px auto!important;
+}
+.signup .MuiButton-label{
+  display:flex!important;
+  justify-content: center!important;
+  align-items: center!important;
+}
+.signup .MuiButton-root{
+  font-weight: 400!important;
+  color: var(--white)!important;
+}
+.signup .MuiButtonBase-root{
+  background-color: var(--red)!important;
+}
+.signup  .MuiButton-root:disabled {
+  background-color: var(--transparent2)!important;
+}
+.signup-creat{
+  display: inline-block;
+  margin: 20px 0px;
+  text-transform: underline;
+  cursor: pointer;
+}
+.label {
+  transform: translateY(-15px);
+}
+.signup-forget-password{
+  cursor: pointer;
+}
+.signup .signup-content .signup-title h1{
+  text-align: center;
+  font-size: 39.3px;
+}
+.signup .PhoneInput{
+    margin-bottom: 8px;
+}
+.signup .signup-content .MuiButton-root{
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .signup {
+    max-width: 770px;
+  }
+  .signup .signup-content {
+    /*--div droite--*/
+    width: 80%;
+    padding: 0 5% 2% 5%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  /*--site mode tablette -- et -- large ecran--*/
+  .signup {
+    /*--principal--*/
+    align-items: center;
+    width: 80%;
+    max-width: 1300px;
+    min-height: 70vh;
+    /* margin: 0px auto; */
+    padding: 1% 2%;
+  }
+  .signup .signup-content {
+    /*--div droite--*/
+    width: 45%;
+    padding: 0;
+  }
+  .signup .signup-content.MuiButton-root{
+    font-size: 19.3px;
+    color: var(--white)!important;
+  }
+  .signup .signup-image {
+    /*--div gauche--*/
+      width: 45%;
+      display: block;
+  }
+  /*-- black du logo dipercash--*/
+  .signup-image .signup-block-logo {
+    padding: 10px 0 20px 0;
+    display: block;
+    text-align: center;
+    margin-right: 7px;
+  }
+  .signup .signup-content .signup-title h1{
+    text-align: left;
+    font-size: 2em;
+  }
+  .signup-logo {
+    /* --logo dipercash-- */
+    width: 50%;
+  }
+  .sign-btnt{
+      font-size: 19.3px;
+  }
+  /*-- styling image signup--*/
+  .signup .signup-img{
+      display: inline-block;
+      width: 100%;
+  }
+  .visible{
+    visibility: hidden;
+  }
+}

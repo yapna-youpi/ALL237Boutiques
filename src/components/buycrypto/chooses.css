@@ -1,0 +1,139 @@
+.choose {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 3% 0%;
+  color: #222222;
+}
+.choose h1 {
+  width: 70%;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.chooses {
+  border: 1px solid rgb(97, 95, 95);
+  border-radius: 5px;
+}
+.way {
+  padding: 2% 3%;
+  background: #EF3B36;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,#EF3B36,#EF3B36,#EF3B36,#eee,#EF3B36,#EF3B36, );  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right,#EF3B36, #FFFFFFb9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  /* transition: all 1s ease-out; */
+}
+.way2{
+  justify-content: space-between;
+  display: flex;
+}
+.way .head {
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  cursor: pointer;
+}
+.way h2,
+.way h3 {
+  margin: 10px;
+  text-align: left;
+}
+.hiden {
+  display: none;
+}
+.chooses .hr {
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin: 0px;
+  background-color: #000;
+}
+
+@media screen and (min-width: 768px) {
+  .chooses {
+    width: 50%;
+    max-width: 790px;
+    color: #222222;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: rgb(17 17 26 / 10%) 0px 4px 16px, rgb(17 17 26 / 5%) 0px 8px 32px;
+  }
+  .way{
+    border-radius: 5px;
+    transition: all ease-out 0.2s;
+    color: var(--black);
+    background: -webkit-linear-gradient(to right,rgb(209, 199, 199),#eee ); 
+    background: linear-gradient(to right,rgb(209, 199, 199),#eee );
+     /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right,#EF3B36,#EF3B36,#EF3B36,#eee,#EF3B36,#EF3B36, );  Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right,#EF3B36, #FFFFFFb9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   
+  }
+  .way:hover {
+    /* background: #DA4453;  /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #89216B, #DA4453);  Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right, #89216B, #DA4453); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+     background: rgb(209, 199, 199);  
+     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+
+
+    color: var(--black);*/
+  }
+  .text-card{
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  }
+  .hiden {
+    display: flex;
+    overflow: hidden;
+  }
+  .choose .hiden img {
+    display: block;
+    width: 60px;
+    margin: 10px 20px;
+    cursor: pointer;
+  }
+  .choose .hiden img:hover {
+    display: block;
+    width: 60px;
+    margin: 10px 20px;
+    cursor: pointer;
+    transform: rotateZ(360deg);
+    transition: 0.35s;
+  }
+  .card-show{
+    width: 4%;
+    background: transparent;
+    margin-left: 25%;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+  .bodycard{
+    display: flex;
+    flex-direction: column;
+  }
+  .card-show{
+    display: flex;justify-content: center;
+    width: 30px;
+    color: var(--black);
+    height: 20px;
+
+  }
+  .card-show:hover{
+    display: flex;justify-content: center;
+    width: 30px;
+    height: 20px;
+    border-bottom:3px solid var(--black);
+    
+
+  }
+
+  
+}
+
+

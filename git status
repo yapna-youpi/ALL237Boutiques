@@ -1,0 +1,277 @@
+[33mcommit 0d3586f5fa690839898903fb5d4c022105d7d193[m[33m ([m[1;36mHEAD -> [m[1;32mstallone[m[33m)[m
+Merge: b0b1bbb 76968bd
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Tue Dec 7 14:39:36 2021 +0100
+
+    Merge branch 'master' into stallone
+
+[33mcommit 76968bd0f99afe5fadc17a8590d72da010d28e8d[m[33m ([m[1;32mmaster[m[33m)[m
+Merge: 33c8457 5956464
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Tue Dec 7 14:30:30 2021 +0100
+
+    Merge branch 'master' of https://github.com/Folley-05/IPCH
+
+[33mcommit b0b1bbb63d7527dbdd1842854888d1979592f857[m[33m ([m[1;31morigin/stallone[m[33m)[m
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Tue Dec 7 14:09:54 2021 +0100
+
+    ajout du phone input tooltip
+
+[33mcommit 9039e19d38404e5b67bd23db61d6ad7e3fc9b862[m
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Mon Dec 6 18:19:51 2021 +0100
+
+    ajout du tooltips
+
+[33mcommit 5956464813ffd6a227bdc914d8d67fa460b0412e[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Dec 3 17:08:30 2021 +0100
+
+    sketch of description
+
+[33mcommit 8898ab0f270497660b2882845e2b3d6816ae3ee3[m
+Merge: 8c2bcc2 33c8457
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Fri Dec 3 14:18:16 2021 +0100
+
+    Merge branch 'master' into stallone
+
+[33mcommit 33c8457bb36d1b553f87ad0275f3474f16288ce9[m
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Fri Dec 3 14:09:42 2021 +0100
+
+    ajout du git ignore en local
+
+[33mcommit 2fb1e126440f2f434c56d0e8e00bc14f23fc17ff[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Dec 3 11:28:28 2021 +0100
+
+    stable version
+
+[33mcommit c753b18a0a719a87b95ba99c65b01298c7d2c817[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Dec 3 11:25:00 2021 +0100
+
+    change position
+
+[33mcommit ccec8f3a7018504aed679c179d6bf8674e8c4282[m
+Merge: ff4b6de 8c2bcc2
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Dec 3 11:18:01 2021 +0100
+
+    solve conflict with stallone branch
+
+[33mcommit 8c2bcc2b5017b957744b615dc2fdc60907290d9c[m
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Thu Dec 2 17:35:54 2021 +0100
+
+    le curseur a pointer
+
+[33mcommit e02c738c693f42d24861a4caa17f46fc66f2fecd[m
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Thu Dec 2 17:24:49 2021 +0100
+
+    le formulaire dinscription terminer complet
+
+[33mcommit a10e55f4eaab8ca869872c4fd3a02859b7fd7c87[m
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Thu Dec 2 12:06:13 2021 +0100
+
+    le login terminer
+
+[33mcommit ff4b6de759ee65da51229b1902780042e65623e1[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Wed Dec 1 18:49:31 2021 +0100
+
+    alter .gitignore
+
+[33mcommit eafb6d19c4111b181fed82d85784ae36807bb3af[m
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Wed Dec 1 18:06:08 2021 +0100
+
+     ajout du loader au centre
+
+[33mcommit 3a238c3625b90515341903197b5025815e0827d8[m
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Wed Dec 1 14:35:42 2021 +0100
+
+    revision du login
+
+[33mcommit 89dd544a3d9b9848755ff670412e67c46efc62a4[m
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Tue Nov 30 17:52:29 2021 +0100
+
+    ajout des reclamations de monsieur fezeu texte dejà
+
+[33mcommit 1bc062cd6830e26ff4ceae31ab52370756fe65a3[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Tue Nov 30 17:14:59 2021 +0100
+
+    fix language bug
+
+[33mcommit 7fca1eeaf8516090609bd97c10c722da025e3b7a[m
+Author: yapna-youpi <yapnayoupi@gmail.com>
+Date:   Tue Nov 30 17:02:11 2021 +0100
+
+    ajout du hover sur contact partiel
+
+[33mcommit 010d3a1a1585cacef06cea8d2e1cede77b941c9b[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Mon Nov 29 18:26:56 2021 +0100
+
+    somes changes
+
+[33mcommit 0976915cfe6e92f317f9da568d4bc3ae4f5edc9d[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Nov 26 18:49:05 2021 +0100
+
+    add stalone updates
+
+[33mcommit 3fe23f731f31324efaf7b1ccf7b360554c2e2a8b[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Nov 26 18:07:19 2021 +0100
+
+    update testimonials section
+
+[33mcommit a8a4d5ec172658464ab06a4f85f3e98fae9a4403[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Tue Nov 23 16:06:24 2021 +0100
+
+    sumsub modif
+
+[33mcommit 7c4e0c14678efb26e53490a5e6abf395e836b112[m
+Merge: 1e3c92f af9a632
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Tue Nov 23 16:04:43 2021 +0100
+
+    after modification
+
+[33mcommit 1e3c92ffa288ef360f9ebb2e4940f258605dbbb1[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Tue Nov 23 15:56:43 2021 +0100
+
+    changes
+
+[33mcommit 5a1bd4837712409aeaf6bd4100acbc579db487cd[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Tue Nov 23 11:46:38 2021 +0100
+
+    stallone modifications
+
+[33mcommit af9a632cd004c6959ad32bf84c1ae3825751014c[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Tue Nov 23 05:11:13 2021 +0100
+
+    somes modifications
+
+[33mcommit 42999d33de5a0bb5356e3aa06cc4017c16f6fdd5[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Wed Nov 17 18:19:21 2021 +0100
+
+    some advances
+
+[33mcommit 8ce724a9b985bb76912e7ee9f64b3101d2544fd4[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Nov 12 19:10:48 2021 +0100
+
+    somes modifications
+
+[33mcommit 10aa45b8560f15fb69ba38f208e8bedfb444def7[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Nov 12 18:37:20 2021 +0100
+
+    complete test
+
+[33mcommit d01038bab25e695f6b0ed35e66b1482cb513c277[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Nov 12 16:04:20 2021 +0100
+
+    stable plateforme
+
+[33mcommit 9c9c01d6e2b842e45939c0048ff67b365f0b7138[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Wed Nov 10 17:15:35 2021 +0100
+
+    post replace code
+
+[33mcommit 778044268fe992cb850de806d9f5b92d373f3605[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Tue Nov 9 13:02:16 2021 +0100
+
+    some modifications
+
+[33mcommit 1f42cf38019c73b5e00a3c7ef273e6ae4989fc88[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Mon Nov 8 13:51:15 2021 +0100
+
+    fix somes bugs
+
+[33mcommit b73da1b01f7d8ee8518566530bcea9542bae3cc2[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Mon Nov 8 11:34:28 2021 +0100
+
+    fix cross animation bug
+
+[33mcommit 2b6d7a9233ff9cf25c55bcaae55e6d40b8e75d8c[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Nov 5 15:18:03 2021 +0100
+
+    set cross animation
+
+[33mcommit 04bb57be4e9f61746f0d76c985a8f753fdc57206[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Nov 5 14:26:47 2021 +0100
+
+    translate to sell crypto
+
+[33mcommit d9cecb5d9b91629e1713e00c4ee4a50f9ae5d991[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Nov 5 13:12:03 2021 +0100
+
+    translate sendmoney and home page
+
+[33mcommit 1e1aa5bd387a8619d4084858be96f8cb1e2bb206[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Nov 5 12:36:42 2021 +0100
+
+    add toggle language component
+
+[33mcommit cc0b312ad44ae836e801f49001086305c13978b1[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Thu Nov 4 18:29:33 2021 +0100
+
+    big update
+
+[33mcommit f9e217631bacd23b90a45a1bf8fd997b37fb5033[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Thu Nov 4 17:43:35 2021 +0100
+
+    update user button and add geolocation
+
+[33mcommit ba410643a96ccebbe7c550467a78ddc521055be9[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Sat Oct 30 17:25:05 2021 +0100
+
+    stable auth
+
+[33mcommit d92ca40663a92beb19d957247b0d8546b97576ef[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Fri Oct 29 19:33:17 2021 +0100
+
+    add form on plateforme
+
+[33mcommit a4e8d6ab8782f45b1a2ba9db7f04398a59b14ece[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Wed Oct 27 15:45:47 2021 +0100
+
+    handle user authorization
+
+[33mcommit 10bffd610e6976a2ed0851ca0c9c4c2f26f51e8b[m
+Author: Folley-05 <aristotepascaldjounda@gmail.com>
+Date:   Mon Oct 25 10:56:32 2021 +0100
+
+    routine  commit
+
+[33mcommit ecea0685eaaf9e72befa416694ccf5bc45d15655[m
+Author: Folley-05 <aristotepascal

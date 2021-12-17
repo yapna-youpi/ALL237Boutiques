@@ -1,0 +1,94 @@
+
+.signup .resend-content{
+    width: 100%;
+    padding: 0 5% 2% 5%;
+    color: rgba(22, 22, 22, 0.7);
+}
+.signup .resend-content .resend-title{
+  width: 100%;
+  height: 450px;
+  color: rgba(22, 22, 22, 0.7);
+}
+.signup .signup-content .resend-title .resend-paragraph {
+  /*--paragraphe en-dessous du titre--*/
+  text-align: center;
+  font-family: var(--police2--);
+  display: flex;
+  padding: 30px 0 30px 0;
+}
+.signup .signup-content hr{
+    margin: 5px auto 40px auto;
+}
+.signup .signup-content h1,h2{
+    margin: 20px auto;
+}
+.signup .signup-content h1{
+  text-align: center;
+}
+.signup .signup-content h3{
+   margin: 10px auto;
+}
+/* .resend p{
+    text-align: left;
+}
+.resend h1,h2{
+    text-align: center;
+    color: black;
+} */
+.signup .signup-content .MuiButton-root{
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+    .resend .resend-image {
+        /*--div gauche--*/
+        display: block;
+    }
+}
+@media only screen and (min-width: 992px) {
+    /*--site mode tablette -- et -- large ecran--*/
+    .resend {
+      /*--principal--*/
+      width: 75%;
+      justify-content: space-around;
+      display: flex;
+      flex-direction: row;
+      background: transparent 0 0 no-repeat padding-box;
+      opacity: 1;
+      padding: 42px 42px 42px 10px;
+      margin: 35px auto;
+    }
+    .signup .signup-content .resend-content {
+      /*--div droite--*/
+      width: 100%;
+      margin: none;
+      padding: 0 0 0 5%;
+      line-height: 30px;
+    }
+    .signup .signup-content .MuiButton-root{
+      font-size: 19.3px;
+      color: var(--white)!important;
+    }
+    .signup .signup-content .resend-title{
+        padding: 0 10px;
+    }
+    .signup .signup-content .resend-title .resend-paragraph {
+      /*--paragraphe en-dessous du titre--*/
+      text-align: center;
+      font-family: var(--police2--);
+      display: flex;
+      padding: 30px 0 30px 0;
+    }
+    .signup .signup-content hr{
+        margin: 5px auto 40px auto;
+    }
+    .signup .signup-content h1,h2{
+        margin: 20px auto;
+    }
+    .signup .signup-content h1{
+      text-align: center;
+    }
+    .signup .signup-content h3{
+       margin: 10px auto;
+    }
+  }
+  

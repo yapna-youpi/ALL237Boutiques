@@ -1,0 +1,67 @@
+.services {
+    padding: 30px 20px;
+    text-align: center;
+}
+.services h1 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.services h1 span {
+    display: block;
+    width: 150px;
+    margin-top: 8px;
+    background: var(--red);
+    border: 3px solid var(--red);
+    border-radius: 10px;
+}
+.service {
+    position: relative;
+    width: 75%;
+    margin: 50px auto;
+    padding: 10%;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    border-radius: 5px;
+
+}
+.icone {
+    position: absolute;
+    background: var(--red);
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    top: -35px;
+    left: 42%;
+}
+
+
+@media screen and (min-width: 768px) {
+    .services-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .service {
+        width: 30%;
+        padding: 5%;
+        font-size: 1.5em;
+    }
+    .service:hover {
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .service {
+        width: 20%;
+        padding: 5%;
+        font-size: 1.5em;
+    }
+    .service h3, .service p {
+    }
+    .countries img {
+        cursor: pointer;
+    }
+}

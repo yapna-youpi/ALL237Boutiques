@@ -1,0 +1,117 @@
+.steps {
+  padding: 5% 3%;
+  text-align: center;
+  /* display: none; */
+  background: var(--red);
+  color: var(--white);
+}
+.steps h1 {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.steps h1 span {
+  display: block;
+  width: 120px;
+  margin-bottom: 8px;
+  background: var(--white);
+  border: 3px solid var(--white);
+  border-radius: 10px;
+}
+.step {
+  margin: 40px auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.step .img-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 50vw;
+  padding: 3%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+.steps img {
+  display: block;
+  width: 72%;
+  margin: auto;
+  padding: 8%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: all 0.5s ease-out;
+}
+.steps img:hover {
+  transform: scale(1.2);
+
+}
+.steps p {
+  width: 60%;
+  margin: 20px auto;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-align: center;
+}
+.video {
+  width: 350px;
+  height: 250px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .steps {
+    padding: 2% 3%;
+  }
+  .steps-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .step {
+    margin: 10px;
+  }
+  .step .img-container {
+    width: 20vw;
+    max-width: 250px;
+    height: 20vw;
+    max-height: 250px;
+    padding: 2%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+  }
+  .steps .img-container:hover {
+    cursor: pointer;
+  }
+  .video {
+    width: 800px;
+    height: 450px;
+  }
+  .step u:hover {
+    cursor: pointer;
+  }
+
+}
+
+@media screen and (min-width: 1280px) {
+  .step-line {
+    width: 18%;
+    border: 1px dashed var(--white);
+    transform: translateY(-50px);
+  }
+  .steps h4 {
+    font-size: 1.2em;
+  }
+  .step-modal {
+    max-width: none !important;
+    border: 2px solid red;
+  }
+  .video {
+    width: 1200px;
+    height: 700px;
+  }
+}

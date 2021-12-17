@@ -1,0 +1,49 @@
+[
+    {
+        "iden": 0,
+        "titre" : "C'est quoi Ipercash ?",
+        "auteur": "aristote pascal",
+        "text" : "procedure pour acheter de la cryptomonnaie.",
+        "url":"'https://www.youtube.com/watch?v=PSyUcb3fFtY&t=28s'",
+        "paragraph": [
+            {
+                "parag1": "Né du double constat de l’explosion du Mobile Money et de la demande de cryptomonnaie en Afrique, IPERCash est une plateforme essentiellement basée sur la Blockchain et la finance décentralisée.",
+                "parag2": "Pourquoi la fusion du Mobile Money et de la cryptomonnaie est certainement l’Afrique et problablement du reste du monde ??",
+                "parag3": "Le taux de bancarisation en Afrique est extrêmement bas, particulièrement en Afrique subsaharienne. D’où une fulgurante pénétration du Mobile Money permettant d’obtenir un portefeuille électronique sans contraintes.  Le Mobile Money fonctionne par codes USSD compatibles  avec n’importe quel téléphone, ce service ne nécessite donc pas de téléphone sophistiqué.",
+                "parag4": "D’autre part, la cryptomonnaie, particulièrement le Bitcoin, connaît également une pénétration inattendue en Afrique. En effet, les conditions dictées par les banques centrales locales et leurs monnaies locales dépréciées contraignent de plus en plus les entreprises locales et les poussent à se tourner vers la cryptomonnaie beaucoup plus souple.",
+                "parag5": "Une plateforme d’échanges et d’interactions entre le Mobile Money et la cryptomonnaie est une nécessité. Un site Internet et une application mobile  où les utilisateurs peuvent :",
+                "parag6": "-  Acheter de la cryptomonnaie par carte de crédit et la transférer sur un compte Mobile Money en Afrique.",
+                "parag7": "-  Acheter de la cryptomonnaie pour créditer leur  portefeuille électronique ;",
+                "parag8": "-  Acheter de la cryptomonnaie en payant avec Mobile Money",
+                "parag9": "-  Retirer de la cryptomonnaie de son portefeuille et la transférer dans son compte Mobile Money.",
+                "parag10": "Les transactions sont moins chères, plus sures et plus rapides.",
+                "parag11": "IPERCash n’est pas un trader, IPERCash ne propose pas de produits financiers de spéculation mais entend  participer à l’augmentation du volume des échanges en cryptomonnaie dans le monde en offrant la possibilité aux  Africains d’acheter des services et des produits en cryptomonnaie, et inversement, d’être payé en cryptomonnaie."
+
+            }
+        ]
+    },
+    {
+        "iden": 1,
+        "titre" : "Effectuer un depôt",
+        "auteur": "christian mowolo",
+        "url":"'https://www.youtube.com/watch?v=PSyUcb3fFtY&t=53s'",
+        "text" : " comment transférer de l'argent instantanément sur un compte Mobile Money",
+        "paragraph": "Créez et validez votre compte client pour commencer, Effectuez un dépôt sur l'argent mobile depuis n'importe où dans le monde, Achetez et vendez vos crypto-monnaies avec de l'argent mobile."
+    },
+    {
+        "iden": 2,
+        "titre" : "Acheter un Bitcoin",
+        "auteur":"stallone WILLIAM",
+        "url":"'https://www.youtube.com/watch?v=FnQyenSjh94'",
+        "text" : "Nous sommes interfaces entre Mobile Money et la Cryptomonnaie.",
+        "paragraph":"C'est ipsum dolor sit amet consectetur adipisicing elit. Velit dolore in consequatur deserunt voluptatum? Alias reiciendis quis facilis, consequuntur eum incidunt explicabo soluta, voluptatum dolores voluptas ipsa ad assumenda inventore."   
+    },
+    {
+        "iden": 3,
+        "titre" : "vendre un Bitcoin",
+        "auteur":"pierre Directeur",
+        "url":"'https://www.youtube.com/watch?v=_GsyqF06reA'",
+        "text" : "Nous sommes interfaces entre Mobile Money et la Cryptomonnaie.",
+        "paragraph":"C'est facile a vendre les bitcoins sur la plate forme multiscreen d'Ipercash. ipsum dolor sit amet consectetur adipisicing elit. Velit dolore in consequatur deserunt voluptatum? Alias reiciendis quis facilis, consequuntur eum incidunt explicabo soluta, voluptatum dolores voluptas ipsa ad assumenda inventore."   
+    }
+]

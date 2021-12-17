@@ -1,0 +1,62 @@
+.sellcrypto {
+  padding: 5%;
+}
+.sellcrypto h1 {
+  text-align: center;
+}
+.sellcrypto .rate {
+  margin: 25px 0px;
+  padding: 5%;
+  text-align: center;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  border-radius: 5px;
+}
+.sellcrypto .rate div {
+  color: var(--red);
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.rate span {
+  display: block;
+  margin-top: 10px;
+  color: var(--red);
+  font-size: 0.6em;
+  text-align: right;
+}
+.sellcrypto .form {
+  padding: 5%;
+  /* box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,rgba(17, 17, 26, 0.05) 0px 8px 32px; */
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 5px;
+}
+.sellcrypto .form-group {
+  margin: 20px 0px;
+}
+.sellcrypto button {
+  display: block;
+  width: 100%;
+  height: 50px;
+  background: var(--red);
+  border: var(--no-value);
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--white);
+  transition: all 1s ease-out;
+}
+.sellcrypto button:disabled {
+  cursor: not-allowed;
+  background: var(--transparent2);
+}
+
+@media screen and (min-width: 768px) {
+  .sell-container {
+    width: 80%;
+    margin: auto;
+    font-size: 1.5em;
+  }
+  .sellcrypto .rate {
+    padding: 3%;
+  }
+}

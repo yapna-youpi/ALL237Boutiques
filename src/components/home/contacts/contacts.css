@@ -1,0 +1,199 @@
+.contacts {
+    padding: 5%;
+    background: var(--berge);
+}
+.contacts h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.contacts h1 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.contacts h1 span {
+    display: block;
+    width: 120px;
+    margin-bottom: 8px;
+    background: var(--red);
+    border: 3px solid var(--red);
+    border-radius: 10px;
+}
+.social-icon {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+    margin: 5px 5px;
+    border: 2px solid var(--red);
+    border-radius: 50%;
+    overflow: hidden;
+}
+.social-icon-couvre{
+    position: absolute;
+    transition: 0.35s;
+    width: 65px;height: 65px;
+    top: -150%;
+    background-color: var(--night-blue);
+    opacity: 0.7;
+    
+}
+.social-icon:hover .social-icon-couvre{
+    top: 0px;
+}
+
+.social-icon img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+}
+
+.contact-container {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.contact-container > div, .details > div {
+    margin: 20px 0px ;
+}
+.info img {
+    display: block;
+    width: 70%;
+}
+.socials {
+    display: flex;
+}
+.info p {
+    margin-top: 5px;
+}
+.contact > div {
+    display: flex;
+    align-items: center;
+}
+.newsletter {
+    text-align: center;
+}
+.address-field {
+    display: flex;
+    padding: 0px;
+    align-items: stretch;
+}
+.newsletter button {
+    display: inline-block;
+    width: 30%;
+    height: 54px;
+    background: var(--red);
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--white);
+    outline: 0;
+    z-index: 10;
+}
+.newsletter input {
+    display: inline-block;
+    flex: 1;
+    height: 52px ;
+    padding-right: 2%;
+    padding-left: 6%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 8px;
+    border: 1px solid var(--gray);
+    outline: 0;
+    font-size: 1.1em;
+    text-align: center;
+    transform: translate(-20%, 0);
+    transition: all 2s ease-out;
+}
+.contacts .form {
+    font-size: 1.2em;
+}
+.contacts label {
+    display: block;
+    margin-top: 20px;
+}
+.ipp, .form textarea {
+    width: 90%;
+    display: block;
+    height: 30px;
+    padding: 2% 3%;
+    background: var(--transparency);
+    border: var(--no-value);
+    border-bottom: 2px solid var(--transparent2);
+    outline: 0;
+    font-size: 1.1em;
+}
+.contacts .form button {
+    display: block;
+    width: 96%;
+    height: 60px;
+    background: var(--red);
+    border: var(--no-value);
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: all 2s ease-out;
+}
+.contacts .form-group {
+    margin: 30px 0px;
+}
+
+@media screen and (min-width: 768px) {
+    .contact {
+        display: flex;
+        justify-content: space-between;
+    }
+    .newsletter input {
+        transform: translate(-5%, 0);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .contacts {
+        padding: 3%;
+    }
+    .contact-container {
+        display: flex;
+    }
+    .details {
+        width: 60%;
+    }
+    .info {
+        display: inline-block;
+        width: 60%;
+        vertical-align: top;
+    }
+    .contact {
+        display: inline-block;
+        width: 35%;
+        vertical-align: top;
+    }
+    .info > img {
+        width: 60%;
+    }
+    .contact > div {
+        margin: 15px 0px;
+    }
+    .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .social-icon img {
+        width: 30px;
+        height: 30px;
+    }
+    .newsletter {
+        width: 85%;
+    }
+    .contacts .form {
+        width: 40%;
+    }
+    .contacts .form-group {
+        margin: 40px 0px;
+    }
+}

@@ -1,0 +1,108 @@
+/*--site mode tablette--*/
+.login {
+  /*--principal--*/
+  width: 80%;
+  min-height: 65vh;
+  margin: 50px auto;
+  padding: 3%;
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+.login .login-content {
+  /*--div droite--*/
+  padding: 0 5% 2% 5%;
+}
+.login .login-image {
+  /*--div gauche--*/
+  display: none;
+}
+.login  .MuiFormControl-root{
+  margin: 5px auto!important;
+}
+.login .MuiButton-label{
+  display:flex!important;
+  justify-content: center!important;
+  align-items: center!important;
+}
+.login .MuiButton-root{
+  font-weight: 400!important;
+  color: var(--white)!important;
+}
+.login .MuiButtonBase-root{
+  background-color: var(--red)!important;
+}
+.login  .MuiButton-root:disabled {
+  background-color: var(--transparent2)!important;
+}
+.login-creat{
+  display: inline-block;
+  margin: 20px 0px;
+  text-transform: underline;
+  cursor: pointer;
+}
+.login-checkbox{
+  margin: 50px auto 46px auto;
+}
+.form-group {
+  margin: 27px;
+}
+.label {
+  transform: translateY(-15px);
+}
+.login-forget-password{
+  cursor: pointer;
+}
+.login .login-content .login-title h1{
+  text-align: center;
+  font-size: 39.3px;
+}
+@media only screen and (min-width: 768px) {
+  .login .login-content {
+    width: 80%;
+    padding: 0 5% 2% 5%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  /*--site mode tablette -- et -- large ecran--*/
+  .login {
+    /*--principal--*/
+    max-width: 1300px;
+    min-width: 1000px;
+    min-height: 70vh;
+    justify-content: space-around;
+    padding: 1%;
+  }
+  .login .login-content {
+    /*--div droite--*/
+    width: 40%;
+    padding: 0;
+  }
+  .login .login-content.MuiButton-root{
+    font-size: 19.3px;
+    color: var(--white)!important;
+  }
+  .login .login-image {
+    /*--div gauche--*/
+      width: 40%;
+      display: block;
+  }
+  .login-image .login-block-logo {
+    /*-- block du logo dipercash--*/
+    display: block;
+    text-align: center;
+  }
+  .login .login-content .login-title h1{
+    text-align: left;
+    font-size: 2em;
+  }
+  .login-logo {
+    /*--logo dipercash--*/
+    height: 60px;
+  }
+  .btn-sign {
+    width: 95%;
+    background-color: var(--red) !important;
+  }
+}

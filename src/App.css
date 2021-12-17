@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
+
+
+
+:root {
+  --no-value: none;
+  --white: #fff;
+  --berge: #f6efef;
+  --red: #cc1616;
+  --red-transparent: #cc161693;
+  --blue: blue;
+  --night-blue: #0f394c;
+  --transparent: #00000029;
+  --transparent2: #a6a8a8;
+  --white-gray: #f9f9f9;
+  --gray: #707070;
+  --black: #000000;
+  --transparency: transparent;
+  --police: 'Vollkorn', serif;
+  --police2: 'Merienda', cursive;
+}
+
+html,
+body,
+header,
+main,
+footer,
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+}
+
+.approot {
+  display: flex;
+  flex-flow: column nowrap;
+  /* j'ai du desactiver ca pour que ca scroll sous ios */
+  height: 100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  /* border: 1px solid #000; */
+}
+.approotios {
+  display: flex;
+  flex-flow: column nowrap;
+  /* height: 100vh; */
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  outline: 0;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(150deg, #fff1e0 18%, #cc1616 77%);
+  border-radius: 3px;
+}
+/*::-webkit-scrollbar-thumb:hover {
+  background: #b3afb3;
+}*/
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 0px 0px #f0f0f0;
+}
+
+/* retirer les fleche sur les input number */
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+ 
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+ 
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
+}
+
+
+

@@ -1,0 +1,11 @@
+
+                                <div className="phone-step">
+                                    <div className="phone-mtn">
+                                        <h4>MTN</h4>
+                                        <img className="phone-image" alt="" srcset={mtn} />
+                                    </div>
+                                    <div className="phone-orange">
+                                        <h4>ORANGE</h4>
+                                        <img className="phone-image" alt="" srcset={orange} />
+                                    </div>
+                                </div>

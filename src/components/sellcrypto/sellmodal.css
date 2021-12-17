@@ -1,0 +1,117 @@
+.sell-overlay {
+}
+.sell-modal {
+  max-width: none;
+}
+.sell-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 50vh;
+}
+.modal-container {
+  color: var(--night-blue);
+}
+.timer {
+  font-weight: 600;
+  font-size: 1.4em;
+  color: var(--red);
+}
+.waiter {
+  max-width: 400px;
+  text-align: center;
+}
+.modal-container .qrcode {
+  text-align: center;
+}
+.modal-container h3 {
+  text-align: center;
+  /* border: 1px solid #000; */
+}
+.modal-container .operation-id {
+  color: var(--red);
+}
+.modal-container .message {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: auto;
+  width: 80%;
+}
+.modal-details > div {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0px;
+  font-size: 1.5em;
+}
+.modal-container > div span:nth-child(2) {
+  font-weight: 600;
+  margin-left: 50px;
+}
+.modal-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.op-id span {
+  display: block;
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--red);
+}
+.modal-controls button {
+  padding: 2% 4%;
+  margin: 15px;
+  border: var(--no-value);
+  border-radius: 5px;
+  color: var(--white);
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.modal-controls button:nth-child(1) {
+  background: var(--red);
+}
+.modal-controls button:nth-child(2) {
+  background: var(--night-blue);
+}
+.wallet {
+  font-size: 0.9em;
+}
+.send-bloc {
+  border: 1px solid var(--night-blue);
+  max-width: 500px;
+  padding: 2%;
+  text-align: center;
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+.send-bloc .wadd {
+  word-wrap: break-word;
+}
+.send-bloc .havesend {
+  display: flex;
+}
+.modal-controls button:disabled {
+  cursor: not-allowed;
+  background: var(--transparent2);
+}
+
+@media screen and (min-width: 1200px) {
+  .modal-details {
+    font-size: 1.6em;
+  }
+  .modal-details > div {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0px;
+  }
+  .modal-container > div span:nth-child(2) {
+    font-weight: 600;
+    margin-left: 150px;
+  }
+  .modal-controls button {
+    font-size: 1.7em;
+    margin: 15px 30px;
+  }
+}
