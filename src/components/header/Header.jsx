@@ -51,7 +51,7 @@ function Header({User, Country, dispatch}) {
     const checkConnection=()=>{
         console.log("checkConnection ")
         const actualTm=+new Date
-        if(actualTm-(User.timestamp) > 30000000) {
+        if(actualTm-(User.timestamp) > 3000000) {
             logout()
             history.push('/login')
         }

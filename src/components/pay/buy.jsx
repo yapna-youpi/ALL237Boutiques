@@ -6,18 +6,18 @@ import crypt from '../../utils/crypt'
 const mainNetUrl='https://api.blockcypher.com/v1/btc/main/txs/push'
 // const testNetUrl='https://api.blockcypher.com/v1/btc/test3/txs/push'
 
-// const apiUrl='https://ipercash-node-api.herokuapp.com/api/'
-const apiUrl='http://127.0.0.1:4001/api/'
+const apiUrl='https://ipercash-node-api.herokuapp.com/api/'
 
 // fonction principale de d'achat
 const buy=async (state, User, callback, cancel, success)=>{
-    console.log(" you can buy crypto ", state)
+    console.log(" you can buy crypto ", state, User)
     let i=0
     let attemps=0
     // preparation des parametres
     let params={
         partner_id: state.id,
         amount: state.xaf,
+        // amount: 100,
         number: state.number,
         userId: User.userId
         // service: checkServiceId(state.number.substring(4)),
@@ -85,17 +85,16 @@ const buy=async (state, User, callback, cancel, success)=>{
             }
         } while (attemps<3);
         if(partner_id) {
-            trackStatus({...params, id: params.partner_id}, User.token, ()=>afterBuy(i, callback, wallet, crypto, cancel, success), cancel)
+            trackStatus({...params, id: params.partner_id}, User.token, ()=>afterBuy(i, callback, wallet, crypto, cancel, success, User), cancel)
         }
         else {
             cancel({status: 'fail', cause: "payment demand has fail"}, i)
             return 10
         }
-        return
-        
+        // callback(i)
         /* fin de l'operation */
 
-        //afterBuy(i, callback, wallet, crypto, cancel, success)
+        // afterBuy(i, callback, wallet, crypto, cancel, success, User)
 
         
     } catch (error) {
@@ -104,8 +103,8 @@ const buy=async (state, User, callback, cancel, success)=>{
     }
 }
 
-const afterBuy=async (i, callback, wallet, crypto, cancel, success)=>{
-    
+const afterBuy=async (i, callback, wallet, crypto, cancel, success, User)=>{
+    console.log("the User ", User)
     let result
     // fin de la deuxieme etape
     i++
@@ -114,7 +113,7 @@ const afterBuy=async (i, callback, wallet, crypto, cancel, success)=>{
     console.log("on entre dans after buy")
 
     // construction de la transaction
-    result=await getHash(wallet, crypto)
+    result=await getHash(wallet, crypto, User)
     if(result.status==='fail') {
         console.log("echec de la construction")
         cancel(result, i)
@@ -129,6 +128,7 @@ const afterBuy=async (i, callback, wallet, crypto, cancel, success)=>{
 
     // envoie de la transaction
     //console.log("faut reactiver send crypto")
+    // return
     result=await sendCrypto(result.hash)
     console.log("final result", result)
     if(result.status==='fail') {

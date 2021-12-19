@@ -28,8 +28,8 @@ function InputPhone({label, name, val, id, error, help, change,fullwidth, handBl
     const longText = "ce service n'est pas disponible dans votre pays pour l'instant merci de votre comprehension !"
     
     
-    console.log(country)
-    console.log(alert)
+    // console.log(country)
+    // console.log(alert)
     return (
         <div className="input-phone">
             <label htmlFor=""> {label} </label>

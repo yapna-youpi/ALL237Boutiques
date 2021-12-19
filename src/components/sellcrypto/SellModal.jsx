@@ -6,17 +6,17 @@ import ReactLoading from 'react-loading'
 import {FaRegCopy} from 'react-icons/fa';
 import { useTranslation } from 'react-i18next'
 
-import { sendToApi, roundPrecision } from '../../utils/utilFunctions'
+import { sendToApi, roundPrecision, checkServiceId, randomId } from '../../utils/utilFunctions'
 import { cashIn } from '../../intouch/api'
-import { checkServiceId, randomId } from '../../utils/utilFunctions'
-import { cryptoChange } from './handleAmount';
+import { cryptoChange } from './handleAmount'
+import { toastify } from '../addons/toast/Toast'
 
 import './sellmodal.css'
 import Timer from './Timer'
 
 const receiveWallet="13tuVVNDH1PLfUEiTEPkMDRQfTRVHyiYn2"
 
-function SellModal({open, toogle, data, rate }) {
+function SellModal({open, toogle, data, rate, User }) {
     const { t } = useTranslation()
      const [state, setState]=useState({txid: "", status: "", id:  "", start: false})
     const [step, setStep]=useState('')
@@ -29,13 +29,19 @@ function SellModal({open, toogle, data, rate }) {
         return () => {
         }
     }, [])
-
+    // function that check if there is a conflict with the amount
     const checkConflict=async ()=>{
         let result=await sendToApi('conflict', {amount: data.amount})
+        if(!result.response || result==='error') {
+            toogle()
+            toastify("error", `An error are occur please try again`)
+            return
+        }
         setStep(result.response)
         console.log("le resultat ", result.response)
         return result.response
     }
+    // function that check if the payment has been done
     const checkPayment=async()=>{
         //console.log("le check payment ", state)
         setChecking(true)
@@ -56,6 +62,7 @@ function SellModal({open, toogle, data, rate }) {
         console.log("result ", result)
         setChecking(false)
     }
+    // function that haandle message about status of transaction
     const setMessage=()=>{
         switch (state.status) {
             case "confirmed":
@@ -72,28 +79,37 @@ function SellModal({open, toogle, data, rate }) {
                 return "no transaction found check sender address or resend it"
         }
     }
+    // function that handle state changes and the appearance of modal 
     const change=()=>{
         setState({txid: "", status: "", id: "", start: false})
         toogle(!open)
     }
+    // function that checks confirmation of transaction
     const checkConfirmation=(data)=>{
-        console.log(state)
+        let time=0
+        // console.log(state)
         if(state.id) {
-            console.log("dedans ", data)
-            intervalFunction(data)
+            // console.log("dedans ", data)
+            intervalFunction(data, time)
         }
     }
-    const intervalFunction=(data)=>{
-        console.log("is confirm ?")
+    // function that check confirmation of transaction
+    const intervalFunction=(data, time)=>{
+        // console.log("is confirm ? ", time)
+        time++
+        if(time===11) { // when time reach 11 transaction have 10 min
+            success()
+            return
+        }
         sendToApi('checkconfirmation', data).then(result=>{
-            console.log("le resultat", result)
+            // console.log("le resultat", result)
             if(result.response==="confirmed") {
-                console.log("on arrete l'intervalle")
+                // console.log("on arrete l'intervalle")
                 //setState({...state, status: "confirmed"})
                 success()
             }
             else {
-                setTimeout(()=>intervalFunction(data), 60*1000)
+                setTimeout(()=>intervalFunction(data, time), 60*1000)
             }
         })
     }
@@ -102,20 +118,23 @@ function SellModal({open, toogle, data, rate }) {
         let cashinParams={
             partner_id: state.id,
             service: checkServiceId(data.number.substring(4)),
-            amount: 200,   // cryptoChange(data.amount, rate).xaf,
-            number: data.number.substring(4)
+            amount: cryptoChange(data.amount, rate).xaf,
+            // amount: 100,
+            number: data.number,
+            userId: User.userId
         }
-        let result=await cashIn(cashinParams)
+        let result=await cashIn(cashinParams, User.token)
         if(result) {
             console.log("le cashin", result)
-            /* on enregistre l'operation */
+            /* save oreration */
             let successParams={
                 transaction_id: state.id,
                 status: 'complete',
                 rate: rate,
+                userId: User.userId
             }
-            let complete=sendToApi('updatesell', successParams)
-            console.log("update to complete ", complete)
+            let complete=sendToApi('updatesell', successParams, User.token)
+            // console.log("update to complete ", complete)
             sessionStorage.setItem('data', JSON.stringify({operation: 'sell', successParams: data}))
             setTimeout(() => {
                 history.push('/complete')
@@ -125,7 +144,7 @@ function SellModal({open, toogle, data, rate }) {
     const start=async()=>{
         setState({...state, id: "id"})
         let conflict=await checkConflict()
-        if(conflict==="conflict") return ""
+        if(conflict!=="free") return ""
         let storeData={
             transaction_id: randomId('S'),
             cryptoCurency: data.crypto,
@@ -134,10 +153,11 @@ function SellModal({open, toogle, data, rate }) {
             phone: data.number,
             clientWallet: data.wallet,
             status: 'init',
-            rate: rate
+            rate: rate,
+            userId: User.userId
         }
-        console.log("le store data",storeData)
-        let storeResult=await sendToApi('setsell', storeData)
+        console.log("le store data ",storeData)
+        let storeResult=await sendToApi('setsell', storeData, User.token)
         if(storeResult!=='error') {
             console.log("le resultat du store ", storeResult)
             setState({...state, start: true, id: storeData.transaction_id})
@@ -156,11 +176,11 @@ function SellModal({open, toogle, data, rate }) {
             change()
         }
     }
-    const testCashin=async()=>{
-        let witness=true
-        console.log("hello je m'execute")
-        if(witness) setTimeout(testCashin, 30*1000);
-    }
+    // const testCashin=async()=>{
+    //     let witness=true
+    //     console.log("hello je m'execute")
+    //     if(witness) setTimeout(testCashin, 30*1000);
+    // }
     const copy=()=>{
         if(ref) {
             console.log(ref.current)
@@ -169,7 +189,7 @@ function SellModal({open, toogle, data, rate }) {
         }
     }
 
-    console.log("le state",state)
+    // console.log("le state",state)
     return (
         <Modal open={open} onClose={()=>toogle(!open)} showCloseIcon={false} closeOnOverlayClick={false} center classNames={{overlay: "sell-overlay", modal: 'sell-modal'}}>
            {!step && <div className="sell-loader"><ReactLoading type="spin" color='#CC1616' height={100} width={100} /></div>}
@@ -195,7 +215,7 @@ function SellModal({open, toogle, data, rate }) {
                                     <span>{t('sellModal14')}  </span>  <span className="wallet"> { data.wallet.substr(0, 6)+'...'+data.wallet.substr(30) } </span>
                                 </div>
                                 <div className="">
-                                    <span>  </span> {t('sellModal15')} <span> { cryptoChange(data.amount, rate).xaf} XAF </span>
+                                    <span>  {t('sellModal15')}</span> <span> { cryptoChange(data.amount, rate).xaf} XAF </span>
                                 </div>
                                 <div className="">
                                     <span>{t('sellModal16')} </span>  <span> {data.number} </span>
