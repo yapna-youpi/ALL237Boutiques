@@ -87,6 +87,8 @@ function Signup({Country}) {
                                 <Button fullwidth sx={{mx:2}} onClick={resend}>
                                     { lode ? (<ReactLoading type="spin" color="#ffffff" width="28px" height="28px" />) : t('SignUpSous15')}
                                 </Button>
+                                <span onClick={()=>history.push('/Login')} className="btn-resend">{t('signUpLink')}</span>
+
                             </div>
                         </div>):
                         (<div className="signup-title">

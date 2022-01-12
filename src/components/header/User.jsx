@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
+// import ListItemText from '@material-ui/core/ListItemText'
+// import ListItemIcon from '@material-ui/core/ListItemIcon'
 import { useTranslation } from 'react-i18next'
 
 import { FaUser, FaSignOutAlt} from 'react-icons/fa'
@@ -33,7 +33,7 @@ function User({user, nav, logout}) {
         // history.push('/')
         
     }
-    console.log(user)
+    // console.log(user)
     return (
         <>
         <li className={user.userId ? "nav-link user-button connected" : "nav-link user-button" } onClick={(e)=>show(e)} >

@@ -28,13 +28,10 @@ function Pay({User}) {
     let ref=React.createRef()
     useEffect(() => {
         let data=JSON.parse(sessionStorage.getItem('data'))
-        console.log("les premiers data ", data)
-        
-        //console.log(history)
-        //start(data)
+        // console.log("les premiers data ", data)
 
         data ? start(data) : history.push("/buycrypto/mobile")
-        sessionStorage.clear()
+        sessionStorage.removeItem("data")
     }, [])
 
     const storeData=async(data)=>{
@@ -49,9 +46,9 @@ function Pay({User}) {
             type: 'mobile_money',
             userId: User.userId,
         }
-        console.log("store data le user ", User)
+        // console.log("store data le user ", User)
         let result=await sendToApi('settransaction', params, User.token)
-        console.log("le resultat ", result)
+        // console.log("le resultat ", result)
     }
     const success=(data)=>{
         let params={
@@ -70,8 +67,8 @@ function Pay({User}) {
         buy(data, User, changeStep, cancel, ()=>success(data))
     }
     const cancel=(data, i)=>{
-        console.log("echec de l'operation")
-        console.log("les params", params)
+        // console.log("echec de l'operation")
+        // console.log("les params", params)
         let witness= i>1
         //console.log("les data ", data)
         setTrace({status: true, error: data, traceStep: i, backFund: witness, mobilePaid:false})
@@ -86,7 +83,7 @@ function Pay({User}) {
         else return <FaCheck size={50} color="#CC1616" />
     }
     const backFunds=(err, i, witness)=>{
-        console.log(" renvoi des fonds ", params)
+        // console.log(" renvoi des fonds ", params)
         let data={
             partner_id: randomId(),
             amount: params.xaf,
@@ -101,13 +98,13 @@ function Pay({User}) {
                 backFundsId: data.partner_id
             }
             if(result) {
-                console.log("lest traces ", trace)
-                console.log("fonds renvoyees ", result)
+                // console.log("lest traces ", trace)
+                // console.log("fonds renvoyees ", result)
                 setTrace({status: true, error: err, traceStep: i, backFund: witness, mobilePaid:true})
                 sendToApi('updatetransaction', {...payload, backFunds: true, userId: User.userId}, User.token)
             }
             else {
-                console.log("echec du renvoi ", result)
+                // console.log("echec du renvoi ", result)
                 sendToApi('updatetransaction', {...payload, backFunds: true, userId: User.userId}, User.token)
             }
         })
@@ -115,12 +112,12 @@ function Pay({User}) {
     }
     const copy=()=>{
         if(ref) {
-            console.log(ref.current)
+            // console.log(ref.current)
             ref.current.select()
             document.execCommand('copy')
         }
     }
-    console.log("le user ", User)
+    // console.log("le user ", User)
 
     return trace.status ?  (
         <div className="pay" >
@@ -133,13 +130,13 @@ function Pay({User}) {
                     <h3>  </h3>
                     <p>{ t('payTitle')}</p>
                 </div>
-            <p>
-                {/* {trace.backFund ? backFunds() : (null)} */}
-                {trace.backFund && <h3 className="backfunds" >{t('paySous1')}  &ensp; &ensp; {
-                    trace.mobilePaid ? <FaCheck size={20} color="#CC1616" />
-                    : <ReactLoading type="spinningBubbles" color='#CC1616' height={20} width={20} />
-                    } </h3> }
-            </p>
+                <p>
+                    {/* {trace.backFund ? backFunds() : (null)} */}
+                    {trace.backFund && <h3 className="backfunds" >{t('paySous1')}  &ensp; &ensp; {
+                        trace.mobilePaid ? <FaCheck size={20} color="#CC1616" />
+                        : <ReactLoading type="spinningBubbles" color='#CC1616' height={20} width={20} />
+                        } </h3> }
+                </p>
             </div>
         </div>
     ): (
@@ -148,7 +145,7 @@ function Pay({User}) {
                 {t('paySous2')}
                 <h3> 
                     <span className="deco"></span> 
-                    <input ref={ref} value={params.id} className="iid" onClick={copy} contentEditable={false} /><FaRegCopy size={25} /> 
+                    <input ref={ref} value={params.id} className="iid" onClick={copy} contentEditable={false} /><FaRegCopy onClick={copy} size={25} /> 
                     <span className="deco"></span> 
                 </h3>
                 {t('paySous3')}

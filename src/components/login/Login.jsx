@@ -15,9 +15,16 @@ import './login.css'
 import iperFot from './assets/undraw_Mobile_login_re_9ntv.svg'
 import logoIpercash from './assets/logo-ipercash.png'
 
+let deferredPrompt=null
 
-
-
+window.addEventListener('beforeinstallprompt', function(e) {
+    // alert("deferred props enable")
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault()
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e
+    // console.log("the deferend event", e )
+  })
 
 function Login({User, dispatch}) {
     const { t } = useTranslation()
@@ -68,6 +75,7 @@ function Login({User, dispatch}) {
                 window.location.href="/"
             } else toastify("error", "failed to login")
         })
+        install()
     }
 
     const handleSubmit= e => {
@@ -77,6 +85,25 @@ function Login({User, dispatch}) {
         return false
     }
 
+    const install=()=>{
+        try {
+            if(!localStorage.getItem("install")) {
+                // alert("you should choice")
+                deferredPrompt.prompt()
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        // console.log('User accepted the A2HS prompt');
+                    } else {
+                        // console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                })
+                localStorage.setItem("install", JSON.stringify({ask: true, date: +new Date}))
+            }
+        } catch (error) {
+            
+        }
+    }
     const active=()=>(errors.email && errors.password) || (!state.email || !state.password)
     return (
         <div className="login">

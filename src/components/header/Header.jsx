@@ -37,7 +37,7 @@ function Header({User, Country, dispatch}) {
         target.classList.toggle('cross')
     }
     const nav=(route)=>{
-        console.log("the ref ", myref)
+        // console.log("the ref ", myref)
         myref.current.classList.remove("open")
         document.querySelector('.hamburger').classList.remove('cross')
         let li=document.querySelectorAll('.nav-links li')
@@ -49,7 +49,7 @@ function Header({User, Country, dispatch}) {
     }
     const logout=()=>dispatch(setUser({}))
     const checkConnection=()=>{
-        console.log("checkConnection ")
+        // console.log("checkConnection ")
         const actualTm=+new Date
         if(actualTm-(User.timestamp) > 3000000) {
             logout()
@@ -61,7 +61,7 @@ function Header({User, Country, dispatch}) {
     }
 
     checkConnection()
-    console.log("the user ", User)
+    // console.log("the user ", User)
     return (
         <div className="header" id='header'>
             <header>
@@ -91,7 +91,7 @@ function Header({User, Country, dispatch}) {
                             </div>
                         </li> 
                         <li className="nav-link" onClick={()=>nav('/#contacts')}>{t('link4')}</li> 
-                        <li className="nav-link" > <a href="https://soon.ipercash.fr/help" target="_blank"> {t('link5')} </a></li> 
+                        <li className="nav-link" > <a href="/help" target="_blank"> {t('link5')} </a></li> 
                         {/* <button > {t('accountButton')} </button>  */}
                         <li className="nav-link sixth" > <a href={`${process.env.REACT_APP_DATA1}/signup`}> {t('user2')} </a></li>
                         <UserIcon user={User}  nav={nav} logout={logout} />

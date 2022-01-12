@@ -19,7 +19,7 @@
 .signup .signup-content hr{
     margin: 5px auto 40px auto;
 }
-.signup .signup-content h1,h2{
+.signup .signup-content h1{
     margin: 20px auto;
 }
 .signup .signup-content h1{
@@ -37,6 +37,17 @@
 } */
 .signup .signup-content .MuiButton-root{
   width: 100%;
+}
+.signup .btn-resend{
+  padding: 0 0 10px 0;
+  margin: 25px;
+  display: inline-block;
+  border-bottom: 1px solid var(--black);
+  color: var(--red);
+  cursor: pointer;
+}
+.signup .btn-resend:hover{
+  border-bottom: 1px solid var(--red);
 }
 @media only screen and (min-width: 768px) {
     .resend .resend-image {
@@ -61,7 +72,7 @@
       /*--div droite--*/
       width: 100%;
       margin: none;
-      padding: 0 0 0 5%;
+      /* padding: 0 0 0 5%; */
       line-height: 30px;
     }
     .signup .signup-content .MuiButton-root{

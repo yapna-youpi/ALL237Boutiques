@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 
 import Widget from './Widget';
 import {Input} from '../addons/input/Input'
-import {randomId, getCryptoRate, sendToApi, checkWalletAddress} from '../../utils/utilFunctions'
+import {randomId, getCryptoRate, sendToApi} from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleCard';
 
 function BuyCryptoCard({Amount, User}) {
@@ -94,7 +94,7 @@ function BuyCryptoCard({Amount, User}) {
     }
     // fonction qui gere l'activation du bouton
     const active=()=>{
-        if( (state.amount && state.wallet) && checkWalletAddress(state.wallet) )
+        if( (state.amount && state.wallet) )
             return false
         else return true
     }
@@ -141,7 +141,7 @@ function BuyCryptoCard({Amount, User}) {
                         <Input val={state.amount} label={t('buyCryptoCardSous6')} name="crypto" type="number" help={t('buyCryptoCardSous12')} change={amountChange}  />
                     </div>
                     <div className="form-group">
-                        <Input val={state.wallet} label={t('buyCryptoCardSous7')} name="wallet" help={t('buyCryptoCardSous13')} error={errors.wallet || (state.wallet&&!checkWalletAddress(state.wallet))} change={handleChange} handBlur={handleBlur}  />
+                        <Input val={state.wallet} label={t('buyCryptoCardSous7')} name="wallet" help={t('buyCryptoCardSous13')} error={errors.wallet} change={handleChange} handBlur={handleBlur}  />
                     </div>
                     <div className="form-group">
                         <button disabled={active() || (state.crypto===0) || state.xaf===0 } 

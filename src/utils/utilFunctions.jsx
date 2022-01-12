@@ -1,7 +1,7 @@
 import { getStatus } from '../intouch/api'
 import crypt from './crypt';
 
-console.log("hello dear")
+// console.log("hello dear")
 const apiUrl='https://ipercash-node-api.herokuapp.com/api/'
 // const apiUrl=process.env.REACT_API_DATA2
 // const apiUrl='http://127.0.0.1:4001/api/'
@@ -60,19 +60,19 @@ const randomChain=()=>{
 }
 
 const trackStatus=async (params, token, callBack, cancel)=>{
-    console.log("trackstatus")
+    // console.log("trackstatus")
     let valid=true
     let status="PENDING"
     let i=1
     //getStatus(id)
     let interval=setInterval(async() => {
         let newStatus=await getStatus(params, token)
-        console.log("je suis i", i)
+        // console.log("je suis i", i)
         if(valid) {
-            console.log("on entre sans tocker")
+            // console.log("on entre sans tocker")
             if(newStatus!==status) {
                 valid=false
-                console.log("l'operation est terminee ", newStatus)
+                // console.log("l'operation est terminee ", newStatus)
                 clearInterval(interval)
                 if(newStatus==='SUCCESSFUL') {
                     callBack()
@@ -83,13 +83,13 @@ const trackStatus=async (params, token, callBack, cancel)=>{
             i++
         } else {
             clearInterval(interval)
-            console.log("on a encore efface l'intervalle")
+            // console.log("on a encore efface l'intervalle")
         }
         //console.log("le status  de trackstatus: ", newStatus)
     }, 20*1000); // en production il faudra mettre 20 secondes
     setTimeout(() => {
         if(valid) {
-            console.log("arret des operations")
+            // console.log("arret des operations")
             clearInterval(interval)
             cancel({status: 'fail', cause: 'payment process fail'}, 1)
         }

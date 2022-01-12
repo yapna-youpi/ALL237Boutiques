@@ -96,6 +96,13 @@
   }
 
 }
+.steps .react-responsive-modal-modal {
+  /* max-width: 800px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 80%!important;
+}
 
 @media screen and (min-width: 1280px) {
   .step-line {
@@ -114,4 +121,9 @@
     width: 1200px;
     height: 700px;
   }
+  .steps .react-responsive-modal-modal{
+    display: initial;
+    max-width: 80%!important
+  }
 }
+

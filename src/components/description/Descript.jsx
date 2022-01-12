@@ -31,6 +31,7 @@ import img20 from './assets/img20.png'
 
 function Description() {
 
+    console.log(" je me rerend ")
     return(
     <>
     <Head/>

@@ -14,11 +14,11 @@ function Success() {
     useEffect(() => {
         let data=JSON.parse(sessionStorage.getItem('data'))
         console.log(data)
-        if(!data) history.push('/')
-        else {
-            setState(data)
-            sessionStorage.clear()
-        }
+        // if(!data) history.push('/')
+        // else {
+        //     setState(data)
+        //     sessionStorage.clear()
+        // }
     }, [])
     console.log(state)
     return (
@@ -31,24 +31,24 @@ function Success() {
                 {state.operation==='sell' && <h3>{t('sucessTitle4')}  </h3>}
                 
                 <div >
-                    <h3> Please take a minute for :</h3>
+                    <h3>{t('completeTitle')}</h3>
                     <div className="rates">
                         <div className="rate">
                         <a href="https://uk.trustpilot.com/evaluate/ipercash.fr?utm_medium=trustbox&utm_source=TrustBoxReviewCollector" target='_blank'>
-                            <h5>Rate us on</h5>
-                            <img src={trusty} alt=""/>
+                            <h5>{t('completeSous1')}</h5>
+                            <img style={{width:"85px",height:"50px"}} src={trusty} alt=""/>
                         </a>
                         </div>
                         {/* <h1>Or</h1> */}
                         <div className="rate">
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdO5v8JpRHOKlRkLKse0eK6flW3vyDY2spf7EAa-uzcpPJebg/viewform" target="_blank" >
-                            <h5>Leave your mind</h5>
-                            <img src={google} alt=""/>
+                            <h5>{t('completeSous1')}</h5>
+                            <img style={{width:"85px",height:"50px"}} src={google} alt=""/>
                             </a>
                         </div>
                     </div>
                 </div>
-                <span onClick={()=>history.push('/')} >{t('sucessTitle6')}  </span>
+                <span  onClick={()=>history.push('/')} >{t('sucessTitle6')}  </span>
             </div>
         </div>
     )

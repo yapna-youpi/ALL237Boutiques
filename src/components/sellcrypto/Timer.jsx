@@ -4,7 +4,7 @@ function Timer({stamp, action}) {
     let [time, setTime]=useState(stamp)
     useEffect(()=>{
         let interval=setInterval(() => {
-            console.log("je compte toujours")
+            // console.log("je compte toujours")
             if(time<=1000) action()
             setTime(time-1000)
         }, 1000);

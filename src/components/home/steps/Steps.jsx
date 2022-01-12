@@ -8,14 +8,23 @@ import user from './user-alt-7.svg';
 import phone from './stock-mobile.svg';
 import bitcoin from './bitcoin-true.svg';
 
-let videoList=["", "https://www.youtube.com/embed/PSyUcb3fFtY", "https://www.youtube.com/embed/sSiCc7uC1MA", "https://www.youtube.com/embed/QX0Su9GHwK0"]
+
+let videoList={
+    en: ["https://www.youtube.com/watch?v=kMVa9Pl7xkk", "https://www.youtube.com/watch?v=KybgI7d2Raw", "https://www.youtube.com/watch?v=SoOCZrCLYKA", "https://www.youtube.com/watch?v=_a8bA7GTJ98" ],
+    fr: ["https://www.youtube.com/watch?v=IBqu-9rsPqU", "https://www.youtube.com/watch?v=gX9UIaq8Nyo", "https://www.youtube.com/watch?v=XjiPtxU9rVk", "https://www.youtube.com/watch?v=39KyJBsKrLU" ]
+}
 
 function Steps() {
-const { t } = useTranslation();
-
+    const { t } = useTranslation()
     const [state, setState]=useState({open: false, video: 0})
+
     const showVideo=(number)=>{
         setState({open: true, video: number})
+    }
+    let lang='en'
+    try {
+        let lang=JSON.parse(localStorage.getItem("lang")).lang
+    } catch (error) {
     }
     const hideVideo=()=>setState({...state, open: false})
     return (
@@ -26,9 +35,8 @@ const { t } = useTranslation();
                     <div className="img-container" onClick={()=>showVideo(0)}>
                         <img src={user} alt="" />
                     </div>
-                    <p>{ t('sousSteps1')}
-                    </p>
-                    
+                    <p>{ t('sousSteps1')}</p>
+                    <a href="/help/description" target="_blank"><u>{t('sousSteps5')}</u></a>
                 </div>
                 <div className="step-line"></div>
                 <div className="step">
@@ -36,7 +44,9 @@ const { t } = useTranslation();
                         <img src={phone} alt="" />
                     </div>
                     <p>{t('sousSteps2')}</p>
-                    <a href="https://soon.ipercash.fr/help/1" target="_blank"><u>{t('sousSteps5')}</u></a>
+                    <a href="/help/description" target="_blank"><u>{t('sousSteps5')}</u></a>
+                    
+                
                 </div>
                 <div className="step-line"></div>
                 <div className="step">
@@ -44,13 +54,10 @@ const { t } = useTranslation();
                         <img src={bitcoin} alt="" />
                     </div>
                     <p>{t('sousSteps3')}</p>
-                    <a href="https://soon.ipercash.fr/help/2" target="_blank"><u>{t('sousSteps5')}</u></a>
-                    
+                    <a href="/help/description" target="_blank"><u>{t('sousSteps5')}</u></a>
                 </div>
                 <Modal open={state.open} onClose={hideVideo} showCloseIcon={false} closeOnOverlayClick={true} center classNames={{overlay: "step-overlay", modal: 'step-modal'}} >
-                    <ReactPlayer  url={videoList[state.video]} controls  />
-                    {/* 
-                    <iframe className="video"  src={videoList[state.video]} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+                    <ReactPlayer url={videoList[lang][state.video]} controls />
                 </Modal>
             </div>
             <h5>{ t('sousSteps4')}</h5>

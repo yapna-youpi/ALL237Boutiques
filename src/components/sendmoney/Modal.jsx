@@ -19,7 +19,7 @@ function CoverModal({option, close}) {
         }
     }
     const closeModal=()=>{
-        if(window.confirm("you can't follow the operation ! \nmake sure you have save the operation id")) close()
+        if(window.confirm("you can't follow the operation ! \nMake sure you have save the operation id")) close()
     }
     return (
         <Modal open={option.open} center showCloseIcon={false}

@@ -60,6 +60,10 @@
 .signup .signup-content .MuiButton-root{
   width: 100%;
 }
+.signup .signup-check{
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 768px) {
   .signup {
     max-width: 770px;

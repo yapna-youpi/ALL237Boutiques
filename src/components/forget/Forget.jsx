@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import ReactLoading from 'react-loading';
+import { useHistory } from 'react-router-dom'
 
 import { Input } from '../addons/input/Input'
 import { checkEmail, sendToApi } from '../../utils/utilFunctions'
@@ -13,6 +14,7 @@ import styled from  './forget.css'
 
 const Forget =({type, color}) => {
     const { t } = useTranslation();
+    let history = useHistory();
 
     const [state,setState] = useState('');
     const [ring, setRing] = useState(false);
@@ -75,9 +77,10 @@ const Forget =({type, color}) => {
                                 <p>{t('forgetSous6')}</p>
                                 <p>{t('forgetSous7')}</p>
                                 <hr/><br/>
-                                <Button fullwidth sx={{mx:2}} onClick={resend}>
+                                <Button fullwidth sx={{mx:2,py:3}} onClick={resend}>
                                     { loader? (<ReactLoading type="spin" color="#ffffff" width="35px" height="35px"/>) : t('forgetSous8') }
                                 </Button>
+                                <span onClick={()=>history.push('/Login')} className="btn-resend">{t('forgetLink')}</span>
                             </div>
                         </div>
                     </div> 

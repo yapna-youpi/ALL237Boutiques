@@ -118,8 +118,8 @@ function SellModal({open, toogle, data, rate, User }) {
         let cashinParams={
             partner_id: state.id,
             service: checkServiceId(data.number.substring(4)),
-            amount: cryptoChange(data.amount, rate).xaf,
-            // amount: 100,
+            // amount: cryptoChange(data.amount, rate).xaf,
+            amount: 100,
             number: data.number,
             userId: User.userId
         }
@@ -209,19 +209,19 @@ function SellModal({open, toogle, data, rate, User }) {
                             <div className="modal-details">
                                 <h3>{t('sellModal4')}</h3>
                                 <div className="">
-                                    <span>{t('sellModal13')} </span>  <span> {data.amount} BTC</span>
+                                    <span>{t('sellModal13')} </span>  <span> {Intl.NumberFormat('fr-FR', {maximumSignificantDigits: 8}).format(data.amount)} BTC</span>
                                 </div>
                                 <div className="">
                                     <span>{t('sellModal14')}  </span>  <span className="wallet"> { data.wallet.substr(0, 6)+'...'+data.wallet.substr(30) } </span>
                                 </div>
                                 <div className="">
-                                    <span>  {t('sellModal15')}</span> <span> { cryptoChange(data.amount, rate).xaf} XAF </span>
+                                    <span>  {t('sellModal15')}</span> <span> { Intl.NumberFormat('de-DE').format(cryptoChange(data.amount, rate).xaf)} XAF </span>
                                 </div>
                                 <div className="">
                                     <span>{t('sellModal16')} </span>  <span> {data.number} </span>
                                 </div>
                                 <div className="">
-                                    <span>{t('sellModal17')} </span>  <span> {roundPrecision(cryptoChange(data.amount, rate).xaf*0.05, 1)} XAF </span>
+                                    <span>{t('sellModal17')} </span>  <span> {Intl.NumberFormat('de-DE').format(roundPrecision(cryptoChange(data.amount, rate).xaf*0.05, 0))} XAF </span>
                                 </div>
                             </div>
                             <h3 className="message"> {setMessage()} </h3>

@@ -5,8 +5,9 @@ import { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import { useTranslation } from 'react-i18next'
 
-import { randomId, randomChain, roundPrecision } from '../../utils/utilFunctions';
+import { randomId, randomChain, roundPrecision, apiUrl } from '../../utils/utilFunctions';
 import crypt from '../../utils/crypt';
+import { toastify } from '../addons/toast/Toast'
 
 import './sendmoney.css'
 import { Input, Phone } from '../addons/input/Input';
@@ -16,7 +17,6 @@ import Modal from './Modal';
 
 let widgetUrl='https://ipercash-api.herokuapp.com/'
 // const apiUrl='https://ipercash-node-api.herokuapp.com/api/'
-const apiUrl='http://127.0.0.1:4001/api/'
 
 var interval=null
 
@@ -36,14 +36,12 @@ function SendMoney({amount, country, User,alert}) {
     let history=useHistory()
     // handle change on different field, update mactching field in state
     const handleChange=e=>{
-        console.log(e.name);
         let newState=state
         newState[e.name]=e.value
         setState({...state})
     }
     // handle errors in field, update field in error
     const handleBlur=e=>{
-        console.log(e.name)
         if(e.value==="") {
             let newErrors=errors
             newErrors[e.name]=true
@@ -57,7 +55,7 @@ function SendMoney({amount, country, User,alert}) {
 
     // this function send the data operation on api, open the widget and show the modal
     const send=()=>{
-        console.log(state)
+        // console.log(state)
         let params={"transaction_id":randomId('C'), "phone": state.phone, "name": state.name, userId: User.userId}
         let message=crypt(JSON.stringify(params))
         const requestOption={
@@ -73,21 +71,22 @@ function SendMoney({amount, country, User,alert}) {
         window.open(widgetUrl+'hello?d='+randomChain()+';'+state.amount*1.04*0.579+';'+params.transaction_id, '_blank')
         fetch(apiUrl+'init', requestOption)
         .then(response=>response.json()).then(data=>{
-            console.log(data)
             if(data.success==="payload initiate") {
                 interval=setInterval(async() => {
-                    console.log("fonction d'intervale")
-                    // console.log("l'interval ", inter)
                     getStatus(params.transaction_id)
-                }, 3000)
+                }, 60000)
             }
         })
-        .catch(err=>console.log(" une erreur est survenu "))
+        .catch(err=>{
+            console.log(" une erreur est survenu ")
+            closeModal()
+            toastify("error", "An error are occur please try again")
+        })
 
     }
     // this get the staus of operation at mercuryo
     const getStatus=(id)=>{
-        console.log("get status")
+        // console.log("get status")
         let message=crypt(JSON.stringify({id: id, userId: User.userId}))
         const requestOption={
             "method": "POST",
@@ -102,19 +101,18 @@ function SendMoney({amount, country, User,alert}) {
         .then(response=>response.json()).then(data=>{
             if(data.status==='completed') {
                 clearInterval(interval)
-                console.log("un bon statut est arrive ", data)
                 sessionStorage.setItem('data', JSON.stringify({operation: 'credit', params: state}))
                 history.push('/complete')
                 return data
             }
             if(data.status==='error') {
-                console.log("une erreur prevue")
+                // console.log("une erreur prevue")
                 clearInterval(interval)
             }
         })
         .catch(err=>{
             clearInterval(interval)
-            console.log(" une erreur est survenu ", err)
+            // console.log(" une erreur est survenu ", err)
         })
 
     }
@@ -135,7 +133,6 @@ function SendMoney({amount, country, User,alert}) {
     // this function check if the two number are same
     const checkConfirm=(value1, value2)=>{
         if(value1) {
-            // console.log(value1===value2)
             return value1!==value2
         }
         return false
@@ -181,19 +178,19 @@ function SendMoney({amount, country, User,alert}) {
                 <h2>{ t('sendMoneySous2') }</h2>
                 <div className="row">
                     <span>{ t('sendMoneySous3') }</span>
-                    <span> { state.amount } EUR </span>
+                    <span> { Intl.NumberFormat('de-DE').format(state.amount) } EUR </span>
                 </div>
                 <div className="row">
                     <span>{ t('sendMoneySous4')}</span>
-                    <span> { state.amount*0.04 } EUR </span>
+                    <span> { Intl.NumberFormat('de-DE').format(state.amount*0.04) } EUR </span>
                 </div>
                 <div className="row">
                     <span>{ t('sendMoneySous5')} </span>
-                    <span> { state.amount*1.04 } EUR </span>
+                    <span> { Intl.NumberFormat('de-DE').format(state.amount*1.04) } EUR </span>
                 </div>
                 <div className="row">
                     <span>{ t('sendMoneySous6')}</span>
-                    <span>  { Math.floor(655*0.96*state.amount) } XAF </span>
+                    <span>  { Intl.NumberFormat('de-DE').format(Math.floor(655*0.96*state.amount)) } XAF </span>
                 </div>
                 <div className="warning">
                     <h2>{ t('sendMoneySous7')}</h2>

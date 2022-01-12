@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {useHistory} from 'react-router-dom'
-import { Modal } from 'react-responsive-modal';
+import { Modal } from 'react-responsive-modal'
 import ReactLoading from 'react-loading'
 import { TiWarningOutline } from 'react-icons/ti'
 import { FaCheck, FaArrowLeft } from 'react-icons/fa'
@@ -10,9 +10,10 @@ import 'react-phone-number-input/style.css'
 import { useTranslation } from 'react-i18next'
 
 import './buycrypto.css'
-import {Input, Input2} from '../addons/input/Input';
+import Sumsub from '../sumsub/Sumsub'
+import {Input, Input2} from '../addons/input/Input'
 import PhoneInput from '../addons/input/PhoneInput'
-import { randomId, getCryptoRate, checkWalletAddress } from '../../utils/utilFunctions'
+import {randomId, getCryptoRate, roundDecimal} from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleMobile'
 
 function BuyCryptoMobile({Amount, country, User}) {
@@ -29,6 +30,8 @@ function BuyCryptoMobile({Amount, country, User}) {
     })
     const [modal, setModal] = useState(false)
     const [valid, setValid] = useState(false)
+    // state of sumsub
+    const [sum, setSum]=useState(false)
     const openModal=()=>setModal(!modal)
     let history=useHistory()
     useEffect(async() => {
@@ -61,7 +64,7 @@ function BuyCryptoMobile({Amount, country, User}) {
     }
     // la fonction qui gere l'evenement onBlur des inputs
     const handleBlur=e=>{
-        console.log(e.name)
+        // console.log(e.name)
         if(e.value==="") {
             let newErrors=errors
             newErrors[e.name]=true
@@ -77,29 +80,29 @@ function BuyCryptoMobile({Amount, country, User}) {
         let result
         switch (e.name) { // amount c'est le montant en crypto monnaie 
             case "crypto":
-                console.log("c'est le montant")
+                // console.log("c'est le montant")
                 result=cryptoChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break
             case "xaf":
-                console.log("c'est le xaf")
+                // console.log("c'est le xaf")
                 result=xafChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break;
             
             case "eu":
-                console.log("c'est le eu")
+                // console.log("c'est le eu")
                 result=euroChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break;
             default:
-                console.log("c;est autre chose")
+                // console.log("c;est autre chose")
             break;
         }
     }
     // fonction qui gere l'activation du bouton
     const active=()=>{
-        if( (state.amount && state.number && isValidPhoneNumber(state.number || 342) && state.wallet) && (state.number===state.confirmNumber) && checkWalletAddress(state.wallet) )
+        if( (state.amount && state.number && isValidPhoneNumber(state.number || 342) && state.wallet) && (state.number===state.confirmNumber) )
             return false
         else return true
     }
@@ -121,15 +124,26 @@ function BuyCryptoMobile({Amount, country, User}) {
     const checkAddress=e=>{
         console.log("hello")
         if(e.value===state.wallet) {
-            console.log("ils correspondent")
-            sessionStorage.clear()
-            sessionStorage.setItem('data', JSON.stringify({...state, id: randomId('BM'), rate: rate.BTC, User: User}))
+            // console.log("ils correspondent")
+            // sessionStorage.clear()
+            sessionStorage.removeItem('data')
+            sessionStorage.setItem('data', JSON.stringify({...state, id: randomId('BM'), rate: rate.BTC}))
             setValid(true)
-            setTimeout(()=>history.push('/purchase'), 2000)
+            // setTimeout(()=>history.push('/purchase'), 2000)
+            !User.kyc ? setTimeout(()=>{
+                setModal(false)
+                setSum(true)
+                setValid(false)
+            }, 2000) : setTimeout(()=>history.push('/purchase'), 2000)
         }
     }
+    const noCopy=(e)=>{
+        e.preventDefault()
+        return false
+    }
 
-    console.log(state)
+
+    // console.log("the valid ", valid)
     return (
         <div className="buycrypto">
             <Modal open={modal} onClose={()=>setModal(!modal)} showCloseIcon={false} center classNames={{modal: 'custom-modal'}}>
@@ -139,7 +153,7 @@ function BuyCryptoMobile({Amount, country, User}) {
                         <h2>{t('buyCryptoMobileTitle')}</h2>
                     </div>
                     <div className="modal-body">
-                        <div className="wallet-div">
+                        <div className="wallet-div" onCopy={(e)=>noCopy(e)} >
                             <b>{t('buyCryptoMobileSous1')} </b><br/> <br/>
                             {state.wallet}
                         </div> <br/>
@@ -153,11 +167,14 @@ function BuyCryptoMobile({Amount, country, User}) {
                     </div>
                 </div>
             </Modal>
+            {sum&&<Modal open={true} onClose={()=>setSum(false)} center={true} closeOnOverlayClick={false} >
+                <Sumsub call={()=>setTimeout(()=>history.push('/purchase'), 2000)} close={()=>setSum(false)} />
+            </Modal>}
             <h1>{t('buyCryptoMobileSous3')}</h1>
             <div className="buy-container">
                 <div className="rate">
                     <h3>{t('buyCryptoMobileSous5')}</h3>
-                    <div className=""> 1 BTC === {Math.round(rate.BTC*655)} XAF === {rate.BTC} EU </div>
+                    <div className=""> 1 BTC === {Intl.NumberFormat('de-DE').format(Math.round(rate.BTC*655))} XAF === {Intl.NumberFormat('de-DE').format(rate.BTC)} EU </div>
                     <span>{t('buyCryptoMobileSous6')} <a href="https://www.coindesk.com/coindesk-api" target="_blank">{t('buyCryptoMobileSous4')}</a> </span> 
                 </div>
                 <div className="form">
@@ -171,13 +188,13 @@ function BuyCryptoMobile({Amount, country, User}) {
                         <Input val={state.amount} label={t('buyCryptoMobileSous11')} name="crypto" type="number" help={t('buyCryptoMobileSous12')} change={amountChange}  />
                     </div>
                     <div className="form-group">
-                        <PhoneInput label={t('buyCryptoMobileSous13')} name="number" help={t('buyCryptoMobileSous14')} change={handleChange} error={validPhone(state.number, isValidPhoneNumber)} country={country} />
+                        <PhoneInput label={t('buyCryptoMobileSous13')} name="number" help={t('buyCryptoMobileSous14')} change={handleChange} error={validPhone(state.number, isValidPhoneNumber)} />
                     </div>
                     <div className="form-group">
-                        <PhoneInput label={t('buyCryptoMobileSous15')} name="confirmNumber" help={t('buyCryptoMobileSous16')} change={handleChange} error={checkConfirm(state.confirmNumber, state.number)} country={country} />
+                        <PhoneInput label={t('buyCryptoMobileSous15')} name="confirmNumber" help={t('buyCryptoMobileSous16')} change={handleChange} error={checkConfirm(state.confirmNumber, state.number)} />
                     </div>
                     <div className="form-group">
-                        <Input val={state.wallet} label={t('buyCryptoMobileSous17')} name="wallet" help={t('buyCryptoMobileSous18')} error={errors.wallet || (state.wallet&&!checkWalletAddress(state.wallet))} change={handleChange} handBlur={handleBlur}  />
+                        <Input val={state.wallet} label={t('buyCryptoMobileSous17')} name="wallet" help={t('buyCryptoMobileSous18')} error={errors.wallet} change={handleChange} handBlur={handleBlur}  />
                     </div>
                     <div className="form-group">
                         <button disabled={active() || (state.crypto===0) || state.xaf===0 } 
@@ -201,4 +218,5 @@ const mapStateToProps=state=>({
 
 
 export default connect(mapStateToProps)(BuyCryptoMobile)
+
 

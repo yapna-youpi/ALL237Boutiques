@@ -12,42 +12,52 @@
   box-sizing: initial;
   transition: width 0.5s;
 }
-.description-menu ul {
+.description .help-Gone{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding-top: 35px;
+}
+.description-menu .list-ul {
   top: 0;
   left: 0;
   width: 100%;
-  padding-top: 40px;
-  padding-left: 15px;
+  padding-left: 10px;
 }
-.description-menu ul li {
+.description-menu ul .list {
   position: relative;
   width: 90%;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   overflow: hidden;
 }
-.description-menu ul li:hover {
+.description-menu ul .list:hover {
+  border-right: 2px solid var(--red);
+/*   
+  background-color: var(--transparent);
+  border-left: 3px solid var(--red);
+  color: var(--red); */
+}
+.description-menu ul .list:active {
     background-color: var(--transparent);
     border-left: 3px solid var(--red);
     border-right: 2px solid var(--red);
     color: var(--red);
 }
-.description-menu ul li:active {
-    background-color: var(--transparent);
-    border-left: 3px solid var(--red);
-    border-right: 2px solid var(--red);
-    color: var(--red);
-}
-.description-menu ul li.active a {
+.description-menu ul .list.active a {
   color: var(--black);
 }
 
-.description-menu ul li a {
+.description-menu ul .list a {
   display: block;
   width: 100%;
   /* color: var(--white); */
 }
-.description-menu ul li a i {
+.description-menu .title {
+  display: none;
+}
+.description-menu ul .list a i {
   position: relative;
   display: inline-block;
   min-width: 60px;
@@ -55,7 +65,7 @@
   line-height: 70px;
   text-align: center;
 }
-.description-menu ul li a title {
+.description-menu ul .list a title {
   position: relative;
   display: block;
   padding-left: 10px;
@@ -73,6 +83,7 @@
     opacity: 1;
     float: right;
     margin-top: 2px;
+    margin-left: 7px!important;
 }
 
 /*--designed rigth content--*/
@@ -82,7 +93,7 @@
 .description .help-bd { 
   position: fixed;
   width: 99.5vw;
-  height: 20vh;
+  height: 15vh;
   width: 100%;
   background: #CC1616 0% 0% no-repeat padding-box;
   opacity: 1;
@@ -103,7 +114,8 @@
     text-align: center!important; 
 }
 #dsc-about p.title3{
-  text-align: center;
+  font-size: 22px;
+  text-align: left;
 }
 #dsc-about p.title4{
   padding-left: 5%;
@@ -114,6 +126,9 @@
   justify-content: center;
   margin: 30px auto;
   align-items: center;
+}
+.description .player5{
+  width: 150%;
 }
 
 /*----styling move----*/
@@ -138,7 +153,8 @@
   margin: 15px;
 }
 #dsc-move p.title3{
-  text-align: center;
+  font-size: 22px;
+  text-align: left;
 }
 #dsc-move p.title4{
   padding-left: 5%;
@@ -183,7 +199,8 @@
   margin: 15px;
 }
 #dsc-buy p.title3{
-  text-align: center;
+  font-size: 22px;
+  text-align: left;
 }
 #dsc-buy p.title4{
   padding-left: 5%;
@@ -235,7 +252,8 @@
   margin: 15px;
 }
 #dsc-do p.title3{
-  text-align: center;
+  font-size: 22px;
+  text-align: left;
 }
 #dsc-do p.title4{
   padding-left: 5%;
@@ -286,7 +304,8 @@
   margin: 15px;
 }
 #dsc-connect p.title3{
-  text-align: center;
+  font-size: 22px;
+  text-align: left;
 }
 #dsc-connect p.title4{
   padding-left: 5%;
@@ -364,7 +383,7 @@
       position: fixed;
       width: 99.5vw;
       height: 12vh;
-      padding-top: 20px;
+      padding:20px 0 10px 0;
       width: 100%;
       background: #CC1616 0% 0% no-repeat padding-box;
       opacity: 1;
@@ -373,4 +392,61 @@
       font-size: 22px;
       top: 0;
     }
+    .description .help-Gone{
+      width: 70%;
+      padding-top: 15px;
+    }
+    .description p.title3{
+      font-size: 22px;
+      text-align: center;
+    }
+    .description .help-logo{
+      margin-right: 30%!important;
+    }
+    .description .title4,li{
+      font-size: 20px;
+    }
+    .description-menu .list-ul {
+      padding-top: 45px;
+      padding-left: 15px;
+    }
+    .description .player7{
+      display: flex;
+      justify-content: center;
+      margin: 30px auto;
+      align-items: center;
+      width: initial;
+    }
+    .description .player8{
+      width: initial;
+    }
+    .description-menu ul .list {
+      position: relative;
+      width: 100%;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      overflow: hidden;
+    }
+    .description-menu ul .list:hover {
+      border-right: 2px solid var(--red);  
+      background-color: var(--transparent);
+      border-left: 3px solid var(--red);
+      color: var(--red);
+    }
+    .description-menu .title{
+      display: flex;
+      align-items: center;
+    }
+    .description-menu ul .list a i {
+      position: relative;
+      display: inline-block;
+      min-width: 60px;
+      height: 60px;
+      line-height: 70px;
+      text-align: center;
+  }
+    .description-menu ul .list a {
+     display: flex;
+  }
+    
   }

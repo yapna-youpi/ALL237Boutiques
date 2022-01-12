@@ -133,7 +133,7 @@ function SellCrypto({Amount, country, User}) {
             <div className="sell-container">
                 <div className="rate">
                     <h3>{ t('sellCrypto2')}</h3>
-                    <div className=""> 1 BTC === {Math.round(rate.BTC*655)} XAF === {rate.BTC} EU </div>
+                    <div className=""> 1 BTC === {Intl.NumberFormat('de-DE').format(Math.round(rate.BTC*655))} XAF === {Intl.NumberFormat('de-DE').format(rate.BTC)} EU </div>
                     <span>{ t('sellCrypto4')} <a href="https://www.coindesk.com/coindesk-api" target="_blank">{ t('sellCrypto3')}  </a> </span> 
                 </div>
                 <div className="form">

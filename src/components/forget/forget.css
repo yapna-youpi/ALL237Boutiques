@@ -80,6 +80,17 @@
     cursor: not-allowed;
     background: var(--transparent2);
   }
+  .forget .btn-resend{
+    padding: 0 0 10px 0;
+    margin: 25px;
+    display: inline-block;
+    border-bottom: 1px solid var(--black);
+    color: var(--red);
+    cursor: pointer;
+  }
+  .forget .btn-resend:hover{
+    border-bottom: 1px solid var(--red);
+  }
 
 @media only screen and (min-width: 576px) {
     /*--site mode tablette--*/

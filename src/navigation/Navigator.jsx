@@ -28,7 +28,7 @@ import Help from '../components/Help/Help';
 import Valid from '../components/valid/Valid';
 
 function Main({User}) {
-    console.log(document.URL.indexOf('help')+1)
+    // console.log(document.URL.indexOf('help')+1)
     const showHead=()=>document.URL.indexOf('help')+1
     const checkUser=C=>User.userId ? C : ()=><Redirect to="/login" />
     // const checkUser=C=>true ? C : ()=><Redirect to="/login" />

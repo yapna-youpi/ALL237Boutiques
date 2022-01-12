@@ -22,15 +22,15 @@ function Partner() {
                 <img src={wizall} alt=""/>
                 <img src={mobiBurki} alt=""/>
                 <img src={free} alt=""/>
-                <img src={mtn} alt=""/>
+                <img src={mtn} style={{marginRight:"60px"}} alt=""/>
                 <img src={sepa} alt=""/>
-                <img src={moov} alt=""/>
-                <img src={yup} alt=""/>
+                <img src={moov} style={{marginRight:"120px"}} alt=""/>
+                <img src={yup} style={{marginRight:"120px"}} alt=""/>
                 <img src={mercuryo} alt=""/>
-                <img src={orange} alt=""/>
+                <img src={orange} style={{marginRight:"50px"}} alt=""/>
                 <img src={mobi} alt="mobimali"/>
                 <img src={wizall} alt=""/>
-                <img src={mobiBurki} alt=""/>
+                <img src={mobiBurki} style={{marginRight:"120px"}} alt=""/>
                 <img src={free} alt=""/>
                 <img src={mtn} alt=""/>
                 <img src={sepa} alt=""/>
