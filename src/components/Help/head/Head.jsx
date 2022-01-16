@@ -13,8 +13,8 @@ const Head = () => {
         <div className="help-hd">
             {/* entete de la page en rouge */}
             <div className="help-Go">
-            <a href='\'><span className="help-Logo" >IPERCASH</span></a>
-                <a href='\'> <span className="help-Right"><img className="svg1" src={svg1} alt='link'/>{t('headHelp')} IPERCASH</span></a>
+            <a href='http://soon.ipercash.fr'><span className="help-Logo" >IPERCASH</span></a>
+                <a href='http://soon.ipercash.fr'> <span className="help-Right"><img className="svg1" src={svg1} alt='link'/>{t('headHelp')} IPERCASH</span></a>
             </div>
             <div className="Help-Mot1">
                 <p>{t('support')}.</p>

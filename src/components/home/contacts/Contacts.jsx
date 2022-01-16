@@ -86,7 +86,7 @@ const { t } = useTranslation()
                         </div>
                         <div className="">
                             <div className="social-icon"> <img src={phone} alt="phone"/><div className="social-icon-couvre"></div> </div>
-                            <div className="social-text">{t('sousContact5')}<br/>{t('sousContact6')}</div>
+                            <div className="social-text"><a className='link-whatsapp' href="tel:+33 9 70 46 04 46">{t('sousContact5')}</a><br/><a className='link-whatsapp' href="https://api.whatsapp.com/send?phone=33644676176">{t('sousContact6')}</a></div>
                         </div>
                     </div>
                     <div className="newsletter">

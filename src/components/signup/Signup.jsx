@@ -18,7 +18,7 @@ import InputPhone from '../addons/input/PhoneInput'
 
 function Signup({Country}) {
     const { t } = useTranslation()
-    const [state, setState]=useState({name: "", email: "", phone: "", password: "", cPassword: ""})
+    const [state, setState]=useState({name: "", email: "", phone: "", password: "", cPassword: "", check: false})
     const [errors, setErrors]=useState({
         name: false, email: false, phone: false, password: false, cPassword: false 
     })
@@ -70,7 +70,7 @@ function Signup({Country}) {
         setState({...state})
     }
 
-    const active=()=>(state.name&&state.email&&state.phone&&state.password&&state.email)&&(state.password.length>3)&&(state.password===state.cPassword)&&checkEmail(state.email)&&isValidPhoneNumber(state.phone || 342)
+    const active=()=>(state.name&&state.email&&state.phone&&state.password&&state.email&&state.check)&&(state.password.length>3)&&(state.password===state.cPassword)&&checkEmail(state.email)&&isValidPhoneNumber(state.phone || 342)
     console.log(state, Country)
     return (
         <>
@@ -114,7 +114,11 @@ function Signup({Country}) {
                                 <Input val={state.cPassword} type="password" label={t('SignUpSous9')} name="cPassword" id="confirPassword" error={errors.cPassword&&(state.password!==state.cPassword)} help="should match to password"
                                     error={errors.cPassword&&(state.password!==state.cPassword)}
                                     change={handleChange} handBlur={()=>setErrors({...errors, cPassword: true})}
-                                /><br/><br/>
+                                />
+                                <div className="checkbox">
+                                    <input type="checkbox" id="check" onChange={()=>setState({...state, check: !state.check})} />
+                                    <label htmlFor="check">J'accepte les condition d'utilisation</label>
+                                </div>
                                 <Button  fullWidth className="sign-btnt"
                                     disabled={!active()} 
                                     onClick={()=>signup({...state, country: parsePhoneNumber(state.phone).country})}

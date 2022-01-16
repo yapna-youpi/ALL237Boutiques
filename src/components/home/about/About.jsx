@@ -3,8 +3,8 @@ import { useTranslation, Trans } from 'react-i18next'
 import { useHistory, Link } from 'react-router-dom'
 
 import './about.css'
-import image from './undraw_startup_life_2du2.svg';
-import chevron from './stylish-right.svg';
+import image from './undraw_startup_life_2du2.svg'
+import chevron from './stylish-right.svg'
 
 function About() {
     const { t }=useTranslation()
@@ -19,11 +19,11 @@ function About() {
                     <p>
                     <Trans>aboutText</Trans>
                     </p>
-                    <button onClick={()=>history.push('/More')}> {t('aboutButton')} </button>
+                    <button> <a href="/more"> {t('aboutButton')} </a></button>
                     <b>{t('aboutSummary')}</b>
-                    <a href="/help/description/#dsc-about" target="_blank"><div className="sentence"> <img src={chevron} alt="" /> <span> {t('aboutListe1')} </span> </div></a>
-                    <a href="/help/description/#dsc-about" target="_blank"><div className="sentence"><img src={chevron} alt="" /> <span> {t('aboutListe2')} </span> </div></a>
-                    <a href="/help/description/#dsc-about" target="_blank"><div className="sentence"> <img src={chevron} alt="" /> <span> {t('aboutListe3')} </span> </div></a>
+                    <div className="sentence"> <img src={chevron} alt="" /> <span> {t('aboutListe1')} </span> </div>
+                    <div className="sentence"><img src={chevron} alt="" /> <span> {t('aboutListe2')} </span> </div>
+                    <div className="sentence"> <img src={chevron} alt="" /> <span> {t('aboutListe3')} </span> </div>
                 </div>
             </div>
         </div>

@@ -17,7 +17,8 @@
   display: flex;
   justify-content: space-between;
   color: white;
-  padding-top: 35px;
+  padding-top: 15px;
+  font-size: 16px;
 }
 .description-menu .list-ul {
   top: 0;
@@ -377,12 +378,17 @@
     padding : 8px auto 8px auto;
     margin: 0 auto;
   }
+  .description .title-color{
+    display: block;
+    text-align: center;
+    font-weight: bolder;
+  }
 
   @media only screen and (min-width:992px){
     .description .help-bd { 
       position: fixed;
       width: 99.5vw;
-      height: 12vh;
+      height: 8vh;
       padding:20px 0 10px 0;
       width: 100%;
       background: #CC1616 0% 0% no-repeat padding-box;
@@ -394,7 +400,8 @@
     }
     .description .help-Gone{
       width: 70%;
-      padding-top: 15px;
+      padding-top: 0;
+      font-size: inherit;
     }
     .description p.title3{
       font-size: 22px;
@@ -422,7 +429,7 @@
     }
     .description-menu ul .list {
       position: relative;
-      width: 100%;
+      width: 90%;
       border-top-left-radius: 15px;
       border-bottom-left-radius: 15px;
       overflow: hidden;

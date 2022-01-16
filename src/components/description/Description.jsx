@@ -15,8 +15,8 @@ import External from './assets/external-link.svg'
 
 
 let videoList={
-    en: ["https://www.youtube.com/watch?v=kMVa9Pl7xkk", "https://www.youtube.com/watch?v=KybgI7d2Raw", "https://www.youtube.com/watch?v=SoOCZrCLYKA", "https://www.youtube.com/watch?v=_a8bA7GTJ98" ],
-    fr: ["https://www.youtube.com/watch?v=IBqu-9rsPqU", "https://www.youtube.com/watch?v=gX9UIaq8Nyo", "https://www.youtube.com/watch?v=XjiPtxU9rVk", "https://www.youtube.com/watch?v=39KyJBsKrLU" ]
+    en: ["https://www.youtube.com/watch?v=kMVa9Pl7xkk", "https://www.youtube.com/watch?v=p1sZbMYpMnU", "https://www.youtube.com/watch?v=EdtT-tHeQMA", "https://www.youtube.com/watch?v=7E-wfJub7c8" ],
+    fr: ["https://www.youtube.com/watch?v=IBqu-9rsPqU", "https://www.youtube.com/watch?v=g6yOeoWK9hA", "https://www.youtube.com/watch?v=6FXOQkpMnlg", "https://www.youtube.com/watch?v=LC7W8JvRZOE" ]
 }
 
 function Description() {
@@ -39,8 +39,8 @@ function Description() {
                 <div className="help-bd">
                     {/* entete de la page en rouge */}
                     <div className="help-Gone">
-                    <div><a href='\'><span className="help-Logo" >IPERCASH</span></a></div>
-                    <div><a href='\'> <span className="help-Rt"><img className="svg1" src={External} alt='link'/>{t('descripTitle')} </span></a></div>
+                    <div><a href='http://soon.ipercash.fr'><span className="help-Logo" >IPERCASH</span></a></div>
+                    <div><a href='http://soon.ipercash.fr'> <span className="help-Rt"><img className="svg1" src={External} alt='link'/>{t('descripTitle')} </span></a></div>
                     </div>
                 </div>
             </div>
@@ -76,9 +76,9 @@ function Description() {
                 <div className="description-content">
                     {/*--section--about--*/}
                     <div className='content-about' id="dsc-about">
-                        <h1 className='title2' style={{textAlign:"center"}}>{t('descripTitleBody1')} </h1>
+                        <h1 className='title2' style={{textAlign:"center",fontSize:"45px"}}>{t('descripTitleBody1')} </h1>
                         <p className='title3'><span className='title-color'>{t('descripTitleBody2')} </span> </p>
-                        <p>{t('descriptAjout')}</p>
+                        <p style={{fontSize:"16px"}}>{t('descriptAjout')}</p>
                         <div className='player'><ReactPlayer url={videoList[lang][0]} controls  /></div>
                     </div>
                    

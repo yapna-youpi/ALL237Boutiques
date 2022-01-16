@@ -151,6 +151,9 @@
     .newsletter input {
         transform: translate(-5%, 0);
     }
+    .link-whatsapp{
+        cursor: pointer;
+    }
 }
 
 @media screen and (min-width: 1200px) {

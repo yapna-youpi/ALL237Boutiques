@@ -42,7 +42,7 @@ const euroChange=(value, rate)=>{
 }
 
 const xafChange=(value, rate)=>{
-    if(value<2000 || rate===0 ) {
+    if(value<10000 || rate===0 ) {
         return {
             xaf: value,
             eu: roundDecimal(value/655),

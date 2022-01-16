@@ -66,10 +66,7 @@
   .about-container > div {
     width: 45%;
   }
-  .about .sentence span:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
+  
 }
 
 @media screen and (min-width: 1200px) {

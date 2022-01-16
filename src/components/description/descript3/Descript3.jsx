@@ -42,22 +42,6 @@ function Descript1({lang,video}) {
                         <div className="player3">
                             <img className="description-img1" src={img20} alt="" />
                         </div>
-                        <div className="player3">
-                            <img className="description-img1" src={img13} alt="" />
-                        </div>
-                        <p className='title3'>{t('descripTitleBody39')} </p>
-                        <div className="player3"><img className="description-img1" src={img14} alt="" /></div>
-                        <p className='title3'>{t('descripTitleBody40')}:</p>
-                        <div className="player3"><img className="descripton-img1" src={img15} alt="" /></div>
-                        <p className='title3' >{t('descripTitleBody41')}</p>
-                        <div className="player3"><img className="description-img1" src={img16} alt="" /></div>
-                        <p className='title3' >{t('descripTitleBody42')}.</p>
-                        <div className="player3"><img className="description-img1" src={img17} alt="" /></div>
-                        <p className='title3' >{t('descripTitleBody43')}</p>
-                        <div className="player3"><img className="description-img1" src={img18} alt="" /></div>
-                        <div className="player3"><img className="description-img1" src={img19} alt="" /></div>
-                        <p className='title3' >{t('descripTitleBody44')},</p>
-                        <div className="player3"><img className="description-img1" src={img20} alt="" /></div>
                         <p className='title3' >{t('descripTitleBody45')}</p>
                         <p className='title3' >{t('descripTitleBody46')}.</p>
                         <p className='title3' >{t('descripTitleBody47')}!</p>

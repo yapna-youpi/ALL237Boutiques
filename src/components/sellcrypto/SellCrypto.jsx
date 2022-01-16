@@ -86,21 +86,20 @@ function SellCrypto({Amount, country, User}) {
                 console.log("c'est le xaf")
                 result=xafChange(e.value, rate.BTC)
                 setState({...state, ...result})
-            break;
-            
+            break
             case "eu":
                 console.log("c'est le eu")
                 result=euroChange(e.value, rate.BTC)
                 setState({...state, ...result})
-            break;
+            break
             default:
-                console.log("c;est autre chose")
-            break;
+                console.log("c'est autre chose")
+            break
         }
     }
     // function that manages the activation of the button
     const active=()=>{
-        if( (state.amount && state.number && isValidPhoneNumber(state.number || 342) && state.wallet) && (state.number===state.confirmNumber) )
+        if( ((state.amount&&state.xaf<65597) && state.number && isValidPhoneNumber(state.number || 342) && state.wallet) && (state.number===state.confirmNumber) )
             return false
         else return true
     }
@@ -122,7 +121,6 @@ function SellCrypto({Amount, country, User}) {
     }
     // console.log("the sum ", country)
 
-
     return (
         <div id="sellcrypto" className="sellcrypto">
             {sum&&<Modal open={true} onClose={()=>setSum(false)} center={true} >
@@ -141,7 +139,7 @@ function SellCrypto({Amount, country, User}) {
                         <Input val={state.wallet} label={t('sellCrypto6')}  name="wallet" help={t('sellCrypto7')} error={errors.wallet} change={handleChange} handBlur={handleBlur}  />
                     </div>
                     <div className="form-group">
-                        <Input val={state.xaf}  label={t('sellCrypto8')} name="xaf" type="number" help={t('sellCrypto9')} change={amountChange} error={state.xaf<3000&&state.xaf!==0}   />
+                        <Input val={state.xaf}  label={t('sellCrypto8')} name="xaf" type="number" help={t('sellCrypto9')} change={amountChange} error={(state.xaf<3000 || state.xaf>65597)&&state.xaf!==0}   />
                     </div>
                     {/* <div className="form-group">
                         <Input val={state.eu}  label="Amount in EUR" name="eu" type="number" help="the min value is 15.26 EUR" change={amountChange} />

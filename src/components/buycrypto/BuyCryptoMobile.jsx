@@ -102,27 +102,27 @@ function BuyCryptoMobile({Amount, country, User}) {
     }
     // fonction qui gere l'activation du bouton
     const active=()=>{
-        if( (state.amount && state.number && isValidPhoneNumber(state.number || 342) && state.wallet) && (state.number===state.confirmNumber) )
+        if( ((state.amount&&state.amount<65597) && state.number && isValidPhoneNumber(state.number || 342) && state.wallet) && (state.number===state.confirmNumber) )
             return false
         else return true
     }
     const validPhone=(value, func)=>{
         if(value) {
-            console.log("value ", value)
+            // console.log("value ", value)
             return !func(value)
         }
         return false
     }
     const checkConfirm=(value1, value2)=>{
         if(value1) {
-            console.log(value1===value2)
+            // console.log(value1===value2)
             return value1!==value2
         }
         return false
     }
     // fonction qui verifie la correspondance des addresse
     const checkAddress=e=>{
-        console.log("hello")
+        // console.log("hello")
         if(e.value===state.wallet) {
             // console.log("ils correspondent")
             // sessionStorage.clear()
@@ -141,7 +141,6 @@ function BuyCryptoMobile({Amount, country, User}) {
         e.preventDefault()
         return false
     }
-
 
     // console.log("the valid ", valid)
     return (
@@ -179,7 +178,7 @@ function BuyCryptoMobile({Amount, country, User}) {
                 </div>
                 <div className="form">
                     <div className="form-group">
-                        <Input val={state.xaf}  label={t('buyCryptoMobileSous7')} name="xaf" type="number" help={t('buyCryptoMobileSous8')} change={amountChange} error={state.xaf<10000&&state.xaf!==0}   />
+                        <Input val={state.xaf}  label={t('buyCryptoMobileSous7')} name="xaf" type="number" help={t('buyCryptoMobileSous8')} change={amountChange} error={(state.xaf<10000 || state.xaf>65595)&&state.xaf!==0}   />
                     </div>
                     <div className="form-group">
                         <Input val={state.eu}  label={t('buyCryptoMobileSous9')} name="eu" type="number" help={t('buyCryptoMobileSous10')}  change={amountChange} />

@@ -119,7 +119,7 @@ function SendMoney({amount, country, User,alert}) {
 
     // this function handle disabled propertie of button
     const active=()=>{
-        if(state.amount >= 25 && state.name &&  state.phone &&isValidPhoneNumber(state.phone || 342) && (state.phone===state.cPhone)) return false
+        if((state.amount >= 25 && state.amount <=50) && state.name &&  state.phone &&isValidPhoneNumber(state.phone || 342) && (state.phone===state.cPhone)) return false
         else return true
     }
     // this fuction check phone number
@@ -150,7 +150,9 @@ function SendMoney({amount, country, User,alert}) {
             <div className="form">
                 <div className="form-head">
                     <div className="form-group">
-                        <Input val={state.amount} name="amount" label={ t('sendMoneySous9') } type='number' error={state.amount<25} change={handleChange} handBlur={handleBlur} help="the minimun is 25 EUR" />
+                        <Input val={state.amount} name="amount" label={ t('sendMoneySous9') } type='number' help={ t('sendMoneySous15')}
+                            error={state.amount<25 || state.amount>50} change={handleChange} handBlur={handleBlur}
+                        />
                     </div>
                     <div className="">1.OO EUR==655.957 XAF</div>
                 </div>
