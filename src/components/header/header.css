@@ -1,9 +1,7 @@
 .header {
   /* border: 2px solid green; */
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-  border-bottom: 1px solid #ffee01;
 }
-
 nav {
   /* retirer ca pour voir l'enseigne */
   display: flex;
@@ -70,6 +68,7 @@ nav {
   background: var(--red);
   height: 100vh;
   width: 100%;
+  font-size: 13px;
   z-index: 1;
   clip-path: circle(10px at 90% -10%);
   -webkit-clip-path: circle(10px at 90% -10%);
@@ -121,7 +120,6 @@ nav {
 .nav-links li:nth-child(6) {
   transition: all 0.5s ease 2.4s;
 }
-
 li.fade {
   opacity: 1;
 }
@@ -135,8 +133,6 @@ li.fade {
   border: none;
   border-radius: 5px;
 }
-
-
 @media screen and (min-width: 768px) {
   .hamburger, .sixth {
     display: none;
@@ -161,6 +157,7 @@ li.fade {
     position: relative;
     height: 8vh;
     width: 80%;
+    font-size: inherit;
     margin-right: 1%;
     background-color: var(--no-value);
     /* overflow: hidden; */
@@ -220,7 +217,6 @@ li.fade {
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     z-index: 1;
   }
-
   .nav-links button {
     /* width: 75px;
     height: 40px; */
@@ -235,9 +231,6 @@ li.fade {
     border-radius: 5px;
   }
 }
-
-
-
 @media screen and (min-width: 960px) {
   .nav-links li {
     opacity: 1;
@@ -250,9 +243,7 @@ li.fade {
   .nav-links button {
     font-size: 1.2em;
   }
-
 }
-
 @media screen and (min-width: 1200px) {
  
   .enseigne {
@@ -266,17 +257,3 @@ li.fade {
     min-width: 350px;
   }
 }
-
-
-.beta-div {
-  /* border: 1px solid #000; */
-  width: 150px;
-  margin: 0px auto;
-  transform: translateY(10px);
-  text-align: center;
-  background-color: #ffee01;
-  border-radius: 8px;
-  color: var(--white);
-  font-weight: bold;
-}
-

@@ -14,11 +14,11 @@ function Success() {
     useEffect(() => {
         let data=JSON.parse(sessionStorage.getItem('data'))
         console.log(data)
-        // if(!data) history.push('/')
-        // else {
-        //     setState(data)
-        //     sessionStorage.clear()
-        // }
+        if(!data) history.push('/')
+        else {
+            setState(data)
+            sessionStorage.clear()
+        }
     }, [])
     console.log(state)
     return (

@@ -111,7 +111,7 @@ const french={ translation : {
          sellCrypto6:"Adresse du portefeuille de l'expéditeur",
          sellCrypto7:'Ce champ est requis',
          sellCrypto8:"Montant en XAF",
-         sellCrypto9:"Le montant doit etre entre 30000 et 35000 XAF" ,
+         sellCrypto9:"Le montant doit etre entre 3000 et 35000 XAF" ,
          sellCrypto10:"Montant en CRYPTO",
          sellCrypto11:"La valeur minimale est 0,00033",
          sellCrypto12:"Frais en XAF",

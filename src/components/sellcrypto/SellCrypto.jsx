@@ -16,7 +16,7 @@ import Sumsub from '../sumsub/Sumsub';
 
 function SellCrypto({Amount, country, User}) {
     const { t } = useTranslation()
-    console.log(Amount, User)
+    // console.log(Amount, User)
     // initialisation des taux de changes
     const [rate, setRate] = useState({BCH: 575.69, BTC: 0, ETH: 2075.48})
     // initialisation du state du composants
@@ -55,14 +55,14 @@ function SellCrypto({Amount, country, User}) {
     }
     // function that manage change event on input fields
     const handleChange=e=>{
-        console.log(" c'est le ",e.name);
+        // console.log(" c'est le ",e.name);
         let newState=state
         newState[e.name]=e.value
         setState({...state})
     }
     // function that manage blur event on input fields
     const handleBlur=e=>{
-        console.log(e.name)
+        // console.log(e.name)
         if(e.value==="") {
             let newErrors=errors
             newErrors[e.name]=true
@@ -78,22 +78,22 @@ function SellCrypto({Amount, country, User}) {
         let result
         switch (e.name) { // amount c'est le montant en crypto monnaie 
             case "crypto":
-                console.log("c'est le montant")
+                // console.log("c'est le montant")
                 result=cryptoChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break
             case "xaf":
-                console.log("c'est le xaf")
+                // console.log("c'est le xaf")
                 result=xafChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break
             case "eu":
-                console.log("c'est le eu")
+                // console.log("c'est le eu")
                 result=euroChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break
             default:
-                console.log("c'est autre chose")
+                // console.log("c'est autre chose")
             break
         }
     }

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Modal } from 'react-responsive-modal'
 import QRCode from 'react-qr-code'
 import ReactLoading from 'react-loading'
-import {FaRegCopy} from 'react-icons/fa';
+import {FaRegCopy} from 'react-icons/fa'
 import { useTranslation } from 'react-i18next'
 
 import { sendToApi, roundPrecision, checkServiceId, randomId } from '../../utils/utilFunctions'
@@ -31,7 +31,7 @@ function SellModal({open, toogle, data, rate, User }) {
     }, [])
     // function that check if there is a conflict with the amount
     const checkConflict=async ()=>{
-        let result=await sendToApi('conflict', {amount: data.amount})
+        let result=await sendToApi('sellcrypto/conflict', {amount: data.amount, userId: User.userId}, User.token)
         if(!result.response || result==='error') {
             toogle()
             toastify("error", `An error are occur please try again`)
@@ -48,10 +48,11 @@ function SellModal({open, toogle, data, rate, User }) {
         let params={
             address: data.wallet,
             amount: data.amount,
-            id: state.id
+            id: state.id,
+            userId: User.userId
         }
         // console.log("les params", params)
-        let result=await sendToApi('checktransaction', params)
+        let result=await sendToApi('sellcrypto/gettx', params, User.token)
         if(result.response) {
             setState({...state, txid: result.response.id, status: result.response.status})
             if(result.response.status==="confirmed") success()
@@ -101,7 +102,7 @@ function SellModal({open, toogle, data, rate, User }) {
             success()
             return
         }
-        sendToApi('checkconfirmation', data).then(result=>{
+        sendToApi('sellcrypto/confirm', data).then(result=>{
             // console.log("le resultat", result)
             if(result.response==="confirmed") {
                 // console.log("on arrete l'intervalle")
@@ -118,12 +119,13 @@ function SellModal({open, toogle, data, rate, User }) {
         let cashinParams={
             partner_id: state.id,
             service: checkServiceId(data.number.substring(4)),
-            // amount: cryptoChange(data.amount, rate).xaf,
-            amount: 100,
+            amount: cryptoChange(data.amount, rate).xaf,
+            // amount: 100,
             number: data.number,
             userId: User.userId
         }
         let result=await cashIn(cashinParams, User.token)
+        // let result=true
         if(result) {
             console.log("le cashin", result)
             /* save oreration */
@@ -133,7 +135,7 @@ function SellModal({open, toogle, data, rate, User }) {
                 rate: rate,
                 userId: User.userId
             }
-            let complete=sendToApi('updatesell', successParams, User.token)
+            let complete=sendToApi('sellcrypto/update', successParams, User.token)
             // console.log("update to complete ", complete)
             sessionStorage.setItem('data', JSON.stringify({operation: 'sell', successParams: data}))
             setTimeout(() => {
@@ -157,7 +159,7 @@ function SellModal({open, toogle, data, rate, User }) {
             userId: User.userId
         }
         console.log("le store data ",storeData)
-        let storeResult=await sendToApi('setsell', storeData, User.token)
+        let storeResult=await sendToApi('sellcrypto/create', storeData, User.token)
         if(storeResult!=='error') {
             console.log("le resultat du store ", storeResult)
             setState({...state, start: true, id: storeData.transaction_id})
@@ -168,9 +170,10 @@ function SellModal({open, toogle, data, rate, User }) {
         let storeData={
             transaction_id: state.id,
             status: 'cancel',
+            userId: User.userId
         }
         console.log("le store data",storeData)
-        let storeResult=await sendToApi('updatesell', storeData)
+        let storeResult=await sendToApi('sellcrypto/update', storeData, User.token)
         console.log("cancel result ", storeResult)
         if(storeResult!=='error') {
             change()

@@ -32,7 +32,7 @@ const getStatus=async(data, token="NOTHING")=>{
     }
     let status=await fetch(apiUrl+'touch/getstatus', requestOption).then(response=>response.json())
     .then((data)=>{
-        console.log(data)
+        // console.log(data)
         return data.response ?  data.response.intouch.status : "PENDING"
         
     })
@@ -55,9 +55,9 @@ const cashOut=async(params, token="NOTHING")=>{
     }
     let status=await fetch(apiUrl+'touch/cashout', requestOption).then(response=>response.json())
     .then(data=>{
-        console.log(data)
+        // console.log(data)
         if(data.response) {
-            console.log("la requete est en attente chez intouch", data.response)
+            // console.log("la requete est en attente chez intouch", data.response)
             return data.response
         }
         else {
@@ -66,7 +66,7 @@ const cashOut=async(params, token="NOTHING")=>{
         }
     })
     .catch(err=>{
-        console.log('err :>> ', err)
+        // console.log('err :>> ', err)
         return false
     })
     return status
@@ -75,7 +75,7 @@ const cashOut=async(params, token="NOTHING")=>{
 
 // fonction qui envoie de l'argent vers le compte du client
 const cashIn=async(params, token="NOTHING")=>{
-    console.log("cashin params", params)
+    // console.log("cashin params", params)
     // const service=params.service
     // const params1={...params, 'service': service}
     let send=crypt(JSON.stringify(params))
@@ -91,7 +91,7 @@ const cashIn=async(params, token="NOTHING")=>{
     let status=await fetch(apiUrl+'touch/cashin', requestOption)
     .then(response=>response.json()).then(data=>data)
     .catch(err=>{
-        console.log('err :>> ', err)
+        // console.log('err :>> ', err)
         return false
     })
     return status

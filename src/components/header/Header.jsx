@@ -93,7 +93,7 @@ function Header({User, Country, dispatch}) {
                         <li className="nav-link" onClick={()=>nav('/#contacts')}>{t('link4')}</li> 
                         <li className="nav-link" > <a href="/help" target="_blank"> {t('link5')} </a></li> 
                         {/* <button > {t('accountButton')} </button>  */}
-                        <li className="nav-link sixth" > <a href={`${process.env.REACT_APP_DATA1}/signup`}> {t('user2')} </a></li>
+                        <li className="nav-link sixth" > <a href="/signup"> {t('user2')} </a></li>
                         <UserIcon user={User}  nav={nav} logout={logout} />
                     </ul>
                 </nav>

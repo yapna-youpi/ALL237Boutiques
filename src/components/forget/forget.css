@@ -81,7 +81,7 @@
     background: var(--transparent2);
   }
   .forget .btn-resend{
-    padding: 0 0 10px 0;
+    padding: 0 0 3px 0;
     margin: 25px;
     display: inline-block;
     border-bottom: 1px solid var(--black);

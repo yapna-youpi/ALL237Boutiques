@@ -29,7 +29,6 @@ function Pay({User}) {
     useEffect(() => {
         let data=JSON.parse(sessionStorage.getItem('data'))
         // console.log("les premiers data ", data)
-
         data ? start(data) : history.push("/buycrypto/mobile")
         sessionStorage.removeItem("data")
     }, [])
@@ -40,39 +39,51 @@ function Pay({User}) {
             cryptoCurency: data.crypto,
             amountCrypto: data.amount,
             amountFiat: data.xaf,
+            rate: data.rate,
             phone: data.number,
             wallet: data.wallet,
             status: 'init',
-            type: 'mobile_money',
             userId: User.userId,
         }
         // console.log("store data le user ", User)
-        let result=await sendToApi('settransaction', params, User.token)
+        let result=await sendToApi('buymobile/settransaction', params, User.token)
         // console.log("le resultat ", result)
     }
-    const success=(data)=>{
+    const success=async (data)=>{
+        // console.log("the final data ", data)
         let params={
             transaction_id: data.id,
+            txid: data.txid,
             status: 'complete',
             userId: User.userId,
         }
-        sendToApi('updatetransaction', params, User.token)
+        sendToApi('buymobile/updatetransaction', params, User.token)
+            .then(data=>{
+                if(!data.success) createAgain(params)
+            })
         sessionStorage.setItem('data', JSON.stringify({operation: 'buy', params: data}))
         history.push('/complete')
     }
     const start=(data)=>{
         // console.log("ca commence")
         storeData(data)
-        //setParams(data)
-        buy(data, User, changeStep, cancel, ()=>success(data))
+        // return
+        buy(data, User, changeStep, cancel, (txid)=>success({...data, txid: txid}))
     }
     const cancel=(data, i)=>{
-        // console.log("echec de l'operation")
+        console.log("echec de l'operation")
         // console.log("les params", params)
         let witness= i>1
         //console.log("les data ", data)
         setTrace({status: true, error: data, traceStep: i, backFund: witness, mobilePaid:false})
         if(witness) backFunds(data, i, witness)
+        else {
+            // console.log("les params ", params)
+            sendToApi('buymobile/updatetransaction', { transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId}, User.token)
+            .then(data=>{
+                if(!data.success) createAgain({ transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId})
+            })
+        }
     }
     const changeStep=(i, text)=>{
         text ? setStep({ step: i, url: text}) : setStep({...step, step: i}) 
@@ -90,7 +101,7 @@ function Pay({User}) {
             number: params.number,
             service: checkServiceId(params.number)
         }
-        cashIn(data).then(result=>{
+        cashIn(data, User.token).then(result=>{
             let payload={
                 transaction_id: params.id,
                 status: 'fail',
@@ -98,17 +109,38 @@ function Pay({User}) {
                 backFundsId: data.partner_id
             }
             if(result) {
-                // console.log("lest traces ", trace)
+                // console.log("les traces ", trace)
                 // console.log("fonds renvoyees ", result)
                 setTrace({status: true, error: err, traceStep: i, backFund: witness, mobilePaid:true})
-                sendToApi('updatetransaction', {...payload, backFunds: true, userId: User.userId}, User.token)
+                sendToApi('buymobile/updatetransaction', {...payload, backFunds: true, userId: User.userId}, User.token)
+                .then(data=>{
+                    if(!data.success) 
+                        createAgain({...payload, backFunds: true, userId: User.userId})
+                })
             }
             else {
                 // console.log("echec du renvoi ", result)
-                sendToApi('updatetransaction', {...payload, backFunds: true, userId: User.userId}, User.token)
+                sendToApi('buymobile/updatetransaction', {...payload, backFunds: false, userId: User.userId}, User.token)
+                .then(data=>{
+                    if(!data.success)
+                        createAgain({...payload, backFunds: false, userId: User.userId})
+                })
             }
         })
         return
+    }
+    const createAgain=async(data)=>{
+        let params2={
+            ...data,
+            cryptoCurency: params.crypto,
+            amountCrypto: params.amount,
+            amountFiat: params.xaf,
+            rate: params.rate,
+            phone: params.number,
+            wallet: params.wallet,
+        }
+        // console.log("use create again ", params2)
+        sendToApi('buymobile/settransaction', params2, User.token)
     }
     const copy=()=>{
         if(ref) {
@@ -145,7 +177,7 @@ function Pay({User}) {
                 {t('paySous2')}
                 <h3> 
                     <span className="deco"></span> 
-                    <input ref={ref} value={params.id} className="iid" onClick={copy} contentEditable={false} /><FaRegCopy onClick={copy} size={25} /> 
+                    <input ref={ref} value={params.id} className="iid" onClick={copy} contentEditable={false} /><FaRegCopy onClick={copy}  size={25} /> 
                     <span className="deco"></span> 
                 </h3>
                 {t('paySous3')}
