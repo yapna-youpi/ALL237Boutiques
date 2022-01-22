@@ -8,6 +8,7 @@ const french={ translation : {
         link6: "Creditez un compte Mobile",
         link7: "Achetez de la crypto",
         link8: "Vendez votre crypto",
+        link9: "INSCRIPTION",
         accountButton: "COMPTE",
 
         // drow-content
@@ -23,7 +24,7 @@ const french={ translation : {
 
         // About section
         aboutTitle: "A PROPOS ",
-        aboutText: "IPERCash est née du constat de l’explosion simultanée du Mobile Money et de la demande de cryptomonnaie en Afrique.   Une demande à laquelle IPERCash entend répondre par une plateforme permettant les échanges entre Mobile Money et cryptomonnaie.Les services d’IPERCash sont entièrement basés sur la Blockchain et la finance décentralisée.   Les transactions sont moins chères, plus sûres et plus rapides.",
+        aboutText: "IPERCash est née du constat de l’explosion simultanée du Mobile Money et de la demande de cryptomonnaie en Afrique. Une demande à laquelle IPERCash entend répondre par une plateforme permettant les échanges entre Mobile Money et cryptomonnaie. Les services d’IPERCash sont entièrement basés sur la Blockchain et la finance décentralisée. Les transactions sont moins chères, plus sûres et plus rapides.",
         aboutButton: "EN SAVOIR PLUS",
         aboutSummary: "Nos services:",
         aboutListe1: "Achetez de la Cryptomonnaie en payant par Mobile Money, Carte de crédit ou virement SEPA.",
@@ -52,7 +53,7 @@ const french={ translation : {
         stepsTitle: 'COMMENT CA MARCHE ?',
         sousSteps1: 'Comment effectuer la verification KYC sur son compte',
         sousSteps2: 'Comment effectuer un dépôt dans un compte Mobile Money',
-        sousSteps3: 'Comment acheter ou vender de la cryptomonnaie',
+        sousSteps3: 'Comment acheter ou vendre de la cryptomonnaie',
         sousSteps4: "Nous avons préparé quelques clips pour vous montrer comment procéder. Cliquez sur n'importe quelle opération pour commencer à regarder",
         sousSteps5: 'En savoir plus',
 
@@ -61,7 +62,7 @@ const french={ translation : {
 
         //contacts
         contactsTitle: 'NOUS CONTACTER',
-        sousContact1: ' Notre mission est de populariser et de rendre accessible la cryptomonnaie en Afrique Subsahérienne.Contribuez en nous suivant dans les réseaux sociaux. ',
+        sousContact1: ' Notre mission est de populariser et de rendre accessible la cryptomonnaie en Afrique Subsahérienne. Contribuez en nous suivant dans les réseaux sociaux. ',
         sousContact2: '17, rue Pache',
         sousContact3: '75011 Paris',
         sousContact4: 'info@ipercash.fr',
@@ -105,7 +106,7 @@ const french={ translation : {
          //sellrypto 
          sellCrypto:'VENDRE VOTRE CRYPTO',
          sellCrypto2:'Cours de la Crypto',
-         sellCrypto3:'Guichet',
+         sellCrypto3:'Coindesk',
          sellCrypto4:' Fourni par',
          sellCrypto5:'Vendre',
          sellCrypto6:"Adresse du portefeuille de l'expéditeur",
@@ -127,7 +128,7 @@ const french={ translation : {
          sellModal3:'Annuler',
          sellModal4:"RÉSUMÉ DE L'OPÉRATION",
          sellModal5:'Modifier',
-         sellModal6:'Confirmer',
+         sellModal6:'à',
          sellModal7:"Vous devez d'abord envoyer exactement",
          sellModal8:'Cliquez ensuite sur le bouton  \"J\'ai envoyé\" pour continuer.',
          sellModal9:'Scannez QrCode pour obtenir l\'adresse du portefeuille',
@@ -139,11 +140,12 @@ const french={ translation : {
          sellModal15:'Recevoir',
          sellModal16:'Au numero',
          sellModal17:'Frais',
+         sellModal18:'Confirmer',
 
          // buycryptoCard
         buyCryptoCardTitle: 'ACHETER CRYPTO AVEC CARTE DE CRÉDIT',
         buyCryptoCardSous1:'Cours de la Crypto',
-        buyCryptoCardSous2:'Guichet',
+        buyCryptoCardSous2:'Coindesk',
         buyCryptoCardSous3:'Fourni par',
         buyCryptoCardSous4:'Montant en XAF',
         buyCryptoCardSous5:"Montant en EUR",
@@ -161,7 +163,7 @@ const french={ translation : {
         buyCryptoMobileSous1:'Votre adresse de portefeuille',
         buyCryptoMobileSous2:'Revenir',
         buyCryptoMobileSous3:"ACHETER DE LA CRYPTO AVEC DU MOBILE MONEY",
-        buyCryptoMobileSous4:'Guichet',
+        buyCryptoMobileSous4:'Coindesk',
         buyCryptoMobileSous5:'Cours de la crypto',
         buyCryptoMobileSous6:'Fourni par',
         buyCryptoMobileSous7:"Montant en XAF",
@@ -228,23 +230,6 @@ const french={ translation : {
          LoginSous9:"Mot de passe oublié",
          LoginSous10:"Le mot de passe doit avoir aumoins 4 caractères",
          LoginSous11:"Authentifiez vous si vous avez déjà un compte, sinon créez un compte",
-
-          //pay
-          PayTitle: "L\'opération pourrait être terminée",
-          PaySous1:'Renvoyer le paiement',
-          PaySous2:"Votre identifiant d\'opération est :",
-          PaySous3:"L'utiliser pour toute réclamation",
-          PaySous4:'RANSACTION EN COURS',
-          PaySous5:'VÉRIFICATIONS DES TERRES',
-          PaySous6:'vérification du solde',
-          PaySous7:"vérification du portefeuille de l'utilisateur",
-          PaySous8:'DEMANDE DE PAIEMENT MOBILE',
-          PaySous9:'Veuillez vérifier la demande de paiement sur votre téléphone',
-          PaySous10:"S'il n'y a pas de demande, tapez le code ussd",
-          PaySous11:'PRÉPARATION DE LA TRANSACTION',
-          PaySous12:'ENVOYER DES FONDS',
-          PaySous13:'Veuillez suivre',
-          PaySous14:"S'il vous plaît suivez ",
 
           //SignUp
           SignUpTitle:"Connectez-vous",
@@ -319,6 +304,8 @@ const french={ translation : {
           paySous10:"Demande, tapez le code ussd",
           paySous11:' Veuillez suivre',
           paySous12:' Pour terminer le paiement',
+          paySous13:'PRÉPARATION DE LA TRANSACTION',
+          paySous14:'ENVOYER DES FONDS',
            //notfound
           notFound1:'OUPS! Quelque chose a mal tourné',
           notFound2:"Désolé mais la page que vous recherchez n'existe pas",
@@ -331,7 +318,7 @@ const french={ translation : {
           moreSous3:"Pourquoi la fusion du Mobile Money et de la cryptomonnaie est certainement l’avenir de l’Afrique et très probablement du reste du monde ??  Le taux de bancarisation en Afrique est extrêmement bas, particulièrement en Afrique subsaharienne. D’où une fulgurante pénétration du Mobile Money permettant d’obtenir un portefeuille électronique sans contraintes. Le Mobile Money fonctionne par codes USSD compatibles  avec n’importe quel téléphone, ce service ne nécessite donc pas de téléphone sophistiqué",
           moreSous4:"D’autre part, la cryptomonnaie, particulièrement l'ethereum,le Bitcoin et l'usdt connaîssent également une pénétration inattendue en Afrique.",
           moreSous5:" En effet, les conditions dictées par les banques centrales locales et leurs monnaies locales dépréciées contraignent les entreprises locales et les poussent à se tourner vers la cryptomonnaie bien plus souple.",
-          moreSous6:"Nous sommes donc une plateforme d’échanges et d’interactions entre le Mobile Money et la cryptomonnaie et une nécessité.Nous sommes Une cross plate forme Internet et une application mobile  où les utilisateurs peuvent :",
+          moreSous6:"Nous sommes donc une plateforme d’échanges et d’interactions entre le Mobile Money et la cryptomonnaie et une nécessité. Nous sommes Une cross plate forme Internet et une application mobile  où les utilisateurs peuvent :",
           moreSous7:"- Acheter de la cryptomonnaie par carte de crédit et la déposer sur un compte Mobile Money en Afrique.",
           moreSous8:"- Acheter de la cryptomonnaie pour créditer leur  portefeuille électronique ;",
           moreSous9:"- Acheter de la cryptomonnaie en payant avec Mobile Money",
@@ -365,7 +352,8 @@ const french={ translation : {
 
             //support 
             support:"Vous trouverez ici toutes les réponses à vos questions concernant IPERCash",
-
+            support1:"Rechercher des réponses...",
+            
             //description
             descripTitle:"allez sur IPERCASH",
             descriptSous1:"Procédure KYC",
@@ -379,23 +367,24 @@ const french={ translation : {
             descripTitleBody3:"Comment retirer de la Crypto ",
             descripTitleBody4:"Remplissez le formulaire en indiquant :",
             descripTitleBody5:"votre adresse Wallet, le montant à retirer, le numéro de téléphone du compte Mobile Money vers lequel vous souhaitez retirer les fonds. Validez le formulaire.  ",
-            descripTitleBody6:"Un récapitulatif de la transaction s’affiche en pop-up.  Si les données sont exactes, veuillez confirmer",
+            descripTitleBody6:"Un récapitulatif de la transaction s’affiche en pop-up. Si les données sont exactes, veuillez confirmer",
             descripTitleBody7:"Apparaît une fenêtre où s’affichent le montant exact que vous souhaitez retirer ainsi que l’adresse du wallet d’IPERCash",
             descripTitleBody8:"A cette étape, il faut vous rendre dans votre wallet",
             descripTitleBody9:"- soit scanner ce code depuis votre wallet,",
-            descripTitleBody10:"- soit copier ces données (montant exact en BTC et adresse Wallet,d’IPERCash) afin d’effectuer un envoi de bitcoins au montant exact à l’adresse de IPERCash (toute erreur de montant ou d’adresse wallet entraînera la perte des fonds).  Donc copiez le montant en BTC et allez le coller dans votre wallet pour un envoi.  Copiez également l’adresse Wallet de IPERCash afin de la coller dans votre Wallet pour l’adresse de destination de l’envoi.  ",
-            descripTitleBody11:"Nous avons pris ici l’exemple d’un utilisateur possédant son Wallet sur la plateforme Coinbase.Lorsque vous aurez effectué cette transaction depuis votre Wallet, vous devez revenir sur notre site sur cette fenêtre confirmer votre envoi en cliquant sur I HAVE SENT. Vous avez 5 mn pour cela",
+            descripTitleBody10:"- soit copier ces données (montant exact en BTC et adresse Wallet,d’IPERCash) afin d’effectuer un envoi de bitcoins au montant exact à l’adresse de IPERCash (toute erreur de montant ou d’adresse wallet entraînera la perte des fonds). Donc copiez le montant en BTC et allez le coller dans votre wallet pour un envoi. Copiez également l’adresse Wallet de IPERCash afin de la coller dans votre Wallet pour l’adresse de destination de l’envoi.  ",
+            descripTitleBody11:"Nous avons pris ici l’exemple d’un utilisateur possédant son Wallet sur la plateforme Coinbase. Lorsque vous aurez effectué cette transaction depuis votre Wallet, vous devez revenir sur notre site sur cette fenêtre confirmer votre envoi en cliquant sur I HAVE SENT. Vous avez 5 mn pour cela",
             descripTitleBody12:"Une fois confirmée, une fenêtre s’affiche demandant d’attendre la confirmation de la validation. Ceci peut durer entre 5 mn et 30 mn en fonction de l’encombrement de la blockchain",
+            descriptionTitleBody53:" • IMPORTANT : toute erreur dans le montant ou l'adresse du portefeuille entraînera la perte de fonds !",
             descripTitleBody13:"Lorsque vous aurez effectué cette transaction depuis votre Wallet, vous devez revenir sur notre site sur cette fenêtre confirmer votre envoi en cliquant sur I HAVE SENT.  Vous avez 5 mn pour cela.",
-            descripTitleBody14:"Une fois confirmée, une fenêtre s’affiche demandant d’attendre la confirmation de la validation.  Ceci peut durer entre 5 mn et 30 mn en fonction de l’encombrement de la blockchain.",
+            descripTitleBody14:"Une fois confirmée, une fenêtre s’affiche demandant d’attendre la confirmation de la validation. Ceci peut durer entre 5 mn et 30 mn en fonction de l’encombrement de la blockchain.",
             descripTitleBody15:"La page CONGRATULATION s’affiche pour confirmer le succès de la transaction.",
             descripTitleBody16:"Comment Acheter une Crypto",
             descripTitleBody17:"Remplissez le formulaire en indiquant :",
-            descripTitleBody18:"Une fenêtre pop-up vous demande de confirmer l’adresse BTC de votre Wallet.  Cette confirmation est demandée car, selon les règles de la blockchain, toute erreur dans l’adresse Wallet de destination entraînera automatiquement la perte des fonds",
+            descripTitleBody18:"Une fenêtre pop-up vous demande de confirmer l’adresse BTC de votre Wallet. Cette confirmation est demandée car, selon les règles de la blockchain, toute erreur dans l’adresse Wallet de destination entraînera automatiquement la perte des fonds",
             descripTitleBody19:"Collez donc à nouveau dans cette fenêtre l’adresse Wallet de destination si vous en êtes sûr",
             descripTitleBody20:"La page indiquant la progression de la transaction s’ouvre",
             descripTitleBody21:"Vous recevrez un sms de votre opérateur mobile vous demandant de valider le retrait des fonds de votre compte Mobile Money",
-            descripTitleBody22:"Une fois le retrait validé, la procédure continue automatiquement jusqu’au dépôt des fonds dans votre wallet.  Elle peut durer de 5 à 30 mn en fonction de la congestion de la blockchain",
+            descripTitleBody22:"Une fois le retrait validé, la procédure continue automatiquement jusqu’au dépôt des fonds dans votre wallet. Elle peut durer de 5 à 30 mn en fonction de la congestion de la blockchain",
             descripTitleBody23:"La page CONGRATULATION s’affiche pour confirmer le succès de la transaction",
             descripTitleBody24:"Vous recevrez un sms de votre opérateur mobile vous demandant de valider le retrait des fonds de votre compte Mobile Money",
             descripTitleBody25:"Une fois le retrait validé, la procédure continue automatiquement jusqu’au dépôt des fonds dans votre wallet",
@@ -420,15 +409,21 @@ const french={ translation : {
             descripTitleBody44:"Une fois le paiement validé sur le site de votre banque, vous recevrez la confirmation de votre paiement sur la fenêtre suivante",
             descripTitleBody45:"Le paiement sera reçu dans le compte Mobile Money de destination le temps nécessaire à la blockchain (généralement 5 mn mais en cas de congestion cela peut durer jusqu’à 30 mn).   ",
             descripTitleBody46:"Un mail récapitulatif de la transaction vous est envoyé dans la boite mail que vous avez communiqué au moment de l’identification",
-            descripTitleBody47:"Veuillez mémoriser le numéro de la transaction (Mercuryo ID) en cas de contestations.  Merci",
+            descripTitleBody47:"Veuillez mémoriser le numéro de la transaction (Mercuryo ID) en cas de contestations. Merci",
             descripTitleBody48:"Se Connecter",
             descripTitleBody49:"A Notre Plateforme",
-            descripTitleBody50:"Lorem ipsum dolor sit amet consectetur adipisicing elit.  Minima, obcaecati id ipsumearum dolor impedit soluta enim ipsa corporis eos possimus cum pariatur ex, vero voluptatem laudantium sit adipisci ipsam?",
+            descripTitleBody50:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, obcaecati id ipsumearum dolor impedit soluta enim ipsa corporis eos possimus cum pariatur ex, vero voluptatem laudantium sit adipisci ipsam?",
             descriptionBody51:"le montant que vous souhaitez acheter, votre numéro de téléphone, l’adresse de votre Wallet en Bitcoins. Validez",
             descripTitleBody52:"Elle peut durer de 5 à 30 mn en fonction de la congestion de la blockchain",
 
             //headHelp
             headHelp:"Allez sur",
+
+            //valid 
+            validTitle1: "Votre compte a été activé",
+            validTitle2: "Connexion",
+            validTitle3: "Votre compte ne peut pas être activé",
+ 
 
     } 
 }

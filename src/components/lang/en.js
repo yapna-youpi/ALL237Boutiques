@@ -8,6 +8,7 @@ const english={ translation : {
         link6: "Credit Mobile Account",
         link7: "Buy Crypto",
         link8: "Sell Crypto",
+        link9: "SIGN UP",
         accountButton: "ACCOUNT",
 
         // drow-content
@@ -23,12 +24,12 @@ const english={ translation : {
 
         // About section
         aboutTitle: "ABOUT US",
-        aboutText: "IPERCash was born from the double observation of the explosion of mobile money in Africa and the demand for cryptocurrency. Demand that IPERCash aims to meet.<br/>IPERCash is essentially based on blockchain and Decentralized Finance. Transactions are cheaper, safer and faster.<br/>",
+        aboutText: "IPERCash was born from the dual observation of the explosion of mobile money in Africa and the demand for cryptocurrency. Demand that IPERCash aims to meet.<br/>IPERCash is entirely based on blockchain and Decentralized Finance. Transactions are cheaper, safer and faster.<br/>",
         aboutButton: "Learn More",
         aboutSummary: "Summary of services",
-        aboutListe1: "Buy cryptocurrencies with mobile money, credit cards and SEPA",
-        aboutListe2: "Withdraw your cryptocurrency on mobile money",
-        aboutListe3: "Buy cryptocurrencies and make a deposit on a mobile money account",
+        aboutListe1: "Buy cryptocurrencies with Mobile Money, credit cards and SEPA",
+        aboutListe2: "Withdraw your cryptocurrency in mobile money",
+        aboutListe3: "Buy cryptocurrencies and make a deposit on a Mobile Money account",
 
         // Operation section
         operationTitle: "MAKE AN OPERATION",
@@ -44,13 +45,13 @@ const english={ translation : {
         servicesTitle3 : 'CREDIT MOBILE ACCOUNT',
 
         //ours sevices sous-titles
-        sousService1: 'Buy cryptocurrencies with Mobile Money, SEPA and Credit Card. Receive it in your Wallet within a short times of confirmation ',
+        sousService1: 'Buy cryptocurrencies with Mobile Money, SEPA and Credit Card. Receive it in your Wallet within a short time after confirmation ',
         sousService2: 'Withdraw your cryptocurrency and receive it in a Mobile Money account',
         sousService3: 'Make a deposit from anywhere to Mobile Money account in:',
 
         //steps 
         stepsTitle: 'HOW IT WORK ?',
-        sousSteps1: 'How to pass KYC verification in your account',
+        sousSteps1: 'How to pass KYC verification for (?) your account',
         sousSteps2: 'How to make a deposit on a Mobile Money account',
         sousSteps3: 'How to buy and sell your cryptocurrency with mobile money',
         sousSteps4: "We have prepared some clips to show you how to proceed. Click on any operation to start watching",
@@ -68,8 +69,8 @@ const english={ translation : {
         sousContact5: '+33 9 70 46 04 46',
         sousContact6: '+33 6 44 67 61 76',
         sousContact7: 'Join Our Newsletter',
-        sousContact8: 'For staying continuelly informed of our new features or modifications',
-        sousContact9: 'Suscribe',
+        sousContact8: 'For staying continueally informed of our new features or modifications',
+        sousContact9: 'Subscribe',
         sousContact10: "Your Email ",
 
 
@@ -124,12 +125,12 @@ const english={ translation : {
 
         //sellModal
         sellModal:'Transaction confirmed',
-        sellModal1:'Transaction find but not confirmed yet waiting for confirmation',
+        sellModal1:'Transaction fund but not confirmed yet waiting for confirmation',
         sellModal2:'Try with another amount or try again in',
         sellModal3:'Cancel',
         sellModal4:'OPERATION SUMMARY',
         sellModal5:'Change',
-        sellModal6:'Confirm',
+        sellModal6:'to',
         sellModal7:'First you need to send exactely',
         sellModal8:'Then click on "I have sent " button to continue.',
         sellModal9:'Scan QrCode to get wallet address',
@@ -141,6 +142,7 @@ const english={ translation : {
         sellModal15:'Receive',
         sellModal16:'to',
         sellModal17:'Fees',
+         sellModal18:'Confirm',
 
         // buycryptoCard
         buyCryptoCardTitle: 'BUY CRYPTO WITH CREDIT CARD ',
@@ -195,10 +197,10 @@ const english={ translation : {
           comingSoonSous4: 'Back to home page',
 
           //footer
-          footerSous1: 'Copyrigth IPERCash. All Rigths Reserved',
+          footerSous1: 'Copyright IPERCash. All Rights Reserved',
           footerSous2: 'Designed By',
           footerSous3: 'IPERCash',
-          footerSous4: 'Terms & condition ',
+          footerSous4: 'Terms & Condition ',
           footerSous5: 'Confidentiality',
           footerSous6: 'AML_Policy',
 
@@ -231,31 +233,13 @@ const english={ translation : {
           LoginSous10:'passord should have at least 4 characters' ,
           LoginSous11:' Sign in if you are already registred or create an account.' ,
 
-
-          //pay
-          PayTitle: 'The operation could not be completed',
-          PaySous1:'Send back payment',
-          PaySous2:'You operation id is :',
-          PaySous3:'Use it for any claim',
-          PaySous4:'TRANSACTION IN PROGRESS',
-          PaySous5:'LANDS VERIFICATIONS',
-          PaySous6:'Balance checking ',
-          PaySous7:'User wallet checking',
-          PaySous8:'TREQUEST OF MOBILE PAYMENT ',
-          PaySous9:'Please check payment request on your phone ',
-          PaySous10:' If there is no request type ussd code',
-          PaySous11:'PREPARATION OF THE TRANSACTION ',
-          PaySous12:'SENDING FUNDS',
-          PaySous13:'Please follow',
-          PaySous14:'To complete the payment ',
-
           //SignUp
           SignUpTitle:'Register now',
           SignUpSous1:'If you do not have an account yet, please register',
           SignUpSous2:'Remember me',
           SignUpSous3:'Forgot Password',
           SignUpSous4:'Signup',
-          SignUpSous5:"Name",
+          SignUpSous5:"Full Name",
           SignUpSous6:"Email",
           SignUpSous7:"Phone",
           SignUpSous8:"Password",
@@ -282,9 +266,9 @@ const english={ translation : {
           sucessTitle1: 'Hey,Congratulations !!!',
           sucessTitle2: 'You have successfully credit mobile account',
           sucessTitle3: 'You have successfully credit buy crypayTitleto',
-          sucessTitle4: 'You have successfully sell crypto',
+          sucessTitle4: 'You have successfully sold crypto',
           sucessTitle5: 'Please Rate us',
-          sucessTitle6: 'Get back to home page',
+          sucessTitle6: 'return to home page',
 
           //forget
           forgetTitle:"Forget Password",
@@ -321,6 +305,8 @@ const english={ translation : {
           paySous10:' If there is no request type ussd code',
           paySous11:' Please follow',
           paySous12:' To complete the payment',
+          paySous13:'PREPARATION OF THE TRANSACTION ',
+          paySous14:'SENDING FUNDS ',
 
           //notfound
           notFound1:'OOPS! SOMETHING WENT WRONG',
@@ -369,6 +355,7 @@ const english={ translation : {
 
           //support 
           support:"Here you will find all the answers to your questions about IPERCash",
+          support1:"Searching for answers...",
 
 
         //description
@@ -377,7 +364,7 @@ const english={ translation : {
         descriptSous2:"Crypto Withdrawal",
         descriptSous3:"Purchase Crypto",
         descriptSous4:"Mobile Money Deposit",
-        descriptSous6:"You have to",
+        descriptSous6:"You will need to",
         descriptAjout:"The international policy against money laundering and terrorism requires identifying users. We perform identity verification on the first transaction.",
         descripTitleBody1:"HELP",
         descripTitleBody2:"Identity Verification",
@@ -386,54 +373,60 @@ const english={ translation : {
         descripTitleBody5:"your Wallet address, the amount to withdraw, the telephone number of the Mobile Money account to which you wish to withdraw the funds. Validate the form.",
         descripTitleBody6:"A summary of the transaction is displayed in a pop-up. If the data is correct, please confirm",
         descripTitleBody7:"A window appears showing the exact amount you wish to withdraw as well as the address of the IPERCash wallet",
-        descripTitleBody8:"At this step, you have to go to your wallet",
-        descripTitleBody9:"- Either scan this code from your wallet,",
-        descripTitleBody10:"- Either copy this data (exact amount in BTC and Wallet address, from IPERCash) in order to send bitcoins for the exact amount to the IPERCash address (any error in the amount or wallet address will result in the loss of funds So copy the amount in BTC and paste it in your wallet for sending. Also copy the Wallet address from IPERCash in order to paste it into your Wallet for the destination address of the shipment.",
-        descripTitleBody11:"Here we have taken the example of a user with their Wallet on the Coinbase platform. Once you have made this transaction from your Wallet, you must return to our site on this window to confirm your sending by clicking on I HAVE SENT. You have 5 minutes for this",
-        descripTitleBody12:"Once confirmed, a window appears asking you to wait for confirmation of the validation. This can take between 5 minutes and 30 minutes depending on the size of the blockchain",
+        descripTitleBody8:"The following step, will require you to go to your wallet",
+        descripTitleBody9:"- Either scan the transaction code from your wallet,",
+        descripTitleBody10:"- Or copy the exact amount in BTC and paste it in your wallet for the sender. (Do not send more than the amount indicated for the transaction on the IPERCash platform. Do not send a different currency or token than BTC). Then, copy the  IPERCash wallet address and paste it into your Wallet for the recipient.",
+        descriptionTitleBody53:" •	IMPORTANT: any error in the amount or wallet address will result in the loss of funds!",
+        descripTitleBody11:"•	Here we have taken the example of a user wallet on the Coinbase platform. Once the transaction is complete in your wallet, return to the IPERCash site on this window to confirm your transfer by clicking on 'I have SENT'. You have 5 minutes for this.",
+        descripTitleBody12:"Once confirmed, a window will appear asking you to wait for the confirmation of the transaction’s validation. This can take between 5 and 30 minutes depending on the size of the blockchain.",
         descripTitleBody13:"When you have carried out this transaction from your Wallet, you must return to our site on this window to confirm your sending by clicking on I HAVE SENT. You have 5 minutes for this.",
-        descripTitleBody14:"Once confirmed, a window appears asking you to wait for confirmation of the validation. This can take between 5 minutes and 30 minutes depending on the size of the blockchain.",
-        descripTitleBody15:"The CONGRATULATION page is displayed to confirm the success of the transaction.",
+        descripTitleBody14:"Once confirmed, a window will appear asking you to wait for the confirmation of the transaction’s validation. This can take between 5 and 30 minutes depending on the size of the blockchain.",
+        descripTitleBody15:"The CONGRATULATION page will be displayed to confirm the success of the transaction.",
         descripTitleBody16:"How to Buy Crypto",
         descripTitleBody17:"Fill out the form indicating:",
-        descripTitleBody18:"A pop-up window asks you to confirm the BTC address of your Wallet. This confirmation is requested because, according to the rules of the blockchain, any error in the destination Wallet address will automatically result in the loss of funds.",
-        descripTitleBody19:"Paste the destination Wallet address again in this window if you are sure.",
-        descripTitleBody20:"The page showing the progress of the transaction opens",
+        descripTitleBody18:"A pop-up window will ask you to confirm the BTC address of your Wallet. This confirmation is requested because, according to the rules of the blockchain, any error in the destination Wallet address will automatically result in the loss of funds",
+        descripTitleBody19:"Paste the destination Wallet address again in this window after ensuring its correctness. ",
+        descripTitleBody20:"A page showing the progress of the transaction will open",
         descripTitleBody21:"You will receive an SMS from your mobile operator asking you to validate the withdrawal of funds from your Mobile Money account",
-        descripTitleBody22:"Once the withdrawal is validated, the procedure continues automatically until the funds are deposited in your wallet. It can last from 5 to 30 minutes depending on the blockchain congestion",
-        descripTitleBody23:"The CONGRATULATION page is displayed to confirm the success of the transaction",
-        descripTitleBody24:"You will receive an SMS from your mobile operator asking you to validate the withdrawal of funds from your Mobile Money account",
-        descripTitleBody25:"Once the withdrawal is validated, the procedure continues automatically until the funds are deposited in your wallet",
-        descripTitleBody26:"The CONGRATULATION page is displayed to confirm the success of the transaction",
+        descripTitleBody22:"Once the withdrawal is validated, the procedure will continue automatically until the funds are deposited into your wallet.  This can take 5 to 30 minutes depending on the blockchain congestion.",
+        descripTitleBody23:"The CONGRATULATION page will be displayed to confirm the success of the transaction.",
+        descripTitleBody24:"You will receive an SMS from your mobile operator asking you to validate the withdrawal of funds from your Mobile Money account.",
+        descripTitleBody25:"Once the withdrawal is validated, the procedure will continue automatically until the funds are deposited into your wallet.  This can take 5 to 30 minutes depending on the blockchain congestion.",
+        descripTitleBody26:"The CONGRATULATION page will be displayed to confirm the success of the transaction.",
         descripTitleBody27:"How to Make a Deposit",
         descripTitleBody28:"Procedure for making a deposit on Mobile Money",
         descripTitleBody29:"Go to CREDIT A MONEY MOBILE ACCOUNT page",
         descripTitleBody30:"Indicate the amount to be credited, the recipient's full name, country and phone number",
-        descripTitleBody31:"Check the transaction summary that the costs are correct. Validate",
-        descripTitleBody32:"You are directed for payment by credit card on the page of our partner Mercuryo. Accept the terms and services and click on BUY",
+        descripTitleBody31:"Verify in the transaction summary that the costs are correct. Validate",
+        descripTitleBody32:"You will be directed for payment by credit card on the page of our partner Mercuryo. Accept the terms and services and click on BUY",
         descripTitleBody33:"If you have already passed the identification (KYC procedure), enter your phone number, an SMS will be sent to you: ",
-        descripTitleBody34:"When you have received the code by SMS, please enter it in the following window",
-        descripTitleBody35:"Choose from the credit cards you have saved in your account the one you want to use to make the payment and validate",
+        descripTitleBody34:"After receiving the code by SMS, please enter it in the following window",
+        descripTitleBody35:"Enter your credit card information or select a credit card from the ones previously saved in your account and validate",
         descripTitleBody36:"Enter the three-digit control number located on the back of the credit card",
-        descripTitleBody37:"You are then directed to your bank's website for the usual checks (usually two-step check)",
-        descripTitleBody38:"Once the payment has been validated on your bank's website, you will receive confirmation of your payment in the following window",
-        descripTitleBody39:"If you have already passed the identification (KYC procedure), enter your phone number, an SMS will be sent to you:",
-        descripTitleBody40:"When you have received the code by SMS, please enter it in the following window",
-        descripTitleBody41:"Choose from the credit cards you have saved in your account the one you want to use to make the payment and validate",
-        descripTitleBody42:"Enter the three-digit control number located on the back of the credit card",
-        descripTitleBody43:"You are then directed to your bank's website for the usual checks (usually a two-step check)",
-        descripTitleBody44:"Once the payment has been validated on your bank's website, you will receive confirmation of your payment in the following window",
-        descripTitleBody45:"The payment will be received in the destination Mobile Money account for the time necessary for the blockchain (generally 5 minutes but in case of congestion this can take up to 30 minutes).",
-        descripTitleBody46:"A summary email of the transaction is sent to you in the email box you communicated at the time of identification",
-        descripTitleBody47:"Please remember the transaction number (Mercuryo ID) in case of dispute. Thank you",
+        descripTitleBody37:"You will then be directed to your bank's website for the usual checks (e.g., two-step verification)",
+        descripTitleBody38:"Once the payment has been validated by your bank, you will receive the confirmation of your payment in the following window,",
+        // descripTitleBody39:"If you have already passed the identification (KYC procedure), enter your phone number, an SMS will be sent to you:",
+        // descripTitleBody40:"When you have received the code by SMS, please enter it in the following window",
+        // descripTitleBody41:"Enter your credit card information or select a credit card from the ones previously saved in your account and validate",
+        // descripTitleBody42:"Enter the three-digit control number located on the back of the credit card",
+        // descripTitleBody43:"You are then directed to your bank's website for the usual checks (usually a two-step check)",
+        // descripTitleBody44:"Once the payment has been validated on your bank's website, you will receive confirmation of your payment in the following window",
+        descripTitleBody45:"The payment will be received in the recipient’s Mobile Money account  pending the   blockchain’s process time (generally about 5 minutes yet in case of congestion, up to 30 minutes)",
+        descripTitleBody46:"A summary of the transaction will be sent to the email address provided during the identification steps",
+        descripTitleBody47:"We highly recommend saving the transaction number (Mercuryo ID) in case of a dispute.",
         descripTitleBody48:"To log in",
         descripTitleBody49:"To Our Platform",
-        descripTitleBody50:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, obcaecati id ipsumearum dolor impedit soluta enim ipsa corporis eos possimus cum pariatur ex, vero voluptatem laudantium sit adipisci ipsam?",
+        // descripTitleBody50:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, obcaecati id ipsumearum dolor impedit soluta enim ipsa corporis eos possimus cum pariatur ex, vero voluptatem laudantium sit adipisci ipsam?",
         descriptionBody51:"the amount you want to buy, your phone number, the address of your Bitcoin Wallet. Validate",
         descripTitleBody52:"It can last from 5 to 30 minutes depending on the blockchain congestion",
 
         //headHelp
         headHelp:"Go to",
+
+        //valid 
+        validTitle1: " Your account has been actived",
+        validTitle2: "Login",
+        validTitle3: "Your account cannot be activated",
  
     } 
 }

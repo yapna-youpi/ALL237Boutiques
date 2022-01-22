@@ -91,10 +91,10 @@ function Header({User, Country, dispatch}) {
                             </div>
                         </li> 
                         <li className="nav-link" onClick={()=>nav('/#contacts')}>{t('link4')}</li> 
+                        <li className="nav-link sixth" > <a href="/signup"> {t('link9')} </a></li>
+                        <UserIcon user={User}  nav={nav} logout={logout} />
                         <li className="nav-link" > <a href="/help" target="_blank"> {t('link5')} </a></li> 
                         {/* <button > {t('accountButton')} </button>  */}
-                        <li className="nav-link sixth" > <a href="/signup"> {t('user2')} </a></li>
-                        <UserIcon user={User}  nav={nav} logout={logout} />
                     </ul>
                 </nav>
             </header>

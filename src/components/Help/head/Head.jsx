@@ -22,7 +22,7 @@ const Head = () => {
             <form id="form" metho="post" >
                 <div className="onglet-recherche">
                     <span className="btnh-imag"><img className="img-search" alt="search" src={searche} /></span>
-                    <input className="help-Search" type="text" id="search" placeholder="Rechercher des réponses..." autoComplete="off"/> 
+                    <input className="help-Search" type="text" id="search" placeholder={t('support1')} autoComplete="off"/> 
                 </div>
             </form>
         </div>

@@ -1,7 +1,7 @@
 .sell-overlay {
 }
 .sell-modal {
-  max-width: none;
+  max-width: 80vw;
 }
 .sell-loader {
   display: flex;
@@ -27,7 +27,6 @@
 }
 .modal-container h3 {
   text-align: center;
-  /* border: 1px solid #000; */
 }
 .modal-container .operation-id {
   color: var(--red);
@@ -114,4 +113,16 @@
     font-size: 1.7em;
     margin: 15px 30px;
   }
+}
+
+.icopy {
+  display: inline-block;
+  max-width: 125px;
+  padding: 0px;
+  border: none;
+  resize: none;
+  outline: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--night-blue);
 }

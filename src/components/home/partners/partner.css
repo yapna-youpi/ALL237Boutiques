@@ -1,7 +1,7 @@
 .partners {
     position: relative;
     background: var(--berge);
-    margin: 10px auto;
+    /* margin: 10px auto; */
 }
 .partners-container {
     display: flex;

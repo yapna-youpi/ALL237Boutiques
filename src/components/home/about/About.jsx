@@ -1,10 +1,10 @@
 import React from 'react'
 import { useTranslation, Trans } from 'react-i18next'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory, Link} from 'react-router-dom'
 
 import './about.css'
-import image from './undraw_startup_life_2du2.svg'
-import chevron from './stylish-right.svg'
+import image from './undraw_startup_life_2du2.svg';
+import chevron from './stylish-right.svg';
 
 function About() {
     const { t }=useTranslation()
@@ -19,7 +19,7 @@ function About() {
                     <p>
                     <Trans>aboutText</Trans>
                     </p>
-                    <button> <a href="/more"> {t('aboutButton')} </a></button>
+                    <button> <a href="/more">{t('aboutButton')} </a></button>
                     <b>{t('aboutSummary')}</b>
                     <div className="sentence"> <img src={chevron} alt="" /> <span> {t('aboutListe1')} </span> </div>
                     <div className="sentence"><img src={chevron} alt="" /> <span> {t('aboutListe2')} </span> </div>

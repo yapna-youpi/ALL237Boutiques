@@ -44,7 +44,7 @@ function Descript1({lang,video}) {
                         </div>
                         <p className='title3' >{t('descripTitleBody45')}</p>
                         <p className='title3' >{t('descripTitleBody46')}.</p>
-                        <p className='title3' >{t('descripTitleBody47')}!</p>
+                        <p className='title3' >{t('descripTitleBody47')}</p>
                     </div>
         </div>
     )

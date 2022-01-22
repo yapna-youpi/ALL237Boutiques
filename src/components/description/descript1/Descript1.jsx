@@ -34,8 +34,8 @@ function Descript1({lang,video}) {
                         <p className="title4" >
                             <ul>
                                 <li>{t('descripTitleBody9')} </li>
-                                <li>{t('descripTitleBody10')}
-                                </li>
+                                <li>{t('descripTitleBody10')}</li>
+                                <li>{t('descriptionTitleBody53')}</li>
                             </ul> 
                         </p>
                         <p className="title4" >{t('descripTitleBody11')}.

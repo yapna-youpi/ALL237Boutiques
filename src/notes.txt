@@ -1,18 +1,3 @@
-pour la fonctionnalite sell crypto utiliser les api :
-
-pour checker l'adresse
-https://blockchain.info/rawaddr/1DnKzNhp5JQyQRNPHP4coekGcA7KpnPzji  
-
-pour checker la confirmation
-https://chain.so/api/v2/get_confidence/BTC/ac7d95eefc0c563d38050d6e8394a1d3bcbfdf52460d756078da02dd5385964e 
-
-une transaction utile 
-6c28ab07357c7f6838766ce868858128b346c36044932974162e8c081fe33e6c
-
-une transaction interessante 
-07887046b78e5ad7e592ac6fcaad551c55cd52f810e7b3c2892731ed19dc25ff
-
-a faire avant un deployment :
-aller changer l'api url dans les fichier utils, sendmoney et api cote frontend et dans les differentes routes cote backend et dans intouch
-verifier les adresses des wallets
-
+les fichiers sensible :
+    Header.jsx
+    header.css

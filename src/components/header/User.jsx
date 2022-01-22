@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
-// import ListItemText from '@material-ui/core/ListItemText'
-// import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
 import { useTranslation } from 'react-i18next'
 
 import { FaUser, FaSignOutAlt} from 'react-icons/fa'
@@ -11,6 +11,7 @@ import { Divider, MenuList, Paper } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 
 import './user.css'
+import { setUser } from '../../store/actions'
 
 function User({user, nav, logout}) {
     const { t } = useTranslation();
@@ -19,6 +20,7 @@ function User({user, nav, logout}) {
     let history=useHistory()
     const open=Boolean(anchor)
     const show=(e)=>{
+        console.log("we enter")
         setAnchor(e.currentTarget)
     }
     const close=()=>setAnchor(null)
@@ -29,16 +31,20 @@ function User({user, nav, logout}) {
     const logOut=()=>{
         close()
         logout()
-        setTimeout(()=>window.location.href="/login", 500)
-        // history.push('/')
-        
+        nav('/login')
+    }
+    const leave=(e)=>{
+        console.log("we leave ", e.relatedTarget)
     }
     // console.log(user)
     return (
         <>
-        <li className={user.userId ? "nav-link user-button connected" : "nav-link user-button" } onClick={(e)=>show(e)} >
+        {/* <li className={user.userId ? "nav-link user-button connected" : "nav-link user-button" } onClick={(e)=>show(e)} >
             <FaUser color="#fff" />
-            
+            ACCOUNT
+        </li> */}
+        <li className="nav-link user" onClick={(e)=>show(e)} >
+            {t('accountButton')}
         </li>
         <div className="user-menu">
         <Menu id="basic-menu" anchorEl={anchor} open={open}

@@ -2,7 +2,7 @@ import React from 'react'
 
 import toast, { Toaster } from 'react-hot-toast'
 
-const toastify=(type, text)=>{
+const toastify=(type, text, duration)=>{
     // console.log("hello toast")
     switch (type) {
         case "success":
@@ -32,7 +32,7 @@ const toastify=(type, text)=>{
         case "info":
             toast(text,
                 {
-                  duration: 6000,
+                  duration: duration || 6000,
                 }
               );
             break

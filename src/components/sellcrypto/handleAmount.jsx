@@ -13,7 +13,7 @@ const cryptoChange=(value, rate)=>{
         }
     }
     else {
-        console.log("le rate ", rate)
+        // console.log("le rate ", rate)
         return {
             xaf: Math.round(value*rate*655*inverPercent),
             eu: roundDecimal(value*rate*inverPercent),

@@ -18,13 +18,14 @@ const receiveWallet="13tuVVNDH1PLfUEiTEPkMDRQfTRVHyiYn2"
 
 function SellModal({open, toogle, data, rate, User }) {
     const { t } = useTranslation()
-     const [state, setState]=useState({txid: "", status: "", id:  "", start: false})
+     const [state, setState]=useState({txid: "", status: "", id: "", start: false})
     const [step, setStep]=useState('')
     const [checking, setChecking]=useState(false)
     let history=useHistory()
-    let ref=React.createRef()
+    let ref1=React.createRef()
+    let ref2=React.createRef()
     useEffect(async() => {
-        console.log("les data", data)
+        // console.log("les data", data)
         checkConflict()
         return () => {
         }
@@ -38,7 +39,7 @@ function SellModal({open, toogle, data, rate, User }) {
             return
         }
         setStep(result.response)
-        console.log("le resultat ", result.response)
+        // console.log("le resultat ", result.response)
         return result.response
     }
     // function that check if the payment has been done
@@ -60,7 +61,7 @@ function SellModal({open, toogle, data, rate, User }) {
         } else {
             setState({...state, status: result.response})
         }
-        console.log("result ", result)
+        // console.log("result ", result)
         setChecking(false)
     }
     // function that haandle message about status of transaction
@@ -115,7 +116,7 @@ function SellModal({open, toogle, data, rate, User }) {
         })
     }
     const success=async()=>{
-        console.log("start succes operation")
+        // console.log("start succes operation")
         let cashinParams={
             partner_id: state.id,
             service: checkServiceId(data.number.substring(4)),
@@ -127,7 +128,7 @@ function SellModal({open, toogle, data, rate, User }) {
         let result=await cashIn(cashinParams, User.token)
         // let result=true
         if(result) {
-            console.log("le cashin", result)
+            // console.log("le cashin", result)
             /* save oreration */
             let successParams={
                 transaction_id: state.id,
@@ -158,10 +159,10 @@ function SellModal({open, toogle, data, rate, User }) {
             rate: rate,
             userId: User.userId
         }
-        console.log("le store data ",storeData)
+        // console.log("le store data ", storeData)
         let storeResult=await sendToApi('sellcrypto/create', storeData, User.token)
         if(storeResult!=='error') {
-            console.log("le resultat du store ", storeResult)
+            // console.log("le resultat du store ", storeResult)
             setState({...state, start: true, id: storeData.transaction_id})
         }
     }
@@ -172,24 +173,24 @@ function SellModal({open, toogle, data, rate, User }) {
             status: 'cancel',
             userId: User.userId
         }
-        console.log("le store data",storeData)
+        // console.log("le store data", storeData)
         let storeResult=await sendToApi('sellcrypto/update', storeData, User.token)
-        console.log("cancel result ", storeResult)
+        // console.log("cancel result ", storeResult)
         if(storeResult!=='error') {
             change()
         }
     }
-    // const testCashin=async()=>{
-    //     let witness=true
-    //     console.log("hello je m'execute")
-    //     if(witness) setTimeout(testCashin, 30*1000);
-    // }
-    const copy=()=>{
-        if(ref) {
-            console.log(ref.current)
-            ref.current.select()
+    const copy=(n)=>{
+        if(n===1 && ref1) {
+            ref1.current.select()
             document.execCommand('copy')
         }
+        else if(ref2) {
+            // console.log(ref.current)
+            ref2.current.select()
+            document.execCommand('copy')
+        }
+        toastify('info', "text copied", 3000)
     }
 
     // console.log("le state",state)
@@ -208,8 +209,9 @@ function SellModal({open, toogle, data, rate, User }) {
                     { step!=="conflict" &&(
                     <>
                         {!state.start && (
+                        // summary of transaction 
                         <>
-                            <div className="modal-details">
+                            <div className="modal-details"> 
                                 <h3>{t('sellModal4')}</h3>
                                 <div className="">
                                     <span>{t('sellModal13')} </span>  <span> {Intl.NumberFormat('fr-FR', {maximumSignificantDigits: 8}).format(data.amount)} BTC</span>
@@ -230,21 +232,23 @@ function SellModal({open, toogle, data, rate, User }) {
                             <h3 className="message"> {setMessage()} </h3>
                             <div className="modal-controls">
                                 <button disabled={state.id} onClick={change} >{t('sellModal5')} </button>
-                                <button disabled={state.id} onClick={start}>{t('sellModal6')} </button>
+                                <button disabled={state.id} onClick={start}>{t('sellModal18')} </button>
                             </div>
                         </>)}
                         {state.start && (
+                        // transaction bloc
                         <div className="send-bloc">
                             {!state.txid&&<><Timer stamp={300*1000} action={cancel} />
                             <p>
-                            {t('sellModal7')} <b>{data.amount}</b>{t('sellModal6')} <b  className="wadd">{receiveWallet}</b> <br/>
+                            {t('sellModal7')} <input ref={ref1} value={data.amount} className="icopy" onClick={()=>copy(1)} contentEditable={false} />{/* <FaRegCopy size={25} /> */}
+                            {t('sellModal6')} <b className="wadd">{receiveWallet}</b> <br/> 
                             {t('sellModal8')} <br/>
                             {t('sellModal9')} <br/><br/>
                                 <QRCode value={receiveWallet} size={150} fgColor="#0f394c" /> 
                             </p></>}
                             <div className="op-id">
-                            {t('sellModal10')}    
-                                <span> <input ref={ref} value={state.id} className="iid" onClick={copy} contentEditable={false} /><FaRegCopy size={25} /> </span>
+                                {t('sellModal10')}    
+                                <span> <input ref={ref2} value={state.id} className="iid" onClick={()=>copy(2)} contentEditable={false} /><FaRegCopy size={25} /> </span>
                             </div>
                             <h4 className="message"> {setMessage()} </h4>
                             <div className="modal-controls">

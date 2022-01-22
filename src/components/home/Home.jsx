@@ -14,9 +14,9 @@ function Home() {
     return (
         <div className='home'>
             <Hero />
+            <Operations />
             <Partner />
             <About />
-            <Operations />
             <Services />
             <Testimonials />
             <Steps />

@@ -1,13 +1,13 @@
 .user-button {
   /* border: 1px solid #000; */
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
   height: 5vh;
   width: 5vh;
-  padding: 0.5%;
-  background: var(--transparent);
-  border-radius: 50%;
+  padding: 0.5%; */
+  /* background: var(--transparent); */
+  /* border-radius: 50%; */
 }
 .user-button.connected {
   background: var(--red);
@@ -18,5 +18,9 @@
     color: var(--night-blue);
     font-size: 1.1em;
     font-weight: 500;
+}
+
+.header .user {
+  /* border: 1px solid #000; */
 }
 

@@ -36,10 +36,10 @@ function Partner() {
                 <img src={sepa} alt=""/>
                 <img src={moov} alt=""/>
             </div>
-            <div className="circle"></div>
             {/* <div className="circle"></div> */}
             {/* <div className="circle"></div> */}
-            <div className="circle"></div>
+            {/* <div className="circle"></div> */}
+            {/* <div className="circle"></div> */}
         </div>
     )
 }
