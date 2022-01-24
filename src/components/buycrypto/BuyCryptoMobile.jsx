@@ -157,7 +157,7 @@ function BuyCryptoMobile({Amount, country, User}) {
                             {state.wallet}
                         </div> <br/>
                         <div className="form-group">
-                            <Input2 label="paste your wallet address here" change={checkAddress} />
+                            <Input2 label={t('buyCryptoMobileSous21')} change={checkAddress} />
                         </div>
                         <div className="load">
                             {valid ? (<FaCheck size={50} color="#CC1616" />) : (<ReactLoading type="spinningBubbles" color='#CC1616' height={70} width={70} />)} 

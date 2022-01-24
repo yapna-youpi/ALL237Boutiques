@@ -141,6 +141,7 @@ const french={ translation : {
          sellModal16:'Au numero',
          sellModal17:'Frais',
          sellModal18:'Confirmer',
+         sellModal19:'Nous n\'arrivons pas a crediter votre mobile money',
 
          // buycryptoCard
         buyCryptoCardTitle: 'ACHETER CRYPTO AVEC CARTE DE CRÉDIT',
@@ -179,7 +180,8 @@ const french={ translation : {
         buyCryptoMobileSous17:"Adresse du portefeuille cryptographique",
         buyCryptoMobileSous18:"Ce champ est requis",
         buyCryptoMobileSous19:"En attente du taux...", 
-        buyCryptoMobileSous20:"Acheter", 
+        buyCryptoMobileSous20:"Acheter",
+        buyCryptoMobileSous21:"Collez votre adresse de wallet", 
 
          //chooses 
          choosesTitle: 'Choisissez votre mode de paiement',
@@ -232,11 +234,11 @@ const french={ translation : {
          LoginSous11:"Authentifiez vous si vous avez déjà un compte, sinon créez un compte",
 
           //SignUp
-          SignUpTitle:"Connectez-vous",
+          SignUpTitle:"Inscrivez-Vous",
           SignUpSous1:'Si vous n’avez pas encore de compte, créez en un en suivant la procédure ci-dessous ',
           SignUpSous2:'Se souvenir',
           SignUpSous3:'Mot de passe oublié',
-          SignUpSous4:'Connectez-vous',
+          SignUpSous4:'Inscrivez-Vous',
           SignUpSous5:"Nom",
           SignUpSous6:"Email",
           SignUpSous7:"Téléphone",
@@ -263,9 +265,9 @@ const french={ translation : {
           //success
           sucessTitle1: 'Hé, félicitations !!!',
           sucessTitle2: 'Vous avez crédité votre compte mobile avec succès',
-          sucessTitle3: 'Vous avez réussi à acheter du crédit crypto',
+          sucessTitle3: 'Vous avez réussi à acheter de la crypto',
           sucessTitle4: 'Vous avez réussi à vendre de la crypto',
-          sucessTitle5: "Veuillez nous evaluer!",
+          sucessTitle5: "Nous evaluer sur",
           sucessTitle6: "Retour à la page d'accueil",
 
 
@@ -274,10 +276,10 @@ const french={ translation : {
           forgetSous1:"Mot de passe perdu ? Veuillez saisir votre identifiant ou adresse mail. Vous recevrez un lien pour créer un nouveau mot de passe par E-mail.",
           forgetSous2:"Donnez votre correct e-mail",
           forgetSous3:"Réinitialisation",
-          forgetSous4:"SUIVI RAPIDE",
+          forgetSous4:"Verification De Votre Mail!",
           forgetSous5:"Cher client, aidez-nous à vous aider !",
           forgetSous6:"Chère cliente, cher client",
-          forgetSous7:"Afin d'obtenir un service express, bien vouloir renvoyer le mail pour valider votre inscription merci !",
+          forgetSous7:"Si vous n'avez pas encore reçu de mail veuillez renvoyer le mail!",
           forgetSous8:"Renvoyer le Mail",
           forgetLink:"retour à la Connexion", 
 
@@ -296,14 +298,14 @@ const french={ translation : {
           paySous2:"votre identifiant d'opération est :",
           paySous3:"L'utiliser pour toute réclamation",
           paySous4:'TRANSACTION EN COURS',
-          paySous5:'VÉRIFICATIONS DES pays  ',
-          paySous6:' Vérification du solde',
+          paySous5:'VÉRIFICATIONS DE BASE',
+          paySous6:'Vérification du solde',
           paySous7:"vérification du portefeuille de l'utilisateur",
           paySous8:'DEMANDE DE PAIEMENT MOBILE',
           paySous9:'veuillez vérifier la demande de paiement sur votre téléphone',
           paySous10:"Demande, tapez le code ussd",
-          paySous11:' Veuillez suivre',
-          paySous12:' Pour terminer le paiement',
+          paySous11:'Veuillez suivre',
+          paySous12:'Pour terminer le paiement',
           paySous13:'PRÉPARATION DE LA TRANSACTION',
           paySous14:'ENVOYER DES FONDS',
            //notfound
@@ -423,6 +425,9 @@ const french={ translation : {
             validTitle1: "Votre compte a été activé",
             validTitle2: "Connexion",
             validTitle3: "Votre compte ne peut pas être activé",
+            
+            //widget
+            widget:"L'id de votre identifiant est",
  
 
     } 

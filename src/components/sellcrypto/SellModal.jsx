@@ -21,6 +21,7 @@ function SellModal({open, toogle, data, rate, User }) {
      const [state, setState]=useState({txid: "", status: "", id: "", start: false})
     const [step, setStep]=useState('')
     const [checking, setChecking]=useState(false)
+    const [error, setError]=useState(false)
     let history=useHistory()
     let ref1=React.createRef()
     let ref2=React.createRef()
@@ -56,7 +57,7 @@ function SellModal({open, toogle, data, rate, User }) {
         let result=await sendToApi('sellcrypto/gettx', params, User.token)
         if(result.response) {
             setState({...state, txid: result.response.id, status: result.response.status})
-            if(result.response.status==="confirmed") success()
+            if(result.response.status==="confirmed") setTimeout(()=>success(), 20*1000)
             else checkConfirmation({txid: result.response.id, id: state.id})
         } else {
             setState({...state, status: result.response})
@@ -111,38 +112,35 @@ function SellModal({open, toogle, data, rate, User }) {
                 success()
             }
             else {
-                setTimeout(()=>intervalFunction(data, time), 60*1000)
+                setTimeout(()=>intervalFunction(data, time), 15*1000)
             }
         })
     }
     const success=async()=>{
-        // console.log("start succes operation")
-        let cashinParams={
-            partner_id: state.id,
-            service: checkServiceId(data.number.substring(4)),
-            amount: cryptoChange(data.amount, rate).xaf,
-            // amount: 100,
-            number: data.number,
+        // check the state of the payment 
+        let successParams={
+            transaction_id: state.id,
+            status: 'complete',
+            rate: rate,
             userId: User.userId
         }
-        let result=await cashIn(cashinParams, User.token)
-        // let result=true
-        if(result) {
-            // console.log("le cashin", result)
-            /* save oreration */
-            let successParams={
-                transaction_id: state.id,
-                status: 'complete',
-                rate: rate,
-                userId: User.userId
-            }
-            let complete=sendToApi('sellcrypto/update', successParams, User.token)
-            // console.log("update to complete ", complete)
-            sessionStorage.setItem('data', JSON.stringify({operation: 'sell', successParams: data}))
-            setTimeout(() => {
-                history.push('/complete')
-            }, 2000);
-        }
+        // show the result to client
+        sendToApi('sellcrypto/status', successParams, User.token)
+            .then(data=>{
+                if(data) {
+                    if(data.status==="complete") {  // payment success
+                        sessionStorage.setItem('data', JSON.stringify({operation: 'sell', successParams: data}))
+                        setTimeout(() => {
+                            history.push('/complete')
+                        }, 2000);
+                    } else {    // payment fail
+                        if(data.errorStep) {
+                            setError(true)
+                        }
+                    }
+                }
+            })
+
     }
     const start=async()=>{
         setState({...state, id: "id"})
@@ -250,13 +248,24 @@ function SellModal({open, toogle, data, rate, User }) {
                                 {t('sellModal10')}    
                                 <span> <input ref={ref2} value={state.id} className="iid" onClick={()=>copy(2)} contentEditable={false} /><FaRegCopy size={25} /> </span>
                             </div>
-                            <h4 className="message"> {setMessage()} </h4>
-                            <div className="modal-controls">
-                                <button disabled={state.txid} onClick={cancel} >{t('sellModal11')}   </button>
-                                <button className="havesend" disabled={state.txid} onClick={checkPayment}>{t('sellModal12')} 
-                                    {checking && <>&ensp;<ReactLoading type="spin" color='#fff' height={30} width={30} /> </>}
-                                </button>
-                            </div>
+                            {!error&&(<>
+                                <h4 className="message"> {setMessage()} </h4>
+                                <div className="modal-controls">
+                                    <button disabled={state.txid} onClick={cancel} >{t('sellModal11')}   </button>
+                                    <button className="havesend" disabled={state.txid} onClick={checkPayment}>{t('sellModal12')} 
+                                        {checking && <>&ensp;<ReactLoading type="spin" color='#fff' height={30} width={30} /> </>}
+                                    </button>
+                                </div>
+                            </>)
+                            }
+                            {   // error block
+                                error&&<div className="error-bloc">
+                                <h4 className="message"> {t('sellModal19')} </h4>
+                                    <div className="modal-controls">
+                                        <button  onClick={()=>toogle(false)} > Close </button>
+                                    </div>
+                                </div>
+                            }
                         </div>)}
                     </>
                     )}

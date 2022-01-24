@@ -32,7 +32,7 @@ const english={ translation : {
         aboutListe3: "Buy cryptocurrencies and make a deposit on a Mobile Money account",
 
         // Operation section
-        operationTitle: "MAKE AN OPERATION",
+        operationTitle: "MAKE A TRANSACTION",
         operationPlaceholder: "Type amount",
         operationButton1: "Credit Mobile Account",
         operationButton2: "Sell Crypto",
@@ -142,7 +142,8 @@ const english={ translation : {
         sellModal15:'Receive',
         sellModal16:'to',
         sellModal17:'Fees',
-         sellModal18:'Confirm',
+        sellModal18:'Confirm',
+        sellModal19:'We could not send money to your mobile money',
 
         // buycryptoCard
         buyCryptoCardTitle: 'BUY CRYPTO WITH CREDIT CARD ',
@@ -182,6 +183,7 @@ const english={ translation : {
           buyCryptoMobileSous18:"This field is require",
           buyCryptoMobileSous19:"Waiting for rate ...", 
           buyCryptoMobileSous20:"Buy", 
+          buyCryptoMobileSous21:"Paste your wallet address here", 
 
           //chooses 
           choosesTitle: 'Choose Your Payment Method',
@@ -427,6 +429,9 @@ const english={ translation : {
         validTitle1: " Your account has been actived",
         validTitle2: "Login",
         validTitle3: "Your account cannot be activated",
+
+        //widget
+        widget:"your operation id is",
  
     } 
 }

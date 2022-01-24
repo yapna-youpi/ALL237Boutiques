@@ -1,6 +1,7 @@
 .header {
   /* border: 2px solid green; */
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  border-bottom: 1px solid #ffee01;
 }
 nav {
   /* retirer ca pour voir l'enseigne */
@@ -256,4 +257,17 @@ li.fade {
   .dropdown-content {
     min-width: 350px;
   }
+}
+
+
+.beta-div {
+  /* border: 1px solid #000; */
+  width: 150px;
+  margin: 0px auto;
+  transform: translateY(10px);
+  text-align: center;
+  background-color: #ffee01;
+  border-radius: 8px;
+  color: var(--white);
+  font-weight: bold;
 }
