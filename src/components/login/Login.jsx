@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Input } from '../addons/input/Input'
 import { toastify } from '../addons/toast/Toast'
-import { sendToApi, checkEmail } from '../../utils/utilFunctions'
+import { sendToApi, checkEmail, checkPassword } from '../../utils/utilFunctions'
 import { setUser } from '../../store/actions'
 
 import './login.css'
@@ -104,7 +104,9 @@ function Login({User, dispatch}) {
             
         }
     }
-    const active=()=>(errors.email && errors.password) || (!state.email || !state.password)
+
+    const active=()=>!(checkPassword(state.password)&&checkEmail(state.email))
+
     return (
         <div className="login">
             <div className="login-content">
@@ -120,8 +122,8 @@ function Login({User, dispatch}) {
                         </div>
                       
                         <div className="form-groupe">
-                                <Input val={state.password} name="password" type="password" label={t('LoginSous4')} help={t('LoginSous10')}
-                                    error={state.password&&(state.password.length < 4)}
+                                <Input val={state.password} name="password" type="password" label={t('LoginSous4')} help={t('LoginSous8')}
+                                    error={state.password&&(!checkPassword(state.password))}
                                     change={handleChange} 
                                 />
 

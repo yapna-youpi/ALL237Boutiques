@@ -47,14 +47,11 @@
 
 @media screen and (min-width: 992px) {
     .complete {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 60%;
         text-align: left;
     }
     .complete img {
-        width: 60%;
+        width: 50%;
     }
     .complete button {
         margin: 20px 0px;
@@ -65,6 +62,10 @@
     .complete h3 {
         text-align: left;
         margin-left: 0px;
+    }
+    .c-content{
+        display: flex;
+        align-items: center;justify-content: center;
     }
     .complete .rate h5 {
         margin: 5px;

@@ -1,0 +1,24 @@
+.fiats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 3%;
+  top: 4%;
+  /* padding: 1%; */
+  border-radius: 5px;
+}
+.fiats div {
+  margin: 0;
+  padding: 6%;
+  font-size: 0.9em !important;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.fiats div:hover {
+  cursor: pointer;
+}
+.fiats div.select {
+  background-color: var(--red);
+  color: var(--white) !important;
+}

@@ -10,21 +10,27 @@ import UserIcon from './User'
 import Lang from './Lang'
 import enseigne from './assets/enseigne.png'
 
+let interval
 
 function Header({User, Country, dispatch}) {
     const { t }=useTranslation()
     let history=useHistory()
     const myref=React.createRef()
     useEffect(() => {
-        fetch("https://ipapi.co/json/").then(response=>response.json())
-            .then(data=>{
-                dispatch(changeCountry(data.country_code))
-                // toastify("greet", `greeting to ${data.country_name}`)
-            })
-            .catch(err=>{})
+        console.log("clear interval ", interval)
+        clearInterval(interval)
+        interval=setInterval(()=>{
+            console.log("checkConnection ")
+            const actualTm=+new Date
+            console.log("user timestamp ", User.timestamp)
+            if(actualTm-(User.timestamp) > 6000000) { // 30000000
+                logout()
+                history.push('/login')
+            }
+        }, 600000)
         return () => {
         }
-    }, [])
+    }, [User])
 
 
     const anim=()=>{
@@ -48,20 +54,8 @@ function Header({User, Country, dispatch}) {
         window.location.href=route
     }
     const logout=()=>dispatch(setUser({}))
-    const checkConnection=()=>{
-        // console.log("checkConnection ")
-        const actualTm=+new Date
-        if(actualTm-(User.timestamp) > 3000000) {
-            logout()
-            history.push('/login')
-        }
-        setTimeout(() => {
-            checkConnection()
-        }, 600000);
-    }
 
-    checkConnection()
-    // console.log("the user ", User)
+    
     return (
         <div className="header" id='header'>
             <header>

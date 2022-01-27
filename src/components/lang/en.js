@@ -171,7 +171,7 @@ const english={ translation : {
           buyCryptoMobileSous6:'Provided by ',
           buyCryptoMobileSous7:"Amount in XAF",
           buyCryptoMobileSous8:"The value should be between 10000 and 35000 XAF",
-          buyCryptoMobileSous9:"Amount in EUR",
+          buyCryptoMobileSous9:"Amount in",
           buyCryptoMobileSous10:"The min value is 15.26 EUR",
           buyCryptoMobileSous11:"Amount in BTC",
           buyCryptoMobileSous12:"The min value is 0.00033" ,
@@ -230,11 +230,9 @@ const english={ translation : {
           LoginSous5:'Remember me',
           LoginSous6:'Login',
           LoginSous7:'Create account',
-          LoginSous8:'password should have at least 4 characters',
+          LoginSous8:'Passord should have at least heigth characters with one number',
           LoginSous9:"Forgot Password",
-          LoginSous10:'passord should have at least 4 characters' ,
           LoginSous11:' Sign in if you are already registred or create an account.' ,
-
           //SignUp
           SignUpTitle:'Register now',
           SignUpSous1:'If you do not have an account yet, please register',
@@ -252,6 +250,7 @@ const english={ translation : {
           SignUpSous13:"Dear Client" ,
           SignUpSous14:"In order to obtain an express service, kindly resend the email to validate your registration thank you!" ,
           SignUpSous15:"Resend Mail" ,
+          SignUpSous16:'Passord should have at least heigth characters with one number' ,
           signUpLink:"Back to Registration",
 
           //NotFound

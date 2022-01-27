@@ -90,7 +90,7 @@ const buy=async (state, User, callback, cancel, success)=>{
         else {
             cancel({status: 'fail', cause: "payment demand has fail"}, i)
             return 10
-        } 
+        }
         // callback(i)
         /* fin de l'operation */
 
@@ -115,7 +115,7 @@ const afterBuy=async (i, callback, wallet, crypto, cancel, success, User)=>{
     // construction de la transaction
     result=await getHash(wallet, crypto, User)
     if(result.status==='fail') {
-        // console.log("echec de la construction")
+        console.log("echec de la construction ", result)
         cancel(result, i)
         return result
     }
@@ -123,22 +123,16 @@ const afterBuy=async (i, callback, wallet, crypto, cancel, success, User)=>{
     // fin de la troisieme etape
     i++
     callback(i)
-    // envoie de la transaction
-    result=await sendCrypto(result.hash)
-    // console.log("final result", result)
-    if(result.status==='fail') {
-        console.log("echec du trensfert")
-        cancel(result, i)
-    }
-    else {
-        setTimeout(() => {
-            console.log("transaction reussie")
-            success(result.txid)
-        }, 1500);
-        // fin de la derniere etape
-        i++
-        callback(i)
-    }
+    console.log("resultat de la construction ", result)
+    // on termine l'operation
+    setTimeout(() => {
+        console.log("transaction reussie")
+        success(result.txid)
+    }, 1500);
+    // fin de la derniere etape
+    i++
+    callback(i)
+    
 }
 
 
@@ -152,7 +146,7 @@ const sendCrypto=async (hash)=>{
     .then(data=>{
         // console.log(data)
         if(data.tx) return {status: 'success', txid: data.tx.hash}
-        else return {status: 'fail', cause: "can't send fund"}
+        else return {status: 'fail', cause: "can't send funds"}
     })
 }
 
@@ -162,7 +156,7 @@ const getHash=async (wallet, crypto, User)=>{
     return await sendToApi('hash', params, User.token).then(result=>{
         if(result==="error") return {status: 'fail', cause: "can't get hash"}
         // console.log("response ", result.response)
-        return result.response
+        return result
         
     })
 }

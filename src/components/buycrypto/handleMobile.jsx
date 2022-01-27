@@ -1,6 +1,9 @@
 import { roundDecimal } from '../../utils/utilFunctions';
 
-/* le pourcentage de la commission est de 15% */
+/* le pourcentage de la commission est de 10% */
+
+const FEES=0.125    // commission 10% plus 2.5% de frais intouch
+const INTOUCHFEES=0.025
 const percent=1    //1.15
 const inverPercent=1    //0.85
 
@@ -15,8 +18,8 @@ const cryptoChange=(value, rate)=>{
     else {
         console.log("le rate ", rate)
         return {
-            xaf: Math.round(value*rate*655*percent),
-            eu: roundDecimal(value*rate*percent),
+            xaf: Math.round(value*rate*655*(1+FEES)),
+            eu: roundDecimal(value*rate*(1+FEES)),
             amount: value,
         }
     }
@@ -36,7 +39,7 @@ const euroChange=(value, rate)=>{
         return {
             xaf: value*655,
             eu: value,
-            amount: roundDecimal(value*inverPercent/rate),
+            amount: roundDecimal(value*(1-FEES)/rate),
         }
     }
 }
@@ -53,7 +56,7 @@ const xafChange=(value, rate)=>{
         return {
             xaf: value,
             eu: roundDecimal(value/655),
-            amount: roundDecimal(value*inverPercent/rate/655),
+            amount: roundDecimal(value*(1-FEES)/rate/655),
         }
     }
 }

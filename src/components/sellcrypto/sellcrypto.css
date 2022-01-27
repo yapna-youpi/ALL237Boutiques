@@ -5,6 +5,7 @@
   text-align: center;
 }
 .sellcrypto .rate {
+  position: relative;
   margin: 25px 0px;
   padding: 5%;
   text-align: center;

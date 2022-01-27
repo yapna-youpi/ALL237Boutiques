@@ -13,16 +13,18 @@ import './buycrypto.css'
 import Sumsub from '../sumsub/Sumsub'
 import {Input, Input2} from '../addons/input/Input'
 import PhoneInput from '../addons/input/PhoneInput'
+import Fiats from '../addons/Fiats/Fiats'
 import {randomId, getCryptoRate, roundDecimal} from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleMobile'
 
 function BuyCryptoMobile({Amount, country, User}) {
     const { t } = useTranslation()
     // initialisation des taux de changes
-    const [rate, setRate] = useState({BCH: 575.69, BTC: 0, ETH: 2075.48})
+    const [rate, setRate] = useState({ EUR: 0, USD: 0})
     // initialisation du state du composants
     const [state, setState] = useState({
-        crypto: "BTC", operator: "", amount: 0, xaf: 0, eu: 0, rate: rate.BTC, number: "", confirmNumber: "", wallet: ""
+        crypto: "BTC", operator: "", amount: 0, xaf: 0, eu: 0, fiat: 'EUR',
+        rate: rate.EUR, number: "", confirmNumber: "", wallet: ""
     })
     // initialisation du state des erreurs
     const [errors, setErrors]= useState({
@@ -36,23 +38,23 @@ function BuyCryptoMobile({Amount, country, User}) {
     let history=useHistory()
     useEffect(async() => {
         getCryptoRate().then(newRate=>{
-            // console.log("le nouveau rate", newRate)
-            if(rate) {
-                //setState
-                setRate({...rate, BTC: newRate})
-                setState({...state, rate: newRate, ...xafChange(Amount, newRate)})
-
-            }
+            if(!newRate) return
+            console.log("le nouveau rate")
+            console.log(newRate.EUR.rate)
+            setRate({...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float})
+            setState({...state, rate: newRate[state.fiat].rate_float, ...xafChange(Amount, newRate)})
         })
-        setInterval(() => {
-            let interval=getCryptoRate().then(newRate=>{
-                // console.log("l'etat avant", state)
-                if(rate) setRate({...rate, BTC: newRate})
+        let interval=setInterval(() => {
+            getCryptoRate().then(newRate=>{
+                if(!newRate) return
+                console.log("le nouveau rate")
+                console.log(newRate.EUR.rate)
+                setRate({...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float})
             })
-            return () => {
-                clearInterval(interval)
-            }
-        }, 60*1000);
+        }, 60*1000)
+        return () => {
+            clearInterval(interval)
+        }
     }, [])
 
     // la fonction qui gere les changement des inputs
@@ -81,18 +83,18 @@ function BuyCryptoMobile({Amount, country, User}) {
         switch (e.name) { // amount c'est le montant en crypto monnaie 
             case "crypto":
                 // console.log("c'est le montant")
-                result=cryptoChange(e.value, rate.BTC)
+                result=cryptoChange(e.value, rate[state.fiat])
                 setState({...state, ...result})
             break
             case "xaf":
                 // console.log("c'est le xaf")
-                result=xafChange(e.value, rate.BTC)
+                result=xafChange(e.value, rate[state.fiat])
                 setState({...state, ...result})
             break;
             
             case "eu":
                 // console.log("c'est le eu")
-                result=euroChange(e.value, rate.BTC)
+                result=euroChange(e.value, rate[state.fiat])
                 setState({...state, ...result})
             break;
             default:
@@ -127,7 +129,7 @@ function BuyCryptoMobile({Amount, country, User}) {
             // console.log("ils correspondent")
             // sessionStorage.clear()
             sessionStorage.removeItem('data')
-            sessionStorage.setItem('data', JSON.stringify({...state, id: randomId('BM'), rate: rate.BTC}))
+            sessionStorage.setItem('data', JSON.stringify({...state, id: randomId('BM'), rate: rate[state.fiat]}))
             setValid(true)
             // setTimeout(()=>history.push('/purchase'), 2000)
             !User.kyc ? setTimeout(()=>{
@@ -137,12 +139,16 @@ function BuyCryptoMobile({Amount, country, User}) {
             }, 2000) : setTimeout(()=>history.push('/purchase'), 2000)
         }
     }
+    const changeFiat=(f)=>{
+        let result=cryptoChange(state.amount, rate[f])
+        setState({...state, ...result, fiat: f, rate: rate[f]})
+    }
     const noCopy=(e)=>{
         e.preventDefault()
         return false
     }
 
-    // console.log("the valid ", valid)
+    console.log("the state ", state)
     return (
         <div className="buycrypto">
             <Modal open={modal} onClose={()=>setModal(!modal)} showCloseIcon={false} center classNames={{modal: 'custom-modal'}}>
@@ -172,16 +178,17 @@ function BuyCryptoMobile({Amount, country, User}) {
             <h1>{t('buyCryptoMobileSous3')}</h1>
             <div className="buy-container">
                 <div className="rate">
+                    <Fiats action={changeFiat} fiat={state.fiat} />
                     <h3>{t('buyCryptoMobileSous5')}</h3>
-                    <div className=""> 1 BTC === {Intl.NumberFormat('de-DE').format(Math.round(rate.BTC*655))} XAF === {Intl.NumberFormat('de-DE').format(rate.BTC)} EU </div>
-                    <span>{t('buyCryptoMobileSous6')} <a href="https://www.coindesk.com/coindesk-api" target="_blank">{t('buyCryptoMobileSous4')}</a> </span> 
+                    <div className=""> 1 BTC === {Intl.NumberFormat('de-DE').format(Math.round(rate[state.fiat]*655))} XAF === {Intl.NumberFormat('de-DE').format(rate[state.fiat])} {state.fiat} </div>
+                    <span>{t('buyCryptoMobileSous6')} <a href="https://www.coindesk.com" target="_blank">{t('buyCryptoMobileSous4')}</a> </span> 
                 </div>
                 <div className="form">
                     <div className="form-group">
                         <Input val={state.xaf}  label={t('buyCryptoMobileSous7')} name="xaf" type="number" help={t('buyCryptoMobileSous8')} change={amountChange} error={(state.xaf<10000 || state.xaf>65595)&&state.xaf!==0}   />
                     </div>
                     <div className="form-group">
-                        <Input val={state.eu}  label={t('buyCryptoMobileSous9')} name="eu" type="number" help={t('buyCryptoMobileSous10')}  change={amountChange} />
+                        <Input val={state.eu}  label={t('buyCryptoMobileSous9')+' '+state.fiat} name="eu" type="number" help={t('buyCryptoMobileSous10')}  change={amountChange} />
                     </div>
                     <div className="form-group">
                         <Input val={state.amount} label={t('buyCryptoMobileSous11')} name="crypto" type="number" help={t('buyCryptoMobileSous12')} change={amountChange}  />

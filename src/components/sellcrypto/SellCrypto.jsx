@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import {useHistory} from 'react-router-dom'
 import 'react-phone-number-input/style.css'
 import { isValidPhoneNumber } from 'react-phone-number-input'
 import { connect } from 'react-redux'
@@ -10,6 +9,7 @@ import './sellcrypto.css'
 import SellModal from './SellModal';
 import { Input } from '../addons/input/Input';
 import PhoneInputool from '../addons/input/PhoneInputool'
+import Fiats from '../addons/Fiats/Fiats'
 import { getCryptoRate } from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleAmount';
 import Sumsub from '../sumsub/Sumsub';
@@ -18,10 +18,11 @@ function SellCrypto({Amount, country, User}) {
     const { t } = useTranslation()
     // console.log(Amount, User)
     // initialisation des taux de changes
-    const [rate, setRate] = useState({BCH: 575.69, BTC: 0, ETH: 2075.48})
+    const [rate, setRate] = useState({ EUR: 0, USD: 0})
     // initialisation du state du composants
     const [state, setState] = useState({
-        crypto: "BTC", operator: "", amount: 0, xaf: 0, eu: 0, rate: rate.BTC, number: "", confirmNumber: "", wallet: ""
+        crypto: "BTC", operator: "", amount: 0, xaf: 0, eu: 0, rate: rate.euroChange, number: "",
+        confirmNumber: "", wallet: "", fiat: 'EUR',
     })
     // initialisation du state des erreurs
     const [errors, setErrors]= useState({
@@ -29,20 +30,20 @@ function SellCrypto({Amount, country, User}) {
     })
     const [modal, setModal] = useState(false)
     const [sum, setSum] = useState(false)
-    let history=useHistory()
     useEffect(async() => {
         getCryptoRate().then(newRate=>{
-            // console.log("le nouveau rate", newRate)
-            if(rate) {
-                //setState
-                setRate({...rate, BTC: newRate})
-                setState({...state, rate: newRate, ...xafChange(Amount, newRate)})
-            }
+            if(!newRate) return
+            console.log("le nouveau rate")
+            console.log(newRate.EUR.rate)
+            setRate({...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float})
+            setState({...state, rate: newRate[state.fiat].rate_float, ...xafChange(Amount, newRate)})
         })
         let interval=setInterval(() => {
             getCryptoRate().then(newRate=>{
-                //console.log("l'etat avant", state)
-                if(rate) setRate({...rate, BTC: newRate})
+                if(!newRate) return
+                console.log("le nouveau rate")
+                console.log(newRate.EUR.rate)
+                setRate({...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float})
             })
         }, 60*1000)
         return () => {
@@ -55,14 +56,14 @@ function SellCrypto({Amount, country, User}) {
     }
     // function that manage change event on input fields
     const handleChange=e=>{
-        // console.log(" c'est le ",e.name);
+        console.log(" c'est le ",e.name);
         let newState=state
         newState[e.name]=e.value
         setState({...state})
     }
     // function that manage blur event on input fields
     const handleBlur=e=>{
-        // console.log(e.name)
+        console.log(e.name)
         if(e.value==="") {
             let newErrors=errors
             newErrors[e.name]=true
@@ -79,22 +80,23 @@ function SellCrypto({Amount, country, User}) {
         switch (e.name) { // amount c'est le montant en crypto monnaie 
             case "crypto":
                 // console.log("c'est le montant")
-                result=cryptoChange(e.value, rate.BTC)
+                result=cryptoChange(e.value, rate[state.fiat])
                 setState({...state, ...result})
             break
             case "xaf":
                 // console.log("c'est le xaf")
-                result=xafChange(e.value, rate.BTC)
+                result=xafChange(e.value, rate[state.fiat])
                 setState({...state, ...result})
-            break
+            break;
+            
             case "eu":
                 // console.log("c'est le eu")
-                result=euroChange(e.value, rate.BTC)
+                result=euroChange(e.value, rate[state.fiat])
                 setState({...state, ...result})
-            break
+            break;
             default:
-                // console.log("c'est autre chose")
-            break
+                // console.log("c;est autre chose")
+            break;
         }
     }
     // function that manages the activation of the button
@@ -119,20 +121,25 @@ function SellCrypto({Amount, country, User}) {
         }
         return false
     }
-    // console.log("the sum ", country)
+    const changeFiat=(f)=>{
+        let result=cryptoChange(state.amount, rate[f])
+        setState({...state, ...result, fiat: f, rate: rate[f]})
+    }
+    // console.log("the state", state)
 
     return (
         <div id="sellcrypto" className="sellcrypto">
             {sum&&<Modal open={true} onClose={()=>setSum(false)} center={true} >
                 <Sumsub call={openModal} close={()=>setSum(false)} />
             </Modal>}
-            {modal&&<SellModal open={modal} toogle={setModal} data={state} rate={rate.BTC} User={User} />}
+            {modal&&<SellModal open={modal} toogle={setModal} data={state} rate={rate[state.fiat]} User={User} />}
             <h1>{ t('sellCrypto')}</h1>
             <div className="sell-container">
                 <div className="rate">
+                    <Fiats action={changeFiat} fiat={state.fiat} />
                     <h3>{ t('sellCrypto2')}</h3>
-                    <div className=""> 1 BTC === {Intl.NumberFormat('de-DE').format(Math.round(rate.BTC*655))} XAF === {Intl.NumberFormat('de-DE').format(rate.BTC)} EU </div>
-                    <span>{ t('sellCrypto4')} <a href="https://www.coindesk.com/coindesk-api" target="_blank">{ t('sellCrypto3')}  </a> </span> 
+                    <div className=""> 1 BTC === {Intl.NumberFormat('de-DE').format(Math.round(rate[state.fiat]*655))} XAF === {Intl.NumberFormat('de-DE').format(rate[state.fiat])} {state.fiat} </div>
+                    <span><a href="https://www.coindesk.com" target="_blank">{ t('sellCrypto4')} { t('sellCrypto3')}  </a> </span> 
                 </div>
                 <div className="form">
                     <div className="form-group">
@@ -142,7 +149,7 @@ function SellCrypto({Amount, country, User}) {
                         <Input val={state.xaf}  label={t('sellCrypto8')} name="xaf" type="number" help={t('sellCrypto9')} change={amountChange} error={(state.xaf<3000 || state.xaf>65597)&&state.xaf!==0}   />
                     </div>
                     {/* <div className="form-group">
-                        <Input val={state.eu}  label="Amount in EUR" name="eu" type="number" help="the min value is 15.26 EUR" change={amountChange} />
+                        <Input val={state.eu}  label={t('buyCryptoMobileSous9')+' '+state.fiat}  name="eu" type="number" help="the min value is 15.26 EUR" change={amountChange} />
                     </div> */}
                     <div className="form-group">
                         <Input val={state.amount} label={t('sellCrypto10')} name="crypto" type="number" help={t('sellCrypto11')} change={amountChange}  />

@@ -2,8 +2,10 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Modal } from 'react-responsive-modal'
 import { FaRegCopy } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next'
 
 function Widget({open, close, amount, crypto, wallet, opId}) {
+    const { t } = useTranslation();
     const ref=React.createRef()
     const copy=()=>{
         if(ref) {
@@ -17,7 +19,7 @@ function Widget({open, close, amount, crypto, wallet, opId}) {
         <div className="widget">
             <Modal open={open} onClose={close} center classNames={{modal: 'custom-modal'}} closeOnOverlayClick={false}>
                 <div className="opid">
-                    your operation id is
+                    {t('widget')}
                     <h3>
                         <input ref={ref} value={opId} className="iid" onClick={copy} contentEditable={false} /><FaRegCopy size={20} />
                     </h3>

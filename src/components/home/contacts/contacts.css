@@ -31,18 +31,18 @@
     border-radius: 50%;
     overflow: hidden;
 }
-.social-icon-couvre{
+/* .social-icon-couvre{
     position: absolute;
     transition: 0.35s;
     width: 65px;height: 65px;
     top: -150%;
-    background-color: var(--night-blue);
+    background-color: var(--red);
     opacity: 0.7;
-    
 }
 .social-icon:hover .social-icon-couvre{
     top: 0px;
-}
+    z-index: -10;
+} */
 
 .social-icon img {
     display: block;
@@ -185,6 +185,15 @@
     .social-icon {
         width: 50px;
         height: 50px;
+        color: var(--red);
+    }
+    .social-icon:hover {
+        width: 50px;
+        height: 50px;
+        color: var(--white);
+        background: var(--red);
+        transition: 0.5s all ease;
+        border: 2px solid var(--white);
     }
     .social-icon img {
         width: 30px;

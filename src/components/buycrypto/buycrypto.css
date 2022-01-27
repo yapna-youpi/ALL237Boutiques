@@ -23,6 +23,7 @@
   border-bottom: 1px solid;
 }
 .buycrypto .rate {
+  position: relative;
   margin: 25px 0px;
   padding: 5%;
   text-align: center;

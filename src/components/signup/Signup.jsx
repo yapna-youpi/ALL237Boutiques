@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import ReactLoading from 'react-loading'
 
-import { sendToApi, checkEmail } from '../../utils/utilFunctions'
+import { sendToApi, checkEmail, checkPassword } from '../../utils/utilFunctions'
 import { toastify } from '../addons/toast/Toast'
 
 import './signup.css'
@@ -70,7 +70,10 @@ function Signup({Country}) {
         setState({...state})
     }
 
-    const active=()=>(state.name&&state.email&&state.phone&&state.password&&state.email&&state.check)&&(state.password.length>3)&&(state.password===state.cPassword)&&checkEmail(state.email)&&isValidPhoneNumber(state.phone || 342)
+    const active=()=>(state.name&&state.email&&state.phone&&state.password&&state.email&&state.check)
+        &&(state.password.length>3)&&(state.password===state.cPassword)&&checkEmail(state.email)
+        &&isValidPhoneNumber(state.phone || 342)&&checkPassword(state.password)
+
     console.log(state, Country)
     return (
         <>
@@ -107,8 +110,8 @@ function Signup({Country}) {
                                     error={errors.phone&&!isValidPhoneNumber(state.phone || "342")}
                                     change={handleChange} handBlur={()=>setErrors({...errors, phone: true})}
                                 />
-                                <Input val={state.password} type="password" label={t('SignUpSous8')} name="password" id="Password" help="should have 4 caracters"
-                                    error={errors.password&&(state.password.length<4)}
+                                <Input val={state.password} type="password" label={t('SignUpSous8')} name="password" id="Password" help={t('SignUpSous16')}
+                                    error={errors.password&&(!checkPassword(state.password))}
                                     change={handleChange} handBlur={()=>setErrors({...errors, password: true})}
                                 />
                                 <Input val={state.cPassword} type="password" label={t('SignUpSous9')} name="cPassword" id="confirPassword" error={errors.cPassword&&(state.password!==state.cPassword)} help="should match to password"

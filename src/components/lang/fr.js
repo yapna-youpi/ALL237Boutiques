@@ -47,7 +47,7 @@ const french={ translation : {
         //ours sevices sous-titles
         sousService1: 'Achetez de la cryptomonnaie en payant par Mobile Money, Carte de Crédit ou virement SEPA',
         sousService2: 'Retirez votre crypto-monnaie et recevez la sur un compte Mobile Money',
-        sousService3: 'Effectuez un dépôt dans 6 pays africains',
+        sousService3: "Effectuez un dépôt Mobile Money dans chacun de ces pays ",
 
         //steps 
         stepsTitle: 'COMMENT CA MARCHE ?',
@@ -169,7 +169,7 @@ const french={ translation : {
         buyCryptoMobileSous6:'Fourni par',
         buyCryptoMobileSous7:"Montant en XAF",
         buyCryptoMobileSous8:"Le montant doit etre entre 10000 et 35000 XAF",
-        buyCryptoMobileSous9:"Montant en EUR",
+        buyCryptoMobileSous9:"Montant en",
         buyCryptoMobileSous10:"La valeur minimale est de 15,26 EUR",
         buyCryptoMobileSous11:"Montant en CRYPTO",
         buyCryptoMobileSous12:"La valeur minimale est 0,00033" ,
@@ -228,7 +228,7 @@ const french={ translation : {
          LoginSous5:'Se souvenir',
          LoginSous6:'Connexion',
          LoginSous7:'Creer un Compte',
-         LoginSous8:'Le mot de passe doit avoir au moins 4 caractères',
+         LoginSous8:'Le mot de passe doit avoir au moins huit caractères dont un chiffre',
          LoginSous9:"Mot de passe oublié",
          LoginSous10:"Le mot de passe doit avoir aumoins 4 caractères",
          LoginSous11:"Authentifiez vous si vous avez déjà un compte, sinon créez un compte",
@@ -243,13 +243,13 @@ const french={ translation : {
           SignUpSous6:"Email",
           SignUpSous7:"Téléphone",
           SignUpSous8:"Mot de passe",
-          SignUpSous9:"Confirmé le mot de passe" ,
+          SignUpSous9:"Confirmer le mot de passe" ,
           SignUpSous10:"Inscrivez-vous" ,
-          SignUpSous11:"SUIVI RAPIDE" ,
-          SignUpSous12:"Cher client,aidez-nous à vous aider !" ,
+          SignUpSous11:"Verification De Votre Mail!" ,
           SignUpSous13:"Chère cliente, cher client" ,
-          SignUpSous14:"Afin d'obtenir un service express, bien vouloir renvoyer le mail pour valider votre inscription merci !" ,
+          SignUpSous14:"Si vous n'avez pas encore reçu de mail veuillez renvoyer le mail!" ,
           SignUpSous15:"Renvoyer le Mail" ,
+          SignUpSous16:'Le mot de passe doit avoir au moins huit caractères dont un chiffre',
           signUpLink:"Retour à Inscription",
 
           //NotFound

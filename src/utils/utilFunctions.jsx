@@ -115,7 +115,7 @@ const sendToApi=async(route, body, token="NOTHING")=>{
 }
 
 const getCryptoRate=async()=>fetch('https://api.coindesk.com/v1/bpi/currentprice/EUR.json')
-    .then(response=>response.json()).then(data=>Math.round(data.bpi.EUR.rate_float))
+    .then(response=>response.json()).then(data=>data.bpi)
     .catch(err=>0)
     // .catch(err=>40000)
 
@@ -145,10 +145,15 @@ const checkWalletAddress=(address)=>{
     return address.match(/^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/)
 }
 
+const checkPassword=(password)=>{
+    return password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
+}
+
 
 
 export {roundDecimal, roundPrecision, randomId, randomChain,
         trackStatus, checkServiceId, trier, setRequestOption, sendToApi, getCryptoRate,
-        activeButtonSend, checkPhone, cutChain, apiUrl, checkEmail, checkWalletAddress
+        activeButtonSend, checkPhone, cutChain, apiUrl, checkEmail, checkWalletAddress,
+        checkPassword
     }
 
