@@ -32,24 +32,24 @@ function Success() {
                         {state.operation==='sell' && <h5>{t('sucessTitle4')}  </h5>}
                         
                         <div >
-                            <h3 style={{textAlign:"center",marginBottom:'25px'}}>{t('completeTitle')}</h3>
+                            <h3>{t('completeTitle')}</h3>
                             <div className="rates">
                                 <div className="rate">
                                 <a href="https://uk.trustpilot.com/evaluate/ipercash.fr?utm_medium=trustbox&utm_source=TrustBoxReviewCollector" target='_blank'>
-                                    <h5 style={{marginBottom:'15px'}}>{t('completeSous1')}</h5>
-                                    <img style={{width:"125px", boxShadow:" 3px 3px 10px",padding:"10px"}} src={trusty} alt=""/>
+                                    <h6 style={{marginBottom:'20px'}}>{t('completeSous1')}</h6>
+                                    <img style={{width:"125px", padding:'10px'}} src={trusty} alt=""/>
                                 </a>
                                 </div>
                                 {/* <h1>Or</h1> */}
                                 <div className="rate">
                                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdO5v8JpRHOKlRkLKse0eK6flW3vyDY2spf7EAa-uzcpPJebg/viewform" target="_blank" >
-                                    <h5 style={{marginBottom:'15px'}}>{t('completeSous1')}</h5>
-                                    <img style={{width:"125px", boxShadow:" 3px 3px 10px",padding:"10px"}} src={google} alt=""/>
+                                        <h6 style={{marginBottom:'20px'}}>{t('completeSous1')}</h6>
+                                        <img style={{width:"125px", padding:'10px'}} src={google} alt=""/>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <span style={{textAlign:"center"}} onClick={()=>history.push('/')} >{t('sucessTitle6')}  </span>
+                        <span style={{textAlign:"center"}} onClick={()=>history.push('/')} >{t('sucessTitle6')}</span>
                     </div>
                 </div>
             </div>

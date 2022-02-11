@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next"
 import ReactLoading from 'react-loading';
 
 import { toastify } from '../addons/toast/Toast'
-import { sendToApi } from '../../utils/utilFunctions'
+import { sendToApi, checkPassword } from '../../utils/utilFunctions'
 import Button from '@material-ui/core/Button'
 
 
@@ -35,7 +35,7 @@ const Forget =({history, match, type, color}) => {
     const handleBlur=target=>{
         switch (target.name) {
             case "password":
-                setErrors({...errors, password: state.password.length <= 4})
+                setErrors({...errors, password: !checkPassword(state.password)})
                 break
         
             case "cfPassword":
@@ -76,7 +76,7 @@ const Forget =({history, match, type, color}) => {
                 <form class="login-form" onSubmit={e=>handleSubmit(e)} >
                     <div className="form-groupe">
                         <Input type="password" name="password" label={t('resetSous5')} help={t('resetSous2')} val={state.password}
-                            error={state.password&&(state.password.length < 4)}
+                            error={state.password&&(!checkPassword(state.password))}
                             change={target => onChange(target)}
                         />  
                     </div>

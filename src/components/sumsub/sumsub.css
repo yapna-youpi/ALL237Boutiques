@@ -5,3 +5,31 @@
     width: 250px;
     height:300px;
 }
+.sumsub .sub-text{
+    /* height: 250px; */
+    margin: 15px auto;
+    padding: 10px auto;
+    flex-direction: column;
+    font-family: 'Montserrat',Helvetica,Arial,sans-serif;;
+    
+    color: #2a348f;
+    font-weight: bolder;
+}
+.sumsub .sub-div1,.sub-div2{
+    margin: 15px auto;
+    padding: 0 110px 0;
+    font-size: 17px;
+}
+.sumsub .sub-div2{
+    margin: 15px auto;
+    padding: 0 110px 0;
+    font-size: 17px;
+}
+@media only screen and (max-width: 768px){
+    .sumsub .sub-div1,.sub-div2{
+        padding: 0 10px 0;
+    }
+    .sumsub .sub-div2{
+        padding: 0 10px 0;
+    }
+}

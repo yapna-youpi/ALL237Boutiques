@@ -141,7 +141,6 @@ const french={ translation : {
          sellModal16:'Au numero',
          sellModal17:'Frais',
          sellModal18:'Confirmer',
-         sellModal19:'Nous n\'arrivons pas a crediter votre mobile money',
 
          // buycryptoCard
         buyCryptoCardTitle: 'ACHETER CRYPTO AVEC CARTE DE CRÉDIT',
@@ -180,8 +179,8 @@ const french={ translation : {
         buyCryptoMobileSous17:"Adresse du portefeuille cryptographique",
         buyCryptoMobileSous18:"Ce champ est requis",
         buyCryptoMobileSous19:"En attente du taux...", 
-        buyCryptoMobileSous20:"Acheter",
-        buyCryptoMobileSous21:"Collez votre adresse de wallet", 
+        buyCryptoMobileSous20:"Acheter", 
+        buyCryptoMobileSous21:"Collez votre adresse de portefeuille ici", 
 
          //chooses 
          choosesTitle: 'Choisissez votre mode de paiement',
@@ -228,9 +227,9 @@ const french={ translation : {
          LoginSous5:'Se souvenir',
          LoginSous6:'Connexion',
          LoginSous7:'Creer un Compte',
-         LoginSous8:'Le mot de passe doit avoir au moins huit caractères dont un chiffre',
+         LoginSous8:'Le mot de passe doit avoir au moins 8 caractères dont un chiffre',
          LoginSous9:"Mot de passe oublié",
-         LoginSous10:"Le mot de passe doit avoir aumoins 4 caractères",
+         LoginSous10:"Le mot de passe doit avoir au moins 8 caractères dont",
          LoginSous11:"Authentifiez vous si vous avez déjà un compte, sinon créez un compte",
 
           //SignUp
@@ -243,13 +242,13 @@ const french={ translation : {
           SignUpSous6:"Email",
           SignUpSous7:"Téléphone",
           SignUpSous8:"Mot de passe",
-          SignUpSous9:"Confirmer le mot de passe" ,
+          SignUpSous9:"Confirmé le mot de passe" ,
           SignUpSous10:"Inscrivez-vous" ,
           SignUpSous11:"Verification De Votre Mail!" ,
           SignUpSous13:"Chère cliente, cher client" ,
-          SignUpSous14:"Si vous n'avez pas encore reçu de mail veuillez renvoyer le mail!" ,
+          SignUpSous14:"Un mail vous a été envoyé, veuillez verifier dans la boite email et dans les spams! Sinon renvoyer le mail, pour la validation de votre inscription!" ,
           SignUpSous15:"Renvoyer le Mail" ,
-          SignUpSous16:'Le mot de passe doit avoir au moins huit caractères dont un chiffre',
+          SignUpSous16:"Le mot de passe doit avoir au moins huit caractères dont un chiffre" ,
           signUpLink:"Retour à Inscription",
 
           //NotFound
@@ -279,15 +278,15 @@ const french={ translation : {
           forgetSous4:"Verification De Votre Mail!",
           forgetSous5:"Cher client, aidez-nous à vous aider !",
           forgetSous6:"Chère cliente, cher client",
-          forgetSous7:"Si vous n'avez pas encore reçu de mail veuillez renvoyer le mail!",
+          forgetSous7:"Si vous n'avez pas encore reçu de mail veuillez renvoyer le mail, pour reinitialiser votre mot de passe!",
           forgetSous8:"Renvoyer le Mail",
           forgetLink:"retour à la Connexion", 
 
           //reset
-          resetTitle:"Reinitialisé votre Mot De Passe",
-          resetSous1:"Mot de passe perdu ? Veuillez saisir votre Mot de passe et confirmé. Vous recevrez un lien pour créer un nouveau mot de passe par E-mail.",
-          resetSous2:"Donnez votre correct E-MAIL", 
-          resetSous3:"Donnez votre  correct Mot de Passe", 
+          resetTitle:"Reinitialisez votre Mot De Passe",
+          resetSous1:"Mot de passe perdu ? Veuillez saisir votre Mot de passe et confirmer. Vous recevrez un lien pour créer un nouveau mot de passe par Email.",
+          resetSous2:"Le mot de passe doit avoir au moins huit caractères dont un chiffre", 
+          resetSous3:"le mot de passe doit correspondre", 
           resetSous4:"Réinitialiser", 
           resetSous5:"Mot de Passe",
           resetSous6:"Confirme Mot de Passe",
@@ -298,14 +297,14 @@ const french={ translation : {
           paySous2:"votre identifiant d'opération est :",
           paySous3:"L'utiliser pour toute réclamation",
           paySous4:'TRANSACTION EN COURS',
-          paySous5:'VÉRIFICATIONS DE BASE',
-          paySous6:'Vérification du solde',
+          paySous5:'VÉRIFICATIONS DES pays  ',
+          paySous6:' Vérification du solde',
           paySous7:"vérification du portefeuille de l'utilisateur",
           paySous8:'DEMANDE DE PAIEMENT MOBILE',
           paySous9:'veuillez vérifier la demande de paiement sur votre téléphone',
           paySous10:"Demande, tapez le code ussd",
-          paySous11:'Veuillez suivre',
-          paySous12:'Pour terminer le paiement',
+          paySous11:' Veuillez suivre',
+          paySous12:' Pour terminer le paiement',
           paySous13:'PRÉPARATION DE LA TRANSACTION',
           paySous14:'ENVOYER DES FONDS',
            //notfound

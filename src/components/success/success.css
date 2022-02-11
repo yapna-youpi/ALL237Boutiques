@@ -37,8 +37,11 @@
 }
 .complete .rate img {
     display: block;
-    width: 60%;
+    /* width: 30%; */
     margin: auto;
+    /* padding: 2%; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 8px;
 }
 .complete .rate h5 {
     margin-bottom: 5px;
@@ -72,16 +75,8 @@
     }
     .complete .rates {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: center;
     }
     .complete .rate {
         margin-right: 20px;
-    }
-    .complete .rate img {
-        display: block;
-        width: auto;
-        height: 6vw;
     }
 }

@@ -100,8 +100,8 @@ function SellModal({open, toogle, data, rate, User }) {
     const intervalFunction=(data, time)=>{
         // console.log("is confirm ? ", time)
         time++
-        if(time===11) { // when time reach 11 transaction have 10 min
-            success()
+        if(time===12) { // when time reach 11 transaction have 10 min
+            setTimeout(()=>success(), 20*1000) // waiting for api make payment and change status of operation in database
             return
         }
         sendToApi('sellcrypto/confirm', data).then(result=>{
@@ -109,10 +109,10 @@ function SellModal({open, toogle, data, rate, User }) {
             if(result.response==="confirmed") {
                 // console.log("on arrete l'intervalle")
                 //setState({...state, status: "confirmed"})
-                success()
+                setTimeout(()=>success(), 20*1000)
             }
             else {
-                setTimeout(()=>intervalFunction(data, time), 15*1000)
+                setTimeout(()=>intervalFunction(data, time), 60*1000)
             }
         })
     }
@@ -260,7 +260,7 @@ function SellModal({open, toogle, data, rate, User }) {
                             }
                             {   // error block
                                 error&&<div className="error-bloc">
-                                <h4 className="message"> {t('sellModal19')} </h4>
+                                    <h4 className="message"> {t('sellModal19')} </h4>
                                     <div className="modal-controls">
                                         <button  onClick={()=>toogle(false)} > Close </button>
                                     </div>

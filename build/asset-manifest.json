@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.8ccfc79b.chunk.css",
-    "main.js": "/static/js/main.d9c87559.chunk.js",
-    "main.js.map": "/static/js/main.d9c87559.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.9109fb3e.js",
-    "runtime-main.js.map": "/static/js/runtime-main.9109fb3e.js.map",
+    "main.css": "/static/css/main.56e9df02.chunk.css",
+    "main.js": "/static/js/main.86c0dc63.chunk.js",
+    "main.js.map": "/static/js/main.86c0dc63.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.140d170a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.140d170a.js.map",
     "static/css/2.eb7ff923.chunk.css": "/static/css/2.eb7ff923.chunk.css",
-    "static/js/2.b4af41c3.chunk.js": "/static/js/2.b4af41c3.chunk.js",
-    "static/js/2.b4af41c3.chunk.js.map": "/static/js/2.b4af41c3.chunk.js.map",
-    "static/js/3.0c33e7fa.chunk.js": "/static/js/3.0c33e7fa.chunk.js",
-    "static/js/3.0c33e7fa.chunk.js.map": "/static/js/3.0c33e7fa.chunk.js.map",
+    "static/js/2.a5f5d4bb.chunk.js": "/static/js/2.a5f5d4bb.chunk.js",
+    "static/js/2.a5f5d4bb.chunk.js.map": "/static/js/2.a5f5d4bb.chunk.js.map",
+    "static/js/3.1699845a.chunk.js": "/static/js/3.1699845a.chunk.js",
+    "static/js/3.1699845a.chunk.js.map": "/static/js/3.1699845a.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.eb7ff923.chunk.css.map": "/static/css/2.eb7ff923.chunk.css.map",
-    "static/css/main.8ccfc79b.chunk.css.map": "/static/css/main.8ccfc79b.chunk.css.map",
-    "static/js/2.b4af41c3.chunk.js.LICENSE.txt": "/static/js/2.b4af41c3.chunk.js.LICENSE.txt",
+    "static/css/main.56e9df02.chunk.css.map": "/static/css/main.56e9df02.chunk.css.map",
+    "static/js/2.a5f5d4bb.chunk.js.LICENSE.txt": "/static/js/2.a5f5d4bb.chunk.js.LICENSE.txt",
     "static/media/1f44f.fdee0474.svg": "/static/media/1f44f.fdee0474.svg",
     "static/media/270d.d44533b1.svg": "/static/media/270d.d44533b1.svg",
     "static/media/apple.b6cc103d.png": "/static/media/apple.b6cc103d.png",
@@ -52,6 +52,7 @@
     "static/media/img9.a4a8dd40.jpg": "/static/media/img9.a4a8dd40.jpg",
     "static/media/ipercash.9e4fcaae.jpeg": "/static/media/ipercash.9e4fcaae.jpeg",
     "static/media/ivc.cd5085bc.png": "/static/media/ivc.cd5085bc.png",
+    "static/media/linkedin.6a6beb6c.svg": "/static/media/linkedin.6a6beb6c.svg",
     "static/media/logo-ipercash.3cc4267d.png": "/static/media/logo-ipercash.3cc4267d.png",
     "static/media/mali.8f7bd1a9.png": "/static/media/mali.8f7bd1a9.png",
     "static/media/master.99bff969.png": "/static/media/master.99bff969.png",
@@ -85,10 +86,10 @@
     "static/media/yup.efad7d28.png": "/static/media/yup.efad7d28.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.9109fb3e.js",
+    "static/js/runtime-main.140d170a.js",
     "static/css/2.eb7ff923.chunk.css",
-    "static/js/2.b4af41c3.chunk.js",
-    "static/css/main.8ccfc79b.chunk.css",
-    "static/js/main.d9c87559.chunk.js"
+    "static/js/2.a5f5d4bb.chunk.js",
+    "static/css/main.56e9df02.chunk.css",
+    "static/js/main.86c0dc63.chunk.js"
   ]
 }

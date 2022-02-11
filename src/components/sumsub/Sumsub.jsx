@@ -47,6 +47,8 @@ function Sumsub({User, dispatch, call, close}) {
         }
     }, [])
 
+    const [show, setShow] = useState(false);
+
     const messageHandler=(message, data)=>{
         switch (message) {
             case "idCheck.onStepInitiated": // commence une etape
@@ -102,7 +104,12 @@ function Sumsub({User, dispatch, call, close}) {
     return (
         <div id="sumsub" className="sumsub">
             {/* <div id="sumsub-websdk-container"></div> */}
-            {token ? (<SumsubWebSdk
+            <div className='sub-text'>
+                <div className='sub-div1'>Pour la sécurité de vos transactions, uniquement lors de votre première opération vous serez identifié par votre carte d’identité ou votre passeport et effectuerez une reconnaissance faciale.</div>
+                <div  className='sub-div2'> Cette procédure est imposée par la politique internationale contre le terrorisme et le blanchiment d’argent.</div>
+                {/* <p>For the security of your transactions, only at the time of your first transaction you will be identified by your identity card or passport and will perform a facial recognition. This procedure is imposed by the international policy against terrorism and money laundering.</p> */}
+            </div>
+            { token  ? (<SumsubWebSdk
                 accessToken={token}
                 expirationHandler={()=>token}
                 config={widgetOptions}
@@ -111,7 +118,8 @@ function Sumsub({User, dispatch, call, close}) {
                 onError={errorHandler}
                 onInitialized={(data=>console.log("onInitialized ", data))}
                 // onActionSubmitted={submit}
-            />): ( <div className="loader"><ReactLoading type="spin" color='#CC1616' height={100} width={100} /></div> )
+            />): ''
+            // ( <div className="loader"><ReactLoading type="spin" color='#CC1616' height={100} width={100} /></div> )
             }
         </div>
     )

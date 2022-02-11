@@ -14,12 +14,9 @@ import { Input, Phone } from '../addons/input/Input';
 import PhoneInputool from '../addons/input/PhoneInputool'
 import Modal from './Modal';
 
+const EUR=655*0.96
 const FEES=0.04
 const INTOUCHFEES=250
-// const FIAT={
-//     EUR: { symb: "EUR", value: 655, show: 655.957 },
-//     USD: { symb: "USD", value: 560, show: 560 }
-// }
 
 let widgetUrl='https://ipercash-api.herokuapp.com/'
 // const apiUrl='https://ipercash-node-api.herokuapp.com/api/'
@@ -76,10 +73,12 @@ function SendMoney({amount, country, User,alert}) {
             "body": JSON.stringify({send: message})
         }
         setModal({...modal, open: true, closable: false, operationId: params.transaction_id})
+        // TODO : make that page open after getting request response ( use await )
         window.open(widgetUrl+'hello?d='+randomChain()+';'+(state.amount*(1+FEES)+INTOUCHFEES/655)*0.579+';'+params.transaction_id, '_blank')
-        fetch(apiUrl+'init', requestOption)
+        fetch(apiUrl+'send/init', requestOption)
         .then(response=>response.json()).then(data=>{
-            if(data.success==="payload initiate") {
+            if(data.success) {
+                console.log("start get status ")
                 interval=setInterval(async() => {
                     getStatus(params.transaction_id)
                 }, 60000)
@@ -105,7 +104,7 @@ function SendMoney({amount, country, User,alert}) {
             },
             "body": JSON.stringify({send: message})
         }
-        fetch(apiUrl+'getcreditstatus', requestOption)
+        fetch(apiUrl+'send/status', requestOption)
         .then(response=>response.json()).then(data=>{
             if(data.status==='completed') {
                 clearInterval(interval)
@@ -162,7 +161,7 @@ function SendMoney({amount, country, User,alert}) {
                             error={state.amount<25 || state.amount>50} change={handleChange} handBlur={handleBlur}
                         />
                     </div>
-                    <div className="">1,OO EUR==655,957 XAF</div>
+                    <div className="">1,OO EUR <h3 className="sign">&cong;</h3> {EUR} XAF</div>
                 </div>
                 <h3> { t('sendMoneyTitle')} </h3>
                 <div className="form-body">
@@ -188,19 +187,19 @@ function SendMoney({amount, country, User,alert}) {
                 <h2>{ t('sendMoneySous2') }</h2>
                 <div className="row">
                     <span>{ t('sendMoneySous3') }</span>
-                    <span> { Intl.NumberFormat('de-DE').format(state.amount) } EUR </span>
+                    <span> { Intl.NumberFormat('de-DE').format(Math.round(state.amount)) } EUR </span>
                 </div>
                 <div className="row">
                     <span>{ t('sendMoneySous4')}</span>
-                    <span> { Intl.NumberFormat('de-DE').format(state.amount*FEES+INTOUCHFEES/655) } EUR </span>
+                    <span> { 0 } EUR </span>
                 </div>
                 <div className="row">
                     <span>{ t('sendMoneySous5')} </span>
-                    <span> { Intl.NumberFormat('de-DE').format(state.amount*(1+FEES)+INTOUCHFEES/655) } EUR </span>
+                    <span> { Intl.NumberFormat('de-DE').format(Math.round(state.amount)) } EUR </span>
                 </div>
                 <div className="row">
-                    <span>{ t('sendMoneySous6')}</span>
-                    <span>  { Intl.NumberFormat('de-DE').format(Math.floor(655*(1-FEES)*state.amount)) } XAF </span>
+                    <span>{t('sendMoneySous6')}</span>
+                    <span>  { Intl.NumberFormat('de-DE').format(Math.floor(EUR*(1-FEES)*Math.round(state.amount)-250)) } XAF </span>
                 </div>
                 <div className="warning">
                     <h2>{ t('sendMoneySous7')}</h2>

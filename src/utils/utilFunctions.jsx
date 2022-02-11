@@ -146,7 +146,7 @@ const checkWalletAddress=(address)=>{
 }
 
 const checkPassword=(password)=>{
-    return password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
+    return password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@%*+-_]{8,}$/)
 }
 
 

@@ -73,7 +73,10 @@
     margin: 10px 0px;
 }
 
-
+.sendmoney .sign {
+    display: inline;
+    margin: 0px;
+}
 
 @media screen and (min-width: 992px) {
     .sendmoney {

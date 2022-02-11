@@ -73,7 +73,6 @@ const Forget =({type, color}) => {
                             <div className="resend-title">
                                 <h1>{t('forgetSous4')}</h1>
                                 <hr/>
-                                <h3>{t('forgetSous5')}</h3>
                                 <p>{t('forgetSous6')}</p>
                                 <p>{t('forgetSous7')}</p>
                                 <hr/><br/>

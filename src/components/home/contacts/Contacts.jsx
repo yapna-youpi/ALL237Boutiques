@@ -13,7 +13,7 @@ import Form from './Form';
 import enseigne from './images/enseigne.png';
 // import facebook from './images/facebook.svg';
 // import instagram from './images/instagram.svg';
-// import linkedin from './images/linkedin.svg';
+import linkedin from './images/linkedin.svg';
 // import twitter from './images/twitter.svg';
 // import location from './images/location-pin.svg';
 // import message from './images/ui-message.svg';
