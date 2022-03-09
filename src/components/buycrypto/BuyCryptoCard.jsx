@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {useHistory} from 'react-router-dom'
+// import {useHistory} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Modal } from 'react-responsive-modal'
 import ReactLoading from 'react-loading'
@@ -25,7 +25,7 @@ function BuyCryptoCard({Amount, User}) {
     })
     const [modal, setModal] = useState(false)
     const openModal=()=>setModal(!modal)
-    let history=useHistory()
+    // let history=useHistory()
     useEffect(async() => {
         getCryptoRate().then(newRate=>{
             // console.log("le nouveau rate", newRate)

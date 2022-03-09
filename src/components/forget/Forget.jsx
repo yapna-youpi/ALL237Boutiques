@@ -8,9 +8,7 @@ import { checkEmail, sendToApi } from '../../utils/utilFunctions'
 import Button from '@material-ui/core/Button'
 import { toastify } from '../addons/toast/Toast'
 
-import styled from  './forget.css'
-// import toast from "react-hot-toast"
-// import { CgOculus } from "react-icons/cg"
+import './forget.css'
 
 const Forget =({type, color}) => {
     const { t } = useTranslation();

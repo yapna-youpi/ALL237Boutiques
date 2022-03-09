@@ -23,7 +23,7 @@ function Steps() {
     }
     let lang='en'
     try {
-        let lang=JSON.parse(localStorage.getItem("lang")).lang
+        lang=JSON.parse(localStorage.getItem("lang")).lang
     } catch (error) {
     }
     const hideVideo=()=>setState({...state, open: false})

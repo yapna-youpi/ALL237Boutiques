@@ -8,7 +8,7 @@ import { sendToApi, checkPassword } from '../../utils/utilFunctions'
 import Button from '@material-ui/core/Button'
 
 
-import styled from './reset.css'
+import './reset.css'
 
 const Forget =({history, match, type, color}) => {
     const { t } = useTranslation();
@@ -18,11 +18,6 @@ const Forget =({history, match, type, color}) => {
         cfPassword: ''
     });
 
-    const [errors, setErrors] = useState({
-        password:false,
-        cfPassword:false
-    })  
-    const [waiting, setWaiting]=useState(false)
     const [lode, setLode] = useState(false)
 
     const onChange= target =>{
@@ -32,23 +27,9 @@ const Forget =({history, match, type, color}) => {
         console.log(target.value)
     }
 
-    const handleBlur=target=>{
-        switch (target.name) {
-            case "password":
-                setErrors({...errors, password: !checkPassword(state.password)})
-                break
-        
-            case "cfPassword":
-                setErrors({...errors, cfPassword: state.password !== state.cfPassword})
-                break
-            default:
-                break
-        }
-    }
 
     const handleSubmit=(e)=>{
-        e.preventDefault();
-        setWaiting(true)
+        e.preventDefault()
         setLode(true)
         sendToApi(`user/reset/${match.params.id}`, state.password)
             .then(data=>{
@@ -60,7 +41,6 @@ const Forget =({history, match, type, color}) => {
                         history.push('/login')
                     }, 2000);
                 } else  toastify('error','password not reset')
-                setWaiting(false)
             })
         return false
     }

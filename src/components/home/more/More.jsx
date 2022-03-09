@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactPlayer from 'react-player'
 import { useTranslation } from 'react-i18next'
 
 import phone from './imojies/emoji_u1f44b.svg'
@@ -20,7 +19,7 @@ function More() {
                 <h3 className="more-mot"><span >{t('moreSous1')}IPER</span>Cash </h3>
                 <p>{t('moreSous2')}
                 </p>
-                <div className='player'><img style={{width:'100%'}} src={femme} /></div>
+                <div className='player'><img style={{width:'100%'}} src={femme} alt="" /></div>
                 <p>{t('moreSous3')}
                     <div className='img-phone'><img  src={phone} alt='emojie phone' /></div>
                 </p>

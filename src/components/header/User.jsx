@@ -1,26 +1,21 @@
 import React, { useState } from 'react'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
 import { useTranslation } from 'react-i18next'
 
 import { FaUser, FaSignOutAlt} from 'react-icons/fa'
 import { HiPencilAlt } from 'react-icons/hi'
-import { Divider, MenuList, Paper } from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
+import { Divider } from '@material-ui/core'
 
 import './user.css'
-import { setUser } from '../../store/actions'
 
 function User({user, nav, logout}) {
     const { t } = useTranslation();
 
     const [anchor, setAnchor]=useState(null)
-    let history=useHistory()
     const open=Boolean(anchor)
     const show=(e)=>{
-        console.log("we enter")
+        // console.log("we enter")
         setAnchor(e.currentTarget)
     }
     const close=()=>setAnchor(null)
@@ -33,9 +28,9 @@ function User({user, nav, logout}) {
         logout()
         nav('/login')
     }
-    const leave=(e)=>{
-        console.log("we leave ", e.relatedTarget)
-    }
+    // const leave=(e)=>{
+    //     console.log("we leave ", e.relatedTarget)
+    // }
     // console.log(user)
     return (
         <>

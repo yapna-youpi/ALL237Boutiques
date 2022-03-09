@@ -21,10 +21,6 @@ import Login from '../components/login/Login';
 import Forget from '../components/forget/Forget';
 import Reset from '../components/forget/Reset';
 import More from '../components/home/more/More';
-import Description from "../components/description/Description"
-
-// help module import
-import Help from '../components/Help/Help';
 import Valid from '../components/valid/Valid';
 
 function Main({User}) {
@@ -38,7 +34,7 @@ function Main({User}) {
                 <script src="https://widget.mercuryo.io/embed.2.0.js"></script>
             </Helmet>
             <Router>
-                { !showHead() && <Header />}
+                { !showHead() && <Header /> }
                 <Switch>
                     <Route path='/' exact component={Home} />
                     <Route path='/home' exact component={Home} />
@@ -54,10 +50,7 @@ function Main({User}) {
                     <Route path='/valid/help/:id' component={Valid} />
                     <Route path='/forget' exact component={Forget} />
                     <Route path="/reset/:id" exact component={Reset} />
-                    <Route path='/help' exact component={Help} />
-                    <Route path='/help/description' exact component={Description} />
                     <Route path='/More' exact component={More} />
-                    {/* <Route path='/help/:id' component={Suivi} /> */}
                     {/* <Route path='/sumsub' exact component={Sumsub} />  */}
                     <Route path='*' component={NotFound} />
                 </Switch>

@@ -18,14 +18,14 @@ const Arrows=({type, onClick, isEdge})=>{
 
 function Testimonials() {
     const { t } = useTranslation();
-    console.log(window.innerWidth)  //620, 1000
+    // console.log(window.innerWidth)
     return (
         <div className="testimonials">
             <h1> {t('testimonialTitle')} </h1>
             <h3>
                 {/* debut de trustpilot */}
                 <div className="trustpilot-widget" data-locale="en-GB" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="616d7e144a86378d5870e77c" data-style-height="52px" data-style-width="100%">
-                    <a href="https://uk.trustpilot.com/review/ipercash.fr" target="_blank" rel="noopener">Trustpilot</a>
+                    <a href="https://uk.trustpilot.com/review/ipercash.fr" target="_blank" >Trustpilot</a>
                 </div>    
                  {/* end of trustpilot */}
             </h3>

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
-import { changeCountry, setUser } from '../../store/actions'
+import { setUser } from '../../store/actions'
 
 import './header.css'
 import UserIcon from './User'
@@ -17,12 +17,9 @@ function Header({User, Country, dispatch}) {
     let history=useHistory()
     const myref=React.createRef()
     useEffect(() => {
-        console.log("clear interval ", interval)
         clearInterval(interval)
         interval=setInterval(()=>{
-            console.log("checkConnection ")
             const actualTm=+new Date
-            console.log("user timestamp ", User.timestamp)
             if(actualTm-(User.timestamp) > 6000000) { // 30000000
                 logout()
                 history.push('/login')
@@ -87,7 +84,7 @@ function Header({User, Country, dispatch}) {
                         <li className="nav-link" onClick={()=>nav('/#contacts')}>{t('link4')}</li> 
                         <li className="nav-link sixth" > <a href="/signup"> {t('link9')} </a></li>
                         <UserIcon user={User}  nav={nav} logout={logout} />
-                        <li className="nav-link" > <a href="/help" target="_blank"> {t('link5')} </a></li> 
+                        <li className="nav-link" > <a href="http://support.ipercash.io" target="_blank"> {t('link5')} </a></li> 
                         {/* <button > {t('accountButton')} </button>  */}
                     </ul>
                 </nav>

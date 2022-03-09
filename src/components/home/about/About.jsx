@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslation, Trans } from 'react-i18next'
-import { useHistory, Link} from 'react-router-dom'
 
 import './about.css'
 import image from './undraw_startup_life_2du2.svg';
@@ -8,7 +7,6 @@ import chevron from './stylish-right.svg';
 
 function About() {
     const { t }=useTranslation()
-    let history=useHistory()
 
     return (
         <div className="about" id="about" >

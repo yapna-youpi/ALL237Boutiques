@@ -14,7 +14,7 @@ import Sumsub from '../sumsub/Sumsub'
 import {Input, Input2} from '../addons/input/Input'
 import PhoneInput from '../addons/input/PhoneInput'
 import Fiats from '../addons/Fiats/Fiats'
-import {randomId, getCryptoRate, roundDecimal} from '../../utils/utilFunctions'
+import {randomId, getCryptoRate} from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleMobile'
 
 function BuyCryptoMobile({Amount, country, User}) {

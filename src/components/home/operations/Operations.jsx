@@ -7,7 +7,6 @@ import './operations.css'
 import { changeAmount, changeCrypto } from '../../../store/actions';
 import image from './undraw_Mobile_pay_re_sjb8.svg';
 
-const appUrl="http://localhost:3000/"
 
 function Operations({dispatch, Amount, crypto}) {
     const { t }=useTranslation()

@@ -3,9 +3,9 @@ import { roundDecimal } from '../../utils/utilFunctions';
 /* le pourcentage de la commission est de 10% */
 
 const FEES=0.125    // commission 10% plus 2.5% de frais intouch
-const INTOUCHFEES=0.025
-const percent=1    //1.15
-const inverPercent=1    //0.85
+// const INTOUCHFEES=0.025
+// const percent=1    //1.15
+// const inverPercent=1    //0.85
 
 const cryptoChange=(value, rate)=>{
     if(value<0.00033) {

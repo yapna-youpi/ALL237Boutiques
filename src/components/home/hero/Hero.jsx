@@ -7,9 +7,9 @@ import image from './images/hero.svg';
 import camer from './images/camer.png';
 import sene from './images/sene.png';
 import ivc from './images/ivc.png';
-import mali from './images/mali.png';
-import burki from './images/burki.png';
-import guine from './images/guine.png';
+// import mali from './images/mali.png';
+// import burki from './images/burki.png';
+// import guine from './images/guine.png';
 
 
 function Hero() {
