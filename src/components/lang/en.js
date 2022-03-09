@@ -326,7 +326,7 @@ const english={ translation : {
           moreSous8:"- Buy cryptocurrency to credit their electronic wallet;",
           moreSous9:"- Buy cryptocurrency by paying with Mobile Money",
           moreSous10:"- Withdraw cryptocurrency from his wallet and transfer it to his Mobile Money account.",
-          moreSous11:"IPERCash is not a trader, IPERCash does not offer financial products or speculative investments but intends to participate in the increase in the volume of cryptocurrency exchanges in the world.",
+          moreSous11:"IPERCash is not a trading society, IPERCash does not offer financial products or speculative investments but intends to participate in the increase in the volume of cryptocurrency exchanges in the world.",
           moreSous12:"We are therefore offering Africans the opportunity to purchase services and products in cryptocurrency, and vice versa, to be paid in cryptocurrency.",
 
         //data 

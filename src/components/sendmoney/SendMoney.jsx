@@ -10,7 +10,7 @@ import crypt from '../../utils/crypt';
 import { toastify } from '../addons/toast/Toast'
 
 import './sendmoney.css'
-import { Input, Phone } from '../addons/input/Input';
+import { Input } from '../addons/input/Input';
 import PhoneInputool from '../addons/input/PhoneInputool'
 import Modal from './Modal';
 
@@ -19,11 +19,10 @@ const FEES=0.04
 const INTOUCHFEES=250
 
 let widgetUrl='https://ipercash-api.herokuapp.com/'
-// const apiUrl='https://ipercash-node-api.herokuapp.com/api/'
 
 var interval=null
 
-function SendMoney({amount, country, User,alert}) {
+function SendMoney({amount, country, User, alert}) {
     const { t }=useTranslation()
     // value of differents field in the form 
     const [state, setState] = useState({
@@ -61,7 +60,13 @@ function SendMoney({amount, country, User,alert}) {
     // this function send the data operation on api, open the widget and show the modal
     const send=()=>{
         // console.log(state)
-        let params={"transaction_id":randomId('C'), "phone": state.phone, "name": state.name, userId: User.userId}
+        let params={
+            "transaction_id":randomId('C'), "phone": state.phone,
+            "name": state.name, userId: User.userId,
+            "fiat_pay": Math.floor(EUR*(1-FEES)*Math.round(state.amount)-250)
+        }
+        console.log("amount to send ", params)
+        // return
         let message=crypt(JSON.stringify(params))
         const requestOption={
             "method": "POST",
@@ -74,7 +79,7 @@ function SendMoney({amount, country, User,alert}) {
         }
         setModal({...modal, open: true, closable: false, operationId: params.transaction_id})
         // TODO : make that page open after getting request response ( use await )
-        window.open(widgetUrl+'hello?d='+randomChain()+';'+(state.amount*(1+FEES)+INTOUCHFEES/655)*0.579+';'+params.transaction_id, '_blank')
+        window.open(widgetUrl+'hello?d='+randomChain()+';'+(state.amount)*0.579+';'+params.transaction_id, '_blank')
         fetch(apiUrl+'send/init', requestOption)
         .then(response=>response.json()).then(data=>{
             if(data.success) {

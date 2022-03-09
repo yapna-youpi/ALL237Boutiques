@@ -324,7 +324,7 @@ const french={ translation : {
           moreSous8:"- Acheter de la cryptomonnaie pour créditer leur  portefeuille électronique ;",
           moreSous9:"- Acheter de la cryptomonnaie en payant avec Mobile Money",
           moreSous10:"- Retirer de la cryptomonnaie de son portefeuille et la transférer dans son compte Mobile Money.",
-          moreSous11:"IPERCash n’est pas un trader, IPERCash ne propose ni des produits financiers, ni  d’investissements spéculatifs mais entend participer à l’augmentation du volume des échanges en cryptomonnaie dans le monde.",
+          moreSous11:"IPERCash n’est pas une société de trading, IPERCash ne propose ni des produits financiers, ni  d’investissements spéculatifs mais entend participer à l’augmentation du volume des échanges en cryptomonnaie dans le monde.",
           moreSous12:"Nous offrons donc aux Africains la possibilité  d’acheter des services et des produits en cryptomonnaie,et inversement, d’être payé en cryptomonnaie.",
 
           //data 
