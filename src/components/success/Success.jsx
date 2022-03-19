@@ -20,7 +20,7 @@ function Success() {
         if(!data) history.push('/')
         else {
             setState(data)
-            // sessionStorage.clear()
+            sessionStorage.removeItem('data')
         }
     }, [])
 

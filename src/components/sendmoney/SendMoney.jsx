@@ -14,9 +14,12 @@ import { Input } from '../addons/input/Input';
 import PhoneInputool from '../addons/input/PhoneInputool'
 import Modal from './Modal';
 
-const EUR=655*0.96
-const FEES=0.04
-const INTOUCHFEES=250
+const EUR=655
+// const EuroFees=655*0.964
+const FEES=0.0396
+// const INTOUCHFEES=250
+
+// mercuryo fee up to 3.8%
 
 let widgetUrl='https://ipercash-api.herokuapp.com/'
 
@@ -34,9 +37,7 @@ function SendMoney({amount, country, User, alert}) {
     })
     // show waiting modal
     const [modal, setModal] = useState({open: false, closable: false, operationId: null, status: null})
-    // handle fiat currency
-    // const [fiat, setFiat]=useState('')
-    // const [inter, setInter]=useState(null)
+
     let history=useHistory()
     // handle change on different field, update mactching field in state
     const handleChange=e=>{
@@ -59,12 +60,13 @@ function SendMoney({amount, country, User, alert}) {
 
     // this function send the data operation on api, open the widget and show the modal
     const send=()=>{
+        // console.log(state)
         let params={
             "transaction_id":randomId('C'), "phone": state.phone,
             "name": state.name, userId: User.userId,
             "fiat_pay": Math.floor(EUR*(1-FEES)*Math.round(state.amount)-250)
         }
-        // return
+        console.log("the params ", params)
         let message=crypt(JSON.stringify(params))
         const requestOption={
             "method": "POST",
@@ -81,6 +83,7 @@ function SendMoney({amount, country, User, alert}) {
         fetch(apiUrl+'send/init', requestOption)
         .then(response=>response.json()).then(data=>{
             if(data.success) {
+                console.log("start get status ")
                 interval=setInterval(async() => {
                     getStatus(params.transaction_id)
                 }, 60000)
@@ -157,6 +160,7 @@ function SendMoney({amount, country, User, alert}) {
         setState({amount: amount, name: "", phone: "", cPhone: ""})
         setModal({open: false, closable: false})
     }
+
     // console.log("le state", state)
     return (
         <>
@@ -169,7 +173,7 @@ function SendMoney({amount, country, User, alert}) {
                             error={state.amount<25 || state.amount>50} change={handleChange} handBlur={handleBlur}
                         />
                     </div>
-                    <div className="">1,OO EUR <h3 className="sign">&cong;</h3> {EUR} XAF</div>
+                    <div className="">1,OO EUR <h3 className="sign">&cong;</h3> 655,957 XAF</div>
                 </div>
                 <h3> { t('sendMoneyTitle')} </h3>
                 <div className="form-body">
@@ -199,7 +203,7 @@ function SendMoney({amount, country, User, alert}) {
                 </div>
                 <div className="row">
                     <span>{ t('sendMoneySous4')}</span>
-                    <span> { 0 } EUR </span>
+                    <span> { Intl.NumberFormat('de-DE').format(roundPrecision(state.amount*FEES, 2)+0.38) }  EUR </span>
                 </div>
                 <div className="row">
                     <span>{ t('sendMoneySous5')} </span>

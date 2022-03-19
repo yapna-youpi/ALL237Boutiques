@@ -14,7 +14,7 @@ import Sumsub from '../sumsub/Sumsub'
 import {Input, Input2} from '../addons/input/Input'
 import PhoneInput from '../addons/input/PhoneInput'
 import Fiats from '../addons/Fiats/Fiats'
-import {randomId, getCryptoRate} from '../../utils/utilFunctions'
+import {randomId, getCryptoRate, roundDecimal} from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleMobile'
 
 function BuyCryptoMobile({Amount, country, User}) {
@@ -39,12 +39,16 @@ function BuyCryptoMobile({Amount, country, User}) {
     useEffect(async() => {
         getCryptoRate().then(newRate=>{
             if(!newRate) return
+            console.log("le nouveau rate")
+            console.log(newRate.EUR.rate)
             setRate({...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float})
             setState({...state, rate: newRate[state.fiat].rate_float, ...xafChange(Amount, newRate)})
         })
         let interval=setInterval(() => {
             getCryptoRate().then(newRate=>{
                 if(!newRate) return
+                console.log("le nouveau rate")
+                console.log(newRate.EUR.rate)
                 setRate({...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float})
             })
         }, 60*1000)
@@ -144,6 +148,7 @@ function BuyCryptoMobile({Amount, country, User}) {
         return false
     }
 
+    console.log("the state ", state)
     return (
         <div className="buycrypto">
             <Modal open={modal} onClose={()=>setModal(!modal)} showCloseIcon={false} center classNames={{modal: 'custom-modal'}}>
@@ -157,7 +162,7 @@ function BuyCryptoMobile({Amount, country, User}) {
                             <b>{t('buyCryptoMobileSous1')} </b><br/> <br/>
                             {state.wallet}
                         </div> <br/>
-                        <div className="form-group">
+                        <div style={{marginBottom:"5px"}} className="form-group">
                             <Input2 label={t('buyCryptoMobileSous21')} change={checkAddress} />
                         </div>
                         <div className="load">

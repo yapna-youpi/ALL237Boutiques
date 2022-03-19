@@ -5,7 +5,10 @@ function Timer({stamp, action}) {
     useEffect(()=>{
         let interval=setInterval(() => {
             // console.log("je compte toujours")
-            if(time<=1000) action()
+            if(time<=1000) {
+                clearInterval(interval)
+                action()
+            }
             setTime(time-1000)
         }, 1000);
         return ()=>{

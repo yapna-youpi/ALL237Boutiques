@@ -1,7 +1,8 @@
-import React,{ useState } from 'react'
+import React,{ useState, useEffect } from 'react'
 import { useHistory} from 'react-router-dom';
 import {FiSmartphone} from 'react-icons/fi';
 import { FaRegCreditCard } from 'react-icons/fa';
+import { CgChevronDoubleDownR } from 'react-icons/cg'
 import { useTranslation } from 'react-i18next'
 import { ImForward } from "react-icons/im";
 
