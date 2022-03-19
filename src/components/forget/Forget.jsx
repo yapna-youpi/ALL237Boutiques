@@ -48,7 +48,6 @@ const Forget =({type, color}) => {
             }) 
     }
     const resend=()=>{
-        console.log("user data ", state)
         setLoader(true)
         sendToApi('user/resend', {email: state, type: "lost"})
         .then((data)=>{

@@ -56,7 +56,6 @@ function BuyCryptoCard({Amount, User}) {
     }
     // la fonction qui gere l'evenement onBlur des inputs
     const handleBlur=e=>{
-        console.log(e.name)
         if(e.value==="") {
             let newErrors=errors
             newErrors[e.name]=true
@@ -72,18 +71,15 @@ function BuyCryptoCard({Amount, User}) {
         let result
         switch (e.name) { // amount c'est le montant en crypto monnaie 
             case "crypto":
-                console.log("c'est le montant")
                 result=cryptoChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break
             case "xaf":
-                console.log("c'est le xaf")
                 result=xafChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break;
             
             case "eu":
-                console.log("c'est le eu")
                 result=euroChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break;
@@ -113,7 +109,6 @@ function BuyCryptoCard({Amount, User}) {
             // type: 'credit_card',
         }
         let result=await sendToApi('cardinit', params, User.token)
-        console.log(result)
         if(result.response) {
             setId({...operationId, status: false})
             openModal()

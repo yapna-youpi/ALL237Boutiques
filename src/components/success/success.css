@@ -33,7 +33,7 @@
     border-bottom: 1px solid var(--red);
 }
 .complete .rates {
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 .complete .rate img {
     display: block;
@@ -45,6 +45,41 @@
 }
 .complete .rate h5 {
     margin-bottom: 5px;
+}
+.complete .bilan-button {
+    display: inline-block;
+    margin: 15px;
+    font-size: .9em;
+    text-decoration: underline;
+    /* border: 1px solid #000; */
+}
+.complete .bilan-button:hover {
+    cursor: pointer;
+}
+.bilan {
+    min-width: 300px;
+    color: var(--night-blue);
+}
+
+.bilan .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 2% 1%;
+    border-top: 3px solid var(--night-blue);
+    font-size: 1em;
+}
+.bilan .row a {
+    color: blue;
+    text-decoration: underline;
+    outline: none;
+}
+.bilan .span {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    /* color: var(--green); */
 }
 
 
@@ -78,5 +113,13 @@
     }
     .complete .rate {
         margin-right: 20px;
+    }
+    .bilan .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        padding: 1%;
+        border-top: 3px solid var(--night-blue);
+        font-size: 1.2em;
     }
 }

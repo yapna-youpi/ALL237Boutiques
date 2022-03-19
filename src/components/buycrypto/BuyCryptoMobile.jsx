@@ -39,16 +39,12 @@ function BuyCryptoMobile({Amount, country, User}) {
     useEffect(async() => {
         getCryptoRate().then(newRate=>{
             if(!newRate) return
-            console.log("le nouveau rate")
-            console.log(newRate.EUR.rate)
             setRate({...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float})
             setState({...state, rate: newRate[state.fiat].rate_float, ...xafChange(Amount, newRate)})
         })
         let interval=setInterval(() => {
             getCryptoRate().then(newRate=>{
                 if(!newRate) return
-                console.log("le nouveau rate")
-                console.log(newRate.EUR.rate)
                 setRate({...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float})
             })
         }, 60*1000)
@@ -148,7 +144,6 @@ function BuyCryptoMobile({Amount, country, User}) {
         return false
     }
 
-    console.log("the state ", state)
     return (
         <div className="buycrypto">
             <Modal open={modal} onClose={()=>setModal(!modal)} showCloseIcon={false} center classNames={{modal: 'custom-modal'}}>

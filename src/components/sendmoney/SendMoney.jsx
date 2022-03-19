@@ -59,13 +59,11 @@ function SendMoney({amount, country, User, alert}) {
 
     // this function send the data operation on api, open the widget and show the modal
     const send=()=>{
-        // console.log(state)
         let params={
             "transaction_id":randomId('C'), "phone": state.phone,
             "name": state.name, userId: User.userId,
             "fiat_pay": Math.floor(EUR*(1-FEES)*Math.round(state.amount)-250)
         }
-        console.log("amount to send ", params)
         // return
         let message=crypt(JSON.stringify(params))
         const requestOption={
@@ -83,7 +81,6 @@ function SendMoney({amount, country, User, alert}) {
         fetch(apiUrl+'send/init', requestOption)
         .then(response=>response.json()).then(data=>{
             if(data.success) {
-                console.log("start get status ")
                 interval=setInterval(async() => {
                     getStatus(params.transaction_id)
                 }, 60000)
@@ -113,7 +110,13 @@ function SendMoney({amount, country, User, alert}) {
         .then(response=>response.json()).then(data=>{
             if(data.status==='completed') {
                 clearInterval(interval)
-                sessionStorage.setItem('data', JSON.stringify({operation: 'credit', params: state}))
+                let params={
+                    ...state,
+                    id: id,
+                    operation: 'credit',
+                    amount: Math.floor(EUR*(1-FEES)*Math.round(state.amount)-250)
+                }
+                sessionStorage.setItem('data', JSON.stringify({operation: 'credit', params: params}))
                 history.push('/complete')
                 return data
             }
