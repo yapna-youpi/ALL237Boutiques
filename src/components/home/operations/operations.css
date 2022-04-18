@@ -40,6 +40,12 @@
 .operations .picture {
     display: none;
 }
+.listen{
+    display: flex;
+}
+.contri{
+    width: 12%;
+}
 
 @media screen and (min-width: 768px) {
     .operations {
@@ -75,5 +81,11 @@
     }
     .operations .picture {
         width: 50%;
+    }
+    .listen{
+        display: flex;  
+    }
+    .contri{
+        width: 14.5%;
     }
 }

@@ -6,6 +6,13 @@ import './footer.css'
 function Footer() {
     const { t } = useTranslation();
 
+    let AmList={
+        en: ["http://ftp.ipercash.fr/politiques//aml_en.pdf","http://ftp.ipercash.fr/politiques//ploicy_fr.pdf" , "http://ftp.ipercash.fr/politiques//term_en.pdf"],
+        fr: ["http://ftp.ipercash.fr/politiques//aml_fr.pdf","http://ftp.ipercash.fr/politiques//policy_en.pdf" , "http://ftp.ipercash.fr/politiques//terms_fr.pdf" ]
+    }
+    console.log(AmList)
+    let lang=JSON.parse(localStorage.getItem("lang")||'{"lang":"en"}').lang
+
     return (
         <div className="footer">
             <footer>
@@ -14,9 +21,13 @@ function Footer() {
                     <h5>{t('footerSous2')} <span>{t('footerSous3')}</span> </h5>
                 </div>
                 <div className="second">
-                    <button>{t('footerSous4')}</button> &ensp;
-                    <button>{t('footerSous5')}</button>  &ensp;
-                    <button>{t('footerSous6')}</button>   &ensp;
+                    <button  ><a href={AmList[lang][2]} target="_blank">{t('footerSous4')}</a>&ensp;</button>
+                    <button  ><a href={AmList[lang][1]} target="_blank">{t('footerSous5')}</a>&ensp;</button>
+                    <button  ><a href={AmList[lang][0]} target="_blank">{t('footerSous6')}</a>&ensp;</button>
+                    {/* </button> 
+                    <button>  &ensp;
+                    <button></button>   &ensp; */}
+                    
                 </div>
             </footer>
         </div>

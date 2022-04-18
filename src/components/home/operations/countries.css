@@ -1,0 +1,93 @@
+
+.choose-country {
+    position: relative;
+    width: 100%;
+}
+.choose-country .dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+}
+.choose-country .dropdown img {
+    width: 3em;
+}
+.choose-country .dropdown span {
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--transparent2);
+    clip-path: polygon(50% 80%, 10% 24%, 86% 24%);
+}
+.countries-list {
+    position: absolute;
+    /* left: 15%; */
+    top: 97%;
+    width: 100%;
+    height: 0px;
+    overflow: hidden;
+    background: var(--transparent);
+    transition: all 1s ease-out;
+}
+.countries-list.show {
+    height: 200px;
+    overflow-y: auto;
+}
+.countries-list .country {
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+.countries-list .country img {
+    width: 50px;
+    margin: 0px 20% 0px 2%;
+}
+.countries-list h4 {
+    margin: 20px 0px;
+}
+@media screen and (min-width: 532px) {
+    /* .choose-country {
+        position: relative;
+        width: 10%;
+        transform: translateY(95px);
+        margin-left: 90%;
+    } */
+}
+@media screen and (min-width: 770px) {
+
+    /* .choose-country {
+        position: relative;
+        width: 7.3%;
+        transform: translateY(125px);
+        margin-left: 42%;
+    } */
+    .choose-country .dropdown {
+        cursor: pointer;
+    }
+    .choose-country .dropdown span:hover {
+        background: var(--night-blue);
+    }
+    .countries-list .country:hover {
+        background: var(--transparent);
+        cursor: pointer;
+    }
+    .choose-country .dropdown img {
+        width: 3.5em;
+    }
+    
+}
+@media screen and (min-width: 1060px) { 
+    /* .choose-country {
+        position: relative;
+        width: 5.25%;
+        transform: translateY(115px);
+        margin-left: 49.5%;
+    } */
+}
+@media screen and (min-width: 1300px) { 
+    /* .choose-country {
+        position: relative;
+        width: 5.25%;
+        transform: translateY(180px);
+        margin-left: 42%;
+    } */
+}

@@ -64,9 +64,11 @@ function SendMoney({amount, country, User, alert}) {
         let params={
             "transaction_id":randomId('C'), "phone": state.phone,
             "name": state.name, userId: User.userId,
-            "fiat_pay": Math.floor(EUR*(1-FEES)*Math.round(state.amount)-250)
+            "fiat_pay": Math.floor(EUR*(1-FEES)*Math.round(state.amount)-250),
+            "initial_amount": state.amount
         }
-        console.log("the params ", params)
+        // console.log("the params ", params)
+        // return
         let message=crypt(JSON.stringify(params))
         const requestOption={
             "method": "POST",
@@ -119,7 +121,7 @@ function SendMoney({amount, country, User, alert}) {
                     operation: 'credit',
                     amount: Math.floor(EUR*(1-FEES)*Math.round(state.amount)-250)
                 }
-                sessionStorage.setItem('data', JSON.stringify({operation: 'credit', params: params}))
+                sessionStorage.setItem('data', JSON.stringify(params))
                 history.push('/complete')
                 return data
             }

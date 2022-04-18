@@ -205,7 +205,7 @@ function SellModal({ open, toogle, data, rate, User }) {
                 <div className="modal-container">
                     {step === 'conflict' && (<div className="waiter">
                         <h2>{t('sellModal2')} </h2>
-                        <Timer stamp={300 * 1000} action={change} />
+                        <Timer stamp={600 * 1000} action={change} />
                         <div className="modal-controls">
                             <button disabled={state.id} onClick={change} >{t('sellModal3')} </button>
                         </div>
@@ -242,7 +242,7 @@ function SellModal({ open, toogle, data, rate, User }) {
                             {state.start && (
                                 // transaction bloc
                                 <div className="send-bloc">
-                                    {!state.txid && <><Timer stamp={300 * 1000} action={cancel} />
+                                    {!state.txid && <><Timer stamp={600 * 1000} action={cancel} />
                                         <p>
                                             {t('sellModal7')} <input ref={ref1} value={data.amount} className="icopy" onClick={() => copy(1)} contentEditable={false} />{/* <FaRegCopy size={25} /> */}
                                             {t('sellModal6')} <b className="wadd">{receiveWallet}</b> <br />

@@ -3,18 +3,21 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from 'react-i18next';
+import ReactLoading from 'react-loading';
 
 import { apiUrl } from '../../../utils/utilFunctions';
 
 
 function Form() {
     const { t } = useTranslation();
+    const [ load, setLoad] = useState(false)
     const [state, setState]=useState({name: "", email: "", message: ""})
     const handleChange=(target)=>{
         setState({...state, [target.name]: target.value})
     }
     const handleSubmit= async(e)=>{
         e.preventDefault()
+        setLoad(true);
         console.log("submit")
         var options = {
             method: 'POST',
@@ -26,6 +29,7 @@ function Form() {
         let data=await axios.request(options).then(response=>response.data).catch(err=>({response: null}))
         console.log("la reponse", data)
         if(data.response) {
+            setLoad(false)
             toast.success('thank you \n have a nice day', {
                 position: "top-right",
                 autoClose: 5000,
@@ -36,6 +40,7 @@ function Form() {
                 progress: undefined,
             })
         } else {
+            setLoad(false)
             toast.error('message not send !', {
                 position: "top-right",
                 autoClose: 5000,
@@ -77,7 +82,15 @@ function Form() {
                     <textarea  value={state.message} name="message" required id="" cols="30" rows="3" onChange={e=>handleChange(e.target)} />
                 </div>
                 <div className="form-group">
-                    <button type="submit">{t('formSous4')}</button>
+                    <button className='btn-newsletter' type='submit'
+                            // onClick={(e)=>handleSubmit(e)}
+                    >  
+                        <div className='btn-loader'>
+                            { load? (<ReactLoading  type="spin"  color="#ffffff" width="28px" height="28px" 
+                            />) : t('formSous4') } 
+                        </div>
+                    </button>
+                    {/* <button type="submit"></button> */}
                 </div>
             </form>
                 {/* <button onClick={toasty}>show toast</button> */}

@@ -1,9 +1,12 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-
+// import { BsCurrencyBitcoin, BsCartPlusFill, BsCapslockFill } from 'react-icons/bs'
+import buy from '../../../assets/buy.svg'
+import sell from '../../../assets/blockchain.svg'
+import send from '../../../assets/send.svg'
 import './services.css'
-import Countries from './Countries';
+
 
 function Services() {
     let hisoty=useHistory()
@@ -17,19 +20,19 @@ function Services() {
                 <div className="service" onClick={()=>hisoty.push('/buycrypto')}>
                     <h3> {t('servicesTitle1')} </h3>
                     <p>{t('sousService1')}</p>
-                    <div className="icone"> <img src="" alt=""/> </div>
+                    <div className="icone" ><img src={buy} alt='buy' width='45px' /> </div>
                 </div>
                 <div className="service" onClick={()=>hisoty.push('/sellcrypto')}>
                     <h3>{t('servicesTitle2')} </h3>
                     {/* <p> Withdraw your cryptocurrencies by transferring it instantaneously to a Mobile Money account </p> */}
                     <p>{t('sousService2')} </p>
-                    <div className="icone"> <img src="" alt=""/> </div>
+                    <div className="icone" ><img src={sell} alt='sell' width='40px' /> </div>
                 </div>
-                <div className="service">
+                <div className="service" onClick={()=>hisoty.push('/sendmoney')}>
                     <h3> {t('servicesTitle3')} </h3>
                     <p> {t('sousService3')} </p>
-                    <Countries />
-                    <div className="icone"> <img src="" alt=""/> </div>
+                    
+                    <div className="icone"><img src={send} alt='send' width='70px' /></div>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ function Success() {
     let history = useHistory()
     useEffect(() => {
         let data = JSON.parse(sessionStorage.getItem('data'))
-        // console.log("the data ", data)
+        console.log("the data ", data)
         if(!data) history.push('/')
         else {
             setState(data)
@@ -26,7 +26,7 @@ function Success() {
 
     const closeModal=()=>setShow(false)
 
-    console.log("the state ", state)
+    // console.log("the state ", state)
 
     return (
         <div id="complete" className="complete" >

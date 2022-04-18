@@ -27,14 +27,33 @@
 }
 .icone {
     position: absolute;
+    color: var(--white);
     background: var(--red);
     width: 75px;
     height: 75px;
+    font-size: 30px;
     border-radius: 50%;
     top: -35px;
     left: 42%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.service:hover .icone {
+    position: absolute;
+    color: var(--white);
+    background: #810a0a;
+    width: 75px;
+    height: 75px;
+    font-size: 30px;
+    border-radius: 50%;
+    top: -35px;
+    left: 42%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media screen and (min-width: 768px) {
     .services-container {
@@ -42,6 +61,9 @@
         flex-flow: row wrap;
         justify-content: center;
         align-items: center;
+    }
+    .icone{
+        font-size: inherit;
     }
     .service {
         width: 30%;
