@@ -2,11 +2,11 @@ import { roundDecimal } from '../../utils/utilFunctions';
 
 /* le pourcentage de la commission est de 5% */
 
-const FEES=0.05
-const INTOUCHFEES=250
+const FEES=0.0395
+const INTOUCHFEES=0 // les frais intouch sont de 250
 
 const cryptoChange=(value, rate)=>{
-    if(value<0.00009) {
+    if(value<0.000296) {
         return {
             xaf: 0,
             eu: 0,
@@ -25,7 +25,7 @@ const cryptoChange=(value, rate)=>{
 }
 
 const euroChange=(value, rate)=>{
-    if(value<4) {
+    if(value<10) {
         return {
             xaf: value*655,
             eu: value,
@@ -43,7 +43,7 @@ const euroChange=(value, rate)=>{
 }
 
 const xafChange=(value, rate)=>{
-    if(value<3000 || rate===0 ) {
+    if(value<6550 || rate===0 ) {
         return {
             xaf: value,
             eu: roundDecimal(value/655),

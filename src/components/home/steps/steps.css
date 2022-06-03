@@ -60,7 +60,11 @@
   width: 350px;
   height: 250px;
 }
-
+.coli{
+  display: block;
+  color: var(--white);
+  text-decoration: underline;
+}
 
 @media screen and (min-width: 768px) {
   .steps {

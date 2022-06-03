@@ -15,7 +15,7 @@
     border: 3px solid var(--red);
     border-radius: 10px;
 }
-.service {
+.service,.servic {
     position: relative;
     width: 75%;
     margin: 50px auto;
@@ -23,7 +23,6 @@
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.05) 0px 8px 32px;
     border-radius: 5px;
-
 }
 .icone {
     position: absolute;
@@ -43,7 +42,21 @@
 .service:hover .icone {
     position: absolute;
     color: var(--white);
-    background: #810a0a;
+    background: var(--night-blue);
+    width: 75px;
+    height: 75px;
+    font-size: 30px;
+    border-radius: 50%;
+    top: -35px;
+    left: 42%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.servic:hover .icone {
+    position: absolute;
+    color: var(--white);
+    background: var(--night-blue);
     width: 75px;
     height: 75px;
     font-size: 30px;
@@ -70,8 +83,24 @@
         padding: 5%;
         font-size: 1.5em;
     }
+    .servic {
+        width: 30%;
+        padding: 5%;
+        font-size: 1.4em;
+    }
     .service:hover {
         cursor: pointer;
+        transform: translateY(-15px);
+        transition: all 0.5s ease-out;
+        background-color: var(--night-blue);
+        color: var(--white);
+    }
+    .servic:hover {
+        cursor: pointer;
+        transform: translateY(-15px);
+        transition: all 0.5s ease-out;
+        background-color: var(--night-blue);
+        color: var(--white);
     }
 }
 
@@ -80,6 +109,11 @@
         width: 20%;
         padding: 5%;
         font-size: 1.5em;
+    }
+    .servic{
+        font-style: 1.4em;
+        width: 20%;
+        padding: 5%;
     }
     .service h3, .service p {
     }

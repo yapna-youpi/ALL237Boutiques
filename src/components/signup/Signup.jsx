@@ -27,6 +27,12 @@ function Signup({Country}) {
 
     let history=useHistory()
 
+    const handleSubmit= e => {
+        e.preventDefault();
+        console.log("start login")
+        if(!active()) signup(state)
+        return false
+    }
     const signup=async(userdata)=>{
         setLode(true)
         sendToApi('user/signup', userdata)
@@ -97,7 +103,7 @@ function Signup({Country}) {
                         (<div className="signup-title">
                             <h1 style={{color:'#0F394C',fontFamilly:'Segoe UI'}}>{t('SignUpTitle')}</h1>
                             <p className="signup-paragrap">{t('SignUpSous1')}</p>
-                            <form onSubmit={signup}>
+                            <form onSubmit={e=>handleSubmit(e)}>
                                 <Input val={state.name} label={t('SignUpSous5')} name="name" id="signup-name" help="this field is required"
                                     error={errors.name&&!state.name} 
                                     change={handleChange} handBlur={()=>setErrors({...errors, name: !state.name})}
@@ -115,7 +121,6 @@ function Signup({Country}) {
                                     change={handleChange} handBlur={()=>setErrors({...errors, password: true})}
                                 />
                                 <Input val={state.cPassword} type="password" label={t('SignUpSous9')} name="cPassword" id="confirPassword" error={errors.cPassword&&(state.password!==state.cPassword)} help="should match to password"
-                                    error={errors.cPassword&&(state.password!==state.cPassword)}
                                     change={handleChange} handBlur={()=>setErrors({...errors, cPassword: true})}
                                 />
                                 <div className="checkbox">
@@ -123,6 +128,7 @@ function Signup({Country}) {
                                     <label htmlFor="check">J'accepte les condition d'utilisation</label>
                                 </div>
                                 <Button  fullWidth className="sign-btnt"
+                                    type="submit"
                                     disabled={!active()} 
                                     onClick={()=>signup({...state, country: parsePhoneNumber(state.phone).country})}
                                 >

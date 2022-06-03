@@ -1,4 +1,4 @@
-import React,{ useState} from 'react'
+import React,{ useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import ReactLoading from 'react-loading';
@@ -17,6 +17,8 @@ import logoIpercash from './assets/logo-ipercash.png'
 
 let deferredPrompt=null
 
+
+
 window.addEventListener('beforeinstallprompt', function(e) {
     // alert("deferred props enable")
     // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -24,9 +26,10 @@ window.addEventListener('beforeinstallprompt', function(e) {
     // Stash the event so it can be triggered later.
     deferredPrompt = e
     // console.log("the deferend event", e )
-  })
+})
+    
+    function Login({User, dispatch}) {
 
-function Login({User, dispatch}) {
     const { t } = useTranslation()
     // console.log("le user ", User, dispatch)
     let history=useHistory()
@@ -61,18 +64,18 @@ function Login({User, dispatch}) {
                 break
         }
     }
-
     const login=(userdata)=>{
         setLoad(true)
+        console.log("the userdata ", userdata)
         sendToApi('user/login', userdata)
         .then(data=>{
             setLoad(false)
             if(data.userId) {
                 toastify("success", `Hello ${data.userName}`)
-                console.log("good")
+                // console.log("good")
                 dispatch(setUser({...data, timestamp: +new Date}))
-                // history.push('/')
-                window.location.href="/"
+                history.push('/')
+                // if(deferredPrompt) install()
             } else toastify("error", "failed to login")
         })
         install()
@@ -81,14 +84,13 @@ function Login({User, dispatch}) {
     const handleSubmit= e => {
         e.preventDefault();
         console.log("start login")
-        if(!active()) login()
+        if(!active()) login(state)
         return false
     }
 
     const install=()=>{
         try {
             if(!localStorage.getItem("install")) {
-                // alert("you should choice")
                 deferredPrompt.prompt()
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
@@ -97,8 +99,8 @@ function Login({User, dispatch}) {
                         // console.log('User dismissed the A2HS prompt');
                     }
                     deferredPrompt = null;
-                })
-                localStorage.setItem("install", JSON.stringify({ask: true, date: +new Date}))
+                    localStorage.setItem("install", JSON.stringify({ask: true, date: +new Date}))
+                });
             }
         } catch (error) {
             
@@ -106,7 +108,7 @@ function Login({User, dispatch}) {
     }
 
     const active=()=>!(checkPassword(state.password)&&checkEmail(state.email))
-
+    
     return (
         <div className="login">
             <div className="login-content">
@@ -120,21 +122,20 @@ function Login({User, dispatch}) {
                                 change={handleChange} 
                             />  
                         </div>
-                      
                         <div className="form-groupe">
                                 <Input val={state.password} name="password" type="password" label={t('LoginSous4')} help={t('LoginSous8')}
                                     error={state.password&&(!checkPassword(state.password))}
                                     change={handleChange} 
                                 />
-
                             <div  className="login-checkbox">
                                 <span className="login-forget-password" onClick={()=>history.push('/forget') } style={{textDecoration: 'underline',lineHeight:'15px'}}>{t('LoginSous9')}</span>
                             </div>
                         </div>
                        
                         <Button style={{backgroundColor:'#cc1616'}} fullWidth 
+                            type="submit"
                             disabled={active()} 
-                            onClick={()=>login(state)}
+                            // onClick={e=>login(state)}
                         >
                             { load? (<ReactLoading type="spin" color="#ffffff" width="28px" height="28px" 
                                         />) : t('LoginSous6') }    
@@ -145,7 +146,7 @@ function Login({User, dispatch}) {
             </div>
             <div className="login-image">
                 <span className="login-block-logo"><img className={'login-logo'} src={logoIpercash} /></span>
-                    {<img src={iperFot} style={{position:'relative'}} width="400px"  />}
+                    {<img src={iperFot} style={{position:'relative',transform:"translateY(12px)"}} width="400px"  />}
             </div>
         </div>
     )

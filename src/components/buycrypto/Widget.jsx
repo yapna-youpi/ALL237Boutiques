@@ -17,7 +17,7 @@ function Widget({open, close, amount, crypto, wallet, opId}) {
 
     return (
         <div className="widget">
-            <Modal open={close} onClose={close} center classNames={{modal: 'custom-modal'}} closeOnOverlayClick={false}>
+            <Modal open={open} onClose={close} center classNames={{modal: 'custom-modal'}} closeOnOverlayClick={false}>
                 <div className="opid">
                     {t('widget')}
                     <h3>

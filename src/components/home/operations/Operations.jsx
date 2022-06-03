@@ -28,7 +28,7 @@ function Operations({dispatch, Amount, crypto}) {
         <>
         {/* <div className='contrie'><Countries /></div> */}
         <div className="operations" id="operations">
-            <div className="operations-container">
+            <div className="operations-container" data-aos="zoom-in"  data-aos-duration="800" src>
                 <div className='thead' >
                     <h1 className='theader'> {t('operationTitle')} </h1>
                 </div>
@@ -37,18 +37,32 @@ function Operations({dispatch, Amount, crypto}) {
                     <div className='contri'><Countries /></div> 
                 </div>
                 <div className="button-operation">
-                    <button onClick={()=>startOperation('/sendmoney')} > {t('operationButton1')} </button>
-                    <div className="">
-                        <button onClick={()=>startOperation('/sellcrypto', 'crypto')}>
+                    <button className='btn-neon' onClick={()=>startOperation('/sendmoney')} > 
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        {t('operationButton1')} 
+                    </button>
+                    <div className="taille">
+                        <button className='btn-neon' onClick={()=>startOperation('/sellcrypto', 'crypto')}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
                             {t('operationButton2')}
                         </button>
-                        <button onClick={()=>startOperation('/buycrypto', 'crypto')} >
+                        <button className='btn-neon' onClick={()=>startOperation('/buycrypto', 'crypto')} >
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
                             {t('operationButton3')}
                         </button>
                     </div>
                 </div>
             </div>
-            <img src={image} alt="" className="picture" />
+            <img src={image} alt="" className="picture" data-aos="fade-up"  data-aos-duration="1500" />
         </div>
         </>
     )

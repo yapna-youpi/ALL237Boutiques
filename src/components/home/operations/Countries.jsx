@@ -5,9 +5,9 @@ import './countries.css'
 import camer from './images/camer.png'
 import sene from './images/sene.png'
 import ivc from './images/ivc.png'
-import mali from './images/mali.png'
-import burki from './images/burki.png'
-import guine from './images/guine.png'
+// import mali from './images/mali.png'
+// import burki from './images/burki.png'
+// import guine from './images/guine.png'
 import { changeCountry } from '../../../store/actions';
 
 function Countries({country, dispatch}) {
@@ -35,7 +35,7 @@ function Countries({country, dispatch}) {
                 <div className="country" onClick={()=>selectCountry({img: ivc}, 'CI')} >
                     <img src={ivc} alt=""/>
                 </div>
-                <div className="country" onClick={()=>selectCountry({img: mali}, 'ML')} >
+                {/* <div className="country" onClick={()=>selectCountry({img: mali}, 'ML')} >
                     <img src={mali} alt=""/>
                 </div>
                 <div className="country" onClick={()=>selectCountry({img: burki}, 'BF')} >
@@ -43,7 +43,7 @@ function Countries({country, dispatch}) {
                 </div>
                 <div className="country" onClick={()=>selectCountry({img: guine}, 'GN')} >
                     <img src={guine} alt=""/>
-                </div>
+                </div> */}
             </div>
         </div>
     )

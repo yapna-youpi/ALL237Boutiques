@@ -25,11 +25,11 @@
     width: 100%;
     height: 0px;
     overflow: hidden;
-    background: var(--transparent);
+    background: var(--white);
     transition: all 1s ease-out;
 }
 .countries-list.show {
-    height: 200px;
+    height: 150px;
     overflow-y: auto;
 }
 .countries-list .country {

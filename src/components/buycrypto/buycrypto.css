@@ -75,7 +75,15 @@
   margin: 5px;
   color: var(--red);
 }
-
+.disjoint{
+  width: 90%;
+  margin: 7px auto;
+  color: #222222;
+  border: 2px solid #fd005493;
+  background-color: #FCE4EC;
+  border-radius: 5px;
+  padding: 10px auto!important  ;
+}
 @media screen and (min-width: 768px) {
   .buy-container {
     width: 80%;

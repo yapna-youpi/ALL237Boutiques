@@ -1,4 +1,6 @@
 import React from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 import './home.css'
 import Hero from './hero/Hero';
@@ -11,12 +13,19 @@ import Steps from './steps/Steps';
 import Contacts from './contacts/Contacts';
 
 function Home() {
+    React.useEffect(()=>{
+		AOS.init({
+			scrollContainer: "#approot",
+			duration: 1000,
+		})
+    }, [])
+
     return (
         <div className='home'>
             <Hero />
             <Operations />
-            <Partner />
             <About />
+            <Partner />
             <Services />
             <Testimonials />
             <Steps />

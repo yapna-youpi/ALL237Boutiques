@@ -1,14 +1,14 @@
 import { cashOut } from '../../intouch/api'
 import { sendToApi, trackStatus } from '../../utils/utilFunctions'
 import { checkBalance, checkAddress } from '../../bitcoins/process'
-import crypt from '../../utils/crypt'
+// import crypt from '../../utils/crypt'
 
 const mainNetUrl='https://api.blockcypher.com/v1/btc/main/txs/push'
 // const testNetUrl='https://api.blockcypher.com/v1/btc/test3/txs/push'
 
 const apiUrl='https://ipercash-node-api.herokuapp.com/api/'
 
-// fonction principale de d'achat
+// fonction principale de l'achat
 const buy=async (state, User, callback, cancel, success)=>{
     // console.log(" you can buy crypto ", state, User)
     let i=0
@@ -24,6 +24,7 @@ const buy=async (state, User, callback, cancel, success)=>{
     }
     // console.log("les params",params)
     let crypto=state.amount*100000000
+    // let crypto=0.01*100000000 
     let wallet=state.wallet
     let result, partner_id
 
@@ -64,9 +65,9 @@ const buy=async (state, User, callback, cancel, success)=>{
             
         } while (attemps<3)
         if(result.status==='fail') {
-            //console.log(result)
+            // console.log("the result ",result)
             cancel(result, i)
-            return result
+            return result 
         }
         attemps=0
         // fin de la premiere etape 
@@ -83,14 +84,15 @@ const buy=async (state, User, callback, cancel, success)=>{
             if(cashout.url) {
                 callback(i, cashout.url)
             }
-        } while (attemps<3);
+        } while (attemps<3)
         if(partner_id) {
             trackStatus({...params, id: params.partner_id}, User.token, ()=>afterBuy(i, callback, wallet, crypto, cancel, success, User), cancel)
         }
         else {
-            cancel({status: 'fail', cause: "payment demand has fail"}, i)
+            cancel({status: 'fail', cause: "payment demand has fail", cn: 8}, i)
             return 10
         }
+        // comment above in test or under in production
         // callback(i)
         /* fin de l'operation */
 
@@ -98,7 +100,7 @@ const buy=async (state, User, callback, cancel, success)=>{
 
         
     } catch (error) {
-        cancel({status: 'fail', cause: "unknow error"}, i)
+        cancel({status: 'fail', cause: "unknow error", cn: 0}, i)
         // console.log("l'erreur", error)
     }
 }
@@ -146,7 +148,7 @@ const sendCrypto=async (hash)=>{
     .then(data=>{
         // console.log(data)
         if(data.tx) return {status: 'success', txid: data.tx.hash}
-        else return {status: 'fail', cause: "can't send funds"}
+        else return {status: 'fail', cause: "can't send funds", cn: 7}
     })
 }
 
@@ -154,7 +156,7 @@ const getHash=async (wallet, crypto, User)=>{
     let params={recipient: wallet, amount: crypto, userId: User.userId}
     // console.log("le montant ", params.amount)
     return await sendToApi('hash', params, User.token).then(result=>{
-        if(result==="error") return {status: 'fail', cause: "can't get hash"}
+        if(result==="error") return {status: 'fail', cause: "can't get hash", cn: 7}
         // console.log("response ", result.response)
         return result
         

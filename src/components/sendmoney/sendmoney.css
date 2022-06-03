@@ -1,29 +1,35 @@
 .sendmoney {
     padding: 5%;
 }
+
 .sendmoney .form {
-    padding: 5%;
+    padding: 2.5% 5%;
     /* box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,rgba(17, 17, 26, 0.05) 0px 8px 32px; */
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border-radius: 5px;
 }
+
 .sendmoney .form-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.form-head > div:nth-child(1) {
+
+.form-head>div:nth-child(1) {
     flex: 1;
     margin-right: 5%;
 }
-.form-head > div:nth-child(2) {
+
+.form-head>div:nth-child(2) {
     color: var(--red);
     font-weight: bold;
     text-align: right;
 }
+
 .sendmoney .form-group {
-    margin: 20px 0px;
+    margin: 35px 0px;
 }
+
 .sendmoney button {
     display: block;
     width: 100%;
@@ -33,20 +39,23 @@
     border-radius: 5px;
     font-size: 1.2em;
     font-weight: bold;
-    color: var(--white );
+    color: var(--white);
     transition: all 1s ease-out;
 }
+
 .sendmoney button:disabled {
     cursor: not-allowed;
     background: var(--transparent2);
 }
+
 .summary {
     margin: 20px 0px;
-    padding: 5%;
+    padding: 3% 5%;
     background: var(--red);
     border-radius: 5px;
     color: white;
 }
+
 .summary .row {
     display: flex;
     justify-content: space-between;
@@ -55,20 +64,24 @@
     border-top: 3px solid var(--white);
     font-size: 1.2em;
 }
+
 .summary .warning {
     background: var(--white);
     border-radius: 8px;
     color: var(--black);
 }
+
 .warning h2 {
-    padding: 3% 5%;
+    padding: 2.5% 5%;
     border-bottom: 1px solid var(--transparent2);
     color: var(--red);
 }
+
 .warning p {
     padding: 3% 5%;
     margin: 0px;
 }
+
 .warning h2 {
     margin: 10px 0px;
 }
@@ -78,18 +91,55 @@
     margin: 0px;
 }
 
+.eclips {
+    padding: 10px;
+}
+.disjoint{
+    width: 90%;
+    margin: 7px auto;
+    color: #222222;
+    border: 2px solid #fd005493;
+    background-color: #FCE4EC;
+    border-radius: 5px;
+    padding: 10px auto!important  ;
+}
+
 @media screen and (min-width: 992px) {
     .sendmoney {
         display: flex;
         justify-content: space-between;
         padding: 3%;
     }
+
     .sendmoney .form {
         width: 48%;
     }
+
     .summary {
         width: 48%;
         margin: 0px;
         margin-left: 20px;
+    }
+
+    .eclips {
+        padding: 10px;
+    }
+
+    .delay {
+        animation: eclip 0.5s cubic-bezier(.17, .67, .82, -0.04);
+
+    }
+
+    @keyframes eclip {
+        0% {
+            transform: translateX(25px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(-25px);
+            opacity: 1;
+        }
+
     }
 }

@@ -1,55 +1,57 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import SumsubWebSdk from '@sumsub/websdk-react'
 import { connect } from 'react-redux'
-import ReactLoading from 'react-loading'
+import { useTranslation } from 'react-i18next'
 
 import { sendToApi } from '../../utils/utilFunctions'
 import { setUser } from '../../store/actions'
 
 import './sumsub.css'
+import kyc from './KYC1.png'
 
 // customise the widget
-const widgetOptions={
+const widgetOptions = {
     "desc": "first customization",
     "target": "websdk",
     "type": "standalone",
     "uiConf": {
-      "steps": {
-        "STATUS": {},
-        "APPLICANT_REQUEST": {},
-        "REVIEW": {},
-        "CREATE_APPLICANT": {}
-      },
-      "customCss": "custo1 css",
-      "customCssStr": ".sumsub-logo {\ndisplay: none;\n}",
-      "allowUploadAllFileFormats": false
+        "steps": {
+            "STATUS": {},
+            "APPLICANT_REQUEST": {},
+            "REVIEW": {},
+            "CREATE_APPLICANT": {}
+        },
+        "customCss": "custo1 css",
+        "customCssStr": ".sumsub-logo {\ndisplay: none;\n}",
+        "allowUploadAllFileFormats": false
     },
     "navConf": {
-      "showWarningScreen": false,
-      "skipWelcomeScreen": false,
-      "showWelcomeScreen": false,
-      "skipAgreementsScreen": true,
-      "skipReviewScreen": true,
-      "forceMobile": false,
-      "disableContinuingOnMobile": false
+        "showWarningScreen": false,
+        "skipWelcomeScreen": false,
+        "showWelcomeScreen": false,
+        "skipAgreementsScreen": true,
+        "skipReviewScreen": true,
+        "forceMobile": false,
+        "disableContinuingOnMobile": false
     },
     "createdBy": "fezeu@ipercash.fr",
     "respectApplicantLevel": false
 }
 
-function Sumsub({User, dispatch, call, close}) {
-    const [token, setToken]=useState("")
+function Sumsub({ User, dispatch, call, close }) {
+    const { t } = useTranslation()
+    const [token, setToken] = useState("")
     useEffect(async () => {
-        let tok=await updateToken()
+        let tok = await updateToken()
         setToken(tok)
         return () => {
-            
+
         }
     }, [])
 
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
 
-    const messageHandler=(message, data)=>{
+    const messageHandler = (message, data) => {
         switch (message) {
             case "idCheck.onStepInitiated": // commence une etape
                 console.log("l'utilisateur a commence")
@@ -65,66 +67,63 @@ function Sumsub({User, dispatch, call, close}) {
                 break;
             case "idCheck.onApplicantSubmitted":
                 console.log("l'utilisateur a soumis les documents")
-                // call()
                 break;
             case "idCheck.applicantStatus":
                 console.log("le status de l'utilisateur a change", data)
                 sendToApi('sumsub/status', User, User.token)
-                    .then(data=>{
-                        if(data!=='error')
+                    .then(data => {
+                        if (data !== 'error')
                             data.applicantStatus ? handleKyc() : console.log("not pass")
                         else console.log("error")
                     })
-                // call()
                 break;
-            
+
             default:
                 console.log("cas non gere ", message)
                 break;
         }
     }
-    const errorHandler=()=>console.log("an error is occur")
+    const errorHandler = () => console.log("an error is occur")
     // get a new token when current is exprired
-    const updateToken=async()=>{
-        let data, witness=true, i=0
+    const updateToken = async () => {
+        let data, witness = true, i = 0
         do {
-            data=await sendToApi('sumsub/token', User, User.token).then(data=>data)
+            data = await sendToApi('sumsub/token', User, User.token).then(data => data)
             // console.log("the token",data)
-            if(data.userId!=="undefined") witness=false
+            if (data.userId !== "undefined") witness = false
             i++
             console.log(i)
-        } while (witness && i<=2)
-        if(witness || data.status===false) close()
+        } while (witness && i <= 2)
+        if (witness || data.status === false) close()
         else return data.token
     }
-    const handleKyc=()=>{
-        dispatch(setUser({...User, kyc: true}))
+    const handleKyc = () => {
+        dispatch(setUser({ ...User, kyc: true }))
         call()
     }
     return (
         <div id="sumsub" className="sumsub">
-            {/* <div id="sumsub-websdk-container"></div> */}
-            <div className='sub-text'>
-                <div className='sub-div1'>Pour la sécurité de vos transactions, uniquement lors de votre première opération vous serez identifié par votre carte d’identité ou votre passeport et effectuerez une reconnaissance faciale.</div>
-                <div  className='sub-div2'> Cette procédure est imposée par la politique internationale contre le terrorisme et le blanchiment d’argent.</div>
-                {/* <p>For the security of your transactions, only at the time of your first transaction you will be identified by your identity card or passport and will perform a facial recognition. This procedure is imposed by the international policy against terrorism and money laundering.</p> */}
-            </div>
-            { token  ? (<SumsubWebSdk
-                accessToken={token}
-                expirationHandler={()=>token}
-                config={widgetOptions}
-                // options={widgetOptions}
-                onMessage={message=>messageHandler(message)}
-                onError={errorHandler}
-                onInitialized={(data=>console.log("onInitialized ", data))}
-                // onActionSubmitted={submit}
-            />): ''
-            // ( <div className="loader"><ReactLoading type="spin" color='#CC1616' height={100} width={100} /></div> )
+            {show ? (<div className='sub-text'>
+                <img src={kyc} className="img-sumsub" alt="kyc" />
+                <div className='sub-div1'>{t('sumsub1')}</div>
+                <div className='sub-div2'>{t('sumsub2')}</div>
+                <button className='btn-sub' onClick={() => setShow(!show)} style={{ color: '#cc1616' }}>{t('sumsub3')}</button>
+            </div>)
+                : ((token && !show) ? (<SumsubWebSdk
+                    accessToken={token}
+                    expirationHandler={() => token}
+                    config={widgetOptions}
+                    // options={widgetOptions}
+                    onMessage={message => messageHandler(message)}
+                    onError={errorHandler}
+                    onInitialized={(data => console.log("onInitialized ", data))}
+                    // onActionSubmitted={submit}
+                />) : '')
             }
         </div>
     )
 }
 
-const mapStateToProps=state=>({User: state.userReducer.user})
+const mapStateToProps = state => ({ User: state.userReducer.user })
 
 export default connect(mapStateToProps)(Sumsub)

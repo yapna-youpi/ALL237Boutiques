@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 import 'react-phone-number-input/style.css'
 import { isValidPhoneNumber } from 'react-phone-number-input'
 import { connect } from 'react-redux'
@@ -10,11 +10,14 @@ import SellModal from './SellModal';
 import { Input } from '../addons/input/Input';
 import PhoneInputool from '../addons/input/PhoneInputool'
 import Fiats from '../addons/Fiats/Fiats'
-import { getCryptoRate } from '../../utils/utilFunctions'
-import { xafChange, euroChange, cryptoChange } from './handleAmount';
-import Sumsub from '../sumsub/Sumsub';
+import { getCryptoRate, checkWalletAddress } from '../../utils/utilFunctions'
+import { xafChange, euroChange, cryptoChange } from './handleAmount'
+import Sumsub from '../sumsub/Sumsub'
 
 function SellCrypto({Amount, country, User}) {
+    //initialisation de variabl d'environnement
+    let enable = process.env.REACT_APP_SELL_ENABLE;
+
     const { t } = useTranslation()
     // console.log(Amount, User)
     // initialisation des taux de changes
@@ -30,6 +33,7 @@ function SellCrypto({Amount, country, User}) {
     })
     const [modal, setModal] = useState(false)
     const [sum, setSum] = useState(false)
+    const myRef=createRef(null)
     useEffect(async() => {
         getCryptoRate().then(newRate=>{
             if(!newRate) return
@@ -101,7 +105,8 @@ function SellCrypto({Amount, country, User}) {
     }
     // function that manages the activation of the button
     const active=()=>{
-        if( ((state.amount&&state.xaf<65597) && state.number && isValidPhoneNumber(state.number || 342) && state.wallet) && (state.number===state.confirmNumber) )
+        if( ((state.amount&&(state.xaf>=6550 && state.xaf<32750)) && state.number && isValidPhoneNumber(state.number || 342)) 
+            && (state.number===state.confirmNumber) && (state.wallet && checkWalletAddress(state.wallet)) )
             return false
         else return true
     }
@@ -125,11 +130,12 @@ function SellCrypto({Amount, country, User}) {
         let result=cryptoChange(state.amount, rate[f])
         setState({...state, ...result, fiat: f, rate: rate[f]})
     }
-    // console.log("the state", state)
-
+    
+    console.log("the user", User)
     return (
-        <div id="sellcrypto" className="sellcrypto">
-            {sum&&<Modal open={true} onClose={()=>setSum(false)} center={true} >
+        <div id="sellcrypto" className="sellcrypto" ref={myRef}>
+            {enable ==="FALSE"  ? <h3 className='disjoint'>Le service est indisponible</h3> : ""}
+            {sum&&<Modal open={true} onClose={()=>setSum(false)} center={true} container={myRef.current} > 
                 <Sumsub call={openModal} close={()=>setSum(false)} />
             </Modal>}
             {modal&&<SellModal open={modal} toogle={setModal} data={state} rate={rate[state.fiat]} User={User} />}
@@ -143,25 +149,43 @@ function SellCrypto({Amount, country, User}) {
                 </div>
                 <div className="form">
                     <div className="form-group">
-                        <Input val={state.wallet} label={t('sellCrypto6')}  name="wallet" help={t('sellCrypto7')} error={errors.wallet} change={handleChange} handBlur={handleBlur}  />
+                        <Input val={state.wallet} label={t('sellCrypto6')}  name="wallet" help={t('sellCrypto7')}
+                            error={errors.wallet || (state.wallet && !checkWalletAddress(state.wallet))}
+                            change={handleChange} handBlur={handleBlur}
+                        />
                     </div>
                     <div className="form-group">
-                        <Input val={state.xaf}  label={t('sellCrypto8')} name="xaf" type="number" help={t('sellCrypto9')} change={amountChange} error={(state.xaf<3000 || state.xaf>65597)&&state.xaf!==0}   />
-                    </div>
-                    {/* <div className="form-group">
-                        <Input val={state.eu}  label={t('buyCryptoMobileSous9')+' '+state.fiat}  name="eu" type="number" help="the min value is 15.26 EUR" change={amountChange} />
-                    </div> */}
-                    <div className="form-group">
-                        <Input val={state.amount} label={t('sellCrypto10')} name="crypto" type="number" help={t('sellCrypto11')} change={amountChange}  />
+                        <Input val={state.xaf} label={t('sellCrypto8')} name="xaf" type="number" help={t('sellCrypto9')}
+                            change={amountChange} error={(state.xaf<6550 || state.xaf>32750)&&state.xaf!==0}
+                        />
                     </div>
                     <div className="form-group">
-                        <Input val={state.xaf*0.05}  label={t('sellCrypto12')}   />
+                        <Input val={state.eu}  label={t('buyCryptoMobileSous9')+' '+state.fiat} 
+                            name="eu" type="number" help={t('sellCrypto17')} change={amountChange}
+                            error={(state.eu<10 || state.eu>50)&&state.eu!==0}
+                        />
                     </div>
                     <div className="form-group">
-                        <PhoneInputool label={t('sellCrypto13')} name="number" help={t('sellCrypto14')}  change={handleChange} error={validPhone(state.number, isValidPhoneNumber)} cm={true} alert={ country !=='CM'} />
+                        <Input val={state.amount} label={t('sellCrypto10')} name="crypto" type="number" 
+                            help={t('sellCrypto11')} change={amountChange}
+                            error={(state.amount<0.000296 || state.amount>0.00148485)&&state.amount!==0}
+                        />
                     </div>
                     <div className="form-group">
-                        <PhoneInputool label={t('sellCrypto15')} name="confirmNumber" help={t('sellCrypto16')} change={handleChange} error={checkConfirm(state.confirmNumber, state.number)} cm={true} alert={ country !=='CM'} />
+                        {/* val={state.xaf*0.0395+250}  */}
+                        <Input val={state.xaf*0.0395} label={t('sellCrypto12')}   /> 
+                    </div>
+                    <div className="form-group">
+                        <PhoneInputool label={t('sellCrypto13')} name="number" help={t('sellCrypto14')} 
+                            change={handleChange} error={validPhone(state.number, isValidPhoneNumber)} 
+                            cm={true} alert={ country !=='CM'}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <PhoneInputool label={t('sellCrypto15')} name="confirmNumber" help={t('sellCrypto16')} 
+                            change={handleChange} error={checkConfirm(state.confirmNumber, state.number)}
+                            cm={true} alert={ country !=='CM'}
+                        />
                     </div>
                     <div className="form-group">
                         <button disabled={active() || (state.crypto===0) || state.xaf===0 } 

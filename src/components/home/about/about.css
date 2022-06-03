@@ -66,6 +66,47 @@
   .about-container > div {
     width: 45%;
   }
+
+  .about button {
+    display: block;
+    border: none;
+    background: inherit;
+    color: var(--white);
+  }
+  .about button:hover{
+      color: var(--red);
+  }
+  .about .btn-flip{
+    display: block;
+    position: relative;
+    padding: 5%;
+    width: 100%;
+    color: var(--red);
+    border: 2px solid var(--red);
+    border-radius: 10px;
+    font-weight: bold;
+    overflow: hidden;
+    transition: all 0.6s ease-out;
+}
+.about .btn-flip:hover{
+    color: var(--white);
+}
+/* -- apparition oblique --*/
+.about .btn-flip::before{
+    background-color: var(--red);
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    transform: translate(-50%,-50%) rotate(35deg);
+    transition: all 0.6s ease-out;
+    width: 0%;
+    height: 350%;
+}
+.about .btn-flip:hover::before{
+    width: 380%;
+}
   
 }
 
@@ -74,6 +115,6 @@
         font-size: 1.5em;
     }
     .about button {
-        padding: 2% 4%;
+        padding: 2% 4% 2% 0;
     }
 }

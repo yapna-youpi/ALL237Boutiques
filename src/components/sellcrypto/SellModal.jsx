@@ -6,8 +6,7 @@ import ReactLoading from 'react-loading'
 import { FaRegCopy } from 'react-icons/fa'
 import { useTranslation } from 'react-i18next'
 
-import { sendToApi, roundPrecision, checkServiceId, randomId } from '../../utils/utilFunctions'
-import { cashIn } from '../../intouch/api'
+import { sendToApi, roundPrecision, randomId } from '../../utils/utilFunctions'
 import { cryptoChange } from './handleAmount'
 import { toastify } from '../addons/toast/Toast'
 
@@ -15,6 +14,7 @@ import './sellmodal.css'
 import Timer from './Timer'
 
 const receiveWallet = "13tuVVNDH1PLfUEiTEPkMDRQfTRVHyiYn2"
+const FEES = 0.0395
 
 function SellModal({ open, toogle, data, rate, User }) {
     const { t } = useTranslation()
@@ -33,7 +33,10 @@ function SellModal({ open, toogle, data, rate, User }) {
     }, [])
     // function that check if there is a conflict with the amount
     const checkConflict = async () => {
-        let result = await sendToApi('sellcrypto/conflict', { amount: data.amount, userId: User.userId }, User.token)
+        let result = await sendToApi('sellcrypto/conflict', {
+            amount: data.amount, xaf: data.xaf, number: data.number,
+            userId: User.userId
+        }, User.token)
         if (!result.response || result === 'error') {
             toogle()
             toastify("error", `An error are occur please try again`)
@@ -73,13 +76,15 @@ function SellModal({ open, toogle, data, rate, User }) {
                 return <h2>{t('sellModal')}</h2>
             case "unconfirmed yet":
                 //if(!state.status==="unconfirmed yet") checkConfirmation()
-                return <p><center>{t('sellModal1')}<ReactLoading type="balls" color='#CC1616' height={30} width={30} /></center></p>
+                return <p><center>
+                    {t('sellModal1')}<ReactLoading type="balls" color='#CC1616' height={30} width={30} />
+                </center></p>
             case "conflict":
-                return "there are an conflict"
+                return t('sellModal20')
             case "":
                 return ""
             default:
-                return "no transaction found check sender address or resend it"
+                return t('sellModal21')
         }
     }
     // function that handle state changes and the appearance of modal 
@@ -116,13 +121,18 @@ function SellModal({ open, toogle, data, rate, User }) {
             }
         })
     }
-    const success = async () => {
+    const success = async (time=0) => {
+        // if time is greater than 2 we show an error
+        if(time > 1) {
+            history.push('/complete')
+            return
+        }
         // check the state of the payment 
         let successParams = {
             transaction_id: state.id,
-            status: 'complete',
-            rate: rate,
             userId: User.userId
+            // status: 'complete',
+            // rate: rate,
         }
         // show the result to client
         sendToApi('sellcrypto/status', successParams, User.token)
@@ -138,12 +148,17 @@ function SellModal({ open, toogle, data, rate, User }) {
                         sessionStorage.setItem('data', JSON.stringify(p))
                         setTimeout(() => {
                             history.push('/complete')
-                        }, 2000);
+                        }, 2000)
                     } else {    // payment fail
                         if (data.errorStep) {
                             setError(true)
                         }
                     }
+                } else { // retry verification
+                    time++  // increment number of times that the operation has been performed
+                    setTimeout(() => {
+                        success(time)
+                    }, 5000)
                 }
             })
 
@@ -199,9 +214,17 @@ function SellModal({ open, toogle, data, rate, User }) {
 
     // console.log("le state",state)
     return (
-        <Modal open={open} onClose={() => toogle(!open)} showCloseIcon={false} closeOnOverlayClick={false} center classNames={{ overlay: "sell-overlay", modal: 'sell-modal' }}>
-            {!step && <div className="sell-loader"><ReactLoading type="spin" color='#CC1616' height={100} width={100} /></div>}
+        <Modal open={open} onClose={() => toogle(!open)} showCloseIcon={false} closeOnOverlayClick={false}
+            center classNames={{ overlay: "sell-overlay", modal: 'sell-modal' }}
+        >
+            {!step &&
+                // loader before check conflict
+                <div className="sell-loader">
+                    <ReactLoading type="spin" color='#CC1616' height={100} width={100} />
+                </div>
+            }
             {step && (
+                // result of check conflict
                 <div className="modal-container">
                     {step === 'conflict' && (<div className="waiter">
                         <h2>{t('sellModal2')} </h2>
@@ -230,7 +253,7 @@ function SellModal({ open, toogle, data, rate, User }) {
                                             <span>{t('sellModal16')} </span>  <span> {data.number} </span>
                                         </div>
                                         <div className="">
-                                            <span>{t('sellModal17')} </span>  <span> {Intl.NumberFormat('de-DE').format(roundPrecision(cryptoChange(data.amount, rate).xaf * 0.05, 0))} XAF </span>
+                                            <span>{t('sellModal17')} </span>  <span> {Intl.NumberFormat('de-DE').format(roundPrecision(cryptoChange(data.amount, rate).xaf * FEES, 0))} XAF </span>
                                         </div>
                                     </div>
                                     <h3 className="message"> {setMessage()} </h3>
@@ -238,7 +261,8 @@ function SellModal({ open, toogle, data, rate, User }) {
                                         <button disabled={state.id} onClick={change} >{t('sellModal5')} </button>
                                         <button disabled={state.id} onClick={start}>{t('sellModal18')} </button>
                                     </div>
-                                </>)}
+                                </>)
+                            }
                             {state.start && (
                                 // transaction bloc
                                 <div className="send-bloc">
@@ -268,11 +292,12 @@ function SellModal({ open, toogle, data, rate, User }) {
                                         error && <div className="error-bloc">
                                             <h4 className="message"> {t('sellModal19')} </h4>
                                             <div className="modal-controls">
-                                                <button onClick={() => toogle(false)} > Close </button>
+                                                <button onClick={() => toogle(false)} > {t('sellModal22')} </button>
                                             </div>
                                         </div>
                                     }
-                                </div>)}
+                                </div>)
+                            }
                         </>
                     )}
                 </div>

@@ -26,6 +26,7 @@ function Pay({ User }) {
     let ref = React.createRef()
     useEffect(() => {
         let data = JSON.parse(sessionStorage.getItem('data'))
+        console.log("les premiers data ", data)
         data ? start(data) : history.push("/buycrypto/mobile")
         sessionStorage.removeItem("data")
     }, [])
@@ -44,9 +45,11 @@ function Pay({ User }) {
         }
         // console.log("store data le user ", User)
         let result = await sendToApi('buymobile/settransaction', params, User.token)
+        console.log("le resultat ", result)
     }
     const success = async (data) => {
         // success function 
+        console.log("the final data ", data)
         let params = {
             transaction_id: data.id,
             txid: data.txid,
@@ -74,12 +77,14 @@ function Pay({ User }) {
         buy(data, User, changeStep, cancel, (txid) => success({ ...data, txid: txid }))
     }
     const cancel = (data, i) => {
+        console.log("echec de l'operation")
         // console.log("les params", params)
         let witness = i > 1
         //console.log("les data ", data)
         setTrace({ status: true, error: data, traceStep: i, backFund: witness, mobilePaid: false })
         if (witness) backFunds(data, i, witness)
         else {
+            console.log("les params ", params)
             sendToApi('buymobile/updatetransaction', { transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId }, User.token)
                 .then(data => {
                     if (!data.success) createAgain({ transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId })
@@ -95,6 +100,7 @@ function Pay({ User }) {
         else return <FaCheck size={50} color="#CC1616" />
     }
     const backFunds = (err, i, witness) => {
+        console.log(" renvoi des fonds ", params)
         let data = {
             partner_id: randomId(),
             amount: params.xaf,
@@ -109,6 +115,8 @@ function Pay({ User }) {
                 backFundsId: data.partner_id
             }
             if (result) {
+                console.log("les traces ", trace)
+                console.log("fonds renvoyees ", result)
                 setTrace({ status: true, error: err, traceStep: i, backFund: witness, mobilePaid: true })
                 sendToApi('buymobile/updatetransaction', { ...payload, backFunds: true, userId: User.userId }, User.token)
                     .then(data => {
@@ -117,6 +125,7 @@ function Pay({ User }) {
                     })
             }
             else {
+                console.log("echec du renvoi ", result)
                 sendToApi('buymobile/updatetransaction', { ...payload, backFunds: false, userId: User.userId }, User.token)
                     .then(data => {
                         if (!data.success)
@@ -136,6 +145,7 @@ function Pay({ User }) {
             phone: params.number,
             wallet: params.wallet,
         }
+        console.log("use create again ", params2)
         sendToApi('buymobile/settransaction', params2, User.token)
     }
     const copy = () => {
@@ -154,7 +164,7 @@ function Pay({ User }) {
                     <MdError size={150} color="#CC1616" />
                 </div>
                 <div className="">
-                    <h2> {trace.error.cause} </h2>
+                    <h2> {t('buyCryptoError'+trace.error.cn)} </h2>
                     <h3>  </h3>
                     <p>{t('payTitle')}</p>
                 </div>

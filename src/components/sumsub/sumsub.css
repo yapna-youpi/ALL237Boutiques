@@ -3,33 +3,67 @@
     justify-content: center;
     align-items: center;
     width: 250px;
-    height:300px;
+    height: 300px;
 }
-.sumsub .sub-text{
-    /* height: 250px; */
+
+.sumsub .sub-text {
+    display: flex;
+    justify-content: center;
     margin: 15px auto;
     padding: 10px auto;
     flex-direction: column;
-    font-family: 'Montserrat',Helvetica,Arial,sans-serif;;
-    
-    color: #2a348f;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    color: #171d52;
     font-weight: bolder;
 }
-.sumsub .sub-div1,.sub-div2{
+
+.sumsub .sub-div1 {
+    margin: 0 auto;
+    padding: 0 110px 0;
+    font-size: 20px;
+}
+
+.sumsub .sub-div2 {
     margin: 15px auto;
     padding: 0 110px 0;
-    font-size: 17px;
+    font-size: 20px;
 }
-.sumsub .sub-div2{
-    margin: 15px auto;
-    padding: 0 110px 0;
-    font-size: 17px;
+
+.img-sumsub {
+    display: inline-block;
+    margin: 5px auto;
 }
-@media only screen and (max-width: 768px){
-    .sumsub .sub-div1,.sub-div2{
+
+.btn-sub {
+    display: block;
+    width: 50%;
+    height: 50px;
+    margin: 10px auto;
+    color: var(--red);
+    text-align: center;
+    background-color: transparent;
+    border: 2px solid var(--red);
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--white);
+    transition: all .5s ease-out;
+    cursor: pointer;
+}
+
+.sumsub .btn-sub:hover {
+    cursor: pointer;
+    background-color: var(--red);
+    color: var(--white) !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .sumsub .sub-div1, .sub-div2 {
         padding: 0 10px 0;
     }
-    .sumsub .sub-div2{
+
+    .sumsub .sub-div2 {
         padding: 0 10px 0;
     }
 }
