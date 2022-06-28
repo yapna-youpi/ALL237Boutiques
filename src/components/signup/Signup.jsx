@@ -81,6 +81,14 @@ function Signup({Country}) {
         &&isValidPhoneNumber(state.phone || 342)&&checkPassword(state.password)
 
     console.log(state, Country)
+
+    let AmList={
+        en: ["http://ftp.ipercash.fr/politiques//term_en.pdf"],
+        fr: ["http://ftp.ipercash.fr/politiques//terms_fr.pdf" ]
+    }
+    let lang=JSON.parse(localStorage.getItem("lang")||'{"lang":"en"}').lang
+
+
     return (
         <>
         <div className="signup">
@@ -125,7 +133,7 @@ function Signup({Country}) {
                                 />
                                 <div className="checkbox">
                                     <input type="checkbox" id="check" onChange={()=>setState({...state, check: !state.check})} />
-                                    <label htmlFor="check">J'accepte les condition d'utilisation</label>
+                                    <label htmlFor="check">{t('SignUpSous17')} <a className='lie' href={AmList[lang][0]} target="_blank">{t('SignUpSous18')}</a></label>
                                 </div>
                                 <Button  fullWidth className="sign-btnt"
                                     type="submit"

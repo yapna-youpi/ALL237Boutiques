@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import './hero.css'
 import image from './images/hero.svg';
+import video from './images/hero.mp4';
 import camer from './images/camer.png';
 import sene from './images/sene.png';
 import ivc from './images/ivc.png';
@@ -35,9 +36,14 @@ function Hero() {
         }
     }, [])
 
+    const loaded=(e)=>{
+        console.log("loaded ", e)
+    }
+
     return (
         <div className="hero" id="hero">
-            <img src={image} alt=""/>
+            {/* <img src={image} alt=""/> */}
+            <video src={video} alt="video" muted={true} autoPlay={true} loop={true} onLoadedData={(e)=>loaded(e)} />
             <div className="presentation"   >
                 <div className="">
                     {/* {navigator.appVersion} */}

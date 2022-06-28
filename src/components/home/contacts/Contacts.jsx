@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { MdLocationPin } from 'react-icons/md' 
 import { BsTelephoneFill } from 'react-icons/bs' 
 import { HiMail } from 'react-icons/hi' 
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaTelegramPlane } from 'react-icons/fa'
 import ReactLoading from 'react-loading';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -82,6 +82,7 @@ const { t } = useTranslation()
                             <a href="https://twitter.com/IPERCash?s=09" target=" " > <div className="social-icon twitter "> <FaTwitter size={28} /> </div></a> 
                             <a href="https://www.facebook.com/IPERCash-109875781411686/" target="_blank" > <div className="social-icon facebook"> <FaFacebookF size={28} /> </div></a> 
                             <a href="https://www.instagram.com/iper.cash/" target="_blank" > <div className="social-icon instagram"> <FaInstagram size={32} /> </div></a>
+                            <a href="https://www.instagram.com/iper.cash/" target="_blank" > <div className="social-icon telegram"> <FaTelegramPlane size={32} /> </div></a>
                         </div>
                     </div>
                     <div className="contact">

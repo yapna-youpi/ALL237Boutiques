@@ -41,6 +41,7 @@ function Pay({ User }) {
             phone: data.number,
             wallet: data.wallet,
             status: 'init',
+            provider: 'intouch',
             userId: User.userId,
         }
         // console.log("store data le user ", User)

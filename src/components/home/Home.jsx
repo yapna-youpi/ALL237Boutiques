@@ -6,6 +6,7 @@ import './home.css'
 import Hero from './hero/Hero';
 import Partner from './partners/Partner';
 import About from './about/About';
+import Cookies from './cookies/Cookies'
 import Operations from './operations/Operations';
 import Services from './services/Services';
 import Testimonials from './testimonials/Testimonials';
@@ -23,8 +24,9 @@ function Home() {
     return (
         <div className='home'>
             <Hero />
-            <Operations />
+            <Operations />,
             <About />
+            <Cookies/>
             <Partner />
             <Services />
             <Testimonials />

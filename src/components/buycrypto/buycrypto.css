@@ -75,16 +75,23 @@
   margin: 5px;
   color: var(--red);
 }
+
 .disjoint{
-  width: 90%;
-  margin: 7px auto;
-  color: #222222;
-  border: 2px solid #fd005493;
-  background-color: #FCE4EC;
-  border-radius: 5px;
-  padding: 10px auto!important  ;
+  width: 92%;
+  color: #842029;
+  background-color: #f8d7da;  
+  border-color: #f5c2c7;
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
 }
 @media screen and (min-width: 768px) {
+  .disjoint {
+    width: 77%;
+    margin: 0 auto;
+  }
   .buy-container {
     width: 80%;
     margin: auto;

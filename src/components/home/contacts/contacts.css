@@ -72,8 +72,8 @@
 }
 .address-field {
     display: flex;
-    padding: 0px;
     align-items: stretch;
+    transform: translateX(-5px);
 }
 .newsletter button {
     display: inline-block;
@@ -149,6 +149,12 @@
     transition: 0.5s all ease;
     border: 2px solid deepskyblue;
 }
+.socials .telegram:hover{
+    background-color: deepskyblue;
+    color: white;
+    transition: 0.5s all ease;
+    border: 2px solid deepskyblue;
+}
 .socials .linkedin:hover{
     background-color: rgb(17, 17, 253);
     color: white;
@@ -185,6 +191,9 @@
     }
     .link-whatsapp{
         cursor: pointer;
+    }
+    .address-field {
+        transform: translateX(5px);
     }
 }
 

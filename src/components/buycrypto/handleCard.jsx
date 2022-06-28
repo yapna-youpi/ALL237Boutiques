@@ -5,8 +5,7 @@ const percent=1    //1.15
 const inverPercent=1    //0.85
 
 const cryptoChange=(value, rate)=>{
-    console.log("j'ai change ")
-    if(value<0.00090000) {
+    if(value<0.00033) {
         return {
             xaf: 0,
             eu: 0,

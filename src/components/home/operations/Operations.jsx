@@ -28,7 +28,7 @@ function Operations({dispatch, Amount, crypto}) {
         <>
         {/* <div className='contrie'><Countries /></div> */}
         <div className="operations" id="operations">
-            <div className="operations-container" data-aos="zoom-in"  data-aos-duration="800" src>
+            <div className="operations-container" data-aos="zoom-in"  data-aos-duration="800" data-aos-once="true" >
                 <div className='thead' >
                     <h1 className='theader'> {t('operationTitle')} </h1>
                 </div>
@@ -62,7 +62,7 @@ function Operations({dispatch, Amount, crypto}) {
                     </div>
                 </div>
             </div>
-            <img src={image} alt="" className="picture" data-aos="fade-up"  data-aos-duration="1500" />
+            <img src={image} alt="" className="picture" data-aos="fade-up"  data-aos-duration="1500" data-aos-once="true" />
         </div>
         </>
     )

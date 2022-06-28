@@ -10,7 +10,7 @@ import mobiBurki from './images/mobi-burki.svg';
 import mobi from './images/mobi.svg'
 import moov from './images/moov.svg';
 import wizall from './images/master2.svg';
-import yup from './images/yup.svg';
+import visa from './images/visa.svg';
 
 function Partner() {
     return (
@@ -24,10 +24,10 @@ function Partner() {
                 <img src={free} alt=""/>
                 <img src={mtn} style={{marginRight:"60px"}} alt=""/>
                 <img src={sepa} alt=""/>
-                <img src={moov} style={{marginRight:"120px"}} alt=""/>
-                <img src={yup} style={{marginRight:"120px"}} alt=""/>
+                <img src={moov} style={{marginRight:"75px"}} alt=""/>
+                <img src={visa} style={{marginRight:"75px",maxWidth:"150px"}} alt=""/>
                 <img src={mercuryo} alt=""/>
-                <img src={orange} style={{marginRight:"50px"}} alt=""/>
+                <img src={orange} style={{marginRight:"30px"}} alt=""/>
                 <img src={mobi} alt="mobimali"/>
                 <img src={wizall} alt=""/>
                 <img src={mobiBurki} style={{marginRight:"120px"}} alt=""/>

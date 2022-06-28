@@ -13,6 +13,7 @@ import './sendmoney.css'
 import { Input } from '../addons/input/Input'
 import PhoneInputool from '../addons/input/PhoneInputool'
 import Modal from './Modal'
+import Modal2 from './Modal2'
 
 const EUR = 655
 // const EuroFees=655*0.964
@@ -26,8 +27,8 @@ let widgetUrl = 'https://ipercash-api.herokuapp.com/'
 var interval = null
 
 function SendMoney({ amount, country, User }) {
-    let enable=process.env.REACT_APP_SEND_ENABLE
-
+    let enable = process.env.REACT_APP_SEND_ENABLE ;
+    
     console.log("service are disable ", enable)
     const { t } = useTranslation()
     // value of differents field in the form 
@@ -43,13 +44,15 @@ function SendMoney({ amount, country, User }) {
     // showing for show or not to taxations
     const [showing, setShowing] = useState(true)
 
+    const [mode, setMode] = useState(false)
+
     let history = useHistory()
     // handle change on different field, update mactching field in state
     const handleChange = e => {
         let newState = state
         newState[e.name] = e.value
         setState({ ...state })
-        
+        amountTaxation()
     }
     // handle errors in field, update field in error
     const handleBlur = e => {
@@ -62,8 +65,9 @@ function SendMoney({ amount, country, User }) {
             newErrors[e.name] = false
             setErrors({ ...errors })
         }
-        amountTaxation()
+        
     }
+    console.log(mode.open)
 
     // this function send the data operation on api, open the widget and show the modal
     const send = () => {
@@ -146,7 +150,7 @@ function SendMoney({ amount, country, User }) {
 
     // this function handle disabled propertie of button
     const active = () => {
-        if ((state.amount >= 25 && state.amount <= 50) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone)) return false
+        if ((state.amount >= 25 && state.amount <= 50) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone))  return false
         else return true
     }
     // this function check phone number
@@ -169,22 +173,36 @@ function SendMoney({ amount, country, User }) {
         setState({ amount: amount, name: "", phone: "", cPhone: "" })
         setModal({ open: false, closable: false })
     }
+    
 
     // console.log("le state", state)
 
-    const handleSubmit = e => {
+    const handleSubmit = (e,enable) => {
         e.preventDefault()
+        
+        if (enable == "FALSE" ) {
+            return false
+        }
         eclips()
     }
     // la function du submit au boutton pour changer le taux
     const eclips = () => {
-        setShowing(!showing)
 
-        if (showing == false) {
-            send()
+        if (showing == true) {
             setShowing(!showing)
+
+            // return false
+        }else{
+
+            if (enable == 'FALSE') {
+                setMode(!mode)
+            }else{
+                   send()
+                 }
+            
         }
-        return false
+
+
     }
 
     //la function qui arrondi exactement apres la virgule
@@ -227,20 +245,13 @@ function SendMoney({ amount, country, User }) {
 
         }
     }
-    // useEffect(() => {
-    //     if (state.newAmount == state.amount ) {
-    //         return false
-    //     }else{
-    //         setShowing(!showing)
-    //     }
-    // }, [state])
     
-
     return (
         <>
-            <Modal option={modal} close={closeModal} />
-                {enable ==="FALSE"  ? <h3 className='disjoint'>Le service est indisponible</h3> : ""}
+            {enable ==="FALSE"  ? <h3 className='disjointe'>Le service est indisponible</h3> : ""}
             <div className="sendmoney">
+            <Modal option={modal} close={closeModal} />
+            <Modal2 mode={mode} close={()=>setMode(false)}  />
                 <form className="form">
                     <div className="form-head">
                         <div className="form-group">
@@ -294,19 +305,19 @@ function SendMoney({ amount, country, User }) {
                         <div className='warning eclips'>
                             <div className="row">
                                 <span>{t('sendText1')}EUR </span>
-                                <span> {"3.96% + 0.38 "}EUR </span>
+                                <span> {"3.96%  "}EUR </span>
                             </div>
                             <div className="row">
                                 <span>{t('sendText2')}EUR </span>
-                                <span> {"2.33 "}EUR </span>
+                                <span> {"1.95 "}EUR </span>
                             </div>
                             <div className="row">
                                 <span>{t('sendText3')}EUR </span>
-                                <span> {"3.33 "}EUR </span>
+                                <span> {"2.95 "}EUR </span>
                             </div>
                             <div className="row">
                                 <span>{t('sendText4')} </span>
-                                <span> {"4.33 "}EUR </span>
+                                <span> {"3.95 "}EUR </span>
                             </div>
                         </div>
                     )

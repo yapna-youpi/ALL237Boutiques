@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import { useTranslation } from 'react-i18next'
+import Modal2 from '../sendmoney/Modal2'
 
 import './buycrypto.css'
 import Sumsub from '../sumsub/Sumsub'
@@ -20,6 +21,7 @@ import { xafChange, euroChange, cryptoChange } from './handleMobile'
 function BuyCryptoMobile({ Amount, country, User }) {
     //initialisation de variabl d'environnement
     let enable=process.env.REACT_APP_BUY_ENABLE
+    const [mode, setMode] = useState(false)
 
     const { t } = useTranslation()
     // initialisation des taux de changes
@@ -104,7 +106,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
     // fonction qui gere l'activation du bouton
     const active = () => {
         if (((state.amount && state.amount < 65597) && state.number && isValidPhoneNumber(state.number || 342))
-            && (state.number === state.confirmNumber) && (state.wallet && checkWalletAddress(state.wallet)))
+            && (state.number === state.confirmNumber) && (state.wallet && checkWalletAddress(state.wallet)) && enable) 
             return false
         else return true
     }
@@ -147,11 +149,21 @@ function BuyCryptoMobile({ Amount, country, User }) {
         e.preventDefault()
         return false
     }
+// function that check if environement variable is true or false to disable services
+    const Eclip = () =>{
+        if (enable == "FALSE") {
+            setMode(!mode);
+        }else{
+            openModal();
+        }
+    }
 
     // console.log("the state ", state)
     return (
         <div className="buycrypto">
             {enable ==="FALSE" ? <h3 className='disjoint'>Le service est indisponible</h3> : ""}
+            <Modal2 mode={mode} close={()=>setMode(false)}  />
+
             <Modal open={modal} onClose={() => setModal(!modal)} showCloseIcon={false} center classNames={{ modal: 'custom-modal' }}>
                 <div className="modal-confirm">
                     <div className="modal-head">
@@ -223,7 +235,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
                     </div>
                     <div className="form-group">
                         <button disabled={active() || (state.crypto === 0) || state.xaf === 0}
-                            onClick={() => openModal()}
+                            onClick={Eclip}
                         >
                             {(state.rate === 0) ? t('buyCryptoMobileSous19') : t('buyCryptoMobileSous20')}
                         </button>

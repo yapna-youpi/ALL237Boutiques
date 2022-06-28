@@ -1,0 +1,16 @@
+.m2customModal{
+    border-radius: 8px;
+    max-width: 32vw;
+    text-align: center;
+}
+.m2customModal h2 {
+    color: red;
+    padding: 0 ;
+}
+.m2customModal .icon-ind{
+    padding: .5rem;
+}
+.m2customModal p{
+    text-align: left;
+}
+

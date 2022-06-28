@@ -94,17 +94,24 @@
 .eclips {
     padding: 10px;
 }
-.disjoint{
-    width: 90%;
-    margin: 7px auto;
-    color: #222222;
-    border: 2px solid #fd005493;
-    background-color: #FCE4EC;
-    border-radius: 5px;
-    padding: 10px auto!important  ;
+.disjointe{
+  width: 82.5%;
+  color: #842029;
+  margin: 5rem auto 2rem auto;
+  background-color: #f8d7da;  
+  border-color: #f5c2c7;
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
 }
 
 @media screen and (min-width: 992px) {
+    .disjointe{
+        width: 91.5%;
+        margin: 0 auto;
+    }
     .sendmoney {
         display: flex;
         justify-content: space-between;

@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PhoneInput from 'react-phone-number-input';
 
 
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip,{ tooltipClasses } from '@material-ui/core/Tooltip';
 import { IoAlertCircleOutline } from 'react-icons/io5'
 import 'react-phone-number-input/style.css'
 import './phone-inputool.css'
@@ -35,7 +35,7 @@ function InputPhone({label, name, val, id, error, help, change,fullwidth, handBl
             <label htmlFor=""> {label} </label>
             <div className="phono">
                 <div className="phono-input">
-                    <PhoneInput name={name} id={id} fullwidth
+                    <PhoneInput name={name} id={id} fullwidth="true"
                         // countries={['CM', 'SN', 'BF', 'CI', 'ML', 'GN']}
                         value={val}
                         countries={!all ? (cm ? ['CM'] : ['CM', 'SN', 'CI']): null}

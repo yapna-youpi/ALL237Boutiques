@@ -31,28 +31,28 @@ function Steps() {
         <div className="steps">
             <h1> <span></span> {t('stepsTitle')}</h1>
             <div className="steps-container">
-                <div className="step" data-aos="zoom-in" data-aos-delay="300" >
+                <div className="step" data-aos="zoom-in" data-aos-delay="300" data-aos-once="true">
                     <div className="img-container" onClick={()=>showVideo(0)}>
                         <img src={user} alt="" />
                     </div>
-                    <p data-aos="fade-right" data-aos-delay="350">{ t('sousSteps1')}</p>
-                    <a data-aos="fade-right" data-aos-delay="400" href="/help/description" target="_blank"><span className='coli'>{t('sousSteps5')}</span></a>
+                    <p data-aos="fade-right" data-aos-delay="350" data-aos-once="true">{ t('sousSteps1')}</p>
+                    <a data-aos="fade-right" data-aos-delay="400" data-aos-once="true" href="/help/description" target="_blank"><span className='coli'>{t('sousSteps5')}</span></a>
                 </div>
                 <div className="step-line"></div>
-                <div className="step" data-aos="zoom-in" data-aos-delay="500" >
+                <div className="step" data-aos="zoom-in" data-aos-delay="500" data-aos-once="true" >
                     <div className="img-container" onClick={()=>showVideo(1)}>
                         <img src={phone} alt="" />
                     </div>
-                    <p data-aos="fade-up" data-aos-delay="550">{t('sousSteps2')}</p>
-                    <a data-aos="fade-up" data-aos-delay="600" href="/help/description" target="_blank"><span className='coli'>{t('sousSteps5')}</span></a>
+                    <p data-aos="fade-up" data-aos-delay="550" data-aos-once="true">{t('sousSteps2')}</p>
+                    <a data-aos="fade-up" data-aos-delay="600" data-aos-once="true" href="/help/description" target="_blank"><span className='coli'>{t('sousSteps5')}</span></a>
                 </div>
                 <div className="step-line"></div>
-                <div className="step" data-aos="zoom-in" data-aos-delay="700">
+                <div className="step" data-aos="zoom-in" data-aos-delay="700" data-aos-once="true">
                     <div className="img-container" onClick={()=>showVideo(3)}>
                         <img src={bitcoin} alt="" />
                     </div>
-                    <p data-aos="fade-left" data-aos-delay="750">{t('sousSteps3')}</p>
-                    <a data-aos="fade-left" data-aos-delay="800" href="/help/description" target="_blank"><span className='coli'>{t('sousSteps5')}</span></a>
+                    <p data-aos="fade-left" data-aos-delay="750" data-aos-once="true">{t('sousSteps3')}</p>
+                    <a data-aos="fade-left" data-aos-delay="800" data-aos-once="true" href="/help/description" target="_blank"><span className='coli'>{t('sousSteps5')}</span></a>
                 </div>
                 <Modal open={state.open} onClose={hideVideo} showCloseIcon={false} closeOnOverlayClick={true} center classNames={{overlay: "step-overlay", modal: 'step-modal'}} >
                     <ReactPlayer url={videoList[lang][state.video]} controls />

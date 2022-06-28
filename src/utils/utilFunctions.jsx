@@ -2,8 +2,8 @@ import { getStatus } from '../intouch/api'
 import crypt from './crypt';
 
 // console.log("hello dear")
-const apiUrl='https://ipercash-node-api.herokuapp.com/api/'
-// const apiUrl=process.env.REACT_API_DATA2
+// const apiUrl='https://ipercash-node-api.herokuapp.com/api/'
+const apiUrl=process.env.REACT_APP_API_URL
 // const apiUrl='http://127.0.0.1:4001/api/'
 
 const roundDecimal=(nombre)=>{

@@ -15,6 +15,7 @@ import BuyCryptoCard from '../components/buycrypto/BuyCryptoCard';
 import SellCrypto from '../components/sellcrypto/SellCrypto';
 import NotFound from '../components/notfound/NotFound';
 import Pay from '../components/pay/Pay';
+import PayCinet from '../components/pay/PayCinet'
 import Success from '../components/success/Success';
 import Signup from '../components/signup/Signup';
 import Login from '../components/login/Login';
@@ -22,6 +23,9 @@ import Forget from '../components/forget/Forget';
 import Reset from '../components/forget/Reset';
 import More from '../components/home/more/More';
 import Valid from '../components/valid/Valid';
+
+const SWITCH_INTOUCH=process.env.REACT_APP_SWITCH_INTOUCH==='TRUE'
+console.log("switch intouch ", SWITCH_INTOUCH, process.env.REACT_APP_SWITCH_INTOUCH)
 
 function Main({User}) {
     // console.log(document.URL.indexOf('help')+1)
@@ -43,7 +47,7 @@ function Main({User}) {
                     <Route path='/buycrypto/mobile' exact component={checkUser(BuyCryptoMobile)} />
                     <Route path='/buycrypto/card' exact component={checkUser(BuyCryptoCard)} />
                     <Route path='/sellcrypto' exact component={checkUser(SellCrypto)} />
-                    <Route path='/purchase' exact component={Pay} />
+                    <Route path='/purchase' exact component={ SWITCH_INTOUCH ? PayCinet : Pay} />
                     <Route path='/complete' exact component={Success} />
                     <Route path='/signup' exact component={Signup} />
                     <Route path='/login' exact component={Login} />

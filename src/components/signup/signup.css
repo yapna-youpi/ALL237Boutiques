@@ -66,6 +66,9 @@
 .signup .checkbox {
   margin: 20px 0px;
 }
+.signup .lie:hover{
+    text-decoration: underline;
+}
 
 @media only screen and (min-width: 768px) {
   .signup {

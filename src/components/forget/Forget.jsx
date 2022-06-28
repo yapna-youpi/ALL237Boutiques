@@ -8,7 +8,9 @@ import { checkEmail, sendToApi } from '../../utils/utilFunctions'
 import Button from '@material-ui/core/Button'
 import { toastify } from '../addons/toast/Toast'
 
-import './forget.css'
+import styled from  './forget.css'
+// import toast from "react-hot-toast"
+// import { CgOculus } from "react-icons/cg"
 
 const Forget =({type, color}) => {
     const { t } = useTranslation();
@@ -31,32 +33,33 @@ const Forget =({type, color}) => {
             .then(data => {
                 setLoader(false);
                 if(data.error) {
-                    toastify('error','user not found')
+                    toastify('error',`${t('forgetSous11')}`)
                     return
                 }
                 if(data.mail){
-                    toastify('success',`reset email has sent to ${state}`)
+                    toastify('success', `${t('forgetSous10') + ' ' + state}`)
                     // return history.push('/Reset')
                     if(data.mail){
                         setShow(!show)
                     }
                 } else {
-                    toastify('info', `user found but mail can't be send retry`)
+                    toastify('info', `${t('forgetSous9')}` )
                 }
                 if(!data.user){
                 }
             }) 
     }
     const resend=()=>{
+        console.log("user data ", state)
         setLoader(true)
         sendToApi('user/resend', {email: state, type: "lost"})
         .then((data)=>{
             setLoader(false)
             if(data.mail) {
-                toastify("info", `Mail has been send to ${state}. Check it to complete inscription`)
-            } else if(data.error) toastify("error", `User ${state} not found.`)
+                toastify("info", `${t('forgetSous12') + ' ' + state + ' ' + t('forgetSous13')}`)
+            } else if(data.error) toastify("error", `${t('forgetSous14') + ' ' + state + ' ' + t('forgetSous15')}`)
             else {
-                toastify("error", `Mail can't be send to ${state}.`)
+                toastify("error", `${('forgetSous16')+ ' ' + state }.`)
             }
         })
     }

@@ -7,21 +7,17 @@ import { useTranslation } from 'react-i18next'
 
 import Widget from './Widget';
 import {Input} from '../addons/input/Input'
-import Fiats from '../addons/Fiats/Fiats'
-import {randomId, getCryptoRate, sendToApi, checkWalletAddress } from '../../utils/utilFunctions'
+import {randomId, getCryptoRate, sendToApi} from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleCard';
-
-let interval=null
 
 function BuyCryptoCard({Amount, User}) {
     const { t } = useTranslation()
     const [operationId, setId]=useState({id: randomId('BC'), status: false})
     // initialisation des taux de changes
-    const [rate, setRate] = useState({ EUR: 0, USD: 0 })
+    const [rate, setRate] = useState({BCH: 575.69, BTC: 0, ETH: 2075.48})
     // initialisation du state du composants
     const [state, setState] = useState({
-        crypto: "BTC", operator: "", amount: 0, xaf: 0, eu: 0, fiat: 'EUR',
-        rate: rate.EUR, number: "", confirmNumber: "", wallet: ""
+        crypto: "BTC", operator: "", amount: 0, xaf: 0, eu: 0, rate: rate.BTC, wallet: ""
     })
     // initialisation du state des erreurs
     const [errors, setErrors]= useState({
@@ -29,22 +25,26 @@ function BuyCryptoCard({Amount, User}) {
     })
     const [modal, setModal] = useState(false)
     const openModal=()=>setModal(!modal)
+    let history=useHistory()
     useEffect(async() => {
-        getCryptoRate().then(newRate => {
-            if (!newRate) return
-            console.log("the new rate ", newRate)
-            setRate({ ...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float })
-            setState({ ...state, rate: newRate[state.fiat].rate_float, ...xafChange(Amount, newRate) })
+        getCryptoRate().then(newRate=>{
+            // console.log("le nouveau rate", newRate)
+            if(rate) {
+                //setState
+                setRate({...rate, BTC: newRate})
+                setState({...state, rate: newRate, ...xafChange(Amount, newRate)})
+
+            }
         })
-        interval = setInterval(() => {
-            getCryptoRate().then(newRate => {
-                if (!newRate) return
-                setRate({ ...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float })
+        setInterval(() => {
+            let interval=getCryptoRate().then(newRate=>{
+                // console.log("l'etat avant", state)
+                if(rate) setRate({...rate, BTC: newRate})
             })
-        }, 60 * 1000)
-        return () => {
-            clearInterval(interval)
-        }
+            return () => {
+                clearInterval(interval)
+            }
+        }, 60*1000);
     }, [])
 
     // la fonction qui gere les changement des inputs
@@ -73,18 +73,18 @@ function BuyCryptoCard({Amount, User}) {
         switch (e.name) { // amount c'est le montant en crypto monnaie 
             case "crypto":
                 console.log("c'est le montant")
-                result=cryptoChange(e.value,  rate[state.fiat])
+                result=cryptoChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break
             case "xaf":
-                console.log("c'est le xaf ",  rate[state.fiat])
-                result=xafChange(e.value,  rate[state.fiat])
+                console.log("c'est le xaf")
+                result=xafChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break;
             
             case "eu":
                 console.log("c'est le eu")
-                result=euroChange(e.value,  rate[state.fiat])
+                result=euroChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break;
             default:
@@ -92,18 +92,9 @@ function BuyCryptoCard({Amount, User}) {
             break;
         }
     }
-    const changeFiat = (f) => {
-        let result = cryptoChange(state.amount, rate[f])
-        setState({ ...state, ...result, fiat: f, rate: rate[f] })
-    }
     // fonction qui gere l'activation du bouton
-    // const active=()=>{
-    //     if( (state.amount && state.wallet) )
-    //         return false
-    //     else return true
-    // }
-    const active = () => {
-        if (((state.xaf && state.xaf >= 16500) ) && (state.wallet && checkWalletAddress(state.wallet)))
+    const active=()=>{
+        if( (state.amount && state.wallet) )
             return false
         else return true
     }
@@ -129,40 +120,28 @@ function BuyCryptoCard({Amount, User}) {
         } else setId({...operationId, status: false})
     }
 
-    console.log("the rate ", rate)
+    // console.log("operation id ", operationId)
     return (
         <div className="buycrypto">
             <h1>{t('buyCryptoCardTitle')}</h1>
             <div className="buy-container">
                 <div className="rate">
-                    {/* <Fiats action={changeFiat} fiat={state.fiat} /> */}
-                    <h3>{t('buyCryptoMobileSous5')}</h3>
-                    <div className=""> 1 BTC === {Intl.NumberFormat('de-DE').format(Math.round(rate[state.fiat] * 655))} XAF === {Intl.NumberFormat('de-DE').format(rate[state.fiat])} {state.fiat} </div>
-                    <span>
-                        {t('buyCryptoMobileSous6')} <a href="https://www.coindesk.com" target="_blank">{t('buyCryptoMobileSous4')}</a>
-                    </span>
+                    <h3>{t('buyCryptoCardSous1')}</h3>
+                    <div className=""> 1 BTC === {Math.round(rate.BTC*655)} XAF === {rate.BTC} EU </div>
+                    <span>{t('buyCryptoCardSous3')}  <a href="https://www.coindesk.com/coindesk-api" target="_blank">{t('buyCryptoCardSous2')}  </a> </span> 
                 </div>
                 <div className="form">
                     <div className="form-group">
-                        <Input val={state.xaf}  label={t('buyCryptoCardSous4')} name="xaf" type="number"
-                            help={t('buyCryptoCardSous10')} change={amountChange} error={state.xaf<16500&&state.xaf!==0}
-                        />
+                        <Input val={state.xaf}  label={t('buyCryptoCardSous4')} name="xaf" type="number" help={t('buyCryptoCardSous10')} change={amountChange} error={state.xaf<10000&&state.xaf!==0}   />
                     </div>
                     <div className="form-group">
-                        <Input val={state.eu}  label={t('buyCryptoCardSous5')} name="eu" type="number"
-                            help={t('buyCryptoCardSous11')} change={amountChange}
-                        />
+                        <Input val={state.eu}  label={t('buyCryptoCardSous5')} name="eu" type="number" help={t('buyCryptoCardSous11')} change={amountChange} />
                     </div>
                     <div className="form-group">
-                        <Input val={state.amount} label={t('buyCryptoCardSous6')} name="crypto" type="number"
-                            help={t('buyCryptoCardSous12')} change={amountChange}
-                        />
+                        <Input val={state.amount} label={t('buyCryptoCardSous6')} name="crypto" type="number" help={t('buyCryptoCardSous12')} change={amountChange}  />
                     </div>
                     <div className="form-group">
-                        <Input val={state.wallet} label={t('buyCryptoCardSous7')} name="wallet" 
-                            help={t('buyCryptoCardSous13')} change={handleChange} handBlur={handleBlur}
-                            error={errors.wallet || (state.wallet && !checkWalletAddress(state.wallet))}
-                        />
+                        <Input val={state.wallet} label={t('buyCryptoCardSous7')} name="wallet" help={t('buyCryptoCardSous13')} error={errors.wallet} change={handleChange} handBlur={handleBlur}  />
                     </div>
                     
                     <div className="form-group">

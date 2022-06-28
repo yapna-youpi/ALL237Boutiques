@@ -4,6 +4,7 @@ import { isValidPhoneNumber } from 'react-phone-number-input'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { Modal } from 'react-responsive-modal'
+import Modal2 from '../sendmoney/Modal2'
 
 import './sellcrypto.css'
 import SellModal from './SellModal';
@@ -17,6 +18,7 @@ import Sumsub from '../sumsub/Sumsub'
 function SellCrypto({Amount, country, User}) {
     //initialisation de variabl d'environnement
     let enable = process.env.REACT_APP_SELL_ENABLE;
+    const [mode, setMode] = useState(false)
 
     const { t } = useTranslation()
     // console.log(Amount, User)
@@ -130,15 +132,30 @@ function SellCrypto({Amount, country, User}) {
         let result=cryptoChange(state.amount, rate[f])
         setState({...state, ...result, fiat: f, rate: rate[f]})
     }
-    
-    console.log("the user", User)
+
+    const Eclip = () =>{
+        if (enable == "FALSE") {
+            setMode(!mode)
+        }else{
+            if(User.kyc){
+                openModal()
+            }else{
+                setSum(true)
+            }
+        }
+    }
+    console.log(enable)
+    // console.log("the user", User)
     return (
         <div id="sellcrypto" className="sellcrypto" ref={myRef}>
             {enable ==="FALSE"  ? <h3 className='disjoint'>Le service est indisponible</h3> : ""}
+            <Modal2 mode={mode} close={()=>setMode(false)}  />
+            
             {sum&&<Modal open={true} onClose={()=>setSum(false)} center={true} container={myRef.current} > 
                 <Sumsub call={openModal} close={()=>setSum(false)} />
             </Modal>}
             {modal&&<SellModal open={modal} toogle={setModal} data={state} rate={rate[state.fiat]} User={User} />}
+
             <h1>{ t('sellCrypto')}</h1>
             <div className="sell-container">
                 <div className="rate">
@@ -190,7 +207,7 @@ function SellCrypto({Amount, country, User}) {
                     <div className="form-group">
                         <button disabled={active() || (state.crypto===0) || state.xaf===0 } 
                             // onClick={()=>openModal()} 
-                            onClick={ User.kyc ? ()=>openModal() : ()=>setSum(true)} 
+                            onClick={ ()=>Eclip()} 
                         > {t('sellCrypto5')}
                         </button>
                     </div>

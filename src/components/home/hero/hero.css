@@ -4,7 +4,7 @@
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     /* font-family: var(--police2); */
 }
-.hero>img {
+.hero>img, .hero>video{
     display: block;
     width: 95%;
     margin: 55px auto;
@@ -73,13 +73,13 @@
     left: 50%;
     top: 50%;
     z-index: -1;
-    transform: translate(-50%,-50%) rotate(35deg);
+    transform: translate(-50%,-50%) rotate(31deg);
     transition: all 0.6s ease-out;
     width: 0%;
-    height: 230%;
+    height: 250%;
 }
 .hero .btn-flip:hover::before{
-    width: 250%;
+    width: 300%;
     overflow: hidden;
 }
 
@@ -100,7 +100,7 @@
     .hero {
         padding:0% 4%;
     }
-    .hero img {
+    .hero img, .hero>video {
         width: 80%;
     }
     .presentation {
@@ -122,7 +122,7 @@
         min-height: 86vh;
         margin-bottom: 10px;
     }
-    .hero > img {
+    .hero > img, .hero>video {
         min-width: 300px;
         margin-left: 30px;
     }
@@ -145,7 +145,7 @@
 }
 
 @media screen and (min-width: 1500px) {
-    .hero img {
+    .hero img, .hero>video {
         flex-basis: 60%;
     }
     .presentation {
@@ -177,7 +177,6 @@
     z-index: 100;
     background: var(--red-transparent);
     border-radius: 50%;
-    color: var(--white);
     cursor: pointer;
     transition: all 2s ease-out;
     transform: translate(150px, 0px);
@@ -185,4 +184,7 @@
 .to-up.appear {
     transform: translate(0px, 0px);
     border-color: var(--red);
+}
+.to-up a {
+    color: var(--white);
 }

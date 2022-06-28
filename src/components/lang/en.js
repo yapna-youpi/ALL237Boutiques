@@ -169,7 +169,7 @@ const english = {
     buyCryptoCardSous10: "The min value is 16500 XAF",
     buyCryptoCardSous11: "The min value is 25 EUR",
     buyCryptoCardSous12: "The min value is 0.00033",
-    buyCryptoCardSous13: "Invalid wallet adress",
+    buyCryptoCardSous13: "This field is require",
 
     // buycryptoMobile
     buyCryptoMobileTitle: 'Checking wallet',
@@ -277,7 +277,10 @@ const english = {
     SignUpSous14: "An e-mail has been sent to you, please check in the e-mail box and in spam. Otherwise, send the email again, for the validation of your registration!",
     SignUpSous15: "Resend Mail",
     SignUpSous16: 'Passord should have at least heigth characters with one number',
+    SignUpSous17: "I accept",
+    SignUpSous18: "the conditions of use",
     signUpLink: "Back to Registration",
+
 
     //NotFound
     NotFoud1: 'OOPS! SOMETHING WENT WRONG',
@@ -307,6 +310,14 @@ const english = {
     forgetSous6: "Dear Client",
     forgetSous7: "If you haven't received an email yet, please resend the email, to reset your password!",
     forgetSous8: "Resend Mail",
+    forgetSous9: "user found but mail can't be send retry",
+    forgetSous10: "reset email has sent to",
+    forgetSous11: "user not found",
+    forgetSous12: "Mail has been send to",
+    forgetSous13: "Check it to complete inscription",
+    forgetSous14: "user",
+    forgetSous15: "not found.",
+    forgetSous16: " Mail can't be send to",
     forgetLink: "Back to Connexion",
 
     //reset
@@ -376,6 +387,18 @@ const english = {
 
     //widget
     widget: "your operation id is",
+
+    //cookie
+    cookie1: 'management ...',
+    cookie2: 'the content of this site interests you ?',
+    cookie3: "that's good, we would like to accompany you during your visit.",
+    cookie4: 'thank you for choosing them!',
+    cookie5: 'the cookies !',
+    cookie6: 'use of cookies',
+    cookie7: 'Sending third-party data!',
+    cookie8: 'I choose',
+    cookie9: 'Accept and close',
+
 
   }
 }
