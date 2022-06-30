@@ -10,7 +10,7 @@ function Footer() {
         en: ["http://ftp.ipercash.fr/politiques//aml_en.pdf","http://ftp.ipercash.fr/politiques//ploicy_fr.pdf" , "http://ftp.ipercash.fr/politiques//term_en.pdf"],
         fr: ["http://ftp.ipercash.fr/politiques//aml_fr.pdf","http://ftp.ipercash.fr/politiques//policy_en.pdf" , "http://ftp.ipercash.fr/politiques//terms_fr.pdf" ]
     }
-    console.log(AmList)
+    // console.log(AmList)
     let lang=JSON.parse(localStorage.getItem("lang")||'{"lang":"en"}').lang
 
     return (

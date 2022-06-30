@@ -66,7 +66,7 @@ window.addEventListener('beforeinstallprompt', function(e) {
     }
     const login=(userdata)=>{
         setLoad(true)
-        console.log("the userdata ", userdata)
+        // console.log("the userdata ", userdata)
         sendToApi('user/login', userdata)
         .then(data=>{
             setLoad(false)
@@ -83,7 +83,6 @@ window.addEventListener('beforeinstallprompt', function(e) {
 
     const handleSubmit= e => {
         e.preventDefault();
-        console.log("start login")
         if(!active()) login(state)
         return false
     }

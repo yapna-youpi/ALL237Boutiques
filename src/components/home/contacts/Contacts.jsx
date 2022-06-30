@@ -24,7 +24,7 @@ const { t } = useTranslation()
     const handleSubmit= async(e)=>{
         e.preventDefault()
         setLoad(true);
-        console.log("submit")
+        // console.log("submit")
         var options = {
             method: 'POST',
             url: apiUrl+"addmail",
@@ -33,7 +33,7 @@ const { t } = useTranslation()
         }
         setEmail("")
         let data=await axios.request(options).then(response=>response.data).catch(err=>({response: null}))
-        console.log("la reponse", data)
+        // console.log("la reponse", data)
         if(data.response) {
             setLoad(false);
             toast.success('thank you \n have a nice day', {

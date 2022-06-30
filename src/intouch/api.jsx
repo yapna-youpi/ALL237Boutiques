@@ -61,7 +61,7 @@ const cashOut=async(params, token="NOTHING")=>{
             return data.response
         }
         else {
-            console.log("y a eu une erreur sur le midleware")
+            // console.log("y a eu une erreur sur le midleware")
             return false
         }
     })
