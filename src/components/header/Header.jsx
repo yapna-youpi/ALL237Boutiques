@@ -89,9 +89,9 @@ function Header({User, Country, dispatch}) {
                     </ul>
                 </nav>
             </header>
-            <div className="beta-div">
+            {/* <div className="beta-div">
                 beta version
-            </div>
+            </div> */}
         </div>
     )
 }

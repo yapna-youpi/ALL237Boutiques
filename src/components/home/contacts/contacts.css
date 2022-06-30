@@ -59,6 +59,10 @@
 }
 .socials {
     display: flex;
+    /* flex-wrap: wrap; */
+    /* border: 1px solid #000; */
+    overflow-x: scroll;
+    /* transform: scale(0.90); */
 }
 .info p {
     margin-top: 5px;

@@ -50,7 +50,7 @@ function Cookies() {
                       { showCookie2 ? 
                         
                           (<span className='cook-text3'>{t('cookie2')}<br/>{t('cookie3')}
-                              <br/>{t('cookie4')}
+                              {/* <br/>{t('cookie4')} */}
                             </span>)
                         :
                         

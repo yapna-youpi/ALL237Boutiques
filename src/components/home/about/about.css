@@ -35,6 +35,9 @@
   font-weight: bold;
   transition: all 2s ease-out;
 }
+.about button a {
+  color: var(--white);
+}
 .about .sentence {
   display: flex;
   margin: 10px auto;

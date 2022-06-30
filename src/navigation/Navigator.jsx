@@ -25,7 +25,7 @@ import More from '../components/home/more/More';
 import Valid from '../components/valid/Valid';
 
 const SWITCH_INTOUCH=process.env.REACT_APP_SWITCH_INTOUCH==='TRUE'
-console.log("switch intouch ", SWITCH_INTOUCH, process.env.REACT_APP_SWITCH_INTOUCH)
+// console.log("switch intouch ", SWITCH_INTOUCH, process.env.REACT_APP_SWITCH_INTOUCH)
 
 function Main({User}) {
     // console.log(document.URL.indexOf('help')+1)

@@ -21,7 +21,7 @@ const english = {
     heroTitle: "BRIDGING MOBILE MONEY AND CRYPTO WORLDS",
     heroText: "Credit Mobile Money account with cryptocurrency or with credit card",
     heroButton: "Get Started",
-    available: "Mobile Money Available in",
+    available: "Mobile Money Available in theses countries",
 
     // About section
     aboutTitle: "ABOUT US",
@@ -389,9 +389,9 @@ const english = {
     widget: "your operation id is",
 
     //cookie
-    cookie1: 'management ...',
-    cookie2: 'the content of this site interests you ?',
-    cookie3: "that's good, we would like to accompany you during your visit.",
+    cookie1: 'Cookies management',
+    cookie2: 'Are you interested in the content of this site?',
+    cookie3: "We use cookies to improve the user experience!",
     cookie4: 'thank you for choosing them!',
     cookie5: 'the cookies !',
     cookie6: 'use of cookies',

@@ -1,7 +1,7 @@
 .header {
   /* border: 2px solid green; */
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-  border-bottom: 1px solid #ffee01;
+  /* border-bottom: 1px solid #ffee01; */
 }
 nav {
   /* retirer ca pour voir l'enseigne */
@@ -77,8 +77,8 @@ nav {
   /* pointer-events: none; */
 }
 .nav-links.open {
-  clip-path: circle(1200px at 90% -10%);
-  -webkit-clip-path: circle(1000px at 90% -10%);
+  clip-path: circle(1300px at 90% -10%);
+  -webkit-clip-path: circle(1300px at 90% -10%);
   /* pointer-events: all; */
 }
 .dropdown {
@@ -101,6 +101,9 @@ nav {
   font-weight: bold;
   color: var(--white);
   /* cursor: pointer; */
+}
+.nav-links li>a {
+  color: var(--white);
 }
 .nav-links li:nth-child(1) {
   transition: all 0.5s ease 0.4s;
@@ -173,6 +176,9 @@ li.fade {
   }
   .nav-links li:hover {
     color: var(--red);
+  }
+  .nav-links li>a {
+    color: inherit;
   }
   .dropdown {
     position: relative;

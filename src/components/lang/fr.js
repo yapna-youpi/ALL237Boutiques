@@ -387,9 +387,9 @@ const french = {
     widget: "L'id de votre identifiant est",
 
     //cookie
-    cookie1: 'gestion ...',
+    cookie1: 'Gestion des cookies',
     cookie2: 'Le contenu de ce site vous intéresse ?',
-    cookie3: 'ça tombe bien, on aimerais bien vous accompagner pendant votre visite.',
+    cookie3: "Nous utisons les cookies pour améliorer l'expérience utilisateur !",
     cookie4: 'merci de les choisir !',
     cookie5: 'les cookies !',
     cookie6: 'Utilisation des cookies',
