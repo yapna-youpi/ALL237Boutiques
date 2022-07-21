@@ -51,8 +51,8 @@ const english = {
     sousService3: 'Make a deposit from anywhere to Mobile Money account in:',
 
     //steps 
-    stepsTitle: 'HOW IT WORK ?',
-    sousSteps1: 'How to pass KYC verification for (?) your account',
+    stepsTitle: 'HOW IT WORKS ?',
+    sousSteps1: 'How to pass KYC verification for your account',
     sousSteps2: 'How to make a deposit on a Mobile Money account',
     sousSteps3: 'How to buy and sell your cryptocurrency with mobile money',
     sousSteps4: "We have prepared some clips to show you how to proceed. Click on any operation to start watching",
@@ -279,7 +279,7 @@ const english = {
     SignUpSous16: 'Passord should have at least heigth characters with one number',
     SignUpSous17: "I accept",
     SignUpSous18: "the conditions of use",
-    signUpLink: "Back to Registration",
+    signUpLink: "Go to Login",
 
 
     //NotFound

@@ -127,6 +127,8 @@
   .signup .signup-img{
       display: inline-block;
       width: 100%;
+      transform: scaleY(1.4) translateY(10px);
+
   }
   .visible{
     visibility: hidden;

@@ -21,7 +21,6 @@ function Countries({country, dispatch}) {
 
     const showList=()=>ref.current.classList.toggle('show')
 
-    // console.log("les props ", country)
     return (
         <div className="choose-country">
             <div className="dropdown" onClick={showList} > <img src={state.img} className="ims"  alt=""/><span /> </div>

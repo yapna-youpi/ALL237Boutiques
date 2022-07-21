@@ -18,14 +18,10 @@ function Hero() {
     
    useEffect(() => {
         let rootElement=document.querySelector('.approot')
-        // console.log(rootElement)
         let toUp=document.querySelector('.to-up')
         if(rootElement) rootElement.addEventListener('scroll', ()=>{
-            // console.log(rootElement.scrollTop, rootElement.scrollHeight)
             let [total, current]=[ rootElement.scrollHeight, rootElement.scrollTop ]
-            // console.log("cap ", current/total)
             if(current/total >= 0.25) {
-                // console.log("cap")
                 toUp.classList.add('appear')
             }
             else {
@@ -36,8 +32,7 @@ function Hero() {
         }
     }, [])
 
-    const loaded=(e)=>{
-        console.log("loaded ", e)
+    const loaded=()=>{
     }
 
     return (

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { MdLocationPin } from 'react-icons/md' 
 import { BsTelephoneFill } from 'react-icons/bs' 
 import { HiMail } from 'react-icons/hi' 
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaTelegramPlane } from 'react-icons/fa'
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaTelegramPlane,FaYoutube } from 'react-icons/fa'
 import ReactLoading from 'react-loading';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -24,7 +24,6 @@ const { t } = useTranslation()
     const handleSubmit= async(e)=>{
         e.preventDefault()
         setLoad(true);
-        // console.log("submit")
         var options = {
             method: 'POST',
             url: apiUrl+"addmail",
@@ -33,7 +32,6 @@ const { t } = useTranslation()
         }
         setEmail("")
         let data=await axios.request(options).then(response=>response.data).catch(err=>({response: null}))
-        // console.log("la reponse", data)
         if(data.response) {
             setLoad(false);
             toast.success('thank you \n have a nice day', {
@@ -71,11 +69,12 @@ const { t } = useTranslation()
                             {/* our mission is to make cryptocurrencies accessible in all regions of africa and to make them a means of payment. follow us to participate in the achievement of this mission */}
                         </p>
                         <div className="socials">
-                            <a href="https://www.linkedin.com/company/ipercash" target="_blank" > <div className="social-icon linkedin "><FaLinkedin size={28} /> </div></a> 
-                            <a href="https://twitter.com/IPERCash?s=09" target=" " > <div className="social-icon twitter "> <FaTwitter size={28} /> </div></a> 
-                            <a href="https://www.facebook.com/IPERCash-109875781411686/" target="_blank" > <div className="social-icon facebook"> <FaFacebookF size={28} /> </div></a> 
-                            <a href="https://www.instagram.com/iper.cash/" target="_blank" > <div className="social-icon instagram"> <FaInstagram size={32} /> </div></a>
-                            <a href="https://www.instagram.com/iper.cash/" target="_blank" > <div className="social-icon telegram"> <FaTelegramPlane size={32} /> </div></a>
+                            <a href="https://www.linkedin.com/company/ipercash" target="_blank" rel='nofollow' > <div className="social-icon linkedin "><FaLinkedin size={28} /> </div></a> 
+                            <a href="https://twitter.com/IPERCash?s=09" target=" " rel='nofollow' > <div className="social-icon twitter "> <FaTwitter size={28} /> </div></a> 
+                            <a href="https://www.facebook.com/IPERCash-109875781411686/" target="_blank" rel='nofollow' > <div className="social-icon facebook"> <FaFacebookF size={28} /> </div></a> 
+                            <a href="https://www.instagram.com/iper.cash/" target="_blank" rel='nofollow' > <div className="social-icon instagram"> <FaInstagram size={32} /> </div></a>
+                            <a href="https://www.instagram.com/iper.cash/" target="_blank" rel='nofollow' > <div className="social-icon telegram"> <FaTelegramPlane size={32} /> </div></a>
+                            <a href="https://www.youtube.com/channel/UC8glP2KvtgtKkdEk2VgD_zg" target="_blank" rel='nofollow' > <div className="social-icon youtube"> <FaYoutube size={32} /> </div></a>
                         </div>
                     </div>
                     <div className="contact">

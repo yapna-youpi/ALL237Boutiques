@@ -16,145 +16,141 @@ import iperFot from './assets/undraw_Mobile_login_re_9ntv.svg'
 import { Input } from '../addons/input/Input'
 import InputPhone from '../addons/input/PhoneInput'
 
-function Signup({Country}) {
+function Signup({ Country }) {
     const { t } = useTranslation()
-    const [state, setState]=useState({name: "", email: "", phone: "", password: "", cPassword: "", check: false})
-    const [errors, setErrors]=useState({
-        name: false, email: false, phone: false, password: false, cPassword: false 
+    const [state, setState] = useState({ name: "", email: "", phone: "", password: "", cPassword: "", check: false })
+    const [errors, setErrors] = useState({
+        name: false, email: false, phone: false, password: false, cPassword: false
     })
     const [lode, setLode] = useState(false)
     const [show, setShow] = useState(false);
 
-    let history=useHistory()
+    let history = useHistory()
 
-    const handleSubmit= e => {
+    const handleSubmit = e => {
         e.preventDefault();
-        console.log("start login")
-        if(!active()) signup(state)
+        if (!active()) signup(state)
         return false
     }
-    const signup=async(userdata)=>{
+    const signup = async (userdata) => {
         setLode(true)
         sendToApi('user/signup', userdata)
-        .then((data)=>{
-            setLode(false)
-            if(data.user) {
-                toastify("info", `Sign up successful. \n check ${state.email} to complete inscription`)
-                // history.push('/login')
-                    if(data.mail){
-                        setShow(!show)
+            .then((data) => {
+                setLode(false)
+                if (data.user) {
+                    toastify("info", `Sign up successful. \n check ${state.email} to complete inscription`)
+                    if (data.mail) {
+                        // setShow(!show)   here: uncomment
                     }
-            } else if(data.error.errors) {
-                toastify("info", `User ${state.email} has been found. Resend email to comple the inscription`)
-                setShow(!show)
-            }
-             else {
+                } else if (data.error.errors) {
+                    toastify("info", `User ${state.email} has been found. Resend email to comple the inscription`)
+                    // setShow(!show)   here: uncomment
+                }
+                else {
+                    toastify("error", "Sign up failed")
+                }
+            }).catch(error => {
+                console.warn("big error ", error)
                 toastify("error", "Sign up failed")
-            }
-        })
-        
+            })
     }
-    const resend=()=>{
-        console.log("user data ", state)
+    const resend = () => {
         setLode(true)
-        sendToApi('user/resend', {email: state.email, type: "signup"})
-        .then((data)=>{
-            setLode(false)
-            if(data.mail)
-                toastify("info", `Mail has been send to ${state.email}. Check it to complete inscription`)
-            else if(data.error) 
-                toastify("error", `User ${state.email} not found.`)
-            else
-                toastify("error", `Mail can't be send to ${state.email}. try again or reset your account`)
-        })
-    }
-    
-    const handleChange=(e)=>{
-        console.log(" c'est le ",e.name)
-        let newState=state
-        newState[e.name]=e.value
-        setState({...state})
+        sendToApi('user/resend', { email: state.email, type: "signup" })
+            .then((data) => {
+                setLode(false)
+                if (data.mail)
+                    toastify("info", `Mail has been send to ${state.email}. Check it to complete inscription`)
+                else if (data.error)
+                    toastify("error", `User ${state.email} not found.`)
+                else
+                    toastify("error", `Mail can't be send to ${state.email}. try again or reset your account`)
+            })
     }
 
-    const active=()=>(state.name&&state.email&&state.phone&&state.password&&state.email&&state.check)
-        &&(state.password.length>3)&&(state.password===state.cPassword)&&checkEmail(state.email)
-        &&isValidPhoneNumber(state.phone || 342)&&checkPassword(state.password)
+    const handleChange = (e) => {
+        let newState = state
+        newState[e.name] = e.value
+        setState({ ...state })
+    }
 
-    console.log(state, Country)
+    const active = () => (state.name && state.email && state.phone && state.password && state.email && state.check)
+        && (state.password.length > 3) && (state.password === state.cPassword) && checkEmail(state.email)
+        && isValidPhoneNumber(state.phone || 342) && checkPassword(state.password)
 
-    let AmList={
+
+    let AmList = {
         en: ["http://ftp.ipercash.fr/politiques//term_en.pdf"],
-        fr: ["http://ftp.ipercash.fr/politiques//terms_fr.pdf" ]
+        fr: ["http://ftp.ipercash.fr/politiques//terms_fr.pdf"]
     }
-    let lang=JSON.parse(localStorage.getItem("lang")||'{"lang":"en"}').lang
+    let lang = JSON.parse(localStorage.getItem("lang") || '{"lang":"en"}').lang
 
 
     return (
         <>
-        <div className="signup">
-            <div className="signup-content">
-                { show? (<div className="resend-content">
-                            <div className="resend-title">
-                                <h1>{t('SignUpSous11')}</h1>
-                                <hr/>
-                                {/* <h3>{t('SignUpSous12')}</h3> */}
-                                <p>{t('SignUpSous13')}</p>
-                                <p>{t('SignUpSous14')}</p>
-                                <hr/><br/>
-                                <Button fullwidth sx={{mx:2}} onClick={resend}>
-                                    { lode ? (<ReactLoading type="spin" color="#ffffff" width="28px" height="28px" />) : t('SignUpSous15')}
-                                </Button>
-                                <span onClick={()=>history.push('/Login')} className="btn-resend">{t('signUpLink')}</span>
+            <div className="signup">
+                <div className="signup-content">
+                    {show ? (<div className="resend-content">
+                        <div className="resend-title">
+                            <h1>{t('SignUpSous11')}</h1>
+                            <hr />
+                            {/* <h3>{t('SignUpSous12')}</h3> */}
+                            <p>{t('SignUpSous13')}</p>
+                            <p>{t('SignUpSous14')}</p>
+                            <hr /><br />
+                            <Button fullwidth sx={{ mx: 2 }} onClick={resend}>
+                                {lode ? (<ReactLoading type="spin" color="#ffffff" width="28px" height="28px" />) : t('SignUpSous15')}
+                            </Button>
+                            <span onClick={() => history.push('/Login')} className="btn-resend">{t('signUpLink')}</span>
 
-                            </div>
-                        </div>):
+                        </div>
+                    </div>) :
                         (<div className="signup-title">
-                            <h1 style={{color:'#0F394C',fontFamilly:'Segoe UI'}}>{t('SignUpTitle')}</h1>
+                            <h1 style={{ color: '#0F394C', fontFamilly: 'Segoe UI' }}>{t('SignUpTitle')}</h1>
                             <p className="signup-paragrap">{t('SignUpSous1')}</p>
-                            <form onSubmit={e=>handleSubmit(e)}>
+                            <form onSubmit={e => handleSubmit(e)}>
                                 <Input val={state.name} label={t('SignUpSous5')} name="name" id="signup-name" help="this field is required"
-                                    error={errors.name&&!state.name} 
-                                    change={handleChange} handBlur={()=>setErrors({...errors, name: !state.name})}
+                                    error={errors.name && !state.name}
+                                    change={handleChange} handBlur={() => setErrors({ ...errors, name: !state.name })}
                                 />
                                 <Input val={state.email} type="email" label={t('SignUpSous6')} name="email" id="signup-email" help="should be a valid email"
-                                    error={errors.email&&!checkEmail(state.email)}
-                                    change={handleChange} handBlur={()=>setErrors({...errors, email: true})}
+                                    error={errors.email && !checkEmail(state.email)}
+                                    change={handleChange} handBlur={() => setErrors({ ...errors, email: true })}
                                 />
                                 <InputPhone val={state.phone} name="phone" label={t('SignUpSous7')} country={Country} all={true} help="should be a valid phone number of the selected country"
-                                    error={errors.phone&&!isValidPhoneNumber(state.phone || "342")}
-                                    change={handleChange} handBlur={()=>setErrors({...errors, phone: true})}
+                                    error={errors.phone && !isValidPhoneNumber(state.phone || "342")}
+                                    change={handleChange} handBlur={() => setErrors({ ...errors, phone: true })}
                                 />
                                 <Input val={state.password} type="password" label={t('SignUpSous8')} name="password" id="Password" help={t('SignUpSous16')}
-                                    error={errors.password&&(!checkPassword(state.password))}
-                                    change={handleChange} handBlur={()=>setErrors({...errors, password: true})}
+                                    error={errors.password && (!checkPassword(state.password))}
+                                    change={handleChange} handBlur={() => setErrors({ ...errors, password: true })}
                                 />
-                                <Input val={state.cPassword} type="password" label={t('SignUpSous9')} name="cPassword" id="confirPassword" error={errors.cPassword&&(state.password!==state.cPassword)} help="should match to password"
-                                    change={handleChange} handBlur={()=>setErrors({...errors, cPassword: true})}
+                                <Input val={state.cPassword} type="password" label={t('SignUpSous9')} name="cPassword" id="confirPassword" error={errors.cPassword && (state.password !== state.cPassword)} help="should match to password"
+                                    change={handleChange} handBlur={() => setErrors({ ...errors, cPassword: true })}
                                 />
                                 <div className="checkbox">
-                                    <input type="checkbox" id="check" onChange={()=>setState({...state, check: !state.check})} />
-                                    <label htmlFor="check">{t('SignUpSous17')} <a className='lie' href={AmList[lang][0]} target="_blank">{t('SignUpSous18')}</a></label>
+                                    <input type="checkbox" id="check" onChange={() => setState({ ...state, check: !state.check })} />
+                                    <label htmlFor="check"><a className='lie' href={AmList[lang][0]} target="_blank">{t('SignUpSous17')} {t('SignUpSous18')}</a></label>
                                 </div>
-                                <Button  fullWidth className="sign-btnt"
+                                <Button fullWidth className="sign-btnt"
                                     type="submit"
-                                    disabled={!active()} 
-                                    onClick={()=>signup({...state, country: parsePhoneNumber(state.phone).country})}
+                                    disabled={!active()}
+                                    onClick={() => signup({ ...state, country: parsePhoneNumber(state.phone).country })}
                                 >
-                                    { lode? (<ReactLoading type="spin" color="#ffffff" width="28px" height="28px" />) : t('SignUpSous4') }   
+                                    {lode ? (<ReactLoading type="spin" color="#ffffff" width="28px" height="28px" />) : t('SignUpSous4')}
                                 </Button>
                             </form>
-                            <p className='signup-check' onClick={()=>history.push('/login')}><u>{t('SignUpSous10')}</u></p>
-                        </div>) }
+                            <p className='signup-check' onClick={() => history.push('/login')}><u>{t('SignUpSous10')}</u></p>
+                        </div>)}
+                </div>
+                <div className="signup-image">
+                    <p>{<img src={iperFot} className="signup-img" width="650px" />}</p>
+                </div>
             </div>
-            <div className="signup-image">
-                <span className="signup-block-logo"><img className={'signup-logo'} src={logoIpercash} /></span>
-                <p>{<img src={iperFot} className="signup-img"/>}</p>
-            </div>
-        </div>
-    </>
+        </>
     )
 }
 
-const mapStateToProps=state=>({Country: state.countryReducer.country})
+const mapStateToProps = state => ({ Country: state.countryReducer.country })
 
 export default connect(mapStateToProps)(Signup)

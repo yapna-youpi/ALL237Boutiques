@@ -278,7 +278,7 @@ const french = {
     SignUpSous16: "Le mot de passe doit avoir au moins huit caractères dont un chiffre",
     SignUpSous17: "J'accepte",
     SignUpSous18: "les condition d'utilisation",
-    signUpLink: "Retour à l'inscription",
+    signUpLink: "Aller à la connexion",
 
     //NotFound
     NotFoud1: 'OUPS! Quelque chose a mal tourné',
@@ -302,7 +302,7 @@ const french = {
     //forget
     forgetTitle: "Mot de Passe Oublié",
     forgetSous1: "Mot de passe perdu ? Veuillez saisir votre identifiant ou adresse mail. Vous recevrez un lien pour créer un nouveau mot de passe par E-mail.",
-    forgetSous2: "Donnez votre correct e-mail",
+    forgetSous2: "Donnez votre correct mail",
     forgetSous3: "Réinitialisation",
     forgetSous4: "Verification De Votre Mail!",
     forgetSous5: "Cher client, aidez-nous à vous aider !",

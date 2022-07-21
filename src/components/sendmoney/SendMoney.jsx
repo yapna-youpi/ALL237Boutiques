@@ -18,22 +18,24 @@ import Modal2 from './Modal2'
 const EUR = 655
 // const EuroFees=655*0.964
 const FEES = 0.0396
-// const INTOUCHFEES=250
+// const INTOUCHFEES=250 XAF (0.38 EUR)
 
 // mercuryo fee up to 3.8%
 
-let widgetUrl = 'https://ipercash-api.herokuapp.com/'
+// let widgetUrl = 'https://ipercash-api.herokuapp.com/'
+let widgetUrl = process.env.REACT_APP_MERCURYO_URL
+// console.log("the widget url ", widgetUrl)
 
 var interval = null
 
 function SendMoney({ amount, country, User }) {
-    let enable = process.env.REACT_APP_SEND_ENABLE ;
-    
-    console.log("service are disable ", enable)
+    let enable = process.env.REACT_APP_SEND_ENABLE;
+
+    // console.log("service are disable ", enable)
     const { t } = useTranslation()
     // value of differents field in the form 
     const [state, setState] = useState({
-        amount: amount, name: "", phone: "", cPhone: "", fees: 1.37, newAmount: amount
+        amount: amount, name: "", phone: "", cPhone: "", fees: amount * FEES, newAmount: amount
     })
     // handling error on different field 
     const [errors, setErrors] = useState({
@@ -45,6 +47,9 @@ function SendMoney({ amount, country, User }) {
     const [showing, setShowing] = useState(true)
 
     const [mode, setMode] = useState(false)
+    useEffect(() => {
+        amountTaxation()
+    }, [])
 
     let history = useHistory()
     // handle change on different field, update mactching field in state
@@ -65,9 +70,9 @@ function SendMoney({ amount, country, User }) {
             newErrors[e.name] = false
             setErrors({ ...errors })
         }
-        
+
     }
-    console.log(mode.open)
+    // console.log(mode.open)
 
     // this function send the data operation on api, open the widget and show the modal
     const send = () => {
@@ -92,7 +97,7 @@ function SendMoney({ amount, country, User }) {
         }
         setModal({ ...modal, open: true, closable: false, operationId: params.transaction_id })
         // TODO : make that page open after getting request response ( use await )
-        window.open(widgetUrl + 'hello?d=' + randomChain() + '' + (state.amount) * 0.579 + '' + params.transaction_id, '_blank')
+        window.open(widgetUrl + 'hello?d=' + randomChain() + ';' + (Math.ceil(parseFloat(state.amount) + parseFloat(state.fees))) * 0.579 + ';' + params.transaction_id, '_blank')
         fetch(apiUrl + 'send/init', requestOption)
             .then(response => response.json()).then(data => {
                 if (data.success) {
@@ -150,7 +155,7 @@ function SendMoney({ amount, country, User }) {
 
     // this function handle disabled propertie of button
     const active = () => {
-        if ((state.amount >= 25 && state.amount <= 50) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone))  return false
+        if ((state.amount >= 25 && state.amount <= 775) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone)) return false
         else return true
     }
     // this function check phone number
@@ -172,91 +177,92 @@ function SendMoney({ amount, country, User }) {
         clearInterval(interval)
         setState({ amount: amount, name: "", phone: "", cPhone: "" })
         setModal({ open: false, closable: false })
+        document.location.reload()
     }
-    
 
-    // console.log("le state", state)
-
-    const handleSubmit = (e,enable) => {
+    const handleSubmit = (e, enable) => {
         e.preventDefault()
-        
-        if (enable == "FALSE" ) {
+
+        if (enable == "FALSE") {
             return false
         }
         eclips()
     }
     // la function du submit au boutton pour changer le taux
     const eclips = () => {
-
         if (showing == true) {
             setShowing(!showing)
 
             // return false
-        }else{
+        } else {
 
             if (enable == 'FALSE') {
                 setMode(!mode)
-            }else{
-                   send()
-                 }
-            
+            } else {
+                send()
+            }
+
         }
-
-
     }
-
-    //la function qui arrondi exactement apres la virgule
-    function round(num) {
-        var m = Number((Math.abs(num) * 100).toPrecision(15))
-        return Math.round(m) / 100 * Math.sign(num)
-    }
-
     // la function qui gere le taxe sur le montant
     const amountTaxation = () => {
         let fees, newAmount
         switch (true) {
+            case (state.amount === ''):
+                // console.log("the empty case ", state.amount)
+                fees = 0
+                newAmount = 0
+                setState({ ...state, fees: 0, newAmount: 0 })
+                break
 
-            case (25 <= state.amount && state.amount < 50):
-                fees = round((state.amount * 3.96) / 100)
+            case (state.amount <= 50):
+                // console.log("the case ", state.amount)
+                fees = Math.ceil(state.amount * 0.0396 + 0.38)
                 newAmount = state.amount - fees
                 setState({ ...state, fees, newAmount })
                 break
 
             case (51 <= state.amount && state.amount < 150):
+                // console.log("the case ", state.amount)
                 fees = 1.95
                 newAmount = state.amount - fees
                 setState({ ...state, fees, newAmount })
                 break
 
             case (151 <= state.amount && state.amount < 300):
+                // console.log("the case ", state.amount)
                 fees = 2.95
                 newAmount = state.amount - fees
                 setState({ ...state, fees, newAmount })
                 break
 
             case (300 <= state.amount):
+                // console.log("the last case ", state.amount)
                 fees = 3.95
                 newAmount = state.amount - fees
                 setState({ ...state, fees, newAmount })
                 break
 
             default:
+                // console.log("the default case ", state.amount)
+                fees = 0
+                newAmount = 0
+                setState({ ...state, fees: 0, newAmount: 0 })
                 break
-
         }
     }
-    
+    // console.log("the new amount ", Math.ceil(parseFloat(state.amount) + parseFloat(state.fees)))
     return (
         <>
-            {enable ==="FALSE"  ? <h3 className='disjointe'>Le service est indisponible</h3> : ""}
+            {enable === "FALSE" ? <h3 className='disjointe'>Le service est indisponible</h3> : ""}
             <div className="sendmoney">
-            <Modal option={modal} close={closeModal} />
-            <Modal2 mode={mode} close={()=>setMode(false)}  />
+                <Modal option={modal} close={closeModal} />
+                <Modal2 mode={mode} close={() => setMode(false)} />
                 <form className="form">
                     <div className="form-head">
                         <div className="form-group">
                             <Input val={state.amount} name="amount" label={t('sendMoneySous9')} type='number' help={t('sendMoneySous15')}
-                                error={state.amount < 25 || state.amount > 50} change={handleChange} handBlur={handleBlur}
+                                error={state.amount < 25 || state.amount > 775} change={handleChange} handBlur={handleBlur}
                             />
                         </div>
                         <div className="">1,OO EUR <h3 className="sign">&cong;</h3> 655,957 XAF</div>
@@ -285,16 +291,16 @@ function SendMoney({ amount, country, User }) {
                     <h2>{t('sendMoneySous2')}</h2>
                     <div className="row">
                         <span>{t('sendMoneySous3')}</span>
-                        <span> {Intl.NumberFormat('de-DE').format(round(state.amount))} EUR </span>
+                        <span> {Intl.NumberFormat('de-DE').format(Math.ceil(state.amount))} EUR </span>
                     </div>
                     <div className="row">
                         <span>{t('sendMoneySous4')}</span>
-                        <span> {Intl.NumberFormat('de-DE').format(round(state.fees))}  EUR </span>
+                        <span> {Intl.NumberFormat('de-DE').format(Math.ceil(state.fees))}  EUR </span>
                     </div>
-                    {/* <div className="row">
-                    <span>{ t('sendMoneySous5')} </span>
-                    <span> { Intl.NumberFormat('de-DE').format(Math.round(state.amount)) } EUR </span>
-                </div> */}
+                    <div className="row">
+                        <span>{t('sendMoneySous5')} </span>
+                        <span> {Intl.NumberFormat('de-DE').format(Math.ceil(parseFloat(state.amount) + parseFloat(state.fees)) || 0)} EUR </span>
+                    </div>
                     <div className="row">
                         <span>{t('sendMoneySous6')}</span>
                         <span>  {Intl.NumberFormat('de-DE').format(Math.floor(EUR * state.newAmount))} XAF </span>
@@ -309,15 +315,15 @@ function SendMoney({ amount, country, User }) {
                             </div>
                             <div className="row">
                                 <span>{t('sendText2')}EUR </span>
-                                <span> {"1.95 "}EUR </span>
+                                <span> {"2 "}EUR </span>
                             </div>
                             <div className="row">
                                 <span>{t('sendText3')}EUR </span>
-                                <span> {"2.95 "}EUR </span>
+                                <span> {"3 "}EUR </span>
                             </div>
                             <div className="row">
                                 <span>{t('sendText4')} </span>
-                                <span> {"3.95 "}EUR </span>
+                                <span> {"4 "}EUR </span>
                             </div>
                         </div>
                     )

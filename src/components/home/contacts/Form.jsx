@@ -18,7 +18,6 @@ function Form() {
     const handleSubmit= async(e)=>{
         e.preventDefault()
         setLoad(true);
-        console.log("submit")
         var options = {
             method: 'POST',
             url: apiUrl+"sendmail",
@@ -27,7 +26,6 @@ function Form() {
         }
         setState({name: "", email: "", message: ""})
         let data=await axios.request(options).then(response=>response.data).catch(err=>({response: null}))
-        console.log("la reponse", data)
         if(data.response) {
             setLoad(false)
             toast.success('thank you \n have a nice day', {
@@ -53,7 +51,6 @@ function Form() {
         }
         return false
     }
-    // console.log(state)
     return (
         <>
         <ToastContainer

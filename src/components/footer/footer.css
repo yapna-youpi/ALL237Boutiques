@@ -13,6 +13,9 @@ footer {
     border: none;
     background-color: var(--no-value);
 }
+.footer .logo{
+    cursor: pointer;
+}
 
 @media screen and (min-width: 768px) {
     footer {

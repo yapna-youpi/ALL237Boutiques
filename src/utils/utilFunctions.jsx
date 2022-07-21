@@ -93,7 +93,7 @@ const trackStatus=async (params, token, callBack, cancel)=>{
             clearInterval(interval)
             cancel({status: 'fail', cause: 'payment process fail'}, 1)
         }
-    }, 10*60*1000); // en production c'est 10*60
+    }, 60*60*1000); // en production c'est 10*60
 }
 
 const setRequestOption=(body, token)=>({

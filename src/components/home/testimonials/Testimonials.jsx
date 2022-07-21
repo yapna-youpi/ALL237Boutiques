@@ -18,7 +18,6 @@ const Arrows=({type, onClick, isEdge})=>{
 
 function Testimonials() {
     const { t } = useTranslation();
-    console.log(window.innerWidth)  //620, 1000
     return (
         <div className="testimonials">
             <h1> {t('testimonialTitle')} </h1>

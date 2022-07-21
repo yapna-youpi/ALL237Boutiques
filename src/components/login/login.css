@@ -105,4 +105,8 @@
     width: 95%;
     background-color: var(--red) !important;
   }
+  .login .bitlogo{
+    position: relative;
+    /* transform: ; */
+  }
 }

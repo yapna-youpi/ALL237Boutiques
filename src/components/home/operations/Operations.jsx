@@ -12,12 +12,10 @@ const appUrl="http://localhost:3000/"
 
 function Operations({dispatch, Amount, crypto}) {
     const { t }=useTranslation()
-    // console.log(dispatch, Amount, crypto)
     const [amount, setAmount]=useState()
     let history=useHistory()
 
     const handleChange=(e)=>{
-        console.log(e.name)
         setAmount(parseInt(e.value))
     }
     const startOperation=(route, op)=>{

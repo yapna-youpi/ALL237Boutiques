@@ -2,5 +2,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
+    width: 70%;
+    margin: 4rem auto;
+    min-height: 400px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+
+.checked .activated {
+    padding: 0 35px;
+    text-align: center;
+}
+
+.checked .act, .fail {
+    font-size: 2em;
+}
+
+.checked h2 u {
+    color: var(--green);
+    cursor: pointer;
 }
