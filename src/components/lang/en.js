@@ -258,7 +258,10 @@ const english = {
     LoginSous7: 'Create account',
     LoginSous8: 'Passord should have at least heigth characters with one number',
     LoginSous9: "Forgot Password",
-    LoginSous11: ' Sign in if you are already registred or create an account.',
+    LoginSous10: ' Sign in if you are already registred or create an account.',
+    LoginSous11: "failed to login",
+    LoginSous12: "Hello",
+
     //SignUp
     SignUpTitle: 'Register now',
     SignUpSous1: 'If you do not have an account yet, please register',
@@ -279,6 +282,16 @@ const english = {
     SignUpSous16: 'Passord should have at least heigth characters with one number',
     SignUpSous17: "I accept",
     SignUpSous18: "the conditions of use",
+    SignUpSous19: "Sign up successful.",
+    SignUpSous20: "check",
+    SignUpSous21: "to complete inscription",
+    SignUpSous22: "`User",
+    SignUpSous23: "has been found. Resend email to complete the inscription",
+    SignUpSous24: "Sign up failed",
+    SignUpSous25: "Mail has been send to",
+    SignUpSous26: "Check it to complete inscription",
+    SignUpSous27: "Mail can't be send to",
+    SignUpSous28: "try again or reset your account",
     signUpLink: "Go to Login",
 
 
@@ -398,6 +411,13 @@ const english = {
     cookie7: 'Sending third-party data!',
     cookie8: 'I choose',
     cookie9: 'Accept and close',
+
+    //modal2
+    modal2Title:"The service is temporarily unavailable!",
+    modal2parag1: "Our teams do their best to solve the problem as soon as possible.",
+    modal2parag2: "Our apologies for this unforeseen event!",
+
+
 
 
   }

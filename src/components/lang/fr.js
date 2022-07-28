@@ -256,8 +256,9 @@ const french = {
     LoginSous7: 'Créer un Compte',
     LoginSous8: 'Le mot de passe doit avoir au moins 8 caractères dont un chiffre',
     LoginSous9: "Mot de passe oublié",
-    LoginSous10: "Le mot de passe doit avoir au moins 8 caractères dont",
-    LoginSous11: "Authentifiez vous si vous avez déjà un compte, sinon créez un compte",
+    LoginSous10: "Authentifiez vous si vous avez déjà un compte, sinon créez un compte",
+    LoginSous11: "échec de la connexion",
+    LoginSous12: "Bonjour",
 
     //SignUp
     SignUpTitle: "Inscrivez-Vous",
@@ -278,6 +279,16 @@ const french = {
     SignUpSous16: "Le mot de passe doit avoir au moins huit caractères dont un chiffre",
     SignUpSous17: "J'accepte",
     SignUpSous18: "les condition d'utilisation",
+    SignUpSous19: "Inscrit avec succès.",
+    SignUpSous20: "vérifier",
+    SignUpSous21: "pour compléter l'inscription",
+    SignUpSous22: "`Utilisateur",
+    SignUpSous23: "a été trouvé. Renvoyez le courriel pour compléter l'inscription",
+    SignUpSous24: "L'inscription a échoué",
+    SignUpSous25: "Le courrier a été envoyé à",
+    SignUpSous26: "Vérifiez-le pour compléter l'inscription",
+    SignUpSous27: "Le courrier ne peut pas être envoyé à",
+    SignUpSous28: "essayez à nouveau ou réinitialisez votre compte",
     signUpLink: "Aller à la connexion",
 
     //NotFound
@@ -396,6 +407,11 @@ const french = {
     cookie7: 'Envoi des données tiers!',
     cookie8: 'Je choisis',
     cookie9: 'Accepter et fermer',
+
+     //modal2
+     modal2Title:"Le service est momentanément indisponible!",
+     modal2parag1: "Nos équipes font le maximum pour résoudre le problème au plus vite.",
+     modal2parag2: "Toutes nos excuses pour cet imprévu !",
 
 
   }

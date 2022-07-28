@@ -28,7 +28,6 @@ function BuyCryptoCard({Amount, User}) {
     let history=useHistory()
     useEffect(async() => {
         getCryptoRate().then(newRate=>{
-            // console.log("le nouveau rate", newRate)
             if(rate) {
                 //setState
                 setRate({...rate, BTC: newRate})
@@ -38,7 +37,6 @@ function BuyCryptoCard({Amount, User}) {
         })
         setInterval(() => {
             let interval=getCryptoRate().then(newRate=>{
-                // console.log("l'etat avant", state)
                 if(rate) setRate({...rate, BTC: newRate})
             })
             return () => {
@@ -49,14 +47,12 @@ function BuyCryptoCard({Amount, User}) {
 
     // la fonction qui gere les changement des inputs
     const handleChange=e=>{
-        //console.log(e.name);
         let newState=state
         newState[e.name]=e.value
         setState({...state})
     }
     // la fonction qui gere l'evenement onBlur des inputs
     const handleBlur=e=>{
-        console.log(e.name)
         if(e.value==="") {
             let newErrors=errors
             newErrors[e.name]=true
@@ -72,23 +68,19 @@ function BuyCryptoCard({Amount, User}) {
         let result
         switch (e.name) { // amount c'est le montant en crypto monnaie 
             case "crypto":
-                console.log("c'est le montant")
                 result=cryptoChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break
             case "xaf":
-                console.log("c'est le xaf")
                 result=xafChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break;
             
             case "eu":
-                console.log("c'est le eu")
                 result=euroChange(e.value, rate.BTC)
                 setState({...state, ...result})
             break;
             default:
-                console.log("c;est autre chose")
             break;
         }
     }
@@ -113,14 +105,12 @@ function BuyCryptoCard({Amount, User}) {
             // type: 'credit_card',
         }
         let result=await sendToApi('cardinit', params, User.token)
-        console.log(result)
         if(result.response) {
             setId({...operationId, status: false})
             openModal()
         } else setId({...operationId, status: false})
     }
 
-    // console.log("operation id ", operationId)
     return (
         <div className="buycrypto">
             <h1>{t('buyCryptoCardTitle')}</h1>

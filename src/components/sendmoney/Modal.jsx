@@ -13,7 +13,6 @@ function CoverModal({option, close}) {
     let ref=React.createRef()
     const copy=()=>{
         if(ref) {
-            console.log(ref.current)
             ref.current.select()
             document.execCommand('copy')
         }

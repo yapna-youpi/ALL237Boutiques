@@ -3,7 +3,7 @@ import { roundDecimal } from '../../utils/utilFunctions';
 /* le pourcentage de la commission est de 5% */
 
 const FEES=0.0395
-const INTOUCHFEES=0 // les frais intouch sont de 250
+const INTOUCHFEES=250 // les frais intouch sont de 250 XAF
 
 const cryptoChange=(value, rate)=>{
     if(value<0.000296) {
@@ -14,7 +14,6 @@ const cryptoChange=(value, rate)=>{
         }
     }
     else {
-        console.log("le rate ", rate)
         return {
             xaf: Math.round(value*rate*655*(1-FEES)-INTOUCHFEES),
             eu: roundDecimal(value*rate*(1-FEES)-INTOUCHFEES/655),
@@ -33,7 +32,6 @@ const euroChange=(value, rate)=>{
         }
     }
     else {
-        // console.log("le resultat", rate)
         return {
             xaf: value*655,
             eu: value,

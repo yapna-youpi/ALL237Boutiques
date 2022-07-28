@@ -16,25 +16,25 @@ function Partner() {
     return (
         <div className="partners">
             <div className="partners-container">
-                <img src={mercuryo} alt=""/>
-                <img src={orange} alt=""/>
+                <img src={mercuryo} alt="mercurio"/>
+                <img src={orange} alt="orange"/>
                 <img src={mobi} alt="mobimali"/>
-                <img src={wizall} alt=""/>
-                <img src={mobiBurki} alt=""/>
-                <img src={free} alt=""/>
-                <img src={mtn} style={{marginRight:"60px"}} alt=""/>
-                <img src={sepa} alt=""/>
-                <img src={moov} style={{marginRight:"75px"}} alt=""/>
-                <img src={visa} style={{marginRight:"75px",maxWidth:"150px"}} alt=""/>
-                <img src={mercuryo} alt=""/>
-                <img src={orange} style={{marginRight:"30px"}} alt=""/>
+                <img src={wizall} alt="wizall"/>
+                <img src={mobiBurki} alt="mobiburki"/>
+                <img src={free} alt="free"/>
+                <img src={mtn} style={{marginRight:"60px"}} alt="mtn"/>
+                <img src={sepa} alt="sepa"/>
+                <img src={moov} style={{marginRight:"75px"}} alt="moov"/>
+                <img src={visa} style={{marginRight:"75px",maxWidth:"150px"}} alt="visa"/>
+                <img src={mercuryo} alt="mercurio"/>
+                <img src={orange} style={{marginRight:"30px"}} alt="orange"/>
                 <img src={mobi} alt="mobimali"/>
-                <img src={wizall} alt=""/>
-                <img src={mobiBurki} style={{marginRight:"120px"}} alt=""/>
-                <img src={free} alt=""/>
-                <img src={mtn} alt=""/>
-                <img src={sepa} alt=""/>
-                <img src={moov} alt=""/>
+                <img src={wizall} alt="wizall"/>
+                <img src={mobiBurki} style={{marginRight:"120px"}} alt="mobiburki"/>
+                <img src={free} alt="free"/>
+                <img src={mtn} alt="mtn"/>
+                <img src={sepa} alt="sepa"/>
+                <img src={moov} alt="moov"/>
             </div>
             {/* <div className="circle"></div> */}
             {/* <div className="circle"></div> */}

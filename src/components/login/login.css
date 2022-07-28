@@ -1,11 +1,10 @@
 /*--site mode tablette--*/
 .login {
   /*--principal--*/
-  width: 80%;
+  width: 90%;
   min-height: 65vh;
   margin: 50px auto;
-  padding: 3%;
-  display: flex;
+  padding: 1%;
   align-items: center;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.05) 0px 8px 32px;
@@ -18,6 +17,9 @@
   /*--div gauche--*/
   display: none;
 }
+/* .login .login-paragrap{
+  text-align: center;
+} */
 .login  .MuiFormControl-root{
   margin: 5px auto!important;
 }
@@ -60,7 +62,6 @@
 }
 @media only screen and (min-width: 768px) {
   .login .login-content {
-    width: 80%;
     padding: 0 5% 2% 5%;
   }
 }
@@ -68,11 +69,13 @@
   /*--site mode tablette -- et -- large ecran--*/
   .login {
     /*--principal--*/
+    width: 70%;
     max-width: 1300px;
     min-width: 1000px;
     min-height: 70vh;
     justify-content: space-around;
     padding: 1%;
+    display: flex;
   }
   .login .login-content {
     /*--div droite--*/
@@ -87,6 +90,7 @@
     /*--div gauche--*/
       width: 40%;
       display: block;
+      transform: translateY(33px);
   }
   .login-image .login-block-logo {
     /*-- block du logo dipercash--*/

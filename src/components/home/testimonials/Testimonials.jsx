@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import { useTranslation } from 'react-i18next'
 import Carousel, { consts } from 'react-elastic-carousel'
 import { SiTrustpilot } from 'react-icons/si'
@@ -16,11 +16,19 @@ const Arrows=({type, onClick, isEdge})=>{
     )
 }
 
+
 function Testimonials() {
+    
+    const itemsPerPage = Math.floor(window.innerWidth/400);
+    const items = []
+    const carouselRef = useRef(null);
+    const totalPages = Math.ceil(items.length / itemsPerPage)
+    let resetTimeout;
     const { t } = useTranslation();
+
     return (
         <div className="testimonials">
-            <h1> {t('testimonialTitle')} </h1>
+            <h2> {t('testimonialTitle')} </h2>
             <h3>
                 {/* debut de trustpilot */}
                 <div className="trustpilot-widget" data-locale="en-GB" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="616d7e144a86378d5870e77c" data-style-height="52px" data-style-width="100%">
@@ -30,8 +38,20 @@ function Testimonials() {
             </h3>
             <div className="testimonials-container">
                 <Carousel className="testimonials-carousel"
-                    pagination={false} itemsToShow={Math.floor(window.innerWidth/300)}
+                    pagination={false} itemsToShow={Math.floor(window.innerWidth/400)}
                     renderArrow={Arrows}
+
+                    ref={carouselRef}
+                    enableAutoPlay
+                    autoPlaySpeed={2000} // same time
+                    onNextEnd={({ index }) => {
+                        clearTimeout(resetTimeout)
+                        if (index + 1 === totalPages) {
+                           resetTimeout = setTimeout(() => {
+                              carouselRef.current.goTo(0)
+                          }, 2000) // same time
+                        }
+                   }}
                 >
                     <div className="testimonial">
                         <div className="testi-head">
@@ -87,6 +107,34 @@ function Testimonials() {
                             <h4>Service rapide et de qualité</h4>
                             <p>
                                 Service rapide, viable et de qualité.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="testimonial">
+                        <div className="testi-head">
+                            <h4>Philippe Oyono</h4>
+                            <div className="starts">
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                {/* <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div> */}
+                            </div>
+                        </div>
+                        <div className="testi-body">
+                            <h4>Continuez comme ça 👌👍</h4>
+                            <p>
+                                Très surpris de voir un tel service aussi rapide,sécurisé et très utile ici au Cameroun.
                             </p>
                         </div>
                     </div>

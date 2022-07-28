@@ -9,7 +9,6 @@ function Widget({open, close, amount, crypto, wallet, opId}) {
     const ref=React.createRef()
     const copy=()=>{
         if(ref) {
-            console.log(ref.current)
             ref.current.select()
             document.execCommand('copy')
         }
@@ -28,7 +27,6 @@ function Widget({open, close, amount, crypto, wallet, opId}) {
             </Modal>
             {open && (
                 <Helmet> <script>{`
-                        // console.log('${crypto}', mercuryoWidget)
                         setTimeout(() => {
                             mercuryoWidget.run({
                                 widgetId: '968b3634-4802-468d-a4ac-21fb7c39af49',
@@ -46,7 +44,6 @@ function Widget({open, close, amount, crypto, wallet, opId}) {
                                 address: '${wallet}',
                                 hideAddress: true,
                                 ratesFeeOff: true,
-                                onStatusChange: data => console.log("status changed ", data) 
                             })
                         }, 0);
                     `}</script>

@@ -26,7 +26,6 @@ function SellModal({ open, toogle, data, rate, User }) {
     let ref1 = React.createRef()
     let ref2 = React.createRef()
     useEffect(async () => {
-        // console.log("les data", data)
         checkConflict()
         return () => {
         }
@@ -43,12 +42,10 @@ function SellModal({ open, toogle, data, rate, User }) {
             return
         }
         setStep(result.response)
-        // console.log("le resultat ", result.response)
         return result.response
     }
     // function that check if the payment has been done
     const checkPayment = async () => {
-        //console.log("le check payment ", state)
         setChecking(true)
         let params = {
             address: data.wallet,
@@ -56,7 +53,6 @@ function SellModal({ open, toogle, data, rate, User }) {
             id: state.id,
             userId: User.userId
         }
-        // console.log("les params", params)
         let result = await sendToApi('sellcrypto/gettx', params, User.token)
         if (result.response) {
             setState({ ...state, txid: result.response.id, status: result.response.status })
@@ -65,7 +61,6 @@ function SellModal({ open, toogle, data, rate, User }) {
         } else {
             setState({ ...state, status: result.response })
         }
-        // console.log("result ", result)
         setChecking(false)
     }
     // function that haandle message about status of transaction
@@ -95,24 +90,19 @@ function SellModal({ open, toogle, data, rate, User }) {
     // function that checks confirmation of transaction
     const checkConfirmation = (data) => {
         let time = 0
-        // console.log(state)
         if (state.id) {
-            // console.log("dedans ", data)
             intervalFunction(data, time)
         }
     }
     // function that check confirmation of transaction
     const intervalFunction = (data, time) => {
-        // console.log("is confirm ? ", time)
         time++
         if (time === 12) { // when time reach 11 transaction have 10 min
             setTimeout(() => success(), 20 * 1000) // waiting for api make payment and change status of operation in database
             return
         }
         sendToApi('sellcrypto/confirm', data).then(result => {
-            // console.log("le resultat", result)
             if (result.response === "confirmed") {
-                // console.log("on arrete l'intervalle")
                 //setState({...state, status: "confirmed"})
                 setTimeout(() => success(), 20 * 1000)
             }
@@ -178,10 +168,8 @@ function SellModal({ open, toogle, data, rate, User }) {
             rate: rate,
             userId: User.userId
         }
-        // console.log("le store data ", storeData)
         let storeResult = await sendToApi('sellcrypto/create', storeData, User.token)
         if (storeResult !== 'error') {
-            // console.log("le resultat du store ", storeResult)
             setState({ ...state, start: true, id: storeData.transaction_id })
         }
     }
@@ -192,9 +180,7 @@ function SellModal({ open, toogle, data, rate, User }) {
             status: 'cancel',
             userId: User.userId
         }
-        // console.log("le store data", storeData)
         let storeResult = await sendToApi('sellcrypto/update', storeData, User.token)
-        // console.log("cancel result ", storeResult)
         if (storeResult !== 'error') {
             change()
         }
@@ -205,14 +191,12 @@ function SellModal({ open, toogle, data, rate, User }) {
             document.execCommand('copy')
         }
         else if (ref2) {
-            // console.log(ref.current)
             ref2.current.select()
             document.execCommand('copy')
         }
         toastify('info', "text copied", 3000)
     }
 
-    // console.log("le state",state)
     return (
         <Modal open={open} onClose={() => toogle(!open)} showCloseIcon={false} closeOnOverlayClick={false}
             center classNames={{ overlay: "sell-overlay", modal: 'sell-modal' }}

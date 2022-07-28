@@ -50,7 +50,6 @@ const Forget =({type, color}) => {
             }) 
     }
     const resend=()=>{
-        console.log("user data ", state)
         setLoader(true)
         sendToApi('user/resend', {email: state, type: "lost"})
         .then((data)=>{
@@ -61,7 +60,7 @@ const Forget =({type, color}) => {
             else {
                 toastify("error", `${('forgetSous16')+ ' ' + state }.`)
             }
-        })
+        }).catch(error=> toastify("error", `${('forgetSous16')+ ' ' + state }.`))
     }
     const active = () => !checkEmail(state)
 

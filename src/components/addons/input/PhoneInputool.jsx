@@ -28,8 +28,7 @@ function InputPhone({label, name, val, id, error, help, change,fullwidth, handBl
     const longText = "ce service n'est pas disponible dans votre pays pour l'instant merci de votre comprehension !"
     
     
-    // console.log(country)
-    // console.log(alert)
+ 
     return (
         <div className="input-phone">
             <label htmlFor=""> {label} </label>
@@ -43,7 +42,6 @@ function InputPhone({label, name, val, id, error, help, change,fullwidth, handBl
                            defaultCountry={country || 'CM'} international countryCallingCodeEditable={false}
                            onChange={(value)=>change({name: name, value: value})}
                            onBlur={ handBlur ? (e)=>handBlur(e.target) : ()=>{}}
-                        // onCountryChange={(country)=>console.log(country)}
                     />
                 </div>
                 <div className="tooltip-input">

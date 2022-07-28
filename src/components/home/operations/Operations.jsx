@@ -28,7 +28,7 @@ function Operations({dispatch, Amount, crypto}) {
         <div className="operations" id="operations">
             <div className="operations-container" data-aos="zoom-in"  data-aos-duration="800" data-aos-once="true" >
                 <div className='thead' >
-                    <h1 className='theader'> {t('operationTitle')} </h1>
+                    <h2 className='theader'> {t('operationTitle')} </h2>
                 </div>
                 <div className="listen">
                     <input type="number" name="amount" placeholder={t('operationPlaceholder')} onChange={(e)=>handleChange(e.target)} />
@@ -60,7 +60,7 @@ function Operations({dispatch, Amount, crypto}) {
                     </div>
                 </div>
             </div>
-            <img src={image} alt="" className="picture" data-aos="fade-up"  data-aos-duration="1500" data-aos-once="true" />
+            <img src={image} alt="operations" className="picture" data-aos="fade-up"  data-aos-duration="1500" data-aos-once="true" />
         </div>
         </>
     )

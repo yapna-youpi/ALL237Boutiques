@@ -68,14 +68,14 @@ function Login({ User, dispatch }) {
             .then(data => {
                 setLoad(false)
                 if (data.userId) {
-                    toastify("success", `Hello ${data.userName}`)
+                    toastify("success", `${t('LoginSous12')} ${data.userName}`)
                     dispatch(setUser({ ...data, timestamp: +new Date }))
                     install()
                     history.push('/')
-                } else toastify("error", "failed to login")
+                } else toastify("success", `${t('LoginSous12')} ${data.userName}`)
             }).catch(error=>{
                 console.log("there is an error ", error)
-                toastify("error", "failed to login")
+                toastify("error",`${t('LoginSous11')}`)
             })
     }
 
@@ -108,8 +108,8 @@ function Login({ User, dispatch }) {
         <div className="login">
             <div className="login-content">
                 <div className="login-title">
-                    <h1 style={{ color: '#0F394C', fontFamilly: 'Segoe UI' }}>{t('LoginTitle')}</h1>
-                    <p className="login-paragrap">{t('LoginSous11')}</p>
+                    <h1 style={{color:'#0F394C',fontFamilly:'Segoe UI'}}>{t('LoginTitle')}</h1>
+                    <p className="login-paragrap">{t('LoginSous10')}</p>
                     <form onSubmit={e => handleSubmit(e)}>
                         <div className="form-groupe">
                             <Input val={state.email} name="email" label={t('LoginSous3')} help={t('LoginSous2')}
@@ -141,9 +141,9 @@ function Login({ User, dispatch }) {
             </div>
             <div className="login-image">
                 <span className="login-block-logo">
-                    {/* <img className={'login-logo'} src={logoIpercash} /> */}
+                    {/* <img className={'login-logo'} src={logoIpercash} alt="login-logo" /> */}
                 </span>
-                {<img src={iperFot} className="bitlogo" width="100%" />}
+                {<img src={iperFot} className="bitlogo" width="100%" alt="bit-logo" />}
             </div>
         </div>
     )

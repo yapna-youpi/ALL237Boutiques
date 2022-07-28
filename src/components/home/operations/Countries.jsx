@@ -23,25 +23,25 @@ function Countries({country, dispatch}) {
 
     return (
         <div className="choose-country">
-            <div className="dropdown" onClick={showList} > <img src={state.img} className="ims"  alt=""/><span /> </div>
+            <div className="dropdown" onClick={showList} > <img src={state.img} className="ims"  alt="default land"/><span /> </div>
             <div ref={ref} className="countries-list">
                 <div className="country" onClick={()=>selectCountry({img: camer}, 'CM')} >
-                    <img src={camer} alt=""/>
+                    <img src={camer} alt="cmeroun"/>
                 </div>
                 <div className="country" onClick={()=>selectCountry({img: sene}, 'SN')} >
-                    <img src={sene} alt=""/>
+                    <img src={sene} alt="senegal"/>
                 </div>
                 <div className="country" onClick={()=>selectCountry({img: ivc}, 'CI')} >
-                    <img src={ivc} alt=""/>
+                    <img src={ivc} alt="cote d'ivoire"/>
                 </div>
                 {/* <div className="country" onClick={()=>selectCountry({img: mali}, 'ML')} >
-                    <img src={mali} alt=""/>
+                    <img src={mali} alt="mali"/>
                 </div>
                 <div className="country" onClick={()=>selectCountry({img: burki}, 'BF')} >
-                    <img src={burki} alt=""/>
+                    <img src={burki} alt="burkina"/>
                 </div>
                 <div className="country" onClick={()=>selectCountry({img: guine}, 'GN')} >
-                    <img src={guine} alt=""/>
+                    <img src={guine} alt="guinée"/>
                 </div> */}
             </div>
         </div>

@@ -18,11 +18,9 @@ function Timer({stamp, action}) {
     const convertToTime=(t)=>{
         let min=Math.floor(t/(60*1000))
         let sec=Math.floor((t%(60*1000))/1000)
-        // console.log("calcul ", min, sec)
         return <> 0{min} : {sec>=10 ? sec : "0"+sec} </>
     }
 
-    // console.log("the time ", time)
     return (
         <div className="timer">
             {convertToTime(time)} 

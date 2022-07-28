@@ -16,7 +16,6 @@ function Success() {
     let history = useHistory()
     useEffect(() => {
         let data = JSON.parse(sessionStorage.getItem('data'))
-        console.log("the data ", data)
         if(!data) history.push('/')
         else {
             setState(data)
@@ -26,7 +25,6 @@ function Success() {
 
     const closeModal=()=>setShow(false)
 
-    // console.log("the state ", state)
 
     return (
         <div id="complete" className="complete" >
@@ -35,7 +33,7 @@ function Success() {
             </Modal>
             <h1 style={{ textAlign: "center" }}>{t('sucessTitle1')}</h1>
             <div className="c-content">
-                <img src={complete} alt="" />
+                <img src={complete} alt="complete" />
                 <div style={{ textAlign: "center" }}>
                     {state.operation === 'credit' && <h5>{t('sucessTitle2')}  </h5>}
                     {state.operation === 'buy' && <h5>{t('sucessTitle3')}  </h5>}
@@ -47,14 +45,14 @@ function Success() {
                             <div className="rate">
                                 <a href="https://uk.trustpilot.com/evaluate/ipercash.fr?utm_medium=trustbox&utm_source=TrustBoxReviewCollector" target='_blank'>
                                     <h6 style={{ marginBottom: '20px' }}>{t('completeSous1')}</h6>
-                                    <img style={{ width: "125px", padding: '10px' }} src={trusty} alt="" />
+                                    <img style={{ width: "125px", padding: '10px' }} src={trusty} alt="succes" />
                                 </a>
                             </div>
                             {/* <h1>Or</h1> */}
                             <div className="rate">
                                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSdO5v8JpRHOKlRkLKse0eK6flW3vyDY2spf7EAa-uzcpPJebg/viewform" target="_blank" >
                                     <h6 style={{ marginBottom: '20px' }}>{t('completeSous1')}</h6>
-                                    <img style={{ width: "125px", padding: '10px' }} src={google} alt="" />
+                                    <img style={{ width: "125px", padding: '10px' }} src={google} alt="good-succes" />
                                 </a>
                             </div>
                         </div>

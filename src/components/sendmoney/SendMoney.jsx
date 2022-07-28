@@ -29,9 +29,8 @@ let widgetUrl = process.env.REACT_APP_MERCURYO_URL
 var interval = null
 
 function SendMoney({ amount, country, User }) {
-    let enable = process.env.REACT_APP_SEND_ENABLE;
-
-    // console.log("service are disable ", enable)
+    let enable = process.env.REACT_APP_SEND_ENABLE ;
+    
     const { t } = useTranslation()
     // value of differents field in the form 
     const [state, setState] = useState({
@@ -72,18 +71,15 @@ function SendMoney({ amount, country, User }) {
         }
 
     }
-    // console.log(mode.open)
 
     // this function send the data operation on api, open the widget and show the modal
     const send = () => {
-        // console.log(state)
         let params = {
             "transaction_id": randomId('C'), "phone": state.phone,
             "name": state.name, userId: User.userId,
             "fiat_pay": Math.floor(EUR * state.newAmount),
             "initial_amount": state.amount
         }
-        // console.log("the params ", params)
         // return
         let message = crypt(JSON.stringify(params))
         const requestOption = {
@@ -101,14 +97,12 @@ function SendMoney({ amount, country, User }) {
         fetch(apiUrl + 'send/init', requestOption)
             .then(response => response.json()).then(data => {
                 if (data.success) {
-                    console.log("start get status ")
                     interval = setInterval(async () => {
                         getStatus(params.transaction_id)
                     }, 60000)
                 }
             })
             .catch(err => {
-                console.log(" une erreur est survenu ")
                 closeModal()
                 toastify("error", "An error are occur please try again")
             })
@@ -116,7 +110,6 @@ function SendMoney({ amount, country, User }) {
     }
     // this get the staus of operation at mercuryo
     const getStatus = (id) => {
-        // console.log("get status")
         let message = crypt(JSON.stringify({ id: id, userId: User.userId }))
         const requestOption = {
             "method": "POST",
@@ -142,26 +135,23 @@ function SendMoney({ amount, country, User }) {
                     return data
                 }
                 if (data.status === 'error') {
-                    // console.log("une erreur prevue")
                     clearInterval(interval)
                 }
             })
             .catch(err => {
                 clearInterval(interval)
-                // console.log(" une erreur est survenu ", err)
             })
 
     }
 
     // this function handle disabled propertie of button
     const active = () => {
-        if ((state.amount >= 25 && state.amount <= 775) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone)) return false
+        if ((state.amount >= 25 && state.amount <= 100) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone)) return false
         else return true
     }
     // this function check phone number
     const validPhone = (value, func) => {
         if (value) {
-            // console.log("value ", value)
             return !func(value)
         }
         return false
@@ -179,7 +169,7 @@ function SendMoney({ amount, country, User }) {
         setModal({ open: false, closable: false })
         document.location.reload()
     }
-
+    
     const handleSubmit = (e, enable) => {
         e.preventDefault()
 
@@ -203,6 +193,8 @@ function SendMoney({ amount, country, User }) {
             }
 
         }
+
+
     }
     // la function qui gere le taxe sur le montant
     const amountTaxation = () => {
@@ -262,7 +254,7 @@ function SendMoney({ amount, country, User }) {
                     <div className="form-head">
                         <div className="form-group">
                             <Input val={state.amount} name="amount" label={t('sendMoneySous9')} type='number' help={t('sendMoneySous15')}
-                                error={state.amount < 25 || state.amount > 775} change={handleChange} handBlur={handleBlur}
+                                error={state.amount < 25 || state.amount > 100} change={handleChange} handBlur={handleBlur}
                             />
                         </div>
                         <div className="">1,OO EUR <h3 className="sign">&cong;</h3> 655,957 XAF</div>

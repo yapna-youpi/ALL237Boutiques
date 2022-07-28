@@ -37,7 +37,7 @@ function Hero() {
 
     return (
         <div className="hero" id="hero">
-            {/* <img src={image} alt=""/> */}
+            {/* <img src={image} alt="hero-titre"/> */}
             <video src={video} alt="video" muted={true} autoPlay={true} loop={true} onLoadedData={(e)=>loaded(e)} />
             <div className="presentation"   >
                 <div className="">
@@ -49,12 +49,12 @@ function Hero() {
                 <div  className="countries" data-aos="fade-right" data-aos-delay="800" data-aos-duration="1300">
                     <h3 > {t("available")} </h3>
                     <div className="country">
-                        <img src={camer} alt=""/>
-                        <img src={sene} alt=""/>
-                        <img src={ivc} alt=""/>
-                        {/* <img src={mali} alt=""/>
-                        <img src={burki} alt=""/>
-                        <img src={guine} alt=""/> */}
+                        <img src={camer} alt="camerour"/>
+                        <img src={sene} alt="senegal"/>
+                        <img src={ivc} alt="cote d'ivoire"/>
+                        {/* <img src={mali} alt="mali"/>
+                        <img src={burki} alt="burkina"/>
+                        <img src={guine} alt="guinée"/> */}
                     </div>
                 </div>
                 <div className="to-up"> <a href="/#header"><GoChevronUp size={40} /> </a> </div>

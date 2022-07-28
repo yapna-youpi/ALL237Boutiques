@@ -3,7 +3,11 @@
     background: var(--berge);
     /* display: none; */
 }
-.testimonials h1, .testimonials h3 {
+.testimonials h2{
+    text-align: center;
+    font-size: 2em;
+}
+.testimonials h3 {
     text-align: center;
 }
 .testimonials-carousel {

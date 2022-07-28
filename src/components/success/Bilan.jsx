@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Bilan({data}) {
-    console.log("the data ", data)
     return (
         <div className="bilan">
             <h2>Summary</h2>

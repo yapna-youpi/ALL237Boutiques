@@ -59,11 +59,11 @@ const { t } = useTranslation()
     }
     return (
         <div className="contacts" id="contacts">
-            <h1> <span></span>{ t('contactsTitle')} </h1>
+            <h2> <span></span>{ t('contactsTitle')} </h2>
             <div className="contact-container">
                 <div className="details">
                     <div className="info">
-                        <img src={enseigne} alt=""/>
+                        <img src={enseigne} alt="enseigne2"/>
                         <p>
                             { t('sousContact1')}
                             {/* our mission is to make cryptocurrencies accessible in all regions of africa and to make them a means of payment. follow us to participate in the achievement of this mission */}
@@ -92,7 +92,7 @@ const { t } = useTranslation()
                         </div>
                     </div>
                     <div className="newsletter">
-                        <h2>{t('sousContact7')}</h2>
+                        <p className='news'>{t('sousContact7')}</p>
                         <p> {t('sousContact8')}  </p>
                         {/* <p> Pour etre informer continuellement de nos avancees et des differentes modifications. </p> */}
                         <form className="address-field " onSubmit={(e)=>handleSubmit(e)}>

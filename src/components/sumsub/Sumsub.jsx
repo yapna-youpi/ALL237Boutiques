@@ -54,22 +54,16 @@ function Sumsub({ User, dispatch, call, close }) {
     const messageHandler = (message, data) => {
         switch (message) {
             case "idCheck.onStepInitiated": // commence une etape
-                console.log("l'utilisateur a commence")
                 break;
             case "idCheck.stepCompleted":
-                console.log("l'utilisateur a termine une etape ", data)
                 break;
             case "idCheck.onResize":    // le composant a ete redimmensione
-                console.log("le widget a ete redimensione")
                 break;
             case "idCheck.livenessCompleted":
-                console.log("l'utilisateur a termine avec le selfie")
                 break;
             case "idCheck.onApplicantSubmitted":
-                console.log("l'utilisateur a soumis les documents")
                 break;
             case "idCheck.applicantStatus":
-                console.log("le status de l'utilisateur a change", data)
                 sendToApi('sumsub/status', User, User.token)
                     .then(data => {
                         if (data !== 'error')
@@ -79,11 +73,11 @@ function Sumsub({ User, dispatch, call, close }) {
                 break;
 
             default:
-                console.log("cas non gere ", message)
+
                 break;
         }
     }
-    const errorHandler = () => console.log("an error is occur")
+    const errorHandler = () => "";
     // get a new token when current is exprired
     const updateToken = async () => {
         let data, witness = true, i = 0
@@ -92,7 +86,7 @@ function Sumsub({ User, dispatch, call, close }) {
             // console.log("the token",data)
             if (data.userId !== "undefined") witness = false
             i++
-            console.log(i)
+            
         } while (witness && i <= 2)
         if (witness || data.status === false) close()
         else return data.token
@@ -116,7 +110,7 @@ function Sumsub({ User, dispatch, call, close }) {
                     // options={widgetOptions}
                     onMessage={message => messageHandler(message)}
                     onError={errorHandler}
-                    onInitialized={(data => console.log("onInitialized ", data))}
+                    onInitialized={(data =>{} )}
                     // onActionSubmitted={submit}
                 />) : '')
             }

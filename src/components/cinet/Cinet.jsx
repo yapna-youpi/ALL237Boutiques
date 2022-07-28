@@ -6,7 +6,6 @@ import './cinet.css'
 function Cinet({ data, close, cancel }) {
     let cinetModal, page, scpt
     useEffect(() => {
-        console.log("the props ", close, data)
         getElts()
         return () => {
 
@@ -18,7 +17,6 @@ function Cinet({ data, close, cancel }) {
             cinetModal = document.querySelector('.cp-modal')
             page = document.querySelector('#page')
             scpt = document.querySelector('#cinet-script')
-            console.log("the iframes, ", cinetModal, scpt)
             if (cinetModal) {
                 const Close = document.createElement('div')
                 Close.className = "cinet-close"
@@ -34,10 +32,8 @@ function Cinet({ data, close, cancel }) {
                     }
                 }
                 cinetModal.appendChild(Close)
-                console.log("script removed ", interval)
                 clearInterval(interval)
             } else {
-                console.log("not found")
                 getElts()
             }
 
@@ -74,13 +70,10 @@ function Cinet({ data, close, cancel }) {
                             });
                             CinetPay.waitResponse(function (data) {
                                 if (data.status == "REFUSED") {
-                                    console.log("echec du paiement ", data);
                                 } else if (data.status == "ACCEPTED") {
-                                    console.log("payment reussi ", data);
                                 }
                             });
                             CinetPay.onError(function (data) {
-                                console.log(data);
                             });
                         }
                         checkout()

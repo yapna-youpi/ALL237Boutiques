@@ -15,7 +15,6 @@ function User({user, nav, logout}) {
     const [anchor, setAnchor]=useState(null)
     const open=Boolean(anchor)
     const show=(e)=>{
-        // console.log("we enter")
         setAnchor(e.currentTarget)
     }
     const close=()=>setAnchor(null)
@@ -28,10 +27,7 @@ function User({user, nav, logout}) {
         logout()
         nav('/login')
     }
-    // const leave=(e)=>{
-    //     console.log("we leave ", e.relatedTarget)
-    // }
-    // console.log(user)
+    
     return (
         <>
         {/* <li className={user.userId ? "nav-link user-button connected" : "nav-link user-button" } onClick={(e)=>show(e)} >

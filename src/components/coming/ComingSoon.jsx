@@ -6,7 +6,7 @@ import image from './mechanical-gears.svg';
 function ComingSoon() {
     return (
         <div id="coming" className="coming">
-            <img src={image} alt=""/>
+            <img src={image} alt="commin-soon"/>
             <div className="">
                 <h1>THIS FEATURE IS COMING SOON</h1>
                 <h3> join waiting list </h3>

@@ -21,7 +21,6 @@ function SellCrypto({Amount, country, User}) {
     const [mode, setMode] = useState(false)
 
     const { t } = useTranslation()
-    // console.log(Amount, User)
     // initialisation des taux de changes
     const [rate, setRate] = useState({ EUR: 0, USD: 0})
     // initialisation du state du composants
@@ -39,16 +38,14 @@ function SellCrypto({Amount, country, User}) {
     useEffect(async() => {
         getCryptoRate().then(newRate=>{
             if(!newRate) return
-            console.log("le nouveau rate")
-            console.log(newRate.EUR.rate)
+           
             setRate({...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float})
             setState({...state, rate: newRate[state.fiat].rate_float, ...xafChange(Amount, newRate)})
         })
         let interval=setInterval(() => {
             getCryptoRate().then(newRate=>{
                 if(!newRate) return
-                console.log("le nouveau rate")
-                console.log(newRate.EUR.rate)
+                
                 setRate({...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float})
             })
         }, 60*1000)
@@ -62,14 +59,12 @@ function SellCrypto({Amount, country, User}) {
     }
     // function that manage change event on input fields
     const handleChange=e=>{
-        console.log(" c'est le ",e.name);
         let newState=state
         newState[e.name]=e.value
         setState({...state})
     }
     // function that manage blur event on input fields
     const handleBlur=e=>{
-        console.log(e.name)
         if(e.value==="") {
             let newErrors=errors
             newErrors[e.name]=true
@@ -85,23 +80,19 @@ function SellCrypto({Amount, country, User}) {
         let result
         switch (e.name) { // amount c'est le montant en crypto monnaie 
             case "crypto":
-                // console.log("c'est le montant")
                 result=cryptoChange(e.value, rate[state.fiat])
                 setState({...state, ...result})
             break
             case "xaf":
-                // console.log("c'est le xaf")
                 result=xafChange(e.value, rate[state.fiat])
                 setState({...state, ...result})
             break;
             
             case "eu":
-                // console.log("c'est le eu")
                 result=euroChange(e.value, rate[state.fiat])
                 setState({...state, ...result})
             break;
             default:
-                // console.log("c;est autre chose")
             break;
         }
     }
@@ -115,7 +106,6 @@ function SellCrypto({Amount, country, User}) {
     // function that checks and valid phone number
     const validPhone=(value, func)=>{
         if(value) {
-            // console.log("value ", value)
             return !func(value)
         }
         return false
@@ -123,7 +113,6 @@ function SellCrypto({Amount, country, User}) {
     // function that check if the phone numbers are identical
     const checkConfirm=(value1, value2)=>{
         if(value1) {
-            // console.log(value1===value2)
             return value1!==value2
         }
         return false
@@ -144,8 +133,7 @@ function SellCrypto({Amount, country, User}) {
             }
         }
     }
-    console.log(enable)
-    // console.log("the user", User)
+  
     return (
         <div id="sellcrypto" className="sellcrypto" ref={myRef}>
             {enable ==="FALSE"  ? <h3 className='disjoint'>Le service est indisponible</h3> : ""}
@@ -190,7 +178,8 @@ function SellCrypto({Amount, country, User}) {
                     </div>
                     <div className="form-group">
                         {/* val={state.xaf*0.0395+250}  */}
-                        <Input val={state.xaf*0.0395} label={t('sellCrypto12')}   /> 
+                        <Input val={ state.xaf ? state.xaf*0.0395+250 : 0} label={t('sellCrypto12')} />  
+                        {/* TODO: should fee calcul to handle amount */}
                     </div>
                     <div className="form-group">
                         <PhoneInputool label={t('sellCrypto13')} name="number" help={t('sellCrypto14')} 

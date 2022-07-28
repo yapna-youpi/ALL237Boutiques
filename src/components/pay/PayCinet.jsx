@@ -29,11 +29,9 @@ function Pay({ User }) {
     let ref = React.createRef()
     useEffect(() => {
         let data = JSON.parse(sessionStorage.getItem('data'))
-        console.log("les premiers data ", data)
         data ? start(data) : history.push("/buycrypto/mobile")
         sessionStorage.removeItem("data")
         return ()=>{
-            console.log("fermeture de cinet")
             closeCinet()
         }
     }, [])
@@ -51,13 +49,10 @@ function Pay({ User }) {
             provider: 'cinetpay',
             userId: User.userId,
         }
-        // console.log("store data le user ", User)
         let result = await sendToApi('buymobile/settransaction', params, User.token)
-        console.log("le resultat ", result)
     }
     const success = async (data) => {
         // success function 
-        console.log("the final data ", data)
         let params = {
             transaction_id: data.id,
             txid: data.txid,
@@ -79,21 +74,16 @@ function Pay({ User }) {
         history.push('/complete')
     }
     const start = (data) => {
-        console.log("ca commence")
         storeData(data)
         buyCinet(data, User, changeStep, cashout, closeCinet, cancel, (txid) => success({ ...data, txid: txid }))
     }
     const cancel = (data, i) => {
-        console.log("echec de l'operation")
-        // console.log("les params", params)
         i===1 && closeCinet()
         let witness = i > 1
-        //console.log("les data ", data)
         setTrace({ status: true, error: data, traceStep: i, backFund: witness, mobilePaid: false })
         
         if (false) backFunds(data, i, witness) // here: set witness to condition
         else {
-            console.log("les params ", params)
             sendToApi('buymobile/updatetransaction', { transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId }, User.token)
                 .then(data => {
                     if (!data.success) createAgain({ transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId })
@@ -109,7 +99,6 @@ function Pay({ User }) {
         else return <FaCheck size={50} color="#CC1616" />
     }
     const backFunds = (err, i, witness) => {
-        console.log(" renvoi des fonds ", params)
         alert("should send back funds")
         return // here: set this process
         let data = {
@@ -126,8 +115,6 @@ function Pay({ User }) {
                 backFundsId: data.partner_id
             }
             if (result) {
-                console.log("les traces ", trace)
-                console.log("fonds renvoyees ", result)
                 setTrace({ status: true, error: err, traceStep: i, backFund: witness, mobilePaid: true })
                 sendToApi('buymobile/updatetransaction', { ...payload, backFunds: true, userId: User.userId }, User.token)
                     .then(data => {
@@ -136,7 +123,6 @@ function Pay({ User }) {
                     })
             }
             else {
-                console.log("echec du renvoi ", result)
                 sendToApi('buymobile/updatetransaction', { ...payload, backFunds: false, userId: User.userId }, User.token)
                     .then(data => {
                         if (!data.success)
@@ -156,18 +142,15 @@ function Pay({ User }) {
             phone: params.number,
             wallet: params.wallet,
         }
-        console.log("use create again ", params2)
         sendToApi('buymobile/settransaction', params2, User.token)
     }
     const copy = () => {
         if (ref) {
-            // console.log(ref.current)
             ref.current.select()
             document.execCommand('copy')
         }
     }
     const cashout = () => {
-        // console.log("the cashout params ", params)
         setCinet(true)
     }
     const closeCinet = () => {
@@ -176,14 +159,12 @@ function Pay({ User }) {
         page = document.querySelector('#page')
         scpt = document.querySelector('#cinet-script')
         if (cinetModal) {
-            console.log('object ', cinetModal, scpt)
             scpt.parentNode.removeChild(scpt)
             cinetModal.parentNode.removeChild(cinetModal)
         }
         setCinet(false)
         // cancel({ status: 'fail', cause: "payment demand has fail", cn: 8 }, 1)
     }
-    // console.log("le user ", User)
 
     return trace.status ? (
         <div className="pay" >
@@ -242,7 +223,7 @@ function Pay({ User }) {
                             <StepContent>
                                 <h3>{t('paySous9')}  </h3>
                                 {/* <div className="phone-step">
-                                    <img src={mobile} alt="" />
+                                    <img src={mobile} alt="mobile" />
                                 </div> */}
                                 <h4>{t('paySous10')} </h4>
                                 {step.url && <h4>{t('paySous11')} <a href={step.url} target="_blank" >{cutChain(step.url, 10, 111)}</a>{t('paySous12')} </h4>}

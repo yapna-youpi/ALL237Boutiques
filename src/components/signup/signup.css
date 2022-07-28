@@ -6,14 +6,13 @@
   margin: 50px auto;
   padding: 2%;
   justify-content: space-around;
-  display: flex;
   flex-direction: row;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 .signup .signup-content {
   /*--div droite--*/
-  width: 100%;
+  width: 90%;
   padding: 0 5% 2% 5%;
 }
 .signup .signup-image {
@@ -22,6 +21,10 @@
 }
 .signup  .MuiFormControl-root{
   margin: 5px auto!important;
+}
+.signup .check{
+  width: 20px;
+  height: 20px;
 }
 .signup .MuiButton-label{
   display:flex!important;
@@ -77,6 +80,7 @@
   .signup .signup-content {
     /*--div droite--*/
     width: 80%;
+    margin: 0 auto;
     padding: 0 5% 2% 5%;
   }
 }
@@ -90,6 +94,7 @@
     min-height: 70vh;
     /* margin: 0px auto; */
     padding: 1% 2%;
+    display: flex;
   }
   .signup .signup-content {
     /*--div droite--*/
@@ -104,6 +109,7 @@
     /*--div gauche--*/
       width: 45%;
       display: block;
+      transform: translateX(-20px);
   }
   /*-- black du logo dipercash--*/
   .signup-image .signup-block-logo {
@@ -127,7 +133,7 @@
   .signup .signup-img{
       display: inline-block;
       width: 100%;
-      transform: scaleY(1.4) translateY(10px);
+      transform: translateY(76px);
 
   }
   .visible{

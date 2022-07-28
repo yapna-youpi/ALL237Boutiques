@@ -5,12 +5,13 @@
   background: var(--red);
   color: var(--white);
 }
-.steps h1 {
+.steps h2 {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  font-size: 2em;
 }
-.steps h1 span {
+.steps h2 span {
   display: block;
   width: 120px;
   margin-bottom: 8px;

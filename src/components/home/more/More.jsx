@@ -20,12 +20,12 @@ function More() {
                 <h3 className="more-mot"><span >{t('moreSous1')}IPER</span>Cash </h3>
                 <p>{t('moreSous2')}
                 </p>
-                <div className='player'><img style={{width:'100%'}} src={femme} /></div>
+                <div className='player'><img style={{width:'100%'}} src={femme} alt="bilan" /></div>
                 <p>{t('moreSous3')}
                     <div className='img-phone'><img  src={phone} alt='emojie phone' /></div>
                 </p>
                 <p>{t('moreSous4')}
-                    <div className='img-phone'><img  src={applaude} alt='emojie applaudissements' /></div><br/>
+                    <div className='img-phone'><img  src={applaude} alt='emojie applaudissements'  /></div><br/>
                     {t('moreSous5')}</p>
                 <p style={{paddingBottom:'10px'}}>
                 {t('moreSous6')}

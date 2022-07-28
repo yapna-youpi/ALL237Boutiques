@@ -10,7 +10,6 @@ function CoverModal({mode, close}) {
     const { t } = useTranslation();
 
     const closeModal=()=>{
-        console.log("closing")
          close()
     }
 
@@ -28,12 +27,12 @@ function CoverModal({mode, close}) {
                     </div>
                     <div className="right">
                         <h2>
-                            Le service est momentanément indisponible!
+                            {t("modal2Title")}
                         </h2>
                         <p>
-                            {/* En raison d'un desagrement, le service est temporairement inaccessible <br/> */}
-                            Nos équipes font le maximum pour résoudre le problème au plus vite.<br/> 
-                            Toutes nos excuses pour cet imprévu !
+                            {t("modal2parag1")}
+                            <br/>
+                            {t("modal2parag2")}
                         </p>
                     </div>
                 </div>

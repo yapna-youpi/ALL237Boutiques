@@ -16,7 +16,7 @@ import { Input, Input2 } from '../addons/input/Input'
 import PhoneInput from '../addons/input/PhoneInput'
 import Fiats from '../addons/Fiats/Fiats'
 import { randomId, getCryptoRate, checkWalletAddress } from '../../utils/utilFunctions'
-import { xafChange, euroChange, cryptoChange } from './handleMobile'
+import { xafChange, euroChange, cryptoChange } from './handleMobile'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
 function BuyCryptoMobile({ Amount, country, User }) {
     //initialisation de variabl d'environnement
@@ -60,14 +60,12 @@ function BuyCryptoMobile({ Amount, country, User }) {
 
     // la fonction qui gere les changement des inputs
     const handleChange = e => {
-        //console.log(e.name);
         let newState = state
         newState[e.name] = e.value
         setState({ ...state })
     }
     // la fonction qui gere l'evenement onBlur des inputs
     const handleBlur = e => {
-        // console.log(e.name)
         if (e.value === "") {
             let newErrors = errors
             newErrors[e.name] = true
@@ -83,23 +81,19 @@ function BuyCryptoMobile({ Amount, country, User }) {
         let result
         switch (e.name) { // amount c'est le montant en crypto monnaie 
             case "crypto":
-                // console.log("c'est le montant")
                 result = cryptoChange(e.value, rate[state.fiat])
                 setState({ ...state, ...result })
                 break
             case "xaf":
-                // console.log("c'est le xaf")
                 result = xafChange(e.value, rate[state.fiat])
                 setState({ ...state, ...result })
                 break;
 
             case "eu":
-                // console.log("c'est le eu")
                 result = euroChange(e.value, rate[state.fiat])
                 setState({ ...state, ...result })
                 break;
             default:
-                // console.log("c;est autre chose")
                 break;
         }
     }
@@ -112,23 +106,19 @@ function BuyCryptoMobile({ Amount, country, User }) {
     }
     const validPhone = (value, func) => {
         if (value) {
-            // console.log("value ", value)
             return !func(value)
         }
         return false
     }
     const checkConfirm = (value1, value2) => {
         if (value1) {
-            // console.log(value1===value2)
             return value1 !== value2
         }
         return false
     }
     // fonction qui verifie la correspondance des addresse
     const checkAddress = e => {
-        // console.log("hello")
         if (e.value === state.wallet) {
-            // console.log("ils correspondent")
             // sessionStorage.clear()
             sessionStorage.removeItem('data')
             sessionStorage.setItem('data', JSON.stringify({ ...state, id: randomId('BM'), rate: rate[state.fiat] }))
@@ -158,7 +148,6 @@ function BuyCryptoMobile({ Amount, country, User }) {
         }
     }
 
-    // console.log("the state ", state)
     return (
         <div className="buycrypto">
             {enable ==="FALSE" ? <h3 className='disjoint'>Le service est indisponible</h3> : ""}

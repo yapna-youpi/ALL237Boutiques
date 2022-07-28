@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
-import { isValidPhoneNumber, parsePhoneNumber } from 'react-phone-number-input'
+import { getCountryCallingCode, isValidPhoneNumber, parsePhoneNumber } from 'react-phone-number-input'
 import { useTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import ReactLoading from 'react-loading'
@@ -38,34 +38,35 @@ function Signup({ Country }) {
             .then((data) => {
                 setLode(false)
                 if (data.user) {
-                    toastify("info", `Sign up successful. \n check ${state.email} to complete inscription`)
+                    toastify("info",`${t('SignUpSous19') + " \n " + t('SignUpSous20') + state.email + t('SignUpSous21')}`)
                     if (data.mail) {
                         // setShow(!show)   here: uncomment
                     }
                 } else if (data.error.errors) {
-                    toastify("info", `User ${state.email} has been found. Resend email to comple the inscription`)
+                    toastify("info",`${t('SignUpSous22') + " " + state.email + " " + t('SignUpSous23')}`)
                     // setShow(!show)   here: uncomment
                 }
                 else {
-                    toastify("error", "Sign up failed")
+                    toastify('error',`${t('SignUpSous24')}`)
                 }
             }).catch(error => {
-                console.warn("big error ", error)
-                toastify("error", "Sign up failed")
+                // console.warn("big error ", error)
+                toastify('error',`${t('SignUpSous24')}`)
             })
     }
+
     const resend = () => {
         setLode(true)
-        sendToApi('user/resend', { email: state.email, type: "signup" })
-            .then((data) => {
-                setLode(false)
-                if (data.mail)
-                    toastify("info", `Mail has been send to ${state.email}. Check it to complete inscription`)
-                else if (data.error)
-                    toastify("error", `User ${state.email} not found.`)
-                else
-                    toastify("error", `Mail can't be send to ${state.email}. try again or reset your account`)
-            })
+        sendToApi('user/resend', {email: state.email, type: "signup"})
+        .then((data)=>{
+            setLode(false)
+            if(data.mail)
+                toastify("info",`${t('SignUpSous25') + state.email + t('SignUpSous26')}`)
+            else if(data.error) 
+                toastify("error", `User ${state.email} not found.`)
+            else
+                toastify("error",`${t('SignUpSous27') + state.email + t('SignUpSous28')}`)
+        }).catch(error=>toastify(error, "Sign up failed") )
     }
 
     const handleChange = (e) => {
@@ -84,7 +85,6 @@ function Signup({ Country }) {
         fr: ["http://ftp.ipercash.fr/politiques//terms_fr.pdf"]
     }
     let lang = JSON.parse(localStorage.getItem("lang") || '{"lang":"en"}').lang
-
 
     return (
         <>
@@ -129,8 +129,8 @@ function Signup({ Country }) {
                                     change={handleChange} handBlur={() => setErrors({ ...errors, cPassword: true })}
                                 />
                                 <div className="checkbox">
-                                    <input type="checkbox" id="check" onChange={() => setState({ ...state, check: !state.check })} />
-                                    <label htmlFor="check"><a className='lie' href={AmList[lang][0]} target="_blank">{t('SignUpSous17')} {t('SignUpSous18')}</a></label>
+                                    <input className='check' type="checkbox" id="check" onChange={()=>setState({...state, check: !state.check})} /> 
+                                    <label htmlFor="check"><a className='lie' href={AmList[lang][0]} target="_blank"> {t('SignUpSous17')} {t('SignUpSous18')}</a></label>
                                 </div>
                                 <Button fullWidth className="sign-btnt"
                                     type="submit"
@@ -144,7 +144,7 @@ function Signup({ Country }) {
                         </div>)}
                 </div>
                 <div className="signup-image">
-                    <p>{<img src={iperFot} className="signup-img" width="650px" />}</p>
+                    <p>{<img src={iperFot} className="signup-img" width="650px" qlt="signup" />}</p>
                 </div>
             </div>
         </>

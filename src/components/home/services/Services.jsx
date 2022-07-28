@@ -14,7 +14,7 @@ function Services() {
     const { t } = useTranslation();
     return (
         <div className="services" id="services">
-            <h1> {t('servicesTitle')} <span></span> </h1>
+            <h2> {t('servicesTitle')} <span></span> </h2>
             {/* <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur suscipit tenetur officiis saepe eligendi, dolor quidem.</h3> */}
             <div className="services-container">
                 <div className="servic"  onClick={()=>hisoty.push('/buycrypto')} data-aos="flip-left" data-aos-duration="2000" data-aos-once="true">

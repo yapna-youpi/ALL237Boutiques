@@ -2,16 +2,26 @@
     padding: 5%;
     background: var(--berge);
 }
-.contacts h1 {
+.news{
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.contacts h2 {
     text-align: center;
     margin-bottom: 40px;
+    font-size: 2em;
 }
-.contacts h1 {
+.contacts h2 {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
 }
-.contacts h1 span {
+.contacts h2 span {
     display: block;
     width: 120px;
     margin-bottom: 8px;
@@ -259,4 +269,5 @@
     .contacts .form-group {
         margin: 40px 0px;
     }
+    
 }

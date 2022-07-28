@@ -16,7 +16,6 @@ function InputPhone({label, name, val, id, error, help, change, handBlur, countr
                 defaultCountry={country || 'CM'} international countryCallingCodeEditable={false}
                 onChange={(value)=>change({name: name, value: value})}
                 onBlur={ handBlur ? (e)=>handBlur(e.target) : ()=>{}}
-                // onCountryChange={(country)=>console.log(country)}
             />
             <span>{error&&help}</span>
         </div>

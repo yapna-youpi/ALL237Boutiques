@@ -29,7 +29,6 @@ const Forget =({history, match, type, color}) => {
         let newState=state
         newState[target.name]=target.value
         setState({...state})
-        console.log(target.value)
     }
 
     const handleBlur=target=>{
@@ -86,7 +85,7 @@ const Forget =({history, match, type, color}) => {
                             change={target => onChange(target)}
                        />  
                     </div>
-                    <Button  className="reset-btn" className="reset-btn"  fullWidth
+                    <Button  className="reset-btn"   fullWidth
                         disabled={active()} onClick={e=>handleSubmit(e)}
                     >
                         { lode? (<ReactLoading type="spin" color="#ffffff" width="35px" height="35px" 

@@ -28,14 +28,14 @@ function Lang() {
     return (
         <div className="lang" onClick={(e)=>click(e.target)} onBlur={blur} tabIndex="0">
             <div className="active-lang">
-                <div className="lang-item"><img src={flag[state.flag]} alt=""/> <span>{state.lang}</span></div>
+                <div className="lang-item"><img src={flag[state.flag]} alt="default-flat"/> <span>{state.lang}</span></div>
                 
             </div>
             <div className="langs" ref={myRef}>
-                <div className="lang-item" onClick={()=>changeLanguage("en", 0)}><img src={flag[0]} alt=""/> <span>en</span></div>
-                {/* <div className="lang-item" onClick={()=>changeLanguage("en", 0)}><img src={flag[1]} alt=""/> <span>it</span></div>
-                <div className="lang-item" onClick={()=>changeLanguage("en", 0)}><img src={flag[2]} alt=""/> <span>de</span></div> */}
-                <div className="lang-item" onClick={()=>changeLanguage("fr", 1)}><img src={flag[1]} alt=""/> <span>fr</span></div>
+                <div className="lang-item" onClick={()=>changeLanguage("en", 0)}><img src={flag[0]} alt="flat-prim"/> <span>en</span></div>
+                {/* <div className="lang-item" onClick={()=>changeLanguage("en", 0)}><img src={flag[1]} alt="flat-troisio"/> <span>it</span></div>
+                <div className="lang-item" onClick={()=>changeLanguage("en", 0)}><img src={flag[2]} alt="flat-quatro"/> <span>de</span></div> */}
+                <div className="lang-item" onClick={()=>changeLanguage("fr", 1)}><img src={flag[1]} alt="flat-second"/> <span>fr</span></div>
             </div>
         </div>
     )
