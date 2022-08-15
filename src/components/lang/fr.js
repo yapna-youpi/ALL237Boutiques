@@ -18,7 +18,8 @@ const french = {
     drowContent3: 'Vendez votre crypto',
 
     // Hero section
-    heroTitle: "INTERFACE ENTRE LE MOBILE MONEY ET LA CRYPTOMONNAIE",
+    // heroTitle: "INTERFACE ENTRE LE MOBILE MONEY ET LA CRYPTOMONNAIE",
+    heroTitle: "ACHETEZ ET VENDEZ DE LA CRYPTOMONNAIE AVEC VOTRE MOBILE MONEY",
     heroText: "Créditez un compte Mobile Money avec de la cryptomonnaie ou une carte de crédit",
     heroButton: "Commencer",
     available: "Mobile Money disponible dans ces pays",
@@ -93,7 +94,7 @@ const french = {
     sendMoneySous12: "Numéro invalide",
     sendMoneySous13: "Confirmer le téléphone portable",
     sendMoneySous14: "Doit correspondre au numéro de téléphone",
-    sendMoneySous15: "Le montant doit etre entre 25 et 50 EUR",
+    sendMoneySous15: "Le montant doit etre entre 25 et 150 EUR",
     sendText1: "de 25 à 50  ",
     sendText2: "de 51 à 150  ",
     sendText3: "de 151 à 300  ",
@@ -118,7 +119,7 @@ const french = {
     sellCrypto6: "Adresse du wallet de l'expéditeur",
     sellCrypto7: 'Adresse invalide',
     sellCrypto8: "Montant en XAF",
-    sellCrypto9: "Le montant doit etre entre 6550 et 35000 XAF",
+    sellCrypto9: "Le montant doit etre entre 6550 et 100000 XAF",
     sellCrypto10: "Montant en CRYPTO",
     sellCrypto11: "La valeur minimale est 0,000296",
     sellCrypto12: "Frais en XAF",
@@ -178,7 +179,7 @@ const french = {
     buyCryptoMobileSous5: 'Cours de la crypto',
     buyCryptoMobileSous6: 'Fourni par',
     buyCryptoMobileSous7: "Montant en XAF",
-    buyCryptoMobileSous8: "Le montant doit etre entre 5000 et 35000 XAF",
+    buyCryptoMobileSous8: "Le montant doit etre entre 5000 et 100000 XAF",
     buyCryptoMobileSous9: "Montant en",
     buyCryptoMobileSous10: "La valeur minimale est de 15,26 EUR",
     buyCryptoMobileSous11: "Montant en CRYPTO",
@@ -259,6 +260,8 @@ const french = {
     LoginSous10: "Authentifiez vous si vous avez déjà un compte, sinon créez un compte",
     LoginSous11: "échec de la connexion",
     LoginSous12: "Bonjour",
+    LoginError1: "Aucun utilisateur trouve",
+    LoginError2: "Compte non actif",
 
     //SignUp
     SignUpTitle: "Inscrivez-Vous",
@@ -285,9 +288,9 @@ const french = {
     SignUpSous22: "`Utilisateur",
     SignUpSous23: "a été trouvé. Renvoyez le courriel pour compléter l'inscription",
     SignUpSous24: "L'inscription a échoué",
-    SignUpSous25: "Le courrier a été envoyé à",
+    SignUpSous25: "Le courrier a été envoyé à ",
     SignUpSous26: "Vérifiez-le pour compléter l'inscription",
-    SignUpSous27: "Le courrier ne peut pas être envoyé à",
+    SignUpSous27: "Le courrier ne peut pas être envoyé à ",
     SignUpSous28: "essayez à nouveau ou réinitialisez votre compte",
     signUpLink: "Aller à la connexion",
 

@@ -20,7 +20,7 @@ const Arrows=({type, onClick, isEdge})=>{
 function Testimonials() {
     
     const itemsPerPage = Math.floor(window.innerWidth/400);
-    const items = []
+    const items = [4]
     const carouselRef = useRef(null);
     const totalPages = Math.ceil(items.length / itemsPerPage)
     let resetTimeout;
@@ -38,18 +38,19 @@ function Testimonials() {
             </h3>
             <div className="testimonials-container">
                 <Carousel className="testimonials-carousel"
-                    pagination={false} itemsToShow={Math.floor(window.innerWidth/400)}
+                    pagination={false}
+                    itemsToShow={Math.floor(window.innerWidth/400) || 1}
                     renderArrow={Arrows}
 
                     ref={carouselRef}
                     enableAutoPlay
-                    autoPlaySpeed={2000} // same time
+                    autoPlaySpeed={4000} // same time
                     onNextEnd={({ index }) => {
                         clearTimeout(resetTimeout)
                         if (index + 1 === totalPages) {
                            resetTimeout = setTimeout(() => {
                               carouselRef.current.goTo(0)
-                          }, 2000) // same time
+                          }, 1000) // same time
                         }
                    }}
                 >
@@ -167,6 +168,9 @@ function Testimonials() {
                             </p>
                         </div>
                     </div>
+                    
+                  
+                   
                 </Carousel>
             </div>
             

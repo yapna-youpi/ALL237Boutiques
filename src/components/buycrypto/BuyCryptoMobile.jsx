@@ -16,7 +16,10 @@ import { Input, Input2 } from '../addons/input/Input'
 import PhoneInput from '../addons/input/PhoneInput'
 import Fiats from '../addons/Fiats/Fiats'
 import { randomId, getCryptoRate, checkWalletAddress } from '../../utils/utilFunctions'
-import { xafChange, euroChange, cryptoChange } from './handleMobile'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+import { xafChange, euroChange, cryptoChange } from './handleMobile'
+
+const max=parseInt(process.env.REACT_APP_BUY_MAX)
+const min=parseInt(process.env.REACT_APP_BUY_MIN)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
 function BuyCryptoMobile({ Amount, country, User }) {
     //initialisation de variabl d'environnement
@@ -99,7 +102,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
     }
     // fonction qui gere l'activation du bouton
     const active = () => {
-        if (((state.amount && state.amount < 65597) && state.number && isValidPhoneNumber(state.number || 342))
+        if (((state.amount && state.xaf <= max) && state.number && isValidPhoneNumber(state.number || 342))
             && (state.number === state.confirmNumber) && (state.wallet && checkWalletAddress(state.wallet)) && enable) 
             return false
         else return true
@@ -190,7 +193,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
                 <div className="form">
                     <div className="form-group">
                         <Input val={state.xaf} label={t('buyCryptoMobileSous7')} name="xaf" type="number" help={t('buyCryptoMobileSous8')}
-                            change={amountChange} error={(state.xaf < 5000 || state.xaf > 65595) && state.xaf !== 0}
+                            change={amountChange} error={(state.xaf < min || state.xaf > max) && state.xaf !== 0}
                         />
                     </div>
                     <div className="form-group">

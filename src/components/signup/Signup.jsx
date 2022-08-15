@@ -40,11 +40,11 @@ function Signup({ Country }) {
                 if (data.user) {
                     toastify("info",`${t('SignUpSous19') + " \n " + t('SignUpSous20') + state.email + t('SignUpSous21')}`)
                     if (data.mail) {
-                        // setShow(!show)   here: uncomment
+                        setShow(!show)
                     }
                 } else if (data.error.errors) {
                     toastify("info",`${t('SignUpSous22') + " " + state.email + " " + t('SignUpSous23')}`)
-                    // setShow(!show)   here: uncomment
+                    setShow(!show)
                 }
                 else {
                     toastify('error',`${t('SignUpSous24')}`)
@@ -85,7 +85,7 @@ function Signup({ Country }) {
         fr: ["http://ftp.ipercash.fr/politiques//terms_fr.pdf"]
     }
     let lang = JSON.parse(localStorage.getItem("lang") || '{"lang":"en"}').lang
-
+    // console.log("the country ", Country)
     return (
         <>
             <div className="signup">

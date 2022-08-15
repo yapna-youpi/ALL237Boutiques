@@ -3,10 +3,10 @@ import i18n from 'i18next'
 
 import './lang.css'
 
-const flag=["https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg", "https://purecatamphetamine.github.io/country-flag-icons/3x2/FR.svg", "https://purecatamphetamine.github.io/country-flag-icons/3x2/IT.svg", "https://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg"]
+const flag=["https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg", "https://purecatamphetamine.github.io/country-flag-icons/3x2/FR.svg"]
 
 
-let language=JSON.parse(localStorage.getItem('lang')) || {lang: 'en', flag: 0}
+let language=JSON.parse(localStorage.getItem('lang')) || {lang: 'fr', flag: 1}
 
 function Lang() {
     const [state, setState]=useState({lang: language.lang, flag: language.flag})

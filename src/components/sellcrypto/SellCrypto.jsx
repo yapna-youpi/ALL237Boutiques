@@ -15,6 +15,9 @@ import { getCryptoRate, checkWalletAddress } from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleAmount'
 import Sumsub from '../sumsub/Sumsub'
 
+const max=parseInt(process.env.REACT_APP_SELL_MAX)
+const min=parseInt(process.env.REACT_APP_SELL_MIN)
+
 function SellCrypto({Amount, country, User}) {
     //initialisation de variabl d'environnement
     let enable = process.env.REACT_APP_SELL_ENABLE;
@@ -98,7 +101,7 @@ function SellCrypto({Amount, country, User}) {
     }
     // function that manages the activation of the button
     const active=()=>{
-        if( ((state.amount&&(state.xaf>=6550 && state.xaf<32750)) && state.number && isValidPhoneNumber(state.number || 342)) 
+        if( ((state.amount&&(state.xaf>=min && state.xaf<=max)) && state.number && isValidPhoneNumber(state.number || 342)) 
             && (state.number===state.confirmNumber) && (state.wallet && checkWalletAddress(state.wallet)) )
             return false
         else return true
@@ -161,19 +164,19 @@ function SellCrypto({Amount, country, User}) {
                     </div>
                     <div className="form-group">
                         <Input val={state.xaf} label={t('sellCrypto8')} name="xaf" type="number" help={t('sellCrypto9')}
-                            change={amountChange} error={(state.xaf<6550 || state.xaf>32750)&&state.xaf!==0}
+                            change={amountChange} error={(state.xaf<min || state.xaf>max)&&state.xaf!==0}
                         />
                     </div>
                     <div className="form-group">
                         <Input val={state.eu}  label={t('buyCryptoMobileSous9')+' '+state.fiat} 
                             name="eu" type="number" help={t('sellCrypto17')} change={amountChange}
-                            error={(state.eu<10 || state.eu>50)&&state.eu!==0}
+                            // error={(state.eu<10 || state.eu>50)&&state.eu!==0}
                         />
                     </div>
                     <div className="form-group">
                         <Input val={state.amount} label={t('sellCrypto10')} name="crypto" type="number" 
                             help={t('sellCrypto11')} change={amountChange}
-                            error={(state.amount<0.000296 || state.amount>0.00148485)&&state.amount!==0}
+                            // error={(state.amount<0.000296 || state.amount>0.00148485)&&state.amount!==0}
                         />
                     </div>
                     <div className="form-group">

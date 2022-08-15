@@ -25,29 +25,28 @@ import More from '../components/home/more/More';
 import Valid from '../components/valid/Valid';
 
 const SWITCH_INTOUCH=process.env.REACT_APP_SWITCH_INTOUCH==='TRUE'
-// console.log("switch intouch ", SWITCH_INTOUCH, process.env.REACT_APP_SWITCH_INTOUCH)
 
-function Main({User}) {
-    // console.log(document.URL.indexOf('help')+1)
+function Main({User, Country}) {
     const showHead=()=>document.URL.indexOf('help')+1
     const checkUser=C=>User.userId ? C : ()=><Redirect to="/login" />
-    // const checkUser=C=>true ? C : ()=><Redirect to="/login" />
+
+    console.log("the country header ", Country)
     return (
         <div className="main">
             <Helmet>
                 <script src="https://widget.mercuryo.io/embed.2.0.js"></script>
             </Helmet>
             <Router>
-                { !showHead() && <Header /> }
+                {!showHead() && <Header />}
                 <Switch>
                     <Route path='/' exact component={Home} />
                     <Route path='/home' exact component={Home} />
-                    <Route path='/sendmoney' exact component={checkUser(SendMoney)} />
+                    <Route path='/sendmoney*' exact component={checkUser(SendMoney)} />
                     <Route path='/buycrypto' exact component={Choose} />
-                    <Route path='/buycrypto/mobile' exact component={checkUser(BuyCryptoMobile)} />
+                    <Route path='/buycrypto/mobile*' exact component={checkUser(BuyCryptoMobile)} />
                     <Route path='/buycrypto/card' exact component={checkUser(BuyCryptoCard)} />
-                    <Route path='/sellcrypto' exact component={checkUser(SellCrypto)} />
-                    <Route path='/purchase' exact component={ SWITCH_INTOUCH ? PayCinet : Pay} />
+                    <Route path='/sellcrypto*' exact component={checkUser(SellCrypto)} />
+                    <Route path='/purchase' exact component={SWITCH_INTOUCH ? PayCinet : Pay} />
                     <Route path='/complete' exact component={Success} />
                     <Route path='/signup' exact component={Signup} />
                     <Route path='/login' exact component={Login} />
@@ -65,6 +64,6 @@ function Main({User}) {
     )
 }
 
-const mapStateToProps=state=>({User: state.userReducer.user})
+const mapStateToProps = state => ({ User: state.userReducer.user, Country: state.countryReducer.country })
 
 export default connect(mapStateToProps)(Main)

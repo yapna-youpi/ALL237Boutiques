@@ -5,6 +5,7 @@ import 'react-phone-number-input/style.css'
 import './phone-input.css'
 
 function InputPhone({label, name, val, id, error, help, change, handBlur, country, all, cm }) {
+    console.log("the country ", country)
     return (
         <div className="input-phone">
             <label htmlFor=""> {label} </label>

@@ -13,11 +13,8 @@ import { setUser } from '../../store/actions'
 
 import './login.css'
 import iperFot from './assets/undraw_Mobile_login_re_9ntv.svg'
-import logoIpercash from './assets/logo-ipercash.png'
 
 let deferredPrompt = null
-
-
 
 window.addEventListener('beforeinstallprompt', function (e) {
     // alert("deferred props enable")
@@ -27,7 +24,7 @@ window.addEventListener('beforeinstallprompt', function (e) {
     deferredPrompt = e
 })
 
-function Login({ User, dispatch }) {
+function Login({dispatch }) {
 
     const { t } = useTranslation()
     let history = useHistory()
@@ -72,7 +69,7 @@ function Login({ User, dispatch }) {
                     dispatch(setUser({ ...data, timestamp: +new Date }))
                     install()
                     history.push('/')
-                } else toastify("success", `${t('LoginSous12')} ${data.userName}`)
+                } else toastify("error", `${t('LoginSous11')}`)
             }).catch(error=>{
                 console.log("there is an error ", error)
                 toastify("error",`${t('LoginSous11')}`)

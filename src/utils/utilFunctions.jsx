@@ -149,11 +149,11 @@ const checkPassword=(password)=>{
     return password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@%*+-_]{8,}$/)
 }
 
-
+const regPassword=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@%*+-_]{8,}$/
 
 export {roundDecimal, roundPrecision, randomId, randomChain,
         trackStatus, checkServiceId, trier, setRequestOption, sendToApi, getCryptoRate,
         activeButtonSend, checkPhone, cutChain, apiUrl, checkEmail, checkWalletAddress,
-        checkPassword
+        checkPassword, regPassword
     }
 

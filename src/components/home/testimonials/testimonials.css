@@ -12,6 +12,7 @@
 }
 .testimonials-carousel {
     min-width: 300px;
+    margin: 25px auto;
 }
 .rec.rec-carousel button {
     border: none;
@@ -27,11 +28,13 @@
     background-color: #e2e2e2;
 }
 .testimonial {
-    margin: 10px 20px;
+    /* margin: 10px 20px; */
     max-width: 320px;
+    margin: auto 7px;
     padding: 30px;
     background-color: #e2e2e2;
     border-radius: 15px;
+    border: 1px solid #00b67a;;
 }
 .testi-head h4 {
     margin: 0px;

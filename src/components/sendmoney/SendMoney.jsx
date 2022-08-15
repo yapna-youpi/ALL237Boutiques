@@ -26,10 +26,13 @@ const FEES = 0.0396
 let widgetUrl = process.env.REACT_APP_MERCURYO_URL
 // console.log("the widget url ", widgetUrl)
 
+const max=parseInt(process.env.REACT_APP_SEND_MAX)
+const min=parseInt(process.env.REACT_APP_SEND_MIN)
+
 var interval = null
 
 function SendMoney({ amount, country, User }) {
-    let enable = process.env.REACT_APP_SEND_ENABLE ;
+    let enable = process.env.REACT_APP_SEND_ENABLE
     
     const { t } = useTranslation()
     // value of differents field in the form 
@@ -77,7 +80,7 @@ function SendMoney({ amount, country, User }) {
         let params = {
             "transaction_id": randomId('C'), "phone": state.phone,
             "name": state.name, userId: User.userId,
-            "fiat_pay": Math.floor(EUR * state.newAmount),
+            "fiat_pay": Math.floor(EUR * state.amount),
             "initial_amount": state.amount
         }
         // return
@@ -146,7 +149,7 @@ function SendMoney({ amount, country, User }) {
 
     // this function handle disabled propertie of button
     const active = () => {
-        if ((state.amount >= 25 && state.amount <= 100) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone)) return false
+        if ((state.amount >= min && state.amount <= max) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone)) return false
         else return true
     }
     // this function check phone number
@@ -172,7 +175,6 @@ function SendMoney({ amount, country, User }) {
     
     const handleSubmit = (e, enable) => {
         e.preventDefault()
-
         if (enable == "FALSE") {
             return false
         }
@@ -193,8 +195,6 @@ function SendMoney({ amount, country, User }) {
             }
 
         }
-
-
     }
     // la function qui gere le taxe sur le montant
     const amountTaxation = () => {
@@ -214,7 +214,7 @@ function SendMoney({ amount, country, User }) {
                 setState({ ...state, fees, newAmount })
                 break
 
-            case (51 <= state.amount && state.amount < 150):
+            case (51 <= state.amount && state.amount <=150):
                 // console.log("the case ", state.amount)
                 fees = 1.95
                 newAmount = state.amount - fees
@@ -254,7 +254,7 @@ function SendMoney({ amount, country, User }) {
                     <div className="form-head">
                         <div className="form-group">
                             <Input val={state.amount} name="amount" label={t('sendMoneySous9')} type='number' help={t('sendMoneySous15')}
-                                error={state.amount < 25 || state.amount > 100} change={handleChange} handBlur={handleBlur}
+                                error={state.amount < min || state.amount > max} change={handleChange} handBlur={handleBlur}
                             />
                         </div>
                         <div className="">1,OO EUR <h3 className="sign">&cong;</h3> 655,957 XAF</div>
@@ -295,7 +295,7 @@ function SendMoney({ amount, country, User }) {
                     </div>
                     <div className="row">
                         <span>{t('sendMoneySous6')}</span>
-                        <span>  {Intl.NumberFormat('de-DE').format(Math.floor(EUR * state.newAmount))} XAF </span>
+                        <span>  {Intl.NumberFormat('de-DE').format(Math.floor(EUR * state.amount))} XAF </span>
                     </div>
 
                     <h2>{t('sendText5')}</h2>

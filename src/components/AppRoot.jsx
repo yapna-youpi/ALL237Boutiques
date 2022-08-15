@@ -11,7 +11,7 @@ import resources from './lang/lang';
 
 // initialize i18next with catalog and language to use 
 
-let language=JSON.parse(localStorage.getItem('lang')) || {lang: 'en', flag: 0}
+let language=JSON.parse(localStorage.getItem('lang')) || {lang: 'fr', flag: 1}
 i18n.use(initReactI18next)
     .init({
     resources,  

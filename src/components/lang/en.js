@@ -18,7 +18,8 @@ const english = {
     drowContent3: 'Sell Crypto',
 
     // Hero section
-    heroTitle: "BRIDGING MOBILE MONEY AND CRYPTO WORLDS",
+    // heroTitle: "BRIDGING MOBILE MONEY AND CRYPTO WORLDS",
+    heroTitle: "BUY AND SELL CRYPTOCURRENCY WITH YOUR MOBILE MONEY",
     heroText: "Credit Mobile Money account with cryptocurrency or with credit card",
     heroButton: "Get Started",
     available: "Mobile Money Available in theses countries",
@@ -94,7 +95,7 @@ const english = {
     sendMoneySous12: "Invalid number",
     sendMoneySous13: "Confirm Mobile Phone",
     sendMoneySous14: "Should match to phone number",
-    sendMoneySous15: "The value should be between 25 and 50 EUR",
+    sendMoneySous15: "The value should be between 25 and 150 EUR",
     sendText1: "from 25 to 50  ",
     sendText2: "from 51 to 150  ",
     sendText3: "from 151 to 300  ",
@@ -119,7 +120,7 @@ const english = {
     sellCrypto6: "Sender Wallet Address",
     sellCrypto7: "Invalid wallet adress",
     sellCrypto8: "Amount in XAF",
-    sellCrypto9: "The amount should be between 6550 and 35000 XAF",
+    sellCrypto9: "The amount should be between 6550 and 100000 XAF",
     sellCrypto10: "Amount in BTC",
     sellCrypto11: "the min value is 0.000296",
     sellCrypto12: "Fees in XAF",
@@ -180,7 +181,7 @@ const english = {
     buyCryptoMobileSous5: 'Crypto Rate',
     buyCryptoMobileSous6: 'Provided by ',
     buyCryptoMobileSous7: "Amount in XAF",
-    buyCryptoMobileSous8: "The value should be between 5000 and 35000 XAF",
+    buyCryptoMobileSous8: "The value should be between 5000 and 100000 XAF",
     buyCryptoMobileSous9: "Amount in",
     buyCryptoMobileSous10: "The min value is 15.26 EUR",
     buyCryptoMobileSous11: "Amount in BTC",
@@ -261,6 +262,8 @@ const english = {
     LoginSous10: ' Sign in if you are already registred or create an account.',
     LoginSous11: "failed to login",
     LoginSous12: "Hello",
+    LoginError1: "No user found",
+    LoginError2: "Inactive account",
 
     //SignUp
     SignUpTitle: 'Register now',
@@ -288,11 +291,11 @@ const english = {
     SignUpSous22: "`User",
     SignUpSous23: "has been found. Resend email to complete the inscription",
     SignUpSous24: "Sign up failed",
-    SignUpSous25: "Mail has been send to",
+    SignUpSous25: "Mail has been send to ",
     SignUpSous26: "Check it to complete inscription",
-    SignUpSous27: "Mail can't be send to",
+    SignUpSous27: "Mail can't be send to ",
     SignUpSous28: "try again or reset your account",
-    signUpLink: "Go to Login",
+    signUpLink: "Go to S",
 
 
     //NotFound
@@ -394,7 +397,7 @@ const english = {
     completeSous1: "Rate us on",
 
     //valid 
-    validTitle1: " Your account has been actived",
+    validTitle1: " Your account has been activated",
     validTitle2: "Login",
     validTitle3: "Your account cannot be activated",
 
