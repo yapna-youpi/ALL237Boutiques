@@ -126,12 +126,13 @@ function BuyCryptoMobile({ Amount, country, User }) {
             sessionStorage.removeItem('data')
             sessionStorage.setItem('data', JSON.stringify({ ...state, id: randomId('BM'), rate: rate[state.fiat] }))
             setValid(true)
-            // setTimeout(()=>history.push('/purchase'), 2000)
-            !User.kyc ? setTimeout(() => {
-                setModal(false)
-                setSum(true)
-                setValid(false)
-            }, 2000) : setTimeout(() => history.push('/purchase'), 2000)
+            setTimeout(()=>history.push('/purchase'), 2000)
+            // @remind active this when kyc will be enable
+            // !User.kyc ? setTimeout(() => {
+            //     setModal(false)
+            //     setSum(true)
+            //     setValid(false)
+            // }, 2000) : setTimeout(() => history.push('/purchase'), 2000)
         }
     }
     const changeFiat = (f) => {
