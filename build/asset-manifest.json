@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.698ca121.chunk.css",
-    "main.js": "/static/js/main.1b311cb5.chunk.js",
-    "main.js.map": "/static/js/main.1b311cb5.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.0b923ff7.js",
-    "runtime-main.js.map": "/static/js/runtime-main.0b923ff7.js.map",
+    "main.css": "/static/css/main.22848fef.chunk.css",
+    "main.js": "/static/js/main.e9acbeaa.chunk.js",
+    "main.js.map": "/static/js/main.e9acbeaa.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b45a7f3c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b45a7f3c.js.map",
     "static/css/2.acb11f0e.chunk.css": "/static/css/2.acb11f0e.chunk.css",
-    "static/js/2.2d1b619b.chunk.js": "/static/js/2.2d1b619b.chunk.js",
-    "static/js/2.2d1b619b.chunk.js.map": "/static/js/2.2d1b619b.chunk.js.map",
-    "static/js/3.447b3697.chunk.js": "/static/js/3.447b3697.chunk.js",
-    "static/js/3.447b3697.chunk.js.map": "/static/js/3.447b3697.chunk.js.map",
+    "static/js/2.f7e107ba.chunk.js": "/static/js/2.f7e107ba.chunk.js",
+    "static/js/2.f7e107ba.chunk.js.map": "/static/js/2.f7e107ba.chunk.js.map",
+    "static/js/3.3c61ab03.chunk.js": "/static/js/3.3c61ab03.chunk.js",
+    "static/js/3.3c61ab03.chunk.js.map": "/static/js/3.3c61ab03.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.acb11f0e.chunk.css.map": "/static/css/2.acb11f0e.chunk.css.map",
-    "static/css/main.698ca121.chunk.css.map": "/static/css/main.698ca121.chunk.css.map",
-    "static/js/2.2d1b619b.chunk.js.LICENSE.txt": "/static/js/2.2d1b619b.chunk.js.LICENSE.txt",
+    "static/css/main.22848fef.chunk.css.map": "/static/css/main.22848fef.chunk.css.map",
+    "static/js/2.f7e107ba.chunk.js.LICENSE.txt": "/static/js/2.f7e107ba.chunk.js.LICENSE.txt",
     "static/media/1f44f.fdee0474.svg": "/static/media/1f44f.fdee0474.svg",
     "static/media/270d.d44533b1.svg": "/static/media/270d.d44533b1.svg",
     "static/media/KYC1.c5dfcfe1.png": "/static/media/KYC1.c5dfcfe1.png",
@@ -64,10 +64,10 @@
     "static/media/yup.efad7d28.png": "/static/media/yup.efad7d28.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.0b923ff7.js",
+    "static/js/runtime-main.b45a7f3c.js",
     "static/css/2.acb11f0e.chunk.css",
-    "static/js/2.2d1b619b.chunk.js",
-    "static/css/main.698ca121.chunk.css",
-    "static/js/main.1b311cb5.chunk.js"
+    "static/js/2.f7e107ba.chunk.js",
+    "static/css/main.22848fef.chunk.css",
+    "static/js/main.e9acbeaa.chunk.js"
   ]
 }

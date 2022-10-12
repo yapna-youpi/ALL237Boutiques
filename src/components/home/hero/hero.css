@@ -146,7 +146,7 @@
 
 @media screen and (min-width: 1500px) {
     .hero img, .hero>video {
-        flex-basis: 60%;
+        flex-basis: 50%;
     }
     .presentation {
         flex-basis: 45%;

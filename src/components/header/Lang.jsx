@@ -14,9 +14,9 @@ function Lang() {
     const changeLanguage=(lang, flag)=>{
         i18n.changeLanguage(lang)
         setState({lang: lang, flag: flag})
-        console.log(lang,flag)
+        // console.log(lang,flag)
         localStorage.setItem('lang', JSON.stringify({lang: lang, flag: flag}))
-        console.log(localStorage.getItem('lang'),localStorage.getItem('flag'))
+        // console.log(localStorage.getItem('lang'),localStorage.getItem('flag'))
     }
     const click=(target)=>{
         myRef.current.classList.toggle("show")
@@ -24,7 +24,7 @@ function Lang() {
     const blur=()=>{
         myRef.current.classList.remove('show')
     }
-   console.log(language)
+//    console.log(language)
     return (
         <div className="lang" onClick={(e)=>click(e.target)} onBlur={blur} tabIndex="0">
             <div className="active-lang">

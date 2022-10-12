@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import { useTranslation } from 'react-i18next'
 
 import { FaUser, FaSignOutAlt} from 'react-icons/fa'
+import { MdAccountCircle } from 'react-icons/md'
 import { HiPencilAlt } from 'react-icons/hi'
 import { Divider } from '@material-ui/core'
 
@@ -35,6 +36,7 @@ function User({user, nav, logout}) {
             ACCOUNT
         </li> */}
         <li className="nav-link user" onClick={(e)=>show(e)} >
+        <i className='mobi-icon'><MdAccountCircle/></i>
             {t('accountButton')}
         </li>
         <div className="user-menu">

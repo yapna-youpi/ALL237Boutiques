@@ -37,8 +37,8 @@ function Hero() {
 
     return (
         <div className="hero" id="hero">
-            {/* <img src={image} alt="hero-titre"/> */}
-            <video src={video} alt="video" muted={true} autoPlay={true} loop={true} onLoadedData={(e)=>loaded(e)} />
+            <img src={image} alt="hero-titre"/>
+            {/* <video src={video} alt="video" muted={true} autoPlay={true} loop={true} onLoadedData={(e)=>loaded(e)} /> */}
             <div className="presentation"   >
                 <div className="">
                     {/* {navigator.appVersion} */}

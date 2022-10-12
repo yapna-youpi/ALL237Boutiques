@@ -1,6 +1,7 @@
 .header {
   /* border: 2px solid green; */
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  /* border-bottom: 1px solid #ffee01; */
 }
 nav {
   /* retirer ca pour voir l'enseigne */
@@ -30,7 +31,7 @@ nav {
 .hamburger {
   position: absolute;
   /* cursor: pointer; */
-  right: 5%;
+  right: 7%;
   top: 50%;
   transform: translate(-5%, -60%);
   z-index: 2;
@@ -46,7 +47,7 @@ nav {
 /* start cross animation */
 .hamburger.cross .line {
   background: var(--white);
-  width: 50px;
+  width: 38px;
   height: 9px;
 }
 .hamburger.cross div:nth-child(1) {
@@ -62,8 +63,7 @@ nav {
 .nav-links {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
+  padding: 80px 0 0 0;
   position: fixed;
   background: var(--red);
   height: 100vh;
@@ -80,21 +80,21 @@ nav {
   -webkit-clip-path: circle(1300px at 90% -10%);
   /* pointer-events: all; */
 }
-.dropdown {
-  text-align: center;
-}
 .dropdown-content {
+  display: none;
   margin-top: 20px;
-  margin-left: 160px;
+  margin-left: 20px;
   width: 200px;
 }
 .dropdown-content div {
-  margin-top: 20px;
+  margin-top: 15px;
+  margin-left: 5%;
   text-align: left;
   font-size: 0.9em;
 }
 .nav-links li {
-  margin-bottom: 6vh;
+  margin-bottom: 5.75vh;
+  padding-left: 15%;
   opacity: 0;
   font-size: 1.5em;
   font-weight: bold;
@@ -136,7 +136,25 @@ li.fade {
   border: none;
   border-radius: 5px;
 }
+.mobi-icon{
+  display: inline-block;
+  color: var(--white);
+  width: 35px!important;
+}
+.visible{
+  display: block;
+  animation: mobileShow .3s ease-in-out both;
+}
+.first-sub{
+  display: none;
+}
 @media screen and (min-width: 768px) {
+  .first-sub{
+    display: block;
+  }
+  .mobi-icon{
+    display: none;
+  }
   .hamburger, .sixth {
     display: none;
   }
@@ -165,7 +183,12 @@ li.fade {
     background-color: var(--no-value);
     /* overflow: hidden; */
   }
+  .nav-links {
+    align-items: center;
+    padding: initial;
+  }
   .nav-links li {
+    padding: initial;
     opacity: 1;
     margin-left: 1.5%;
     margin-bottom: 0px;
@@ -186,7 +209,6 @@ li.fade {
     display: block;
   }
   .dropdown-content {
-    display: none;
     position: absolute;
     top: 100%;
     left: -110%;
@@ -196,6 +218,9 @@ li.fade {
     color: var(--white);
     transition: all 2s ease-out;
   }
+  /* .visible{
+    display: block;
+  } */
   .sub {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
     background-color: var(--red);
@@ -276,4 +301,15 @@ li.fade {
   border-radius: 8px;
   color: var(--white);
   font-weight: bold;
+}
+
+@keyframes mobileShow{
+  0%{
+    opacity: 0;
+    transform:translateY(-50px);
+  }
+  100%{
+    opacity: 1;
+    transform:translateY(5px);
+  }
 }

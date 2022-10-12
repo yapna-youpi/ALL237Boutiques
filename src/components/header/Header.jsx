@@ -6,6 +6,12 @@ import { useTranslation } from 'react-i18next'
 import { setUser, changeCountry } from '../../store/actions'
 
 import './header.css'
+import { HiHome } from 'react-icons/hi'
+// import { GrServices } from 'react-icons/gr'
+import { BiChevronDown } from 'react-icons/bi'
+import { AiFillContacts } from 'react-icons/ai'
+import { GiArchiveRegister } from 'react-icons/gi'
+import { MdHelpCenter, MdMiscellaneousServices } from 'react-icons/md'
 import UserIcon from './User'
 import Lang from './Lang'
 import enseigne from './assets/enseigne.png'
@@ -14,6 +20,7 @@ let beta = process.env.REACT_APP_IS_BETA === "TRUE"
 let interval
 
 function Header({ User, Country, dispatch }) {
+    const [show, setShow] = React.useState(false)
     const { t } = useTranslation()
     let history = useHistory()
     const myref = React.createRef()
@@ -53,12 +60,22 @@ function Header({ User, Country, dispatch }) {
     }
     const logout = () => dispatch(setUser({}))
     const getLocation = () => {
-        fetch("http://ip-api.com/json")
+        fetch("https://ipapi.co/json/")
             .then(res => res.json()).then(data => {
-                console.log("the location data ", data)
-                dispatch(changeCountry(data.countryCode))
+                // console.table("the location data ", data)
+                dispatch(changeCountry(data.country_code))
             })
             .catch(error => console.warn("can't get location data ", error))
+    }
+    const showServices = (e) => {
+
+        if (window.innerWidth <= 768) {
+            document.getElementById('dropdown-content').classList.toggle('visible');
+            console.log('le mode telephone')
+        } else {
+            nav('/#services')
+            console.log('le mode telephone web ou pc')
+        }
     }
 
 
@@ -76,30 +93,42 @@ function Header({ User, Country, dispatch }) {
                         <div className="line"></div>
                     </div>
                     <ul className="nav-links" ref={myref}>
-                        <li className="nav-link" onClick={() => nav('/')}>  {t('link1')} </li>
-                        <li className="nav-link" onClick={() => nav('/#about')}>  {t('link2')} </li>
+                        <li className="nav-link" onClick={() => nav('/')}><i className='mobi-icon'><HiHome /></i>  {t('link1')} </li>
+                        <li className="nav-link" onClick={() => nav('/#about')}>
+                            <i className='mobi-icon'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffffff" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M7.875 14.25l1.214 1.942a2.25 2.25 0 001.908 1.058h2.006c.776 0 1.497-.4 1.908-1.058l1.214-1.942M2.41 9h4.636a2.25 2.25 0 011.872 1.002l.164.246a2.25 2.25 0 001.872 1.002h2.092a2.25 2.25 0 001.872-1.002l.164-.246A2.25 2.25 0 0116.954 9h4.636M2.41 9a2.25 2.25 0 00-.16.832V12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 12V9.832c0-.287-.055-.57-.16-.832M2.41 9a2.25 2.25 0 01.382-.632l3.285-3.832a2.25 2.25 0 011.708-.786h8.43c.657 0 1.281.287 1.709.786l3.284 3.832c.163.19.291.404.382.632M4.5 20.25h15A2.25 2.25 0 0021.75 18v-2.625c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125V18a2.25 2.25 0 002.25 2.25z" />
+                                </svg>
+
+                            </i> {t('link2')}
+                        </li>
+                        {/* <li className="nav-link" onClick={() => nav('/express')}><i className='mobi-icon'><HiHome /></i>  TRANSFERT </li> */}
                         <li className="nav-link dropdown" >
-                            <a onClick={() => nav('/#services')}> {t('link3')} </a>
-                            <div className="dropdown-content">
+                            <i className='mobi-icon'><MdMiscellaneousServices size={22} /></i>
+                            <a onClick={e => showServices(e)}> {t('link3')} </a>
+                            <i className='mobi-icon'><BiChevronDown size={24} /></i>
+
+
+                            <div className="dropdown-content" id="dropdown-content">
                                 <div className="first-sub" ></div>
                                 <div className="sub">
                                     <span className="arrow"></span>
-                                    <div onClick={() => nav('/'+process.env.REACT_APP_SEND_LINK)} >{t('link6')}</div>
+                                    <div onClick={() => nav('/' + process.env.REACT_APP_SEND_LINK)} >{t('link6')}</div>
                                     <div onClick={() => nav('/buycrypto')} >{t('link7')}</div>
-                                    <div onClick={() => nav('/'+process.env.REACT_APP_SELL_LINK)} >{t('link8')}</div>
+                                    <div onClick={() => nav('/' + process.env.REACT_APP_SELL_LINK)} >{t('link8')}</div>
                                 </div>
                             </div>
                         </li>
-                        <li className="nav-link" onClick={() => nav('/#contacts')}>{t('link4')}</li>
-                        <li className="nav-link sixth" > <a href="/signup"> {t('link9')} </a></li>
+                        <li className="nav-link" onClick={() => nav('/#contacts')}> <i className='mobi-icon'><AiFillContacts /></i>{t('link4')}</li>
+                        <li className="nav-link sixth" > <a href="/signup"><i className='mobi-icon'><GiArchiveRegister /></i> {t('link9')} </a></li>
                         <UserIcon user={User} nav={nav} logout={logout} />
-                        <li className="nav-link" > <a href="http://support.ipercash.io" target="_blank"> {t('link5')} </a></li>
+                        <li className="nav-link" > <a href="http://support.ipercash.io" target="_blank"><i className='mobi-icon'><MdHelpCenter /></i> {t('link5')} </a></li>
                         {/* <button > {t('accountButton')} </button>  */}
                     </ul>
                 </nav>
             </header>
             {beta && <div className="beta-div">
-                beta version
+                Sandbox
             </div>}
         </div>
     )
