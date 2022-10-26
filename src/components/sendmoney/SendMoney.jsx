@@ -5,15 +5,19 @@ import { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import { useTranslation } from 'react-i18next'
 
-import { randomId, randomChain, roundPrecision, apiUrl } from '../../utils/utilFunctions'
+import { randomId, randomChain, roundPrecision, apiUrl, sendToApi } from '../../utils/utilFunctions'
 import crypt from '../../utils/crypt'
 import { toastify } from '../addons/toast/Toast'
 
 import './sendmoney.css'
-import { Input } from '../addons/input/Input'
+import Summary from './summary/Summary'
+import PromoCode from '../promocode/PromoCode'
+import { Input2 } from '../addons/input/Input'
 import PhoneInputool from '../addons/input/PhoneInputool'
 import Modal from './Modal'
 import Modal2 from './Modal2'
+
+import CabitalModal from './CabitalModal'
 
 const EUR = 655
 // const EuroFees=655*0.964
@@ -26,15 +30,17 @@ const FEES = 0.0396
 let widgetUrl = process.env.REACT_APP_MERCURYO_URL
 // console.log("the widget url ", widgetUrl)
 
-const max=parseInt(process.env.REACT_APP_SEND_MAX)
-const min=parseInt(process.env.REACT_APP_SEND_MIN)
+const max = parseInt(process.env.REACT_APP_SEND_MAX)
+const min = parseInt(process.env.REACT_APP_SEND_MIN)
+const enable = process.env.REACT_APP_SEND_ENABLE
 
 var interval = null
 
 function SendMoney({ amount, country, User }) {
-    let enable = process.env.REACT_APP_SEND_ENABLE
-    
+
     const { t } = useTranslation()
+    //value showwing for sender mercurio or cabital
+    const [sender, setSender] = useState({ mer: false, cab: false })
     // value of differents field in the form 
     const [state, setState] = useState({
         amount: amount, name: "", phone: "", cPhone: "", fees: amount * FEES, newAmount: amount
@@ -45,13 +51,27 @@ function SendMoney({ amount, country, User }) {
     })
     // show waiting modal
     const [modal, setModal] = useState({ open: false, closable: false, operationId: null, status: null })
+
     // showing for show or not to taxations
     const [showing, setShowing] = useState(true)
 
+    //actively of button for summary
+    const [summer, setSummer] = useState(false)
+
+    //for active promocode
+    const [code, setCode] = useState(false)
+
     const [mode, setMode] = useState(false)
+    const [cabital, setCabital] = useState(false)
+    // promo state
+    const [promo, setPromo] = useState({ promotion: false, code: '', show: false })
     useEffect(() => {
         amountTaxation()
+
     }, [])
+    useEffect(() => {
+        handleChange({ name: 'amount', value: state.amount })
+    }, [promo])
 
     let history = useHistory()
     // handle change on different field, update mactching field in state
@@ -83,7 +103,6 @@ function SendMoney({ amount, country, User }) {
             "fiat_pay": Math.floor(EUR * state.amount),
             "initial_amount": state.amount
         }
-        // return
         let message = crypt(JSON.stringify(params))
         const requestOption = {
             "method": "POST",
@@ -109,8 +128,8 @@ function SendMoney({ amount, country, User }) {
                 closeModal()
                 toastify("error", "An error are occur please try again")
             })
-
     }
+
     // this get the staus of operation at mercuryo
     const getStatus = (id) => {
         let message = crypt(JSON.stringify({ id: id, userId: User.userId }))
@@ -149,7 +168,7 @@ function SendMoney({ amount, country, User }) {
 
     // this function handle disabled propertie of button
     const active = () => {
-        if ((state.amount >= min && state.amount <= max) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone)) return false
+        if ((state.amount >= min && state.amount <= max) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone) && (summer == true)) return false
         else return true
     }
     // this function check phone number
@@ -172,33 +191,35 @@ function SendMoney({ amount, country, User }) {
         setModal({ open: false, closable: false })
         document.location.reload()
     }
-    
-    const handleSubmit = (e, enable) => {
-        e.preventDefault()
-        if (enable == "FALSE") {
-            return false
-        }
-        eclips()
-    }
+
     // la function du submit au boutton pour changer le taux
     const eclips = () => {
-        if (showing == true) {
+        if (showing === true) {
             setShowing(!showing)
-
             // return false
         } else {
 
             if (enable == 'FALSE') {
                 setMode(!mode)
             } else {
-                send()
+                if (sender.mer) {
+                    send()
+                } else setCabital(true)
             }
-
         }
     }
+
+    // la function qui soummet le formulaire en fonction de mercurio ou cabital
+    const handleSubmit = (e, enable) => {
+        e.preventDefault()
+        eclips();
+
+    }
+
     // la function qui gere le taxe sur le montant
     const amountTaxation = () => {
         let fees, newAmount
+        if (promo.promotion) return setState({ ...state, fees: 0, newAmount })
         switch (true) {
             case (state.amount === ''):
                 // console.log("the empty case ", state.amount)
@@ -214,7 +235,7 @@ function SendMoney({ amount, country, User }) {
                 setState({ ...state, fees, newAmount })
                 break
 
-            case (51 <= state.amount && state.amount <=150):
+            case (51 <= state.amount && state.amount <= 150):
                 // console.log("the case ", state.amount)
                 fees = 1.95
                 newAmount = state.amount - fees
@@ -243,17 +264,26 @@ function SendMoney({ amount, country, User }) {
                 break
         }
     }
-    // console.log("the new amount ", Math.ceil(parseFloat(state.amount) + parseFloat(state.fees)))
+    const activePromotion = () => { setPromo({ ...promo, promotion: !promo.promotion, show: false }) }
+    (() => {
+        if (!active() && !promo.code && !promo.show) setPromo({ ...promo, show: true })
+    })()
+
+    // console.log("the state ", state)
     return (
         <>
+            {promo.show && <PromoCode closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })} activePromotion={activePromotion} />}
             {enable === "FALSE" ? <h3 className='disjointe'>Le service est indisponible</h3> : ""}
             <div className="sendmoney">
                 <Modal option={modal} close={closeModal} />
                 <Modal2 mode={mode} close={() => setMode(false)} />
+                {cabital && <CabitalModal User={User} close={() => setCabital(false)} type="sepa"
+                    state={{ ...state, transaction_id: randomId('C'), fiat_pay: Math.floor(EUR * state.amount) }}
+                />}
                 <form className="form">
                     <div className="form-head">
                         <div className="form-group">
-                            <Input val={state.amount} name="amount" label={t('sendMoneySous9')} type='number' help={t('sendMoneySous15')}
+                            <Input2 val={state.amount} name="amount" label={t('sendMoneySous9')} type='number' help={t('sendMoneySous15')}
                                 error={state.amount < min || state.amount > max} change={handleChange} handBlur={handleBlur}
                             />
                         </div>
@@ -262,7 +292,7 @@ function SendMoney({ amount, country, User }) {
                     <h3> {t('sendMoneyTitle')} </h3>
                     <div className="form-body">
                         <div className="form-group">
-                            <Input val={state.name} name="name" label={t('sendMoneySous10')} error={errors.name} change={handleChange} handBlur={handleBlur} help={t('sendMoneySous12')} />
+                            <Input2 val={state.name} name="name" label={t('sendMoneySous10')} error={errors.name} change={handleChange} handBlur={handleBlur} help={t('sendMoneySous12')} />
                         </div>
                         <div className="form-group">
                             <PhoneInputool val={state.phone} label={t('sendMoneySous11')} name="phone" id="phone" help="invalid number"
@@ -279,57 +309,7 @@ function SendMoney({ amount, country, User }) {
                         </div>
                     </div>
                 </form>
-                <div className="summary">
-                    <h2>{t('sendMoneySous2')}</h2>
-                    <div className="row">
-                        <span>{t('sendMoneySous3')}</span>
-                        <span> {Intl.NumberFormat('de-DE').format(Math.ceil(state.amount))} EUR </span>
-                    </div>
-                    <div className="row">
-                        <span>{t('sendMoneySous4')}</span>
-                        <span> {Intl.NumberFormat('de-DE').format(Math.ceil(state.fees))}  EUR </span>
-                    </div>
-                    <div className="row">
-                        <span>{t('sendMoneySous5')} </span>
-                        <span> {Intl.NumberFormat('de-DE').format(Math.ceil(parseFloat(state.amount) + parseFloat(state.fees)) || 0)} EUR </span>
-                    </div>
-                    <div className="row">
-                        <span>{t('sendMoneySous6')}</span>
-                        <span>  {Intl.NumberFormat('de-DE').format(Math.floor(EUR * state.amount))} XAF </span>
-                    </div>
-
-                    <h2>{t('sendText5')}</h2>
-                    {showing ? (
-                        <div className='warning eclips'>
-                            <div className="row">
-                                <span>{t('sendText1')}EUR </span>
-                                <span> {"3.96%  "}EUR </span>
-                            </div>
-                            <div className="row">
-                                <span>{t('sendText2')}EUR </span>
-                                <span> {"2 "}EUR </span>
-                            </div>
-                            <div className="row">
-                                <span>{t('sendText3')}EUR </span>
-                                <span> {"3 "}EUR </span>
-                            </div>
-                            <div className="row">
-                                <span>{t('sendText4')} </span>
-                                <span> {"4 "}EUR </span>
-                            </div>
-                        </div>
-                    )
-                        :
-                        (
-                            <div className="warning delay">
-                                <h2>{t('sendMoneySous7')}</h2>
-                                <p>
-                                    {t('sendMoneySous8')}
-                                </p>
-                            </div>
-                        )
-                    }
-                </div>
+                <Summary showing={showing} state={state} EUR={EUR} setSummer={setSummer} setSender={setSender} />
             </div>
         </>
     )

@@ -73,7 +73,7 @@ const { t } = useTranslation()
                             <a href="https://twitter.com/IPERCash?s=09" target=" " rel='nofollow' > <div className="social-icon twitter "> <FaTwitter size={28} /> </div></a> 
                             <a href="https://www.facebook.com/IPERCash-109875781411686/" target="_blank" rel='nofollow' > <div className="social-icon facebook"> <FaFacebookF size={28} /> </div></a> 
                             <a href="https://www.instagram.com/iper.cash/" target="_blank" rel='nofollow' > <div className="social-icon instagram"> <FaInstagram size={32} /> </div></a>
-                            <a href="https://www.instagram.com/iper.cash/" target="_blank" rel='nofollow' > <div className="social-icon telegram"> <FaTelegramPlane size={32} /> </div></a>
+                            <a href="https://t.me/IPERCASH" target="_blank" rel='nofollow' > <div className="social-icon telegram"> <FaTelegramPlane size={32} /> </div></a>
                             <a href="https://www.youtube.com/channel/UC8glP2KvtgtKkdEk2VgD_zg" target="_blank" rel='nofollow' > <div className="social-icon youtube"> <FaYoutube size={32} /> </div></a>
                         </div>
                     </div>

@@ -41,7 +41,6 @@ const checkServiceId=num=>{
             }
         }
     }
-    //console.log("ca a cuit")
     return null
 }
 
@@ -83,7 +82,6 @@ const trackStatus=async (params, token, callBack, cancel)=>{
             i++
         } else {
             clearInterval(interval)
-            // console.log("on a encore efface l'intervalle")
         }
         //console.log("le status  de trackstatus: ", newStatus)
     }, 20*1000); // en production il faudra mettre 20 secondes
@@ -93,7 +91,7 @@ const trackStatus=async (params, token, callBack, cancel)=>{
             clearInterval(interval)
             cancel({status: 'fail', cause: 'payment process fail'}, 1)
         }
-    }, 60*60*1000); // en production c'est 10*60
+    }, 10*60*1000); // en production c'est 10*60
 }
 
 const setRequestOption=(body, token)=>({
@@ -125,7 +123,6 @@ const activeButtonSend=(state)=>{
 }
 
 const checkPhone=(error, num)=>{
-    //console.log("le error ",error)
     if(num==="") return error
     //if(!error) return false
     else return !checkServiceId(num)
@@ -146,14 +143,20 @@ const checkWalletAddress=(address)=>{
 }
 
 const checkPassword=(password)=>{
-    return password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@%*+-_]{8,}$/)
+    return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@%*+-_]{8,}$/
 }
 
-const regPassword=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@%*+-_]{8,}$/
+const regWallet = /^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/
+
+const regPhone = /^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/
+
+const regPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@%*+-_]{8,}$/
+
+
 
 export {roundDecimal, roundPrecision, randomId, randomChain,
         trackStatus, checkServiceId, trier, setRequestOption, sendToApi, getCryptoRate,
         activeButtonSend, checkPhone, cutChain, apiUrl, checkEmail, checkWalletAddress,
-        checkPassword, regPassword
+        checkPassword,regWallet,regPhone,regPassword
     }
 

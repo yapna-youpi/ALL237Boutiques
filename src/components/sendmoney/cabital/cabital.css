@@ -1,0 +1,460 @@
+.cabital-content {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.depart-input {
+    display: flex;
+    width: 93%;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+    font-weight: bolder;
+    padding: 14px 16px;
+    position: relative;
+    background: #fff;
+    border: 1px solid #d4dbde;
+    border-radius: 4px;
+}
+
+.departimg1 {
+    border-radius: 2px;
+    margin-right: 4px;
+    width: 30px;
+}
+
+.departimg {
+    margin-right: 4px;
+    width: 30px;
+}
+
+.departinputcontent {
+    font-size: 16px;
+    display: inline-flex;
+}
+
+/* -- début du style du composant RenderkycMatch --*/
+.react-responsive-modal-modal {
+    display: flex;
+    justify-content: center;
+    margin: 10vh auto !important;
+    width: 95%;
+    padding: 0 !important;
+    border-radius: 8px;
+    border: none;
+}
+
+.kycmatch, .cabitalcontent {
+    border-radius: 8px;
+    padding: 15px auto;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+
+.kyclabel {
+    display: block;
+    text-align: left;
+    margin: 0 0 2px 10px;
+}
+
+.inpu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 30px;
+    margin: 4px auto;
+    padding: 5px 10px;
+    border: 1.5px solid rgba(0, 0, 0, .34);
+    border-radius: 4px;
+    z-index: 2;
+    cursor: pointer;
+    font-size: 17px;
+    outline: none;
+}
+
+.inpuselect {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    height: 45px;
+    margin: 4px auto;
+    border-radius: 4px;
+    z-index: 2;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.inpuselect:focus-visible {
+    border: 2px solid #cc1616 !important;
+}
+
+.select:focus {
+    border: 2px solid #cc1616 !important;
+}
+
+.titlecolor {
+    color: #cc1616;
+    margin:45px 10px 0px 10px;
+}
+
+.lettercolor {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.kycmatch h3 {
+    width: 60%;
+    margin: 20px auto;
+}
+
+.letteruncolor {
+    color: initial;
+}
+
+.kycmatch input[type="text"i]:focus {
+    border: 2px solid #cc1616;
+    font-size: 1.1em;
+    font-weight: lighter;
+
+}
+
+.btnkyc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 45px;
+    margin: 30px auto 10px auto;
+    padding: 0 18px;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: #cc1616;
+    vertical-align: middle;
+    font-size: 17px;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+select, option:checked {
+    font-weight: lighter;
+    font-size: 1.15em;
+    padding: 8px 5px;
+}
+
+.kycformgroup {
+    margin: 12px auto;
+}
+
+/* -- fin du RenderkycMatch --*/
+
+/* -- début du style du composant RenderInfo   --*/
+.RenderInfo {
+    border-radius: 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+
+.RenderInfo hr {
+    margin: 0;
+    width: 96%;
+}
+
+.textinfo {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.textinfo .p-left {
+    line-height: 35px;
+    margin: 3px 5px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.textinfo .p-right {
+    text-align: center;
+    word-wrap: break-word;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 3px;
+}
+
+/*-- fin du renderInfo --*/
+
+/*-- debut du renderLinking --*/
+
+.linking {
+    border-radius: 8px;
+    padding: 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+
+.btnlink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 37px;
+    margin: 30px auto;
+    padding: 6px 18px;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: #cc1616;
+    font-size: 17px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+/*-- debut du otp --*/
+.otp {
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+
+.otp>p {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.otp-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 27px auto;
+    width: 85%;
+    --ReactInputVerificationCode-itemWidth: 1.9rem;
+    --ReactInputVerificationCode-itemHeight: 2.5rem;
+
+}
+
+.hPdkBr {
+    font-weight: 650 !important;
+}
+
+.btnotp {
+    display: block;
+    width: 82%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    padding: 6px 18px;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: #cc1616;
+    font-size: 17px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.otptitle {
+    display: block;
+    margin: 12.5px;
+}
+
+.inpuselect:nth-child(1) {
+    padding: 5px 10px;
+}
+
+.btndepart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 105%;
+    height: 45px;
+    margin: 17px auto 20px;
+    padding: 0 18px;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: #cc1616;
+    font-size: 17px;
+    color: white;
+    cursor: pointer;
+}
+
+.kycerreur {
+    padding-left: 3%;
+    text-align: left;
+    color: var(--red);
+}
+
+/*-- debut du composant start --*/
+.start {
+    width: 400px;
+    padding: 8px 8px 20px 8px;
+}
+
+.start-content {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+}
+
+.start-left {
+    border-right: 1px solid gray;
+}
+
+.start-btn {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btnstart-left {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 34% !important;
+    height: 50px !important;
+    margin: 10px auto;
+    padding: 20px 10px;
+    background-color: var(--red);
+    border-radius: 8px !important;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold !important;
+    font-size: 15px !important;
+}
+
+.btnstart-right {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 34% !important;
+    height: 50px !important;
+    margin: 10px auto;
+    padding: 20px 10px;
+    background-color: var(--red);
+    border-radius: 8px !important;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold !important;
+    font-size: 15px !important;
+}
+.backer{
+    width: 75px;
+    cursor: pointer;
+    transform: translate(-20px, -60px);
+}
+.backe{
+    width: 35px;
+    transform: translate(-135px, -61px);
+    cursor: pointer;
+}
+
+.backyc {
+    width: 75px;
+    transform: translate(-220px, -70px);
+    cursor: pointer;
+    color: black;
+}
+
+@media only screen and (min-width:550px) {
+
+    .react-responsive-modal-modal {
+        width: 70% !important;
+        margin: 5vh auto !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .backyc{
+        transform: translate(-194px, -25px);
+    }
+    .backer{
+        width: 75px;
+        cursor: pointer;
+        transform: translate(-90px, -30px);
+    }
+    .backe{
+        transform: translate(-180px, -35px);
+    }
+
+    /* -- début du style du composant RenderkycMatch  --*/
+    .inpuselect:nth-child(1) {
+        padding: 5px 10px;
+    }
+
+    .textinfo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 8px;
+    }
+    .textinfo .p-right {
+        width: 100%;
+        text-align: right;
+    }
+    .textinfo .p-left {
+        width: 40%;
+        text-align: left;
+    }
+
+    .RenderInfo {
+        border-radius: 15px;
+        /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+        padding: 0px 25px 25px;
+    }
+    .btnstart-left {
+        width: 40%;
+    }
+    .btnstart-right {
+        width: 40%;
+    }
+
+    .otp-group {
+        width: 75%;
+        --ReactInputVerificationCode-itemWidth: 2.9rem;
+        --ReactInputVerificationCode-itemHeight: 3.5rem;
+    }
+
+    .btnotp {
+        width: 87%;
+    }
+    
+.start-btn {
+    width: inherit;
+}
+    
+}
+
+@media only screen and (min-width:992px) {
+
+
+    .react-responsive-modal-modal {
+        width: 48% !important;
+        margin: 5vh auto !important;
+    }
+
+}
+
+@media only screen and (min-width:1260px) {
+
+
+    .react-responsive-modal-modal {
+        width: 40% !important;
+        margin: 5vh auto !important;
+    }
+
+}

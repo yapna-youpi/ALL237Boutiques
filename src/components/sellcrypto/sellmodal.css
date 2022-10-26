@@ -1,8 +1,9 @@
 .sell-overlay {
 }
-.sell-modal {
+/* .sell-modal {
   max-width: 80vw;
-}
+} */
+
 .sell-loader {
   display: flex;
   justify-content: center;
@@ -12,6 +13,7 @@
 }
 .modal-container {
   color: var(--night-blue);
+  margin: 10px 6px;
 }
 .timer {
   font-weight: 600;
@@ -98,12 +100,15 @@
 
 @media screen and (min-width: 1200px) {
   .modal-details {
-    font-size: 1.6em;
+    font-size: 1.1em;
   }
   .modal-details > div {
     display: flex;
     justify-content: space-between;
     margin: 50px 0px;
+  }
+  .modal-container{
+    margin: 10px 30px;
   }
   .modal-container > div span:nth-child(2) {
     font-weight: 600;

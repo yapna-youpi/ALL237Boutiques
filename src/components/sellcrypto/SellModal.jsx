@@ -33,7 +33,7 @@ function SellModal({ open, toogle, data, rate, User }) {
     // function that check if there is a conflict with the amount
     const checkConflict = async () => {
         let result = await sendToApi('sellcrypto/conflict', {
-            amount: data.amount, xaf: data.xaf, number: data.number,
+            amount: data.amount, xaf: data.xaf, number: data.phone,
             userId: User.userId
         }, User.token)
         if (!result.response || result === 'error') {
@@ -111,9 +111,9 @@ function SellModal({ open, toogle, data, rate, User }) {
             }
         })
     }
-    const success = async (time=0) => {
+    const success = async (time = 0) => {
         // if time is greater than 2 we show an error
-        if(time > 1) {
+        if (time > 1) {
             history.push('/complete')
             return
         }
@@ -133,7 +133,7 @@ function SellModal({ open, toogle, data, rate, User }) {
                             operation: 'Sell Crypto',
                             id: state.id,
                             amount: data.xaf,
-                            phone: data.number
+                            phone: data.phone
                         }
                         sessionStorage.setItem('data', JSON.stringify(p))
                         setTimeout(() => {
@@ -162,12 +162,13 @@ function SellModal({ open, toogle, data, rate, User }) {
             cryptoCurency: data.crypto,
             amountCrypto: data.amount,
             amountFiat: data.xaf,
-            phone: data.number,
+            phone: data.phone,
             clientWallet: data.wallet,
             status: 'init',
             rate: rate,
             userId: User.userId
         }
+        if (data.promotion) storeData = { ...storeData, promotion: data.promotion, code: data.code }
         let storeResult = await sendToApi('sellcrypto/create', storeData, User.token)
         if (storeResult !== 'error') {
             setState({ ...state, start: true, id: storeData.transaction_id })
@@ -234,7 +235,7 @@ function SellModal({ open, toogle, data, rate, User }) {
                                             <span>  {t('sellModal15')}</span> <span> {Intl.NumberFormat('de-DE').format(cryptoChange(data.amount, rate).xaf)} XAF </span>
                                         </div>
                                         <div className="">
-                                            <span>{t('sellModal16')} </span>  <span> {data.number} </span>
+                                            <span>{t('sellModal16')} </span>  <span> {data.phone} </span>
                                         </div>
                                         <div className="">
                                             <span>{t('sellModal17')} </span>  <span> {Intl.NumberFormat('de-DE').format(roundPrecision(cryptoChange(data.amount, rate).xaf * FEES, 0))} XAF </span>

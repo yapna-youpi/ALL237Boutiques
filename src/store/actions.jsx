@@ -1,4 +1,4 @@
-import { SET_AMOUNT, SET_CRYPTO, SET_COUNTRY, SET_USER } from './constants';
+import { SET_AMOUNT, SET_CRYPTO, SET_COUNTRY, SET_USER, SET_CURRENCIES } from './constants';
 
 
 const changeAmount=(amount=25)=>({
@@ -11,7 +11,7 @@ const changeCrypto=(amount=10000)=>({
     amount: amount
 })
 
-const changeCountry=(country='CM')=>({
+const changeCountry=(country='FR')=>({
     type: SET_COUNTRY,
     country: country
 })
@@ -21,4 +21,9 @@ const setUser=(user={})=>({
     user: user
 })
 
-export {changeAmount, changeCrypto, changeCountry, setUser}
+const setCurrencies=(currencies={})=>({
+    type: SET_CURRENCIES,
+    currencies: currencies
+})
+
+export {changeAmount, changeCrypto, changeCountry, setUser, setCurrencies}

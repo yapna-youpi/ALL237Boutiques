@@ -1,6 +1,6 @@
 import { SET_AMOUNT, SET_CRYPTO, SET_COUNTRY, SET_USER } from './constants';
 
-const initialState={amount: 25, crypto: 0, country: 'CM', user: {}}
+const initialState={amount: 25, crypto: 0, country: 'FR', user: {}, currencies: {}}
 
 const amountReducer=(state=initialState, action)=>{
     switch (action.type) {
@@ -39,4 +39,13 @@ const userReducer=(state=initialState, action)=>{
     }
 }
 
-export { amountReducer, cryptoAmountReducer, countryReducer, userReducer }
+const currenciesReducer=(state=initialState, action)=>{
+    switch (action.type) {
+        case SET_USER:
+            return {...state, currencies: action.currencies}
+        default:
+            return state
+    }
+}
+
+export { amountReducer, cryptoAmountReducer, countryReducer, userReducer, currenciesReducer }

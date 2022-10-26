@@ -47,3 +47,6 @@
     width: 2%;
     color: orange;
 }
+.MuiTooltip-tooltip {
+    font-size: medium!important;
+}

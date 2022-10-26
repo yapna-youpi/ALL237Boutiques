@@ -1,0 +1,95 @@
+/* --styling tutoriel-- */
+.sliders .tutotitle{
+    text-align: center;
+}
+.sliders .tutoriel{
+    padding: 15px 30px;
+    color: var(--night-blue);
+}
+.sliders .cab{color: rgb(203,167,126);font-weight: bold;}
+.sliders .bi{color: rgb(30,66,108);font-weight: bold;}
+
+.sliders .tutorielist{
+    
+}
+/* .sliders .soustuto{
+    text-align: center;
+    
+} */
+.sliders .tutorielist:nth-child(1){
+    
+    text-align: center;
+}
+.sliders .notlist{
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bolder;
+    text-decoration: underline;
+}
+.sliders .watch{
+    padding: 10px 15px;
+    width: 100%;
+    background-color: var(--red);
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 4px;
+}
+.sliders .skip{
+    padding: 10px 15px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.452);
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 4px;
+}
+.sliders .seemore{
+    float: right;
+    width: 40%;
+    margin: 10px 0 5px 0;
+    transform: translateY(-15px);
+    color: var(--red);
+    cursor: pointer;
+    /* background-color: green; */
+}
+
+/* -- styling carroussel -- */
+.sliders .elPooy{
+    height: 520.531px;
+    width: 450px;
+    color: black;
+    transform: translateX(-85px);
+}
+
+.sliders .jNVyoz{
+    margin-top: 25px;
+}
+.sliders .hHJTFD{
+    width: 55%!important;
+}
+.sliders .sc-gsnTZi{
+    width: 100%!important;
+}
+
+@media screen and (min-width: 768px) {
+    
+    .sliders .prevSlide{
+        top: 25vh;
+        left: 1vw;
+    }
+    .sliders .nextSlide{
+        top: 25vh;
+        right: 1vw;
+    }
+    .sliders .sliders-in{
+        width: 40vw;
+    }
+    .sliders .swiper-wrapper{
+        display: flex;
+        width: 350em;
+        overflow: hidden;
+    }
+    .sliders .swiper-slide{
+        width: 24em!important;
+    }
+}

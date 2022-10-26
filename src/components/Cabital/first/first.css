@@ -1,0 +1,323 @@
+.cabital .first {
+    /* border: 1px solid red; */
+}
+
+.first-fieldset .first-error {
+    text-align: center;
+}
+
+.first-fieldset .first-error button {
+    width: 20%;
+    background-color: var(--red);
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.first-fieldset .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.first-fieldset .alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 82.5%;
+    position: relative;
+    margin: 2vh 3vw;
+    padding: 10px;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #842029;
+    text-align: center;
+}
+
+.first-fieldset .cabital-controls {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-around;
+    align-items: center;
+    width: 82.5%;
+    margin: auto;
+}
+
+.first-fieldset .button button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--red);
+    width: 80%;
+    min-width: 100px;
+    margin: auto;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.first-fieldset .cabital-step {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px auto;
+}
+
+.first-fieldset .cabital-step span {
+    margin-right: 30px;
+}
+
+.first-fieldset .cabital-step span:nth-child(2) {
+    color: var(--red);
+    font-weight: 500;
+}
+
+.first-fieldset .cabital-step span button {
+    background-color: var(--red);
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.first-fieldset .linked {
+    justify-content: space-around;
+    align-items: center;
+    padding: 3%;
+}
+
+
+.first-fieldset .linked .inlin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    border-bottom: 3px solid var(--transparent2);
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.first-fieldset .linked span img {
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 20px;
+}
+
+
+.first-fieldset .purchase li {
+    list-style-type: none;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+/* .first-fieldset ul, .first-fieldset .payments {
+    margin: 45px 0 25px 0;
+} */
+.return {
+    transform: translate(0, -150px);
+    width: 40px;
+    height: 40px;
+}
+
+.retun {
+    width: 40px;
+    height: 40px;
+}
+
+.retun:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: translate(-8px, -8px);
+}
+
+.mt-info {
+    margin-top: 40px;
+}
+
+.btnpays {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--red);
+    width: 100%;
+    min-width: 100px;
+    margin: auto;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.depart-inp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+    font-weight: bolder;
+    padding: 14px 16px;
+    position: relative;
+    background: #fff;
+    border: 1px solid #d4dbde;
+    border-radius: 4px;
+}
+
+.balances {
+    margin-top: 15px;
+}
+
+.btnconn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--red);
+    width: 100%;
+    min-width: 100px;
+    margin: auto;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cabital-form fieldset .PhoneInput {
+    display: block;
+}
+
+.cabital-form fieldset .PhoneInputInput {
+    width: 100%;
+    margin-top: 40px;
+    font-size: 22px;
+}
+
+.info-warning {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #fdebc8;
+    border-radius: 0.25rem;
+    color: #cf8436;
+}
+
+.ligCopy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mr-2 {
+    margin-right: 2px;
+}
+.connecter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+    /* .first-fieldset .cabital-controls {
+        flex-direction: inherit;
+    } */
+
+    /* .btnconn {
+        width: 15%;
+    } */
+
+    .first-fieldset .linked {
+        flex-direction: inherit;
+    }
+
+    /* .first-fieldset .linked {
+        display: flex;
+        padding: 2%;
+    } */
+
+    /* .first-fieldset .purchase {
+        
+    } */
+
+    .first-fieldset .purchase ul {
+        margin-top: 50px;
+    }
+
+    .first-fieldset .purchase li {
+        /* list-style-type: initial; */
+        margin-bottom: 20px;
+    }
+
+    .first-fieldset ul, .first-fieldset .payments {
+        margin: auto;
+    }
+
+    /* .btnpays {
+        width: 80%;
+    } */
+
+    .first-fieldset .purchase li {
+        width: 100%;
+    }
+
+    /* .first-fieldset ul, .first-fieldset .payments {
+        width: 80%;
+    } */
+
+    .return {
+        transform: translate(10px,-170px);
+        width: 40px;
+        height: 40px;
+    }
+
+    .return:hover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.1);
+        transform: translate(1px,-178px);
+    }
+
+    .first-fieldset .linked .inlin {
+        margin-top: 15px;
+        font-size: 1.5em;
+    }
+
+    .cabital-form fieldset .PhoneInput {
+        display: flex;
+    }
+
+    .cabital-form fieldset .PhoneInputInput {
+        width: inherit;
+        margin-top: inherit;
+    }
+
+}

@@ -62,6 +62,9 @@
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
+.modal-container{
+  padding: 10px auto;
+}
 
 @media screen and (min-width: 768px) {
   .sellcrypto .disjoint{

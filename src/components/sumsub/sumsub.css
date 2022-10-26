@@ -19,25 +19,27 @@
 }
 
 .sumsub .sub-div1 {
+    width: 90%;
     margin: 0 auto;
-    padding: 0 110px 0;
     font-size: 20px;
 }
 
 .sumsub .sub-div2 {
+    width: 90%;
     margin: 15px auto;
-    padding: 0 110px 0;
     font-size: 20px;
 }
 
 .img-sumsub {
+    display: block;
     display: inline-block;
+    width: 70%;
     margin: 5px auto;
 }
 
 .btn-sub {
     display: block;
-    width: 50%;
+    width: 70%;
     height: 50px;
     margin: 10px auto;
     color: var(--red);
@@ -45,7 +47,7 @@
     background-color: transparent;
     border: 2px solid var(--red);
     border-radius: 8px;
-    font-size: 1.2em;
+    font-size: 0.8em;
     font-weight: bold;
     color: var(--white);
     transition: all .5s ease-out;
@@ -65,5 +67,9 @@
 
     .sumsub .sub-div2 {
         padding: 0 10px 0;
+    }
+    .btn-sub {
+        width: 50%;
+        font-size: 1.2em;
     }
 }

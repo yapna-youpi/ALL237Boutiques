@@ -36,7 +36,7 @@ function Steps() {
                     <div className="img-container" onClick={()=>showVideo(0)}>
                         <img src={user} alt="user" />
                     </div>
-                    <p data-aos="fade-right" data-aos-delay="350" data-aos-once="true">{ t('sousSteps1')}</p>
+                    <p onClick={()=>showVideo(0)} data-aos="fade-right" data-aos-delay="350" data-aos-once="true">{ t('sousSteps1')}</p>
                     <a data-aos="fade-right" data-aos-delay="400" data-aos-once="true" href="https://support.ipercash.io/" target="_blank"><span className='coli'>{t('sousSteps5')}</span></a>
                 </div>
                 <div className="step-line"></div>
@@ -44,15 +44,15 @@ function Steps() {
                     <div className="img-container" onClick={()=>showVideo(1)}>
                         <img src={phone} alt="phone" />
                     </div>
-                    <p data-aos="fade-up" data-aos-delay="550" data-aos-once="true">{t('sousSteps2')}</p>
+                    <p onClick={()=>showVideo(1)} data-aos="fade-up" data-aos-delay="550" data-aos-once="true">{t('sousSteps2')}</p>
                     <a data-aos="fade-up" data-aos-delay="600" data-aos-once="true" href="https://support.ipercash.io/" target="_blank"><span className='coli'>{t('sousSteps5')}</span></a>
                 </div>
                 <div className="step-line"></div>
                 <div className="step" data-aos="zoom-in" data-aos-delay="700" data-aos-once="true">
-                    <div className="img-container" onClick={()=>showVideo(1)}>
+                    <div className="img-container" onClick={()=>showVideo(2)}>
                         <img src={bitcoin} alt="bitcoin" />
                     </div>
-                    <p data-aos="fade-left" data-aos-delay="750" data-aos-once="true">{t('sousSteps3')}</p>
+                    <p  onClick={()=>showVideo(2)} data-aos="fade-left" data-aos-delay="750" data-aos-once="true">{t('sousSteps3')}</p>
                     <a data-aos="fade-left" data-aos-delay="800" data-aos-once="true" href="https://support.ipercash.io/" target="_blank"><span className='coli'>{t('sousSteps5')}</span></a>
                 </div>
                 <Modal open={state.open} onClose={hideVideo} showCloseIcon={false} closeOnOverlayClick={true} center classNames={{overlay: "step-overlay", modal: 'step-modal'}} >

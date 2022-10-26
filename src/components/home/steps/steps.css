@@ -5,6 +5,9 @@
   background: var(--red);
   color: var(--white);
 }
+.step p{
+  cursor: pointer;
+}
 .steps h2 {
   display: flex;
   flex-flow: column nowrap;

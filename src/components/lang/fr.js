@@ -19,7 +19,7 @@ const french = {
 
     // Hero section
     // heroTitle: "INTERFACE ENTRE LE MOBILE MONEY ET LA CRYPTOMONNAIE",
-    heroTitle: "ACHETEZ ET VENDEZ DE LA CRYPTOMONNAIE AVEC VOTRE MOBILE MONEY",
+    heroTitle: "ACHAT VENTE TRANSFERT DE CRYPTOMONNAIE PAR MOBILE MONEY ET SEPA",
     heroText: "Créditez un compte Mobile Money avec de la cryptomonnaie ou une carte de crédit",
     heroButton: "Commencer",
     available: "Mobile Money disponible dans ces pays",
@@ -128,6 +128,7 @@ const french = {
     sellCrypto15: "Confirmer le téléphone portable",
     sellCrypto16: "Doit correspondre au numéro de téléphone",
     sellCrypto17: "La montant doit etre entre 10 et 50 EUR ",
+    sellCrypto18: "Le service est indisponible ",
 
     //sellModal
     sellModal: 'Transaction confirmée',
@@ -202,7 +203,7 @@ const french = {
     buyCryptoError5: "impossible de trouver votre adresse de wallet",
     buyCryptoError6: "impossible d'effectuer la transaction",
     buyCryptoError7: "impossible d'envoyer la crypto",
-    buyCryptoError8: "La demande de paiement a echouée",
+    buyCryptoError8: "La demande de paiement a echoué",
     buyCryptoError9: "Le paiement a echouée",
 
     //chooses 
@@ -311,6 +312,7 @@ const french = {
     sucessTitle4: 'Vous avez réussi à vendre de la crypto',
     sucessTitle5: "Nous evaluer sur",
     sucessTitle6: "Retour à la page d'accueil",
+    sucessTitle7: "Voir les détails",
 
 
     //forget
@@ -415,6 +417,173 @@ const french = {
      modal2Title:"Le service est momentanément indisponible!",
      modal2parag1: "Nos équipes font le maximum pour résoudre le problème au plus vite.",
      modal2parag2: "Toutes nos excuses pour cet imprévu !",
+
+     //tooltip
+     tooltip: "Ce service n'est pas disponible dans votre pays pour l'instant merci de votre comprehension !",
+
+     //formiktraductionsignup
+     formiksignup1 : "Le nom doit comporter au moins 4 caractères",
+     formiksignup2 : "Ce champ est obligatoire",
+     formiksignup3 : "Ce champ doit être un email valide",
+     formiksignup4 : "Ce champ est obligatoire",
+     formiksignup5 : "Le téléphone est obligatoire",
+     formiksignup6 : "Le mot de passe est obligatoire",
+     formiksignup7 : "Le mot de passe doit avoir au moins huit caractères dont un chiffre",
+     formiksignup8 : "La confirmation du mot de passe est requise",
+     formiksignup9 : "Le mot de passe ne correspond pas",
+
+     //formiklogin
+     formikLogin1 : "ce champ doit être un email valide",
+     formikLogin2 : "ce champ est obligatoire",
+     formikLogin3 : "le mot de passe est requis",
+     formikLogin4 : "Le mot de passe doit avoir au moins huit caractères dont un chiffre",
+
+     //formikTraductionbuy
+     formikBuy1: "Adresse du wallet requise",
+     formikBuy2: "Adresse du wallet invalide",
+     formikBuy3: "Le montant de vente est requis",
+     formikBuy4: "Le montant de vente est reuquis",
+     formikBuy5: "Le montant en crypto est requis",
+     formikBuy6: "Le numéro est requis",
+     formikBuy7: "La confirmation du numéro est requise",
+     formikBuy8: "Doit être un numéro valide du pays",
+     formikBuy9: "Le numéro ne correspond pas",
+     formikBuy10: "Doit etre une adresse wallet valide",
+     formikBuy11: "Le montant doit être compris entre 5000 et 100000 XAF.",
+
+      //formikTraductionsell
+      formikSell1: "Adresse du wallet requise",
+      formikSell2: "Adresse du wallet invalide",
+      formikSell3: "Le montant de vente est requis",
+      formikSell4: "Le montant de vente est reuquis",
+      formikSell5: "Le montant en crypto est requis",
+      formikSell6: "Le numéro est requis",
+      formikSell7: "La confirmation du numéro est requise",
+      formikSell8: "Doit être un numéro valide du pays",
+      formikSell9: "Le numéro ne correspond pas",
+      formikSell10: "Doit etre une adresse wallet valide",
+      formikSell11: "Le montant doit être compris entre 6550 et 100000 XAF.",
+
+       //promocode
+     promotitle1: " AVEZ-VOUS UN CODE PROMO ?",
+     promotitle2: "Votre coupon à usage unique. Bravo!",
+     promotitle3: "Entrez votre code ici",
+     promotitle4: "VALIDER",
+     promotitle5: "CONTINUER SANS CODE",
+
+     //cabital
+     helpCabital: "Veuillez suivre toutes les procedures du support d'aide sur nos opérations chez Cabital !",
+
+     //bilan
+     bilan1: "Résumé des transactions",
+     bilan2: "Opération",
+     bilan3: "Id de l'opération",
+     bilan4: "Montant",
+     bilan5: "Numéro",
+     bilan6: "Hash de la transaction",
+     bilan7: "Opération terminée, merci pour cela",
+
+     //cabital
+     
+     //linked
+     linked1: "Assurez-vous d'avoir suffisamment de crypto avant d'effectuer un transfert vers votre compte mobile.",
+     linked2: "Vous pouvez acheter des crypto-monnaies par virement bancaire ou par carte de débit/crédit via Cabital. ",
+     linked3: "Acheter USDT",
+
+      //payments
+      payments1: "Choisir le mode de paiement",
+      payments2: " Virement Sepa",
+      payments3: " Carte de Credit",
+      payments4: "Vous devez choisir le mode de paiement",
+      payments5: "Effectuer le paiement",
+
+      //renderInfo
+     renderInfo1: "Effectuer un transfert SEPA (EUR) vers ce compte",
+     renderInfo2: "Nom du compte :",
+     renderInfo3: "IBAN :",
+     renderInfo4: "Adresse de la banque :",
+     renderInfo5: "Pays :",
+     renderInfo6: "Nom de la  banque:",
+     renderInfo7: "BIC :",
+     renderInfo8: "Ref code :",
+     renderInfo9: "Le code de référence DOIT être écrit correctement, sinon votre dépôt ne sera pas pris en compte.",
+     renderInfo10: "Une erreur s'est produite, veuillez réessayer",
+     renderInfo11: "Procéder à l'achat dépuis le widget",
+
+     //kycMatch
+     kycMatch1: "Ce champ est requis",
+     kycMatch2: "Ce champ est requis",
+     kycMatch3: "Ce champ est requis",
+     kycMatch4: "Veuillez saisir un nom d'aumoins 1 caractère",
+     kycMatch5: "Ce champ est requis",
+     kycMatch6: "Ce champ est requis",
+     kycMatch7: "Vous avez passé avec succès le kyc sur Cabital veuillez remplir ce formulaire pour correspondre aux données que vous avez fournies sur Cabital",
+     kycMatch8: "nom",
+     kycMatch9: "type de document",
+     kycMatch10: "carte d'identité",
+     kycMatch11: "Passport",
+     kycMatch12: "id du document",
+     kycMatch13: "issued_by id",
+     kycMatch14: "date de naissance",
+
+    //unlinked
+    unlinked1: "Votre compte n'est pas encore associé à notre partenaire Cabital. Veuillez vous connecter en premier pour effectuer toutes opérations.",
+    unlinked2: "Vous devez créer un compte sur Cabital et le lier à Ipercash.",
+    unlinked3: "Vous devez passer la vérification KYC",
+    unlinked4: "Vous devez activer le code otp",
+    unlinked5: "terminé",
+    unlinked6: "en attente ...",
+
+    //first
+    first1: "une erreur s'est produite",
+    first2: "Une erreur s'est produite, veuillez réessayer",
+    first3: "Nous ne trouvons pas d'informations sur votre compte cabital. Veuillez cliquer sur le bouton ci-dessous.",
+    first4: "Votre Balance écabital ",
+    first5: "Liez votre compte à Cabital",
+
+    //renderOtp
+    renderOtp1: 'Transfert effectué avec succès',
+    renderOtp2: "Transfert échoué, veuillez réessayer",
+    renderOtp3: 'Authentification à deux facteurs (2FA)',
+    renderOtp4: 'USDT will be transfered from your Cabital account to Ipercash, and you will be charged 0.99 USDT processing fee.',
+    renderOtp5: 'Entrez le code otp',
+    renderOtp6: 'Transfert réussi',
+    renderOtp7: 'Fermer',
+    renderOtp8: 'Un montant de',
+
+    
+    //form
+    form1:  "Le montant doit être supérieur ou égal à 20",
+    form2:  "Ce champ est obligatoire",
+    form3:  "Ce champ est obligatoire",
+    form4:  "Ce champ est obligatoire",
+    form5:  "Informations sur le destinataire",
+    form6:  "Effectuer le transfert",
+    form7:  "Ce champ est obligatoire",
+    form8:  "Nom et prénom",
+    form9:  "Numéro de téléphone mobile du récepteur",
+    form10:  "Confirmer le numéro de téléphone",
+    form11:  "Montant USDT à transférer",
+
+    //slider
+    slider1: "Vous êtes sur le point de créer un compte sur Cabital",
+    slider2: "Voici quelques informations sur votre compte",
+    slider3: "Cabital est une plateforme d'échange",
+    slider4: "Nous avons un partenariat avec Cabital pour collecter vos devises fiat (EUR), détenir un solde USDT pour vous et effectuer des opérations de transfert et de dépôt sur votre compte. ",
+    slider5: "Please note that any fiat currency amount you deposit into your Cabital account will be converted to USDT for transfer to Ipercash.",
+    slider6: "Cabital vous permet de convertir vos crypto-monnaies en monnaie fiduciaire. Retirez-les sur votre compte bancaire avant d'effectuer un autre dépôt, sinon elles seront converties en USDT lors du prochain dépôt.",
+    slider7: "En savoir plus sur Cabital",
+    slider8: "Regarder le tutoriel",
+    slider9: "Aller à Cabital",
+
+    //
+
+
+
+
+
+      
+
 
 
   }

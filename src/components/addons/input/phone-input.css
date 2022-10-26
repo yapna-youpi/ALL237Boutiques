@@ -32,6 +32,11 @@
     border-bottom: 1px solid #000;
     font-size: 1rem;
 }
+.PhoneInput .PhoneInputCountry {
+    padding: 15px 10px;
+    border-radius: 5px;
+    box-shadow: rgba(200, 200, 200, 0.16) 0px 3px 6px, rgba(200, 200, 200, 0.23) 0px 3px 6px;
+}
 .PhoneInputInput:focus {
     outline: none;
 

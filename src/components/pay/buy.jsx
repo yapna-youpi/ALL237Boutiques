@@ -17,7 +17,7 @@ const buy = async (state, User, callback, cancel, success) => {
         partner_id: state.id,
         amount: state.xaf,
         // amount: 100
-        number: state.number,
+        number: state.phone,
         userId: User.userId
         // service: checkServiceId(state.number.substring(4)),
     }

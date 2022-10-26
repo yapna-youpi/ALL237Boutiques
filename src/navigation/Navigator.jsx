@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
@@ -9,6 +9,7 @@ import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import Home from '../components/home/Home';
 import SendMoney from '../components/sendmoney/SendMoney';
+import SendCabital from '../components/sendmoney/SendCabital';
 import Choose from '../components/buycrypto/Choose';
 import BuyCryptoMobile from '../components/buycrypto/BuyCryptoMobile';
 import BuyCryptoCard from '../components/buycrypto/BuyCryptoCard';
@@ -23,14 +24,18 @@ import Forget from '../components/forget/Forget';
 import Reset from '../components/forget/Reset';
 import More from '../components/home/more/More';
 import Valid from '../components/valid/Valid';
+import Cabital from '../components/Cabital/Cabital'
+import SendNavigator from '../components/sendnavigator/SendNavigator'
 
-const SWITCH_INTOUCH=process.env.REACT_APP_SWITCH_INTOUCH==='TRUE'
+const SWITCH_INTOUCH = process.env.REACT_APP_SWITCH_INTOUCH === 'TRUE'
 
-function Main({User, Country}) {
-    const showHead=()=>document.URL.indexOf('help')+1
-    const checkUser=C=>User.userId ? C : ()=><Redirect to="/login" />
+function Main({ User, Country }) {
 
-    console.log("the country header ", Country)
+
+    const showHead = () => document.URL.indexOf('help') + 1
+    const checkUser = C => User.userId ? C : () => <Redirect to="/login" />
+
+    // console.log("the country header ", Country)
     return (
         <div className="main">
             <Helmet>
@@ -41,7 +46,8 @@ function Main({User, Country}) {
                 <Switch>
                     <Route path='/' exact component={Home} />
                     <Route path='/home' exact component={Home} />
-                    <Route path='/sendmoney*' exact component={checkUser(SendMoney)} />
+                    <Route path='/sendmoney*' exact component={checkUser(SendNavigator)} />
+                    {/* <Route path='/sendmoney*' exact component={checkUser(SendMoney)} /> */}
                     <Route path='/buycrypto' exact component={Choose} />
                     <Route path='/buycrypto/mobile*' exact component={checkUser(BuyCryptoMobile)} />
                     <Route path='/buycrypto/card' exact component={checkUser(BuyCryptoCard)} />
@@ -49,11 +55,13 @@ function Main({User, Country}) {
                     <Route path='/purchase' exact component={SWITCH_INTOUCH ? PayCinet : Pay} />
                     <Route path='/complete' exact component={Success} />
                     <Route path='/signup' exact component={Signup} />
+                    <Route path='/signup/:id' exact component={Signup} />
                     <Route path='/login' exact component={Login} />
                     <Route path='/valid/help/:id' component={Valid} />
                     <Route path='/forget' exact component={Forget} />
                     <Route path="/reset/:id" exact component={Reset} />
                     <Route path='/More' exact component={More} />
+                    <Route path='/express' exact component={checkUser(Cabital)} />
                     {/* <Route path='/sumsub' exact component={Sumsub} />  */}
                     <Route path='*' component={NotFound} />
                 </Switch>
@@ -64,6 +72,8 @@ function Main({User, Country}) {
     )
 }
 
-const mapStateToProps = state => ({ User: state.userReducer.user, Country: state.countryReducer.country })
+const mapStateToProps = state => ({
+    User: state.userReducer.user, Country: state.countryReducer.country,
+})
 
 export default connect(mapStateToProps)(Main)

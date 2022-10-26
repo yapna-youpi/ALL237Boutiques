@@ -2,11 +2,13 @@ import { roundDecimal } from '../../utils/utilFunctions';
 
 /* le pourcentage de la commission est de 5% */
 
-const FEES=0.0395
-const INTOUCHFEES=250 // les frais intouch sont de 250 XAF
+const FEES = 0.0395
+const INTOUCHFEES = 250 // les frais intouch sont de 250 XAF
 
-const cryptoChange=(value, rate)=>{
-    if(value<0.000296) {
+const cryptoChange = (value, rate, promotion, royalties = 0) => {
+    let usedFees = promotion ? 0 : FEES + (royalties / 100)
+    let usedIntouchFees = promotion ? 0 : INTOUCHFEES
+    if (value < 0.000296) {
         return {
             xaf: 0,
             eu: 0,
@@ -15,44 +17,48 @@ const cryptoChange=(value, rate)=>{
     }
     else {
         return {
-            xaf: Math.round(value*rate*655*(1-FEES)-INTOUCHFEES),
-            eu: roundDecimal(value*rate*(1-FEES)-INTOUCHFEES/655),
+            xaf: Math.round(value * rate * 655 * (1 - usedFees) - usedIntouchFees),
+            eu: roundDecimal(value * rate * (1 - usedFees) - usedIntouchFees / 655),
             amount: value,
         }
     }
 
 }
 
-const euroChange=(value, rate)=>{
-    if(value<10) {
+const euroChange = (value, rate, promotion, royalties = 0) => {
+    let usedFees = promotion ? 0 : FEES + (royalties / 100)
+    let usedIntouchFees = promotion ? 0 : INTOUCHFEES
+    if (value < 10) {
         return {
-            xaf: value*655,
+            xaf: Math.round(value * 655),
             eu: value,
             amount: 0
         }
     }
     else {
         return {
-            xaf: value*655,
+            xaf: Math.round(value * 655),
             eu: value,
-            amount: roundDecimal((value*(1+FEES)+INTOUCHFEES/655)/rate),
+            amount: roundDecimal((value * (1 + usedFees) + usedIntouchFees / 655) / rate),
         }
     }
 }
 
-const xafChange=(value, rate)=>{
-    if(value<6550 || rate===0 ) {
+const xafChange = (value, rate, promotion, royalties = 0) => {
+    let usedFees = promotion ? 0 : FEES + (royalties / 100)
+    let usedIntouchFees = promotion ? 0 : INTOUCHFEES
+    if (value < 6550 || rate === 0) {
         return {
             xaf: value,
-            eu: roundDecimal(value/655),
+            eu: roundDecimal(value / 655),
             amount: 0
         }
     }
     else {
         return {
             xaf: value,
-            eu: roundDecimal(value/655),
-            amount: roundDecimal((value*(1+FEES)+INTOUCHFEES)/rate/655),
+            eu: roundDecimal(value / 655),
+            amount: roundDecimal((value * (1 + usedFees) + usedIntouchFees) / rate / 655),
         }
     }
 }

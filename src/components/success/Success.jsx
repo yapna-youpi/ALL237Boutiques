@@ -57,7 +57,7 @@ function Success() {
                             </div>
                         </div>
                         <div className="bilan-button" onClick={()=>setShow(true)}>
-                            Show Details
+                        {t('sucessTitle7')}
                         </div>
                     </div>
                     <span style={{ textAlign: "center" }} onClick={() => history.push('/')} >{t('sucessTitle6')}</span>

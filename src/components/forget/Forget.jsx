@@ -7,6 +7,8 @@ import { Input } from '../addons/input/Input'
 import { checkEmail, sendToApi } from '../../utils/utilFunctions'
 import Button from '@material-ui/core/Button'
 import { toastify } from '../addons/toast/Toast'
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 import styled from  './forget.css'
 // import toast from "react-hot-toast"
@@ -16,20 +18,27 @@ const Forget =({type, color}) => {
     const { t } = useTranslation();
     let history = useHistory();
 
-    const [state,setState] = useState('');
-    const [ring, setRing] = useState(false);
     const [loader, setLoader] = useState(false);
     const [show, setShow] = useState(false);
 
-    const onChange =  target =>{
-        setState(target.value)
-        setRing(!checkEmail(state))
-    }
+    const validationSchema = yup.object({
+        email: yup.string().email(`${t('formikLogin1')}`).required(`${t('formikLogin2')}`),
+    })
 
-    const handleSubmit = e => {
-        e.preventDefault();
+    const formik = useFormik({
+        initialValues: {
+            email: "",
+            password: ""
+        },
+        validationSchema,
+        onSubmit: async () => {
+             reset(formik.values.email);
+        }
+    })
+
+    const reset = (userData) => {
         setLoader(true); 
-        sendToApi('user/lost',{email:state})
+        sendToApi('user/lost',{email: userData})
             .then(data => {
                 setLoader(false);
                 if(data.error) {
@@ -37,7 +46,7 @@ const Forget =({type, color}) => {
                     return
                 }
                 if(data.mail){
-                    toastify('success', `${t('forgetSous10') + ' ' + state}`)
+                    toastify('success', `${t('forgetSous10') + ' ' + userData}`)
                     // return history.push('/Reset')
                     if(data.mail){
                         setShow(!show)
@@ -51,18 +60,21 @@ const Forget =({type, color}) => {
     }
     const resend=()=>{
         setLoader(true)
-        sendToApi('user/resend', {email: state, type: "lost"})
+        sendToApi('user/resend', {email: formik.email.values, type: "lost"})
         .then((data)=>{
             setLoader(false)
             if(data.mail) {
-                toastify("info", `${t('forgetSous12') + ' ' + state + ' ' + t('forgetSous13')}`)
-            } else if(data.error) toastify("error", `${t('forgetSous14') + ' ' + state + ' ' + t('forgetSous15')}`)
+                toastify("info", `${t('forgetSous12') + ' ' + formik.email.values + ' ' + t('forgetSous13')}`)
+            } else if(data.error) toastify("error", `${t('forgetSous14') + ' ' + formik.email.values + ' ' + t('forgetSous15')}`)
             else {
-                toastify("error", `${('forgetSous16')+ ' ' + state }.`)
+                toastify("error", `${('forgetSous16')+ ' ' + formik.email.values }.`)
             }
-        }).catch(error=> toastify("error", `${('forgetSous16')+ ' ' + state }.`))
+        }).catch(error=> toastify("error", `${('forgetSous16')+ ' ' + formik.email.values }.`))
     }
-    const active = () => !checkEmail(state)
+    const setTouched = (field) => {
+        if (!formik.touched[field])
+            formik.setFieldTouched(field, true)
+    }
 
     return(
         <div className="forget" id="forget">
@@ -86,16 +98,15 @@ const Forget =({type, color}) => {
                     <> <span className="forget-title">{t('forgetTitle')}</span>
                         <div className="forget-form">
                             <p className="forget-paragraph">{t('forgetSous1')}</p>
-                            <form class="login-form" onSubmit={e => handleSubmit(e)} >
-                                <div className="form-groupe">
-                                    <Input name="Email" label='Email' help={t('forgetSous2')} val={state}
-                                            change={e => onChange(e)} 
-                                            error={!checkEmail(state)&& ring } 
-
-                                    />  
+                            <form className="login-form" onSubmit={formik.handleSubmit} >
+                                <div className="form-inp">
+                                    <Input val={formik.values.email} type="email" label={t('SignUpSous6')} name="email" id="email"
+                                        help={formik.errors.email} error={formik.errors.email && formik.touched.email}
+                                        change={formik.handleChange} handBlur={() => setTouched('email')}
+                                    />
                                 </div>
                                 <Button   className="forget-btn" 
-                                        disabled={active()}  onClick={e=>handleSubmit(e)}
+                                          type="submit"
                                 >  
                                     { loader? (<ReactLoading type="spin" color="#ffffff" width="35px" height="35px" 
                                                 />) 

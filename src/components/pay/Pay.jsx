@@ -26,6 +26,7 @@ function Pay({ User }) {
     let ref = React.createRef()
     useEffect(() => {
         let data = JSON.parse(sessionStorage.getItem('data'))
+        console.log("les data ", data)
         data ? start(data) : history.push("/buycrypto/mobile")
         sessionStorage.removeItem("data")
     }, [])
@@ -37,12 +38,13 @@ function Pay({ User }) {
             amountCrypto: data.amount,
             amountFiat: data.xaf,
             rate: data.rate,
-            phone: data.number,
+            phone: data.phone,
             wallet: data.wallet,
             status: 'init',
             provider: 'intouch',
             userId: User.userId,
         }
+        if (data.promotion) params = { ...params, promotion: data.promotion, code: data.code }
         let result = await sendToApi('buymobile/settransaction', params, User.token)
     }
     const success = async (data) => {
@@ -61,7 +63,7 @@ function Pay({ User }) {
             operation: 'Buy Crypto',
             id: data.id,
             amount: data.xaf,
-            phone: data.number,
+            phone: data.phone,
             hash: data.txid
         }
         sessionStorage.setItem('data', JSON.stringify(pm))
@@ -95,8 +97,8 @@ function Pay({ User }) {
         let data = {
             partner_id: randomId(),
             amount: params.xaf,
-            number: params.number,
-            service: checkServiceId(params.number)
+            number: params.phone,
+            service: checkServiceId(params.phone)
         }
         cashIn(data, User.token).then(result => {
             let payload = {
@@ -130,7 +132,7 @@ function Pay({ User }) {
             amountCrypto: params.amount,
             amountFiat: params.xaf,
             rate: params.rate,
-            phone: params.number,
+            phone: params.phone,
             wallet: params.wallet,
         }
         sendToApi('buymobile/settransaction', params2, User.token)
@@ -149,7 +151,7 @@ function Pay({ User }) {
                     <MdError size={150} color="#CC1616" />
                 </div>
                 <div className="">
-                    <h2> {t('buyCryptoError'+trace.error.cn)} </h2>
+                    <h2> {t('buyCryptoError' + trace.error.cn)} </h2>
                     <h3>  </h3>
                     <p>{t('payTitle')}</p>
                 </div>

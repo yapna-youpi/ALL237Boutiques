@@ -50,7 +50,7 @@ function Testimonials() {
                         if (index + 1 === totalPages) {
                            resetTimeout = setTimeout(() => {
                               carouselRef.current.goTo(0)
-                          }, 1000) // same time
+                          }, 6000) // same time
                         }
                    }}
                 >
@@ -165,6 +165,37 @@ function Testimonials() {
                             <p>
                                 vraiment tres belle experience je suis etonne de ce genre de cervice dans mon pays cest rapide et securise
                                 vraiment encore merci
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="testimonial">
+                        <div className="testi-head">
+                            <h4>Claudia B.</h4>
+                            <div className="starts">
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="testi-body">
+                            <h4>I had an excellent experience using...</h4>
+                            <p>
+                            I had an excellent experience using this platform. I was easy to use after performing my KYC and fast. 
+                            I live in the USA and sent BTC to a mobile account in Cameroon, they received the amount in FCFA in their mobile account instantaneously! 
+                            I will no longer consider using platforms such as Western Union that have higher fees and require the recipient to go to an agency!
                             </p>
                         </div>
                     </div>

@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^12.1.10",
     "aos": "^2.3.4",
     "axios": "^0.24.0",
+    "country-list-js": "^3.1.7",
+    "formik": "^2.2.9",
     "i18next": "^21.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -17,6 +19,8 @@
     "react-helmet": "^6.1.0",
     "react-hot-toast": "^2.1.1",
     "react-i18next": "^11.12.0",
+    "react-input-verification-code": "^1.0.2",
+    "react-lottie": "^1.2.3",
     "react-phone-number-input": "^3.1.26",
     "react-player": "^2.9.0",
     "react-qr-code": "^2.0.2",
@@ -27,7 +31,9 @@
     "redux": "^4.1.1",
     "redux-persist": "^6.0.0",
     "styled-components": "^5.3.3",
-    "web-vitals": "^1.0.1"
+    "swiper": "^8.4.4",
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,0 +1,78 @@
+.slider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .imageslide {
+    display: block;
+    margin: 0 auto;
+  }
+  .right-arrow {
+    position: absolute;
+    top: 50vh;
+    right: 8px;
+    color: var(--red)!important;
+    z-index: 100;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+    .left-arrow {
+    position: absolute;
+    top: 49vh;
+    left: 8px;
+    color: var(--red);
+    z-index: 100;
+    cursor: pointer;
+    user-select: none;
+    font-size: 35px;
+  }
+  .slidetext{
+    color: var(--night-blue);
+    width: 80%;
+    margin: 25px auto;
+    font-weight: bolder;
+  }
+  .slidetitle{
+    text-align: center;
+    color: var(--night-blue);
+    width: 85%;
+    margin: 10px auto;
+    max-width: 7px auto;
+  }
+  
+  .slide {
+    opacity: 0;
+    transition-duration: ease-in-out both;
+  }
+  
+  .slide.active {
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1);
+  }
+  .skip2{
+    display: block;
+    width: 90%;
+    margin: 15px auto;
+    /* background-color: rgba(0, 0, 0, 0.452); */
+    background-color: var(--red);
+    padding: 10px 15px;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 4px;
+  }
+  /* .slide .previous{
+    position: absolute;
+    top: 35vh;
+    left: 1.5vw;
+    font-size: 35px;
+  } */
+  /* .react-responsive-modal-modal .sliders .slider .dividant{
+    display: flex;
+    justify-content: space-between;
+    z-index: 150;
+  } */

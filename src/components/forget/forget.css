@@ -91,12 +91,15 @@
   .forget .btn-resend:hover{
     border-bottom: 1px solid var(--red);
   }
+  .forget .form-inp{
+    margin: 30px auto;
+  }
 
 @media only screen and (min-width: 576px) {
     /*--site mode tablette--*/
     
     .forget-paragraph{
-        margin-top: 30px;
+        margin-top: 60px;
     }
     .forget-form{
         /* font-family: 'montserat'; */
