@@ -157,7 +157,7 @@ function SellCrypto({ Amount, country, User }) {
     }
 
     const setPhone = (name, val) => {
-        formik.setFieldValue(name, val)
+        formik.setFieldValue(name, val || '')
     }
     (() => {
         const montant = parseFloat(formik.values.xaf)
@@ -253,7 +253,7 @@ function SellCrypto({ Amount, country, User }) {
                     </div>
                     <div className="form-group">
                         <InputPhone val={formik.values.phone} name="phone" label={t('sellCrypto13')} id="phone"
-                            country={country} all={true} cm={true} alert={country !== 'CM'}
+                             all={false} cm={true} alert={country !== 'CM'}
                             help={formik.errors.phone} error={formik.errors.phone && formik.touched.phone}
                             change={(name, value) => setPhone(name, value)}
                             handBlur={() => setTouched('phone')}
@@ -261,7 +261,7 @@ function SellCrypto({ Amount, country, User }) {
                     </div>
                     <div className="form-group">
                         <InputPhone val={formik.values.cfphone} name="cfphone" label={t('sellCrypto15')} id="cfphone"
-                            country={country} all={true} cm={true} alert={country !== 'CM'}
+                             all={false} cm={true} alert={country !== 'CM'}
                             help={formik.errors.cfphone} error={formik.errors.cfphone && formik.touched.cfphone}
                             change={(name, value) => setPhone(name, value)}
                             handBlur={() => setTouched('cfphone')}

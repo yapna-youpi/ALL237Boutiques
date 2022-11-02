@@ -26,7 +26,7 @@ function User({user, nav, logout}) {
     const logOut=()=>{
         close()
         logout()
-        nav('/login')
+        // nav('/login')
     }
     
     return (

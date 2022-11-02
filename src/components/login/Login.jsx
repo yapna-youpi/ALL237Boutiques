@@ -64,7 +64,7 @@ function Login({ dispatch }) {
                 setLoad(false)
                 if (data.userId) {
                     if (data.parrain_id) percent = await getParrain(data.parrain_id)
-                    toastify("greet", `${t('LoginSous12')} ${data.userName}`)
+                    toastify("greeting", `${t('LoginSous12')} ${data.userName}`)
                     dispatch(setUser({ ...data, percent, timestamp: +new Date }))
                     install()
                     history.push('/')

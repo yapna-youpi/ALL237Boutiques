@@ -40,7 +40,8 @@ const CabitalModal = ({ User, state, close, type }) => {
         let init = await sendToApi('cabital/init', params, User.token)
         // console.log("the init response ", init)
         if (!init.success) {
-            setCabital({ ...cabital, start: false })
+            // setCabital({ ...cabital, start: false })
+            close()
             return toastify("error", "there is an error")
         }
         if (init.ready) {
