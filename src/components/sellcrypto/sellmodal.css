@@ -80,7 +80,6 @@
   font-size: 0.9em;
 }
 .send-bloc {
-  border: 1px solid var(--night-blue);
   max-width: 500px;
   padding: 2%;
   text-align: center;

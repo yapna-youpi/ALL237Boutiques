@@ -1,6 +1,7 @@
 .header {
   /* border: 2px solid green; */
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
 }
 nav {
   /* retirer ca pour voir l'enseigne */
@@ -30,7 +31,7 @@ nav {
 .hamburger {
   position: absolute;
   /* cursor: pointer; */
-  right: 7%;
+  right: 4%;
   top: 50%;
   transform: translate(-5%, -60%);
   z-index: 2;

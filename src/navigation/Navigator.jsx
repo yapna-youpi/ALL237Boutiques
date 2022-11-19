@@ -56,15 +56,15 @@ function Main({ User, Country }) {
                     <Route path='/sellcrypto*' exact component={checkUser(SellCrypto)} />
                     <Route path='/purchase' exact component={SWITCH_INTOUCH ? PayCinet : Pay} />
                     <Route path='/complete' exact component={Success} />
-                    <Route path='/signup' exact component={Signup} />
+                    <Route path='/signup*' exact component={Signup} />
                     <Route path='/signup/:id' exact component={Signup} />
-                    <Route path='/login' exact component={Login} />
+                    <Route path='/login*' exact component={Login} />
                     <Route path='/valid/help/:id' component={Valid} />
                     <Route path='/forget' exact component={Forget} />
                     <Route path="/reset/:id" exact component={Reset} />
                     <Route path='/More' exact component={More} />
                     {/* <Route path='/express' exact component={checkUser(Cabital)} /> */}
-                    <Route path='/coming' exact component={ComingSoon} />
+                    <Route path='/coming*' exact component={ComingSoon} />
                     {/* <Route path='/sumsub' exact component={Sumsub} />  */}
                     <Route path='*' component={NotFound} />
                 </Switch>

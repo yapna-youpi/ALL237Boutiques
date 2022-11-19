@@ -26,9 +26,12 @@
     background: var(--transparency);
     border: 1px solid var(--white);
     border-radius: 8px;
-    font-size: 1.3em;
+    font-size: 1em;
     font-weight: bold;
     color: white;
+}
+.button-first{
+    font-size: 1.3em;
 }
 .button-operation div {
     display: flex;
@@ -105,12 +108,10 @@
         position: relative;
         display: inline-block;
         color: #ffffff;
-        text-transform: uppercase;
+        /* text-transform: uppercase; */
         text-decoration: none;
         overflow: hidden;
         transition: 0.2s;
-        /* border: 1px solid #2196f3; */
-        
     }
     .btn-neon:hover{
         color: var(--white);

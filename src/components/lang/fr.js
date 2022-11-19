@@ -19,43 +19,44 @@ const french = {
 
     // Hero section
     // heroTitle: "INTERFACE ENTRE LE MOBILE MONEY ET LA CRYPTOMONNAIE",
-    heroTitle: "ACHAT VENTE TRANSFERT DE CRYPTOMONNAIE PAR MOBILE MONEY ET SEPA",
-    heroText: "Créditez un compte Mobile Money avec de la cryptomonnaie ou une carte de crédit",
+    heroTitle: "Acheter et vendre de la cryptomonnaie par Mobile Money , virement Sepa ou Carte de credit",
+    heroText: "Crediter un Compte Mobile Money(Orange Money, Mtn Money, Moov Money, Mobicash) avec de la Cryptomonnaie (Bitcoin, Usdt, Ethereum)",
     heroButton: "Commencer",
-    available: "Mobile Money disponible dans ces pays",
+    available: "Mobile Money disponible dans ces",
+    available2: " pays",
 
     // About section
     aboutTitle: "A PROPOS ",
     aboutText: "IPERCash est née du constat de l’explosion simultanée du Mobile Money et de la demande de cryptomonnaie en Afrique. Une demande à laquelle IPERCash entend répondre par une plateforme permettant les échanges entre Mobile Money et cryptomonnaie. Les services d’IPERCash sont entièrement basés sur la Blockchain et la finance décentralisée. Les transactions sont moins chères, plus sûres et plus rapides.",
     aboutButton: "EN SAVOIR PLUS",
     aboutSummary: "Nos services:",
-    aboutListe1: "Achetez de la Cryptomonnaie en payant par Mobile Money, Carte de crédit ou virement SEPA.",
-    aboutListe2: "Retirez votre cryptomonnaie en la déposant dans un compte Mobile Money",
-    aboutListe3: "Achetez de la cryptomonnaie et déposez la dans un compte Mobile Money",
+    aboutListe1: "Acheter de la cryptomonnaie (Bitcoin, Usdt, Ethereum) en payant par Carte de Credit, Virement Sepa et Mobile Money(Orange Money, Mtn Money, Moov money, Mobicash).",
+    aboutListe2: "Retirer sa cryptomonnaie (Bitcoin, Usdt, Ethereum) vers son Compte Mobile Money(Senegal, Cote-d'ivoire, Cameroun, Burkina Faso, Mali, Guinée) ou vers son Compte Bancaire par virement Sepa.",
+    aboutListe3: "Acheter de Cryptomonnaie (Bitcoin, Usdt, Ethereum) et la transferer sur un compte Mobile Money(Orange Money, Mtn Money, Moov Money, Mobicash) ou sur un compte Bancaire par virement Sepa.",
 
     // Operation section
     operationTitle: "EFFECTUEZ UNE TRANSACTION",
     operationPlaceholder: "Indiquez le Montant",
     operationButton1: "Dépôt mobile money",
-    operationButton2: "Vendez votre Crypto",
-    operationButton3: "Achetez de la Crypto",
+    operationButton2: "Vendre sa Cryptomonnaie",
+    operationButton3: "Acheter de la Cryptomonnaie",
 
     //our services-titles
-    servicesTitle: 'NOS SERVICES',
-    servicesTitle1: 'Achetez de la Crypto',
-    servicesTitle2: 'Retirez votre Crypto',
-    servicesTitle3: 'Créditez un compte Mobile Money',
+    servicesTitle: 'Nos Services Electroniques',
+    servicesTitle1: 'Acheter de la Crypto',
+    servicesTitle2: 'Retirer votre Crypto',
+    servicesTitle3: 'Créditer un compte Mobile Money',
 
     //ours sevices sous-titles
-    sousService1: 'Achetez de la cryptomonnaie en payant par Mobile Money, Carte de Crédit ou virement SEPA',
-    sousService2: 'Retirez votre crypto-monnaie et recevez la sur un compte Mobile Money',
-    sousService3: "Effectuez un dépôt Mobile Money dans chacun de ces pays ",
+    sousService1: 'Acheter de la cryptomonnaie (Bitcoin, Usdt, Ethereum) en Payant par Mobile Money en francs Cfa, par Virement Bancaire Sepa ou Carte de Credit.',
+    sousService2: 'Retirer sa Cryptomonnaie (Bitcoin, Usdt, Ethereum) et la Recevoir dans un Compte Bancaire par Virement Sepa.',
+    sousService3: "Acheter de la cryptomonnaie et crediter un compte Mobile Money ou un Compte Bancaire par Virement Sepa.",
 
     //steps 
     stepsTitle: 'COMMENT CA MARCHE ?',
     sousSteps1: 'Comment effectuer la verification KYC sur son compte',
-    sousSteps2: 'Comment effectuer un dépôt dans un compte Mobile Money',
-    sousSteps3: 'Comment acheter ou vendre de la cryptomonnaie',
+    sousSteps2: 'Effectuer un dépot dans son Compte Mobile Money  ou dans un Compte Bancaire par Virement Sepa',
+    sousSteps3: "Acheter ou Vendre sa Cryptomonnaie au Senegal, Cameroun, Burkina Faso, Mali, Cote d'ivoire et Guinée.",
     sousSteps4: "Nous avons préparé quelques clips pour vous montrer comment procéder. Cliquez sur n'importe quelle opération pour commencer à regarder",
     sousSteps5: 'En savoir plus',
 
@@ -111,7 +112,7 @@ const french = {
     coverModalSous5: "Inaliser l'opération sur le widget",
 
     //sellrypto 
-    sellCrypto: 'VENDRE VOTRE CRYPTO',
+    sellCrypto: 'VENDRE SA CRYPTO-MONNAIE ET RECEVOIR DU FRANCS CFA DANS SON MOBILE MONEY',
     sellCrypto2: 'Cours de la Crypto',
     sellCrypto3: 'Coindesk',
     sellCrypto4: ' Fourni par',
@@ -119,7 +120,7 @@ const french = {
     sellCrypto6: "Adresse du wallet de l'expéditeur",
     sellCrypto7: 'Adresse invalide',
     sellCrypto8: "Montant en XAF",
-    sellCrypto9: "Le montant doit etre entre 6550 et 100000 XAF",
+    sellCrypto9: "Le montant doit etre entre 6550 et 2000000 XAF",
     sellCrypto10: "Montant en CRYPTO",
     sellCrypto11: "La valeur minimale est 0,000296",
     sellCrypto12: "Frais en XAF",
@@ -129,6 +130,7 @@ const french = {
     sellCrypto16: "Doit correspondre au numéro de téléphone",
     sellCrypto17: "La montant doit etre entre 10 et 50 EUR ",
     sellCrypto18: "Le service est indisponible ",
+    sellCrypto19: "En Remplissant ce Formulaire, Vous Pourrez convertir de la crypto-monnaie (Bitcoin, Usdt, Ethereum) en francs CFA et la Recevoir dans votre Mobile Money(Orange Money, Mtn Money, Moov, Mobicash) au Cameroun, Senegal, Burkina Faso, Mali, en Cote-d'ivoire et en Guinée.",
 
     //sellModal
     sellModal: 'Transaction confirmée',
@@ -175,12 +177,12 @@ const french = {
     buyCryptoMobileTitle: 'Vérification de l\'adresse du wallet',
     buyCryptoMobileSous1: 'L\'adresse de votre wallet',
     buyCryptoMobileSous2: 'Revenir',
-    buyCryptoMobileSous3: "ACHETER DE LA CRYPTO AVEC DU MOBILE MONEY",
+    buyCryptoMobileSous3: "ACHETER DE LA CRYPTO-MONNAIE AVEC DU MOBILE MONEY",
     buyCryptoMobileSous4: 'Coindesk',
     buyCryptoMobileSous5: 'Cours de la crypto',
     buyCryptoMobileSous6: 'Fourni par',
     buyCryptoMobileSous7: "Montant en XAF",
-    buyCryptoMobileSous8: "Le montant doit etre entre 5000 et 100000 XAF",
+    buyCryptoMobileSous8: "Le montant doit etre entre 5000 et 2000000 XAF",
     buyCryptoMobileSous9: "Montant en",
     buyCryptoMobileSous10: "La valeur minimale est de 15,26 EUR",
     buyCryptoMobileSous11: "Montant en CRYPTO",
@@ -205,6 +207,7 @@ const french = {
     buyCryptoError7: "impossible d'envoyer la crypto",
     buyCryptoError8: "La demande de paiement a echoué",
     buyCryptoError9: "Le paiement a echouée",
+    buyCryptoMobileSous22: "En remplissant ce formulaire, vous pouvez acheter de la crypto-monnaie (bitcoin, usdt, Ethereum) avec un compte Mobile Money(Orange Money, Mtn Money, Moov, Mobicash) depuis le Senegal, en  Cote-d'ivoire, au Cameroun, au Burkina Faso, au Mali et en Guinée.",
 
     //chooses 
     choosesTitle: 'Choisissez votre mode de paiement',
@@ -366,19 +369,49 @@ const french = {
     notFound3: "Retour à la page d'accueil",
 
     //more
-    moreTitle1: "EN SAVOIR PLUS",
-    moreSous1: "À propos d’",
-    moreSous2: " Né du double constat de l’explosion du Mobile Money et de la demande de cryptomonnaie en Afrique, IPERCash est une plateforme essentiellement basée sur la Blockchain et la finance décentralisée.",
-    moreSous3: "Pourquoi la fusion du Mobile Money et de la cryptomonnaie est certainement l’avenir de l’Afrique et très probablement du reste du monde ??  Le taux de bancarisation en Afrique est extrêmement bas, particulièrement en Afrique subsaharienne. D’où une fulgurante pénétration du Mobile Money permettant d’obtenir un portefeuille électronique sans contraintes. Le Mobile Money fonctionne par codes USSD compatibles  avec n’importe quel téléphone, ce service ne nécessite donc pas de téléphone sophistiqué",
-    moreSous4: "D’autre part, la cryptomonnaie, particulièrement l'ethereum,le Bitcoin et l'usdt connaîssent également une pénétration inattendue en Afrique.",
-    moreSous5: " En effet, les conditions dictées par les banques centrales locales et leurs monnaies locales dépréciées contraignent les entreprises locales et les poussent à se tourner vers la cryptomonnaie bien plus souple.",
-    moreSous6: "Nous sommes donc une plateforme d’échanges et d’interactions entre le Mobile Money et la cryptomonnaie et une nécessité. Nous sommes Une cross plate forme Internet et une application mobile  où les utilisateurs peuvent :",
-    moreSous7: "- Acheter de la cryptomonnaie par carte de crédit et la déposer sur un compte Mobile Money en Afrique.",
-    moreSous8: "- Acheter de la cryptomonnaie pour créditer leur  portefeuille électronique ;",
-    moreSous9: "- Acheter de la cryptomonnaie en payant avec Mobile Money",
-    moreSous10: "- Retirer de la cryptomonnaie de son portefeuille et la transférer dans son compte Mobile Money.",
-    moreSous11: "IPERCash n’est pas une société de trading, IPERCash ne propose ni des produits financiers, ni  d’investissements spéculatifs mais entend participer à l’augmentation du volume des échanges en cryptomonnaie dans le monde.",
-    moreSous12: "Nous offrons donc aux Africains la possibilité  d’acheter des services et des produits en cryptomonnaie,et inversement, d’être payé en cryptomonnaie.",
+    moreTitle1: "Tout Savoir Sur IPERCash",
+    moreSous1: "Notre Vision De La monnaie",
+    moreSous2: "IPERCash est née d’une volonté de vulgarisation de la cryptomonnaie et Nul ne saurait rester à l’écart de la plus grande révolution économique et financière du 21ème siècle. ",
+    moreSous3: "C'est dans cette optique que Grâce à l’association de différents systèmes agréés de paiement électroniques, la plateforme d’IPERCash permet à n’importe qui, même novice, d’acheter de la cryptomonnaie, et vice-versa, de convertir sa cryptomonnaie en monnaie fiduciaire (FCFA, EUR)",
+    moreSous4: "Ici L’utilisateur achète de la cryptomonnaie en payant depuis le Cameroun, la Côte d’Ivoire, le Sénégal, le Mali, le Burkina Faso et la Guinée-Conakry par Mobile Money (Orange Money, MTN Mobile Money, Moov, Mobicash, Free Mobile), depuis l’Europe par virement SEPA (Single Euro Payments Area) et depuis le reste du monde par carte de crédit.",
+    moreSous5: "Inversement, il échange sa cryptomonnaie en monnaie fiduciaire, la recevant dans son compte Mobile Money ou par virement SEPA dans son compte bancaire.",
+    moreSous6: " IPERCash n’est pas une société de trading, nous ne proposons pas de produits financiers ou d’investissements spéculatifs sur les valeurs volatiles des cryptomonnaies.",
+    moreSous7: "IPERCash entend plutôt, par ses services faciles d’utilisation, intuitifs, conviviaux et sécurisés, contribuer à l’augmentation dans le monde du volume des échanges en cryptomonnaie.",
+    moreSous8: "participant donc ainsi à la construction d’un nouvel univers bâti autour d’un système monétaire décentralisé, ouvert et transparent.",
+    moreSous9: "Les Services Offerts sur IPERCash",
+    moreSous10: " Achat De Cryptommonaie En Franc Cfa Et Euro",
+    moreSous11: "1-	Comment acheter de la crypto-monnaie avec le Mobile Money.",
+    moreSous12: "Le service d’achat de cryptomonnaie (Bitcoin, usdt ou tether, Ethereum) par Mobile Money est disponible en Francs CFA en Afrique au Cameroun, en Côte d’Ivoire, au Sénégal, au Mali, au Burkina Faso et en Guinée-Conakry avec Orange Money, MTN Mobile Money, Moov, Mobicash, Free Mobile.",
+    moreSous13: " L’utilisateur renseigne notre formulaire d’achat de crypto-monnaie en ligne en précisant le montant de l’achat, le portefeuille électronique de destination de la cryptomonnaie, et le numéro de téléphone de son Mobile Money. Après avoir validé le retrait Mobile Money, le portefeuille est automatiquement crédité de l’équivalent en cryptomonnaie au cours du jour.",
+    moreSous14: "2-	Comment acheter de la cryptomonnaie avec une carte de crédit ou un virement SEPA.",
+    moreSous15: "L’achat de cryptomonnaie par carte de crédit est possible avec Visa et MasterCard, l’achet par virement SEPA est exclusivement réservé à l’Espace Unique de Paiement en Euro.",
+    moreSous16: "L’utilisateur précise en ligne le montant et le wallet de destination de la cryptomonnaie, procède au paiement et reçoit instantanément l’équivalent en cryptomonnaie dans le wallet indiqué.",
+    moreSous17: "RETRAIT DE CRYPTOMONNAIE EN FRANC FCA ET EN EURO",
+    moreSous18: "1-	Comment échanger de la cryptomonnaie en Franc CFA par Mobile Money.",
+    moreSous19: "La conversion de cryptomonnaie en Mobile Money est disponible en Afrique au Cameroun, en Côte d’Ivoire, au Sénégal, au Mali, au Burkina Faso et en Guinée-Conakry avec Orange Money, MTN Mobile Money, Moov, Mobicash, Free Mobile.",
+    moreSous20: " L’utilisateur remplit notre formulaire de retrait de cryptomonnaie en ligne, transfère sa cryptomonnaie vers notre wallet, son compte Mobile Money est automatiquement crédité du montant équivalent.",
+    moreSous21: "2-	Comment convertir sa cryptomonnaie en Euro.",
+    moreSous22: "Le service de retrait de cryptomonnaie en euro n’est disponible que dans l’Espace Unique de Paiement en Euro (SEPA).",
+    moreSous23: "L’utilisateur renseigne notre formulaire de retrait de cryptomonnaie en ligne, transfère sa cryptomonnaie vers notre wallet, la plateforme IPERCash effectue automatiquement un virement SEPA de la somme correspondante dans son compte bancaire.",
+    moreSous24: "Nos Avantages En Termes De Transactions",
+    moreSous25: "-	Transactions via la blockchain.",
+    moreSous26: "-	Facilité d’utilisation",
+    moreSous27: "-	Très large couverture du Mobile Money en Afrique.",
+    moreSous28: "-	Instantanéité des transactions.",
+    moreSous29: "-	Tarifs très bas.",
+    moreSous30: "-	Ne nécessite aucun déplacement.",
+    moreSous31: " -	Traçabilité de toutes les transactions dans la Blockchain.",
+    moreSous32: "   -	Transactions sécurisées.",
+    moreSous33: "L'Equipe IPERCash",
+    moreSous34: "Actuellement IPERCASH compte 26 collaborateurs dont 12 évoluent sur nos plateaux de Paris, Yaoundé et  Abidjan et 14 en télétravail.",
+    moreSous35: "Chaque pôle d’activité est managé par un responsable de production qui veille à l’atteinte des objectifs de qualité du service IPERCash.",
+    moreSous36: "Contacts De L'entreprise",
+    moreSous37: "Siège social :  17 rue Pache 75011 Paris France",
+    moreSous38: "Tél: +33 9 70 46 04 46  /  +33 6 44 67 61 76",
+    moreSous39: "Email : info@ipercash.fr",
+    moreSous40: "Site Internet: ",
+    moreSous41: "Succursale Cameroun : Rue Fouda Yaoundé",
+    moreSous42: "Tel. : +237 651 38 52 22  /  +237 672 52 92 40",
 
     //data 
     dataTitle1: "A propos de IPERCash",
@@ -405,7 +438,7 @@ const french = {
     //cookie
     cookie1: 'Gestion des cookies',
     cookie2: 'Le contenu de ce site vous intéresse ?',
-    cookie3: "Nous utisons les cookies pour améliorer l'expérience utilisateur !",
+    cookie3: "Nous utilisons les cookies pour améliorer l'expérience utilisateur !",
     cookie4: 'merci de les choisir !',
     cookie5: 'les cookies !',
     cookie6: 'Utilisation des cookies',
@@ -576,7 +609,9 @@ const french = {
     slider8: "Regarder le tutoriel",
     slider9: "Aller à Cabital",
 
-    //
+     //comingSoon1
+     comingSoon1: "Le Service Est En Cours de Maintenance",
+     comingSoon2: "Vous Serez Informé Lorsque Le Service Sera à Nouveau Disponible.",
 
 
 

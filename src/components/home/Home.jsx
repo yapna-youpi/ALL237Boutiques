@@ -24,7 +24,7 @@ function Home() {
     return (
         <div className='home'>
             <Hero />
-            <Operations />,
+            <Operations />
             <About />
             <Cookies/>
             <Partner />

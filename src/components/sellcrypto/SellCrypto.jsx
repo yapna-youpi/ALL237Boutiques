@@ -216,6 +216,7 @@ function SellCrypto({ Amount, country, User }) {
             {modal && <SellModal open={modal} toogle={setModal} data={{...formik.values, ...promo}} rate={rate[formik.values.fiat]} User={User} />}
 
             <h1>{t('sellCrypto')}</h1>
+            <h2 className='crypt-sell'>{t('sellCrypto19')}</h2>
             <div className="sell-container">
                 <div className="rate">
                     <Fiats action={changeFiat} fiat={formik.values.fiat} />

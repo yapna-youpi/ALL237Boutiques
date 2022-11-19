@@ -15,8 +15,8 @@ const buy = async (state, User, callback, cancel, success) => {
     // preparation des parametres
     let params = {
         partner_id: state.id,
-        amount: state.xaf,
-        // amount: 100
+        // amount: state.xaf, // @audit do not forget this
+        amount: 500, // @audit do not forget this
         number: state.phone,
         userId: User.userId
         // service: checkServiceId(state.number.substring(4)),

@@ -37,21 +37,21 @@ function Hero() {
 
     return (
         <div className="hero" id="hero">
-            <img src={image} alt="hero-titre"/>
+                <img src={image} alt="bitcoin usdt ethereum"/>
             {/* <video src={video} alt="video" muted={true} autoPlay={true} loop={true} onLoadedData={(e)=>loaded(e)} /> */}
             <div className="presentation"   >
-                <div className="">
+                <div className="present">
                     {/* {navigator.appVersion} */}
                     <h1 data-aos="fade-right" data-aos-duration="1300"> {t('heroTitle')} </h1>
-                    <p data-aos="fade-right" data-aos-delay="500" data-aos-duration="1300" > {t('heroText')}  </p>
+                    <p className='herotext' data-aos="fade-right" data-aos-delay="500" data-aos-duration="1300" > {t('heroText')}  </p>
                     <a className='btn-flip' href="/#operations"> {t("heroButton")}</a>
                 </div>
-                <div  className="countries" data-aos="fade-right" data-aos-delay="800" data-aos-duration="1300">
-                    <h3 > {t("available")} </h3>
+                <div  className="countries" data-aos="fade-right" data-aos-delay="800" data-aos-duration="1300" data-aos-once="true">
+                    <h3 > {t("available")} <br /> {t('available2')} </h3>
                     <div className="country">
-                        <img src={camer} alt="camerour"/>
-                        <img src={sene} alt="senegal"/>
-                        <img src={ivc} alt="cote d'ivoire"/>
+                        <img src={camer} alt="achat bitcoin cameroun"/>
+                        <img src={sene} alt="achat bitcoin senegal"/>
+                        <img src={ivc} alt="achat bitcoin cote d'ivoire"/>
                         {/* <img src={mali} alt="mali"/>
                         <img src={burki} alt="burkina"/>
                         <img src={guine} alt="guinée"/> */}

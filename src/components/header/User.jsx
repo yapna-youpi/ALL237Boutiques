@@ -47,10 +47,10 @@ function User({user, nav, logout}) {
                 }}
                 onClose={close}
             >
-                <MenuItem onClick={user.userName ? null : ()=>click('/login')}>
+                <MenuItem onClick={user.userName ? null : ()=>click('/login/' +process.env.REACT_APP_LOGIN_LINK )}>
                     <span className="menu-text"><FaUser fontSize="large" /> &ensp;  {user.userName ? user.userName : t('user1') } </span>
                 </MenuItem>
-                <MenuItem onClick={()=>click('/signup')}>
+                <MenuItem onClick={()=>click('/signup/' +process.env.REACT_APP_SIGUNP_LINK )}>
                 <span className="menu-text"><HiPencilAlt fontSize="large" /> &ensp;{t('user2')} </span>
                 </MenuItem>
                 <Divider />

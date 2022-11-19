@@ -35,19 +35,19 @@ function Choose() {
 
 
     const imag = isVisible ? (<div className="hiden">
-        <img onClick={() => history.push('/buycrypto/' + process.env.REACT_APP_BUY_LINK)} src={visa} alt="visa" />
-        <img onClick={() => history.push('/buycrypto/' + process.env.REACT_APP_BUY_LINK)} src={master} alt="mster" />
-        <img onClick={() => history.push('/buycrypto/' + process.env.REACT_APP_BUY_LINK)} src={google} alt="google" />
-        <img onClick={() => history.push('/buycrypto/' + process.env.REACT_APP_BUY_LINK)} src={apple} alt="apple" />
+        <img onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)} src={visa} alt="visa" />
+        <img onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)} src={master} alt="mster" />
+        <img onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)} src={google} alt="google" />
+        <img onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)} src={apple} alt="apple" />
     </div>
     ) : '';
 
     const imag2 = isVisible2 ? (<div className="hiden">
-        <img onClick={() => history.push('/buycrypto/' + process.env.REACT_APP_BUY_LINK)} src={mtn} alt="mtn" />
-        <img onClick={() => history.push('/buycrypto/' + process.env.REACT_APP_BUY_LINK)} src={moov} alt="moov" />
-        <img onClick={() => history.push('/buycrypto/' + process.env.REACT_APP_BUY_LINK)} src={mobi} alt="mobi" />
-        <img onClick={() => history.push('/buycrypto/' + process.env.REACT_APP_BUY_LINK)} src={yup} alt="yup" />
-        <img onClick={() => history.push('/buycrypto/' + process.env.REACT_APP_BUY_LINK)} src={orang} alt="orang" />
+        <img onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)} src={mtn} alt="mtn" />
+        <img onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)} src={moov} alt="moov" />
+        <img onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)} src={mobi} alt="mobi" />
+        <img onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)} src={yup} alt="yup" />
+        <img onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)} src={orang} alt="orang" />
     </div>
     ) : '';
 
@@ -57,7 +57,7 @@ function Choose() {
             <div className="chooses">
                 <div className="credit-card way">
                     <div className="way2">
-                        <div className="head" onClick={() => history.push('/buycrypto/' + process.env.REACT_APP_BUY_LINK)}>
+                        <div className="head" onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)}>
                             <h2>{t('chosesSous1')}</h2>
                             <div className="text-card">{t('chosesSous2')}</div>
                             <hr className="card-ligne" />
@@ -72,7 +72,7 @@ function Choose() {
                 <span className="hr" />
                 <div className="mobile-money way" >
                     <div className="way2">
-                        <div className="head" onClick={() => history.push('/buycrypto/card')}>
+                        <div className="head" onClick={() => history.push('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK)}>
                             <h2>{t('chosesSous4')}</h2>
                             <div className="text-card">{t('chosesSous3')}  </div>
                             <hr className="card-ligne" />

@@ -247,6 +247,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
                 </Modal>
             }
             <h1>{t('buyCryptoMobileSous3')}</h1>
+            <h2 className='crypt-title'>{t('buyCryptoMobileSous22')}</h2>
             <div className="buy-container">
                 <div className="rate">
                     <Fiats action={changeFiat} fiat={formik.values.fiat} />
@@ -282,7 +283,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
                     </div>
                     <div className="form-group">
                         <InputPhone val={formik.values.phone} name="phone" label={t('buyCryptoMobileSous13')} id="phone"
-                            country={country} all={true} cm={true} alert={country !== 'CM'}
+                            country={false} all={false} cm={true} alert={country !== 'CM'}
                             help={formik.errors.phone} error={formik.errors.phone && formik.touched.phone}
                             change={(name, value) => setPhone(name, value)}
                             handBlur={() => setTouched('phone')}
@@ -290,7 +291,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
                     </div>
                     <div className="form-group">
                         <InputPhone val={formik.values.cfphone} name="cfphone" label={t('buyCryptoMobileSous15')} id="cfphone"
-                            country={country} all={true} cm={true} alert={country !== 'CM'}
+                            country={false} all={false} cm={true} alert={country !== 'CM'}
                             help={formik.errors.cfphone} error={formik.errors.cfphone && formik.touched.cfphone}
                             change={(name, value) => setPhone(name, value)}
                             handBlur={() => setTouched('cfphone')}

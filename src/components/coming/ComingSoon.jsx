@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { sendToApi } from '../../utils/utilFunctions';
+import { useTranslation } from 'react-i18next';
 
 import './comingsoon.css'
 import image from './mechanical-gears.svg';
 
 function ComingSoon({ User }) {
+    const { t } = useTranslation();
     useEffect(() => {
         console.log("the email ", User.userEmail)
         sendToApi('useremail', {email: User.userReducer})
@@ -16,8 +18,8 @@ function ComingSoon({ User }) {
         <div id="coming" className="coming">
             <img src={image} alt="commin-soon" />
             <div className="">
-                <h1>The application is under maintenance</h1>
-                <h3> You will be notified when the service is available again. </h3>
+                <h1>{t('comingSoon1')} </h1>
+                <h3>{t('comingSoon2')}  </h3>
                 {/* <div className="form">
                     <input type="email" placeholder="email"/>
                     <button> notify me </button>

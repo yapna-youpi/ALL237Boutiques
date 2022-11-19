@@ -87,6 +87,13 @@
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
+.crypt-title{
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1em;
+  text-align: center;
+  font-weight: unset!important;
+}
 
 @media screen and (min-width: 768px) {
   .disjoint {
@@ -109,6 +116,9 @@
   }
   .wallet-div{
     font-size: 25px;
+  }
+  .buycrypto h1 {
+    font-size: 1.7em;
   }
 }
 

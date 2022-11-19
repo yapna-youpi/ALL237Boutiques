@@ -33,8 +33,11 @@ const getStatus=async(data, token="NOTHING")=>{
     let status=await fetch(apiUrl+'touch/getstatus', requestOption).then(response=>response.json())
     .then((data)=>{
         // console.log(data)
-        return data.response ?  data.response.intouch.status : "PENDING"
+        return data.response ?  data.response : "PENDING"
         
+    })
+    .catch(error=>{
+        return "PENDING"
     })
     return status
 }

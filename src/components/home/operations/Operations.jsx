@@ -35,7 +35,7 @@ function Operations({ dispatch, Amount, crypto }) {
                         <div className='contri'><Countries /></div>
                     </div>
                     <div className="button-operation">
-                        <button className='btn-neon' onClick={() => startOperation('/' + process.env.REACT_APP_SEND_LINK)} >
+                        <button className='btn-neon' onClick={() => startOperation('/coming/' +process.env.REACT_APP_SEND_LINK)} >
                             <span></span>
                             <span></span>
                             <span></span>
@@ -43,14 +43,14 @@ function Operations({ dispatch, Amount, crypto }) {
                             {t('operationButton1')}
                         </button>
                         <div className="taille">
-                            <button className='btn-neon' onClick={() => startOperation('/' + process.env.REACT_APP_SELL_LINK, 'crypto')}>
+                            <button className='btn-neon' onClick={() => startOperation('/sellcrypto/' +process.env.REACT_APP_SELL_LINK, 'crypto')}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 {t('operationButton2')}
                             </button>
-                            <button className='btn-neon' onClick={() => startOperation('/buycrypto', 'crypto')} >
+                            <button className='btn-neon' onClick={() => startOperation('/buycrypto/mobile/' + process.env.REACT_APP_BUY_LINK, 'crypto')} >
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -60,7 +60,7 @@ function Operations({ dispatch, Amount, crypto }) {
                         </div>
                     </div>
                 </div>
-                <img src={image} alt="operations" className="picture" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true" />
+                <img src={image} alt="vendre sa cryptomonnaie par paiement electronique" className="picture" data-aos="fade-up" data-aos-duration="1500" data-aos-once="true" />
             </div>
         </>
     )

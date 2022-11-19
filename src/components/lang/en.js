@@ -19,26 +19,27 @@ const english = {
 
     // Hero section
     // heroTitle: "BRIDGING MOBILE MONEY AND CRYPTO WORLDS",
-    heroTitle: "BUY AND SELL CRYPTOCURRENCY WITH YOUR MOBILE MONEY",
-    heroText: "Credit Mobile Money account with cryptocurrency or with credit card",
+    heroTitle: "Buy and sell cryptocurrency by Mobile Money , Sepa transfer or Credit Card",
+    heroText: "Credit a Mobile Money Account (Orange Money, Mtn Money, Moov Money, Mobicash) with Cryptocurrency (Bitcoin, Usdt, Ethereum)",
     heroButton: "Get Started",
-    available: "Mobile Money Available in theses countries",
+    available: "Mobile Money Available in theses",
+    available2: " countries",
 
     // About section
     aboutTitle: "ABOUT US",
     aboutText: "IPERCash was born from the dual observation of the explosion of mobile money in Africa and the demand for cryptocurrency. Demand that IPERCash aims to meet.<br/>IPERCash is entirely based on blockchain and Decentralized Finance. Transactions are cheaper, safer and faster.<br/>",
     aboutButton: "Learn More",
     aboutSummary: "Summary of services",
-    aboutListe1: "Buy cryptocurrencies with Mobile Money, credit cards and SEPA",
-    aboutListe2: "Withdraw your cryptocurrency in mobile money",
-    aboutListe3: "Buy cryptocurrencies and make a deposit on a Mobile Money account",
+    aboutListe1: "Buy cryptocurrency (Bitcoin, Usdt, Ethereum) by paying by Credit Card, Sepa Transfer and Mobile Money(Orange Money, Mtn Money, Moov money, Mobicash).",
+    aboutListe2: "Withdraw cryptocurrency (Bitcoin, Usdt, Ethereum) to your Mobile Money Account (Senegal, Cote d'ivoire, Cameroon, Burkina Faso, Mali, Guinea) or to your Bank Account by Sepa transfer.",
+    aboutListe3: "Buy Cryptocurrency (Bitcoin, Usdt, Ethereum) and transfer it to a Mobile Money account (Orange Money, Mtn Money, Moov Money, Mobicash) or to a Bank account by Sepa transfer.",
 
     // Operation section
     operationTitle: "MAKE A TRANSACTION",
     operationPlaceholder: "Type amount",
     operationButton1: "Credit Mobile Account",
-    operationButton2: "Sell Crypto",
-    operationButton3: "Buy Crypto",
+    operationButton2: "Sell Cryptocurrency",
+    operationButton3: "Buy Cryptocurrency",
 
     //our services-titles
     servicesTitle: 'OUR SERVICES',
@@ -47,15 +48,15 @@ const english = {
     servicesTitle3: 'CREDIT MOBILE ACCOUNT',
 
     //ours sevices sous-titles
-    sousService1: 'Buy cryptocurrencies with Mobile Money, SEPA and Credit Card. Receive it in your Wallet within a short time after confirmation ',
-    sousService2: 'Withdraw your cryptocurrency and receive it in a Mobile Money account',
-    sousService3: 'Make a deposit from anywhere to Mobile Money account in:',
+    sousService1: 'Buy cryptocurrency (Bitcoin, Usdt, Ethereum) by paying with Mobile Money in Cfa Francs, Sepa Bank Transfer or Credit Card.',
+    sousService2: 'Withdraw your Cryptocurrency (Bitcoin, Usdt, Ethereum) and receive it in a Bank Account by Sepa Transfer.',
+    sousService3: 'Buy cryptocurrency and credit a Mobile Money account or a Bank account by Sepa Transfer.',
 
     //steps 
     stepsTitle: 'HOW IT WORKS ?',
     sousSteps1: 'How to pass KYC verification for your account',
-    sousSteps2: 'How to make a deposit on a Mobile Money account',
-    sousSteps3: 'How to buy and sell your cryptocurrency with mobile money',
+    sousSteps2: 'Make a deposit into your Mobile Money Account or into a Bank Account by Sepa Transfer',
+    sousSteps3: 'Buy or Sell Cryptocurrency in Senegal, Cameroon, Burkina Faso, Mali, Ivory Coast and Guinea.',
     sousSteps4: "We have prepared some clips to show you how to proceed. Click on any operation to start watching",
     sousSteps5: 'Find out more',
 
@@ -74,8 +75,6 @@ const english = {
     sousContact8: 'For staying continueally informed of our new features or modifications',
     sousContact9: 'Subscribe',
     sousContact10: "Your Email ",
-
-
 
     /*---autre pages du sites -- */
 
@@ -112,7 +111,7 @@ const english = {
     coverModalSous5: "Finalize the operation on the widget",
 
     //sellrypto 
-    sellCrypto: 'SELL CRYPTO',
+    sellCrypto: 'SELL YOUR CRYPTO-CURRENCY AND RECEIVE FRANCS CFA IN YOUR MOBILE MONEY',
     sellCrypto2: 'Crypto Rate',
     sellCrypto3: 'Coindesk',
     sellCrypto4: ' Provided by',
@@ -120,7 +119,7 @@ const english = {
     sellCrypto6: "Sender Wallet Address",
     sellCrypto7: "Invalid wallet adress",
     sellCrypto8: "Amount in XAF",
-    sellCrypto9: "The amount should be between 6550 and 100000 XAF",
+    sellCrypto9: "The amount should be between 6550 and 2000000 XAF",
     sellCrypto10: "Amount in BTC",
     sellCrypto11: "the min value is 0.000296",
     sellCrypto12: "Fees in XAF",
@@ -129,7 +128,8 @@ const english = {
     sellCrypto15: "Confirm Mobile Phone",
     sellCrypto16: "Should match to phone number",
     sellCrypto17: "The amount should be between 10 and 50 EUR",
-    sellCrypto17: "The service is unavailable",
+    sellCrypto18: "The service is unavailable",
+    sellCrypto19: "By filling out this form, you will be able to convert crypto-currency (Bitcoin, Usdt, Ethereum) into CFA francs and receive it in your mobile money (Orange Money, Mtn Money, Moov, Mobicash) in Cameroon, Senegal, Burkina Faso, Mali, Cote d'Ivoire and Guinea.",
 
 
     //sellModal
@@ -182,7 +182,7 @@ const english = {
     buyCryptoMobileSous5: 'Crypto Rate',
     buyCryptoMobileSous6: 'Provided by ',
     buyCryptoMobileSous7: "Amount in XAF",
-    buyCryptoMobileSous8: "The value should be between 5000 and 100000 XAF",
+    buyCryptoMobileSous8: "The value should be between 5000 and 2000000 XAF",
     buyCryptoMobileSous9: "Amount in",
     buyCryptoMobileSous10: "The min value is 15.26 EUR",
     buyCryptoMobileSous11: "Amount in BTC",
@@ -207,6 +207,7 @@ const english = {
     buyCryptoError7: "fail to send crypto",
     buyCryptoError8: "Payment demand has fail",
     buyCryptoError9: "Payment process fail",
+    buyCryptoMobileSous22: "By filling out this form, you can buy crypto-currency (bitcoin, usdt, Ethereum) with a Mobile Money account (Orange Money, Mtn Money, Moov, Mobicash) from Senegal, Cote d'ivoire, Cameroon, Burkina Faso, Mali and Guinea.",
 
     //chooses 
     choosesTitle: 'Choose Your Payment Method',
@@ -369,20 +370,51 @@ const english = {
     notFound2: "Sorry but the page you are looking for don't exist",
     notFound3: 'Back to home page',
 
-    //more
-    moreTitle1: "LEARN MORE",
-    moreSous1: "About ",
-    moreSous2: " Born from the dual observation of the explosion of Mobile Money and the demand for cryptocurrency in Africa, IPERCash is a platform essentially based on Blockchain and decentralized finance.",
-    moreSous3: "Why the merger of Mobile Money and cryptocurrency is certainly the future of Africa and most likely of the rest of the world?  The banking rate in Africa is extremely low, particularly in sub-Saharan Africa . From where a dazzling penetration of Mobile Money making it possible to obtain an electronic wallet without constraints. Mobile Money works by USSD codes compatible with any phone, so this service does not require a sophisticated phone",
-    moreSous4: "On the other hand, cryptocurrency, particularly ethereum, Bitcoin and usdt are also experiencing unexpected penetration in Africa.",
-    moreSous5: " Indeed, the conditions dictated by local central banks and their depreciated local currencies are forcing local businesses and pushing them to turn to much more flexible cryptocurrency.",
-    moreSous6: "We are therefore a platform for exchanges and interactions between Mobile Money and cryptocurrency and a necessity. <br/> We are an Internet cross platform and mobile application where users can:",
-    moreSous7: "- Buy cryptocurrency by credit card and deposit it in a Mobile Money account in Africa.",
-    moreSous8: "- Buy cryptocurrency to credit their electronic wallet;",
-    moreSous9: "- Buy cryptocurrency by paying with Mobile Money",
-    moreSous10: "- Withdraw cryptocurrency from his wallet and transfer it to his Mobile Money account.",
-    moreSous11: "IPERCash is not a trading society, IPERCash does not offer financial products or speculative investments but intends to participate in the increase in the volume of cryptocurrency exchanges in the world.",
-    moreSous12: "We are therefore offering Africans the opportunity to purchase services and products in cryptocurrency, and vice versa, to be paid in cryptocurrency.",
+   //more
+   moreTitle1: "All About IPERCash",
+   moreSous1: "Our Vision Of The Currency",
+   moreSous2: "IPERCash was born out of a desire to popularize cryptocurrency and no one should be left out of the biggest economic and financial revolution of the 21st century. ",
+   moreSous3: "It is with this in mind that thanks to the association of different approved electronic payment systems, the IPERCash platform allows anyone, even a novice, to buy cryptocurrency, and vice versa, to convert their cryptocurrency into fiat currency (FCFA, EUR)",
+   moreSous4: "Here the user buys cryptocurrency by paying from Cameroon, Ivory Coast, Senegal, Mali, Burkina Faso and Guinea-Conakry by Mobile Money (Orange Money, MTN Mobile Money,Moov, Mobicash, Free Mobile), from Europe by SEPA (Single Euro Payments Area) transfer and from the rest of the world by credit card.",
+   moreSous5: "Conversely, he exchanges his cryptocurrency into fiat currency, receiving it in his Mobile Money account or by SEPA transfer into his bank account.",
+   moreSous6: "IPERCash is not a trading company, we do not offer financial products or speculative investments on the volatile values of cryptocurrencies.",
+   moreSous7: "IPERCash rather intends, through its easy-to-use, intuitive, user-friendly and secure services, to contribute to the increase in the volume of cryptocurrency trading in the world.",
+   moreSous8: "thus participating in the construction of a new universe built around a decentralised, open and transparent monetary system",
+   moreSous9: "Services offered on IPERCash",
+   moreSous10: "Buying Cryptocurrency in Franc Cfa and Euro",
+   moreSous11: "1- How to buy crypto-currency with Mobile Money",
+   moreSous12: "The service to buy crypto-currency (Bitcoin, usdt or tether, Ethereum) by Mobile Money is available in Africa in Cameroon, Ivory Coast, Senegal, Mali, Burkina Faso and Guinea-Conakry with Orange Money, MTN Mobile Money, Moov, Mobicash, Free Mobile.",
+   moreSous13: "The user fills in our online crypto-currency purchase form by specifying the amount of the purchase, the e-wallet of destination of the crypto-currency, and the phone number of their Mobile Money. After validating the Mobile Money withdrawal, the wallet is automatically credited with the equivalent in cryptocurrency at the daily rate.",
+   moreSous14: "2- How to buy cryptocurrency with a credit card or SEPA transfer.",
+   moreSous15: "Buying cryptocurrency by credit card is possible with Visa and MasterCard, buying by SEPA transfer is exclusively reserved for the Single Euro Payment Area.",
+   moreSous16: "The user specifies online the amount and the destination wallet of the cryptocurrency, makes the payment and receives instantly the equivalent in cryptocurrency in the specified wallet.",
+   moreSous17: "WITHDRAWAL OF CRYPTOMONY IN FRANC FCA AND EURO",
+   moreSous18: "1- How to exchange cryptocurrency in CFA Franc by Mobile Money",
+   moreSous19: "Converting cryptocurrency to Mobile Money is available in Africa in Cameroon, Ivory Coast, Senegal, Mali, Burkina Faso and Guinea-Conakry with Orange Money, MTN Mobile Money, Moov, Mobicash, Free Mobile.",
+   moreSous20: "The user fills in our online cryptocurrency withdrawal form, transfers his cryptocurrency to our wallet, his Mobile Money account is automatically credited with the equivalent amount.",
+   moreSous21: "2- How to convert your cryptocurrency to Euro.",
+   moreSous22: "The cryptocurrency withdrawal service in Euro is only available in the Single Euro Payments Area (SEPA).",
+   moreSous23: "The user fills in our online cryptocurrency withdrawal form, transfers his cryptocurrency to our wallet, the IPERCash platform automatically makes a SEPA transfer of the corresponding amount into his bank account.",
+   moreSous24: "Our Benefits In Terms Of Transactions",
+   moreSous25: "- Transactions via the blockchain",
+   moreSous26: "- Easy to use",
+   moreSous27: "- Very wide coverage of Mobile Money in Africa",
+   moreSous28: "- Instantaneous transactions",
+   moreSous29: "- Very low tariffs",
+   moreSous30: "- No need to travel",
+   moreSous31: "- Traceability of all transactions in the Blockchain",
+   moreSous32: "- Secure transactions",
+   moreSous33: "The IPERCash Team", 
+   moreSous34: "IPERCASH currently has 26 employees, 12 of whom work at our Paris, Yaoundé and Abidjan sites and 14 of whom work from home",
+   moreSous35: "Each activity pole is managed by a production manager who ensures that the quality objectives of the IPERCash service are met",
+   moreSous36: "Company Contacts",
+   moreSous37: "Head Office: 17 rue Pache 75011 Paris France",
+   moreSous38: "Phone: +33 9 70 46 04 46 / +33 6 44 67 61 76",
+   moreSous39: "Email: info@ipercash.fr",
+   moreSous40: "Website: ",
+   moreSous41: "Succursale Cameroun : Rue Fouda Yaoundé",
+   moreSous42: "Tel: +237 651 38 52 22 / +237 672 52 92 40",
+
 
     //data 
     dataTitle1: "About IPERCash",
@@ -580,6 +612,10 @@ const english = {
      slider7: "See more about Cabital",
      slider8: "Watch tutorial",
      slider9: "Go to Cabital",
+
+     //comingSoon1
+     comingSoon1: "The Service Is Being Maintained",
+     comingSoon2: "You will be notified when the service becomes available again.",
 
 
      

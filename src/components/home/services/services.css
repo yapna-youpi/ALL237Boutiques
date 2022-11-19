@@ -6,7 +6,7 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    font-size: 2em;
+    font-size: 2.2em;
 }
 .services h2 span {
     display: block;
@@ -87,7 +87,7 @@
     .servic {
         width: 30%;
         padding: 5%;
-        font-size: 1.4em;
+        font-size: 1.259em;
     }
     .service:hover {
         cursor: pointer;
@@ -109,10 +109,10 @@
     .service {
         width: 20%;
         padding: 5%;
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
     .servic{
-        font-style: 1.4em;
+        font-style: 1.2em;
         width: 20%;
         padding: 5%;
     }
