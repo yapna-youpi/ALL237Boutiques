@@ -6,14 +6,25 @@
   text-align: center;
   font-size: 2em;
 }
-.about h2 {
+.about h3 {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    /* transform: translateY(-10px); */
+    width: 70%;
+    margin: 0 auto;
 }
-.about h2 span {
+.about .finding{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    font-size: 1.9em;
+    font-weight: bold;
+}
+.about .ligne {
     display: block;
     width: 100px;
+    margin: 0 auto;
     margin-top: 8px;
     background: var(--red);
     border: 3px solid var(--red);

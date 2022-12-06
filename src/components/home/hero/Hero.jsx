@@ -42,12 +42,12 @@ function Hero() {
             <div className="presentation"   >
                 <div className="present">
                     {/* {navigator.appVersion} */}
-                    <h1 data-aos="fade-right" data-aos-duration="1300"> {t('heroTitle')} </h1>
-                    <p className='herotext' data-aos="fade-right" data-aos-delay="500" data-aos-duration="1300" > {t('heroText')}  </p>
+                    <h1 data-aos="fade-right" data-aos-duration="1300" data-aos-once="true"> {t('heroTitle')} </h1>
+                    <p className='herotext' data-aos="fade-right" data-aos-delay="500" data-aos-duration="1300" data-aos-once="true" > {t('heroText')}  </p>
                     <a className='btn-flip' href="/#operations"> {t("heroButton")}</a>
                 </div>
                 <div  className="countries" data-aos="fade-right" data-aos-delay="800" data-aos-duration="1300" data-aos-once="true">
-                    <h3 > {t("available")} <br /> {t('available2')} </h3>
+                    <h3 > {t("available")} {t('available2')} </h3>
                     <div className="country">
                         <img src={camer} alt="achat bitcoin cameroun"/>
                         <img src={sene} alt="achat bitcoin senegal"/>

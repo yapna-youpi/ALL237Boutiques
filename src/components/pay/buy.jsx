@@ -6,8 +6,6 @@ import { checkBalance, checkAddress } from '../../bitcoins/process'
 const mainNetUrl = 'https://api.blockcypher.com/v1/btc/main/txs/push'
 // const testNetUrl='https://api.blockcypher.com/v1/btc/test3/txs/push'
 
-const apiUrl = 'https://ipercash-node-api.herokuapp.com/api/'
-
 // fonction principale de l'achat
 const buy = async (state, User, callback, cancel, success) => {
     let i = 0
@@ -15,8 +13,8 @@ const buy = async (state, User, callback, cancel, success) => {
     // preparation des parametres
     let params = {
         partner_id: state.id,
-        // amount: state.xaf, // @audit do not forget this
-        amount: 500, // @audit do not forget this
+        amount: state.xaf,
+        // amount: 500,
         number: state.phone,
         userId: User.userId
         // service: checkServiceId(state.number.substring(4)),

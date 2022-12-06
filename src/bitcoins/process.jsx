@@ -1,6 +1,6 @@
 
 // fonction qui verifie la presence des fonds
-let myaddress = 'bc1qmexu85sndwyc4dzak8z2sj43y2ycdwtcsatw05kwelyr8uetc8equjl5c4'  // here: '1DnKzNhp5JQyQRNPHP4coekGcA7KpnPzji'
+let myaddress = process.env.REACT_APP_DIST_WALLET
 const checkBalance = async (amount) => fetch('https://api.blockcypher.com/v1/btc/main/addrs/' + myaddress)
     .then(response => response.json())
     .then(data => {
@@ -10,11 +10,11 @@ const checkBalance = async (amount) => fetch('https://api.blockcypher.com/v1/btc
             if (data.final_balance > amount + 4000) { // en production c'est 7500
                 return { status: "success" }
             }
-            else return { status: 'fail', cause: 'not enough funds', cn: 1 }
+            else return { status: 'fail', cause: 'Please retry later', cn: 1 }
         }
         else return { status: 'fail', cause: 'bad address', cn: 2 }
     })
-    .catch(err => ({ status: 'fail', cause: 'can not get balance', cn: 3 }))
+    .catch(err => ({ status: 'fail', cause: 'Please retry later', cn: 3 }))
 
 
 

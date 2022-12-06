@@ -28,7 +28,8 @@ function Testimonials() {
 
     return (
         <div className="testimonials">
-            <h2> {t('testimonialTitle')} </h2>
+            <span className='temoin'>{t('testimonialTitle')}</span>
+            <h2> {t('testimonialTitle2')} </h2>
             <h3>
                 {/* debut de trustpilot */}
                 <div className="trustpilot-widget" data-locale="en-GB" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="616d7e144a86378d5870e77c" data-style-height="52px" data-style-width="100%">
@@ -139,35 +140,6 @@ function Testimonials() {
                             </p>
                         </div>
                     </div>
-                    <div className="testimonial">
-                        <div className="testi-head">
-                            <h4>Yapna Youpi</h4>
-                            <div className="starts">
-                                <div className="start">
-                                    <SiTrustpilot color="#fff" size={20} />
-                                </div>
-                                <div className="start">
-                                    <SiTrustpilot color="#fff" size={20} />
-                                </div>
-                                <div className="start">
-                                    <SiTrustpilot color="#fff" size={20} />
-                                </div>
-                                <div className="start">
-                                    <SiTrustpilot color="#fff" size={20} />
-                                </div>
-                                <div className="start">
-                                    <SiTrustpilot color="#fff" size={20} />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="testi-body">
-                            <h4>vraiment tres belle experience je suis…</h4>
-                            <p>
-                                vraiment tres belle experience je suis etonne de ce genre de cervice dans mon pays cest rapide et securise
-                                vraiment encore merci
-                            </p>
-                        </div>
-                    </div>
 
                     <div className="testimonial">
                         <div className="testi-head">
@@ -196,6 +168,35 @@ function Testimonials() {
                             I had an excellent experience using this platform. I was easy to use after performing my KYC and fast. 
                             I live in the USA and sent BTC to a mobile account in Cameroon, they received the amount in FCFA in their mobile account instantaneously! 
                             I will no longer consider using platforms such as Western Union that have higher fees and require the recipient to go to an agency!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="testimonial">
+                        <div className="testi-head">
+                            <h4>Edmond</h4>
+                            <div className="starts">
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                                <div className="start">
+                                    <SiTrustpilot color="#fff" size={20} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="testi-body">
+                            <h4>I like Ipercash because is the best…</h4>
+                            <p>
+                                I like Ipercash because is the best business to do trading in my country and transaction is fast
                             </p>
                         </div>
                     </div>

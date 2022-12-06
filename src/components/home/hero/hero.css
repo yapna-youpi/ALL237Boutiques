@@ -132,15 +132,17 @@
         order: -1;
         margin-top: -50px;
     }
-    .present{
+    .countries{
+        height: 80px;
     }
     .hero h1 {
         font-size: 1.8em;
-        /* margin-top: -20px; */
+        margin-top: -10px;
     }
     .hero p {
-        font-size: 1.2em;
-        /* margin-top: -10px; */
+        font-size: 1em;
+        margin-top: -10px;
+        margin-bottom: 30px;
     }
     .hero button {
         padding: 3% 4%;
@@ -164,17 +166,18 @@
         /* transform: translateY(30px); */
     }
     .hero h1 {
-        font-size: 3em;
+        font-size: 2.3em;
     }
     .hero p {
-        font-size: 2em;
+        font-size: 1.4em;
+        margin-bottom: 45px;
     }
     .hero button {
         font-size: 2em;
     }
     .hero .countries{
         width: 88%;
-        height: 200px;
+        height: 100px;
     }
     .hero .countries h3 {
         font-size: 2em;
@@ -190,9 +193,10 @@
         max-height: 82px;
         margin: 0px;
     }
-    /* .hero .btn-flip {
-        padding: 3% 5%;
-    } */
+    .hero .btn-flip {
+        font-size: 1.4em;
+        padding: 3.5% 5%;
+    }
 }
 
 .to-up {

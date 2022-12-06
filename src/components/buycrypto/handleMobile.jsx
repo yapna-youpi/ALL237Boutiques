@@ -1,11 +1,9 @@
-import { roundDecimal } from '../../utils/utilFunctions';
+import { roundDecimal, roundPrecision } from '../../utils/utilFunctions';
 
-/* le pourcentage de la commission est de 10% */
 
-let FEES = 0.065    // commission 6.5% ( avec 2.5% de frais intouch)
-const INTOUCHFEES = 0.025
-const percent = 1    //1.15
-const inverPercent = 1    //0.85
+const FEES = roundPrecision(process.env.REACT_APP_BUY_FEES, 4) + roundPrecision(process.env.REACT_APP_INTOUCH_CO_FEES, 4)  //  frais de l'operation
+const min = process.env.REACT_APP_BUY_MIN;
+const max = process.env.REACT_APP_BUY_MIN;
 
 const cryptoChange = (value, rate, promotion, royalties = 0) => {
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
@@ -46,6 +44,7 @@ const euroChange = (value, rate, promotion, royalties = 0) => {
 
 const xafChange = (value, rate, promotion, royalties = 0) => {
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
+    console.log("the rate ", rate)
     if (value < 5000 || rate === 0) {
         return {
             xaf: value,
@@ -65,9 +64,3 @@ const xafChange = (value, rate, promotion, royalties = 0) => {
 
 
 export { xafChange, euroChange, cryptoChange }
-
-//setState({...state, amount: value, xaf: roundDecimal(value*state.rate*655+1350), eu: roundDecimal(value*state.rate+1350/650)})
-
-//setState({...state, eu: value, amount: roundDecimal(value/state.rate-0.000045), xaf: value*655})
-
-//setState({...state, xaf: value, amount: roundDecimal(value/state.rate/655-0.000045), eu: roundDecimal(value/655)})

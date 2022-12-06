@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { AiFillWarning } from 'react-icons/ai'
-import { MdOutlineHelpCenter } from 'react-icons/md'
+// import { MdOutlineHelpCenter } from 'react-icons/md'
 import ReactLoading from 'react-loading'
 import Modal from 'react-responsive-modal'
-import Tooltip, { tooltipClasses } from '@material-ui/core/Tooltip';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+// import Tooltip, { tooltipClasses } from '@material-ui/core/Tooltip';
+// import { makeStyles } from '@material-ui/core/styles';
+// import { Box } from '@material-ui/core';
 import { useTranslation } from 'react-i18next'
 
 import { sendToApi } from '../../../../utils/utilFunctions'
-import { toastify } from '../../../addons/toast/Toast'
-import KycMatch from './KycMatch'
+// import { toastify } from '../../../addons/toast/Toast'
+// import KycMatch from './KycMatch'
 import Slider from '../../slider/Slider'
 
 let interval = null
@@ -24,7 +24,7 @@ function Unlinked({ data, User, setReady }) {
     const [module, setModule] = useState(false)
 
     // const classes = useStyles();
-    const longText = `${t("helpCabital")} `
+    // const longText = `${t("helpCabital")} `
 
     const startProcess = async () => {
         setLoading('button')

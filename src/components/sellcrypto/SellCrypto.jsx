@@ -16,13 +16,15 @@ import { Input, Input2 } from '../addons/input/Input';
 import PromoCode from '../promocode/PromoCode'
 import InputPhone from '../addons/input/PhoneInput'
 import Fiats from '../addons/Fiats/Fiats'
-import { getCryptoRate, regWallet, regPhone } from '../../utils/utilFunctions'
+import { getCryptoRate, regWallet, regPhone, roundPrecision } from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleAmount'
 import Sumsub from '../sumsub/Sumsub'
 
-const max = parseInt(process.env.REACT_APP_SELL_MAX)
-const min = parseInt(process.env.REACT_APP_SELL_MIN)
+const max = parseInt(process.env.REACT_APP_SELL_MAX);
+const min = parseInt(process.env.REACT_APP_SELL_MIN);
 const enable = process.env.REACT_APP_SELL_ENABLE;
+const fees = process.env.REACT_APP_SELL_FEES;
+const intouchFees = process.env.REACT_APP_INTOUCH_CI_FEES;
 
 
 function SellCrypto({ Amount, country, User }) {
@@ -146,8 +148,6 @@ function SellCrypto({ Amount, country, User }) {
         } else {
             openModal()
             console.log('le compiosant eeset monter')
-
-
             // if(User.kyc){
             //     openModal()  // annulation de la kyc sur sellcrypto
             // }else{
@@ -182,16 +182,16 @@ function SellCrypto({ Amount, country, User }) {
     }
     const activePromotion = (code) => {
         console.log("active promo")
-        setPromo({...promo, promotion: !promo.promotion, code: code, show: false })
+        setPromo({ ...promo, promotion: !promo.promotion, code: code, show: false })
     }
     const showFee = () => {
         if (promo.promotion) return 0
-        else return formik.values.xaf ? Math.round(formik.values.xaf * (0.0395+User.percent/100)) + 250 : 0
+        else return formik.values.xaf ? Math.round(formik.values.xaf * (roundPrecision(fees, 4) + User.percent / 100)) + parseInt(intouchFees) : 0
     }
-    (()=>{
-        if(!active() && !promo.code && !promo.show) {
+    (() => {
+        if (!active() && !promo.code && !promo.show) {
             console.log("the promo state ", promo)
-            setPromo({...promo, show: true})
+            setPromo({ ...promo, show: true })
         }
     })()
 
@@ -209,11 +209,11 @@ function SellCrypto({ Amount, country, User }) {
             {enable === "FALSE" ? <h3 className='disjoint'>{t("sellCrypto18")} </h3> : ""}
 
             <Modal2 mode={mode} close={() => setMode(false)} />
-            {promo.show && <PromoCode closePromo={() => setPromo({...promo, show: false, code: "NO_CODE"})} activePromotion={activePromotion} />}
+            {promo.show && <PromoCode closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })} activePromotion={activePromotion} />}
             {sum && <Modal open={true} onClose={() => setSum(false)} center={true} container={myRef.current} >
                 <Sumsub call={openModal} close={() => setSum(false)} />
             </Modal>}
-            {modal && <SellModal open={modal} toogle={setModal} data={{...formik.values, ...promo}} rate={rate[formik.values.fiat]} User={User} />}
+            {modal && <SellModal open={modal} toogle={setModal} data={{ ...formik.values, ...promo }} rate={rate[formik.values.fiat]} User={User} />}
 
             <h1>{t('sellCrypto')}</h1>
             <h2 className='crypt-sell'>{t('sellCrypto19')}</h2>
@@ -254,7 +254,7 @@ function SellCrypto({ Amount, country, User }) {
                     </div>
                     <div className="form-group">
                         <InputPhone val={formik.values.phone} name="phone" label={t('sellCrypto13')} id="phone"
-                             all={false} cm={true} alert={country !== 'CM'}
+                            all={false} cm={true} alert={country !== 'CM'}
                             help={formik.errors.phone} error={formik.errors.phone && formik.touched.phone}
                             change={(name, value) => setPhone(name, value)}
                             handBlur={() => setTouched('phone')}
@@ -262,7 +262,7 @@ function SellCrypto({ Amount, country, User }) {
                     </div>
                     <div className="form-group">
                         <InputPhone val={formik.values.cfphone} name="cfphone" label={t('sellCrypto15')} id="cfphone"
-                             all={false} cm={true} alert={country !== 'CM'}
+                            all={false} cm={true} alert={country !== 'CM'}
                             help={formik.errors.cfphone} error={formik.errors.cfphone && formik.touched.cfphone}
                             change={(name, value) => setPhone(name, value)}
                             handBlur={() => setTouched('cfphone')}

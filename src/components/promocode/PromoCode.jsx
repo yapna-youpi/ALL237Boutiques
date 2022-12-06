@@ -44,7 +44,7 @@ function PromoCode({ User, openPromo, closePromo, activePromotion }) {
 			document.getElementById('promocode').classList.toggle('hide')
 			return activePromotion(code)
 		}
-		else formik.setFieldError('code', "this code is not available try one another")
+		else formik.setFieldError('code', `${t('promotitle7')}`)
 	}
 
 	const checkCode = async (code) => {
@@ -61,7 +61,7 @@ function PromoCode({ User, openPromo, closePromo, activePromotion }) {
 		<div className='promocode' id='promocode' >
 			<form onSubmit={formik.handleSubmit}>
 				<div><i className='icopromo' onClick={close}><IoMdClose /></i></div>
-				<h5 style={{ paddingLeft: "8px" }}>We are on promotion</h5>
+				<h5 style={{ paddingLeft: "8px" }}>{t('promotitle6')}</h5>
 				<h3 style={{ paddingTop: "25px" }}>{t('promotitle1')}</h3>
 				<span className='frais'> <span style={{ fontSize: 40 }}>0</span> % des frais</span>
 				<div className="poli">

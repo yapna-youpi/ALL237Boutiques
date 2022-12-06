@@ -39,9 +39,9 @@
     display: inline-flex!important;
     justify-content: center!important;
     align-items: center!important;
-    width: 97%!important;
-    height: 40px!important;
-    border-radius: 8px!important;
+    width: 99.5%!important;
+    height: 45px!important;
+    border-radius: 6px!important;
     margin: 10px auto;
     background-color: var(--red);
     color: white;

@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactLoading from 'react-loading'
+// import ReactLoading from 'react-loading'
 import { useTranslation } from 'react-i18next'
 
 import Radio from '@material-ui/core/Radio'

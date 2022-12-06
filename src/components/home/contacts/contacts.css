@@ -20,6 +20,15 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    font-size: 1em;
+    transform: translateY(-18px);
+}
+.contacts .finding{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
 }
 .contacts h2 span {
     display: block;

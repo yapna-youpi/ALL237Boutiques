@@ -30,7 +30,9 @@ function Steps() {
     const hideVideo=()=>setState({...state, open: false})
     return (
         <div className="steps">
-            <h2> <span></span> {t('stepsTitle')}</h2>
+            <span className='ligu'></span>
+            <span className='retir'>  {t('stepsTitle')}</span>
+            <h2 >  {t('stepsTitle2')} </h2>
             <div className="steps-container">
                 <div className="step" data-aos="zoom-in" data-aos-delay="300" data-aos-once="true">
                     <div className="img-container" onClick={()=>showVideo(0)}>

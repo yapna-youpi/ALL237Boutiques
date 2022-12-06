@@ -12,7 +12,9 @@ function About() {
 
     return (
         <div className="about" id="about" >
-            <h2 > {t('aboutTitle')} <span></span></h2>
+            <span className='finding'>{t('aboutTitle2')}</span>
+            <span className='ligne'></span>
+            {/* <h3 > {t('aboutTitle')} <span></span></h3> */}
             <div className="about-container">
                 <img data-aos="fade-up-right" data-aos-once="true" src={image}  alt="demande de cryptomonnaie en afrique" className="picture"/>
                 <div className="">

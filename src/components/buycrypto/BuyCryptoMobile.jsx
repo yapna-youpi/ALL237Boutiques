@@ -12,7 +12,7 @@ import Modal2 from '../sendmoney/Modal2'
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 
 import './buycrypto.css'
 import Sumsub from '../sumsub/Sumsub'
@@ -20,9 +20,9 @@ import PromoCode from '../promocode/PromoCode'
 import { Input, Input2 } from '../addons/input/Input'
 // import { Input } from '../addons/input/Input';
 import InputPhone from '../addons/input/PhoneInput'
-import PhoneInput from '../addons/input/PhoneInput'
+// import PhoneInput from '../addons/input/PhoneInput'
 import Fiats from '../addons/Fiats/Fiats'
-import { randomId, getCryptoRate, checkWalletAddress } from '../../utils/utilFunctions'
+import { randomId, getCryptoRate } from '../../utils/utilFunctions'
 import { regWallet, regPhone } from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleMobile'
 
@@ -51,14 +51,14 @@ function BuyCryptoMobile({ Amount, country, User }) {
     // initialisation des taux de changes
     const [rate, setRate] = useState({ EUR: 0, USD: 0 })
     // initialisation du state du composants
-    const [state, setState] = useState({
-        crypto: "BTC", amount: 0, xaf: 0, eu: 0, fiat: 'EUR',
-        rate: rate.EUR, number: "", confirmNumber: "", wallet: ""
-    })
+    // const [state, setState] = useState({
+    //     crypto: "BTC", amount: 0, xaf: 0, eu: 0, fiat: 'EUR',
+    //     rate: rate.EUR, number: "", confirmNumber: "", wallet: ""
+    // })
     // initialisation du state des erreurs
-    const [errors, setErrors] = useState({
-        xaf: false, wallet: false, number: false, confirmNumber: false
-    })
+    // const [errors, setErrors] = useState({
+    //     xaf: false, wallet: false, number: false, confirmNumber: false
+    // })
     //for active promocode
     const [code, setCode] = useState(false)
     const [modal, setModal] = useState(false)

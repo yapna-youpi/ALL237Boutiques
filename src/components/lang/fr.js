@@ -19,20 +19,21 @@ const french = {
 
     // Hero section
     // heroTitle: "INTERFACE ENTRE LE MOBILE MONEY ET LA CRYPTOMONNAIE",
-    heroTitle: "Acheter et vendre de la cryptomonnaie par Mobile Money , virement Sepa ou Carte de credit",
-    heroText: "Crediter un Compte Mobile Money(Orange Money, Mtn Money, Moov Money, Mobicash) avec de la Cryptomonnaie (Bitcoin, Usdt, Ethereum)",
+    heroTitle: "Acheter et vendre de la cryptomonnaie par Mobile Money, virement Sepa ou Carte de credit",
+    heroText: "Crediter un Compte Mobile Money (Orange Money, Mtn Money, Moov Money, Mobicash) avec de la Cryptomonnaie (Bitcoin, Usdt, Ethereum)",
     heroButton: "Commencer",
     available: "Mobile Money disponible dans ces",
     available2: " pays",
 
     // About section
-    aboutTitle: "A PROPOS ",
+    // aboutTitle: "Acquerir et échanger ses bitcoins avec Orange Money, Mtn Mobile Money, Moov Money, Mobile Cash, Free.",
+    aboutTitle2: "A PROPOS",
     aboutText: "IPERCash est née du constat de l’explosion simultanée du Mobile Money et de la demande de cryptomonnaie en Afrique. Une demande à laquelle IPERCash entend répondre par une plateforme permettant les échanges entre Mobile Money et cryptomonnaie. Les services d’IPERCash sont entièrement basés sur la Blockchain et la finance décentralisée. Les transactions sont moins chères, plus sûres et plus rapides.",
     aboutButton: "EN SAVOIR PLUS",
     aboutSummary: "Nos services:",
-    aboutListe1: "Acheter de la cryptomonnaie (Bitcoin, Usdt, Ethereum) en payant par Carte de Credit, Virement Sepa et Mobile Money(Orange Money, Mtn Money, Moov money, Mobicash).",
+    aboutListe1: "Acheter de la cryptomonnaie (Bitcoin, Usdt, Ethereum) en payant par Carte de Credit, Virement Sepa et Mobile Money (Orange Money, Mtn Money, Moov money, Mobicash).",
     aboutListe2: "Retirer sa cryptomonnaie (Bitcoin, Usdt, Ethereum) vers son Compte Mobile Money(Senegal, Cote-d'ivoire, Cameroun, Burkina Faso, Mali, Guinée) ou vers son Compte Bancaire par virement Sepa.",
-    aboutListe3: "Acheter de Cryptomonnaie (Bitcoin, Usdt, Ethereum) et la transferer sur un compte Mobile Money(Orange Money, Mtn Money, Moov Money, Mobicash) ou sur un compte Bancaire par virement Sepa.",
+    aboutListe3: "Acheter de Cryptomonnaie (Bitcoin, Usdt, Ethereum) et la transferer sur un compte Mobile Money (Orange Money, Mtn Money, Moov Money, Mobicash) ou sur un compte Bancaire par virement Sepa.",
 
     // Operation section
     operationTitle: "EFFECTUEZ UNE TRANSACTION",
@@ -54,6 +55,7 @@ const french = {
 
     //steps 
     stepsTitle: 'COMMENT CA MARCHE ?',
+    stepsTitle2: 'Comment Retirer des Bitcoins en Zone Cfa en Afrique par son Mobile Money ',
     sousSteps1: 'Comment effectuer la verification KYC sur son compte',
     sousSteps2: 'Effectuer un dépot dans son Compte Mobile Money  ou dans un Compte Bancaire par Virement Sepa',
     sousSteps3: "Acheter ou Vendre sa Cryptomonnaie au Senegal, Cameroun, Burkina Faso, Mali, Cote d'ivoire et Guinée.",
@@ -62,9 +64,11 @@ const french = {
 
     //testimonial
     testimonialTitle: 'TEMOIGNAGES',
+    testimonialTitle2: 'Acheter et Retirer sa Cryptomonnaie les Utilisateurs Témoignent',
 
     //contacts
     contactsTitle: 'NOUS CONTACTER',
+    contactsTitle2: "Plateforme d'échanges entre crypto-monnaies et Mobile Money par OM, Momo, Moov, Mobicash, Gratuit",
     sousContact1: ' Notre mission est de populariser et de rendre accessible la cryptomonnaie en Afrique Subsahérienne. Contribuez en nous suivant dans les réseaux sociaux. ',
     sousContact2: '17, rue Pache',
     sousContact3: '75011 Paris',
@@ -130,7 +134,7 @@ const french = {
     sellCrypto16: "Doit correspondre au numéro de téléphone",
     sellCrypto17: "La montant doit etre entre 10 et 50 EUR ",
     sellCrypto18: "Le service est indisponible ",
-    sellCrypto19: "En Remplissant ce Formulaire, Vous Pourrez convertir de la crypto-monnaie (Bitcoin, Usdt, Ethereum) en francs CFA et la Recevoir dans votre Mobile Money(Orange Money, Mtn Money, Moov, Mobicash) au Cameroun, Senegal, Burkina Faso, Mali, en Cote-d'ivoire et en Guinée.",
+    sellCrypto19: "En Remplissant ce Formulaire, Vous Pourrez convertir de la crypto-monnaie (Bitcoin, Usdt, Ethereum) en francs CFA et la Recevoir dans votre Mobile Money (Orange Money, Mtn Money, Moov, Mobicash) au Cameroun, Senegal, Burkina Faso, Mali, en Cote-d'ivoire et en Guinée.",
 
     //sellModal
     sellModal: 'Transaction confirmée',
@@ -198,7 +202,7 @@ const french = {
     buyCryptoMobileSous21: "Collez l'adresse de votre wallet ici",
     buyCryptoError0: "l'operation a echouée",
     buyCryptoErrorundefined: "l'operation a echouée",
-    buyCryptoError1: "Pas assez de fond",
+    buyCryptoError1: "Veuillez reéssayer plus tard",
     buyCryptoError2: "addresse de wallet invalide",
     buyCryptoError3: "impossible d'obtenir le solde",
     buyCryptoError4: "l'adresse entrée est invalide",
@@ -207,7 +211,7 @@ const french = {
     buyCryptoError7: "impossible d'envoyer la crypto",
     buyCryptoError8: "La demande de paiement a echoué",
     buyCryptoError9: "Le paiement a echouée",
-    buyCryptoMobileSous22: "En remplissant ce formulaire, vous pouvez acheter de la crypto-monnaie (bitcoin, usdt, Ethereum) avec un compte Mobile Money(Orange Money, Mtn Money, Moov, Mobicash) depuis le Senegal, en  Cote-d'ivoire, au Cameroun, au Burkina Faso, au Mali et en Guinée.",
+    buyCryptoMobileSous22: "En remplissant ce formulaire, vous pouvez acheter de la crypto-monnaie (bitcoin, usdt, Ethereum) avec un compte Mobile Money (Orange Money, Mtn Money, Moov, Mobicash) depuis le Senegal, en  Cote-d'ivoire, au Cameroun, au Burkina Faso, au Mali et en Guinée.",
 
     //chooses 
     choosesTitle: 'Choisissez votre mode de paiement',
@@ -358,7 +362,7 @@ const french = {
     paySous7: "vérification du portefeuille de l'utilisateur",
     paySous8: 'DEMANDE DE PAIEMENT MOBILE',
     paySous9: 'veuillez vérifier la demande de paiement sur votre téléphone',
-    paySous10: "Demande, tapez le code ussd",
+    paySous10: "S'il n'ya aucune demande, executez le code ussd",
     paySous11: ' Veuillez suivre',
     paySous12: ' Pour terminer le paiement',
     paySous13: 'PRÉPARATION DE LA TRANSACTION',
@@ -412,6 +416,7 @@ const french = {
     moreSous40: "Site Internet: ",
     moreSous41: "Succursale Cameroun : Rue Fouda Yaoundé",
     moreSous42: "Tel. : +237 651 38 52 22  /  +237 672 52 92 40",
+    moreSous43: "",
 
     //data 
     dataTitle1: "A propos de IPERCash",
@@ -446,118 +451,120 @@ const french = {
     cookie8: 'Je choisis',
     cookie9: 'Accepter et fermer',
 
-     //modal2
-     modal2Title:"Le service est momentanément indisponible!",
-     modal2parag1: "Nos équipes font le maximum pour résoudre le problème au plus vite.",
-     modal2parag2: "Toutes nos excuses pour cet imprévu !",
+    //modal2
+    modal2Title: "Le service est momentanément indisponible!",
+    modal2parag1: "Nos équipes font le maximum pour résoudre le problème au plus vite.",
+    modal2parag2: "Toutes nos excuses pour cet imprévu !",
 
-     //tooltip
-     tooltip: "Ce service n'est pas disponible dans votre pays pour l'instant merci de votre comprehension !",
+    //tooltip
+    tooltip: "Ce service n'est pas disponible dans votre pays pour l'instant merci de votre comprehension !",
 
-     //formiktraductionsignup
-     formiksignup1 : "Le nom doit comporter au moins 4 caractères",
-     formiksignup2 : "Ce champ est obligatoire",
-     formiksignup3 : "Ce champ doit être un email valide",
-     formiksignup4 : "Ce champ est obligatoire",
-     formiksignup5 : "Le téléphone est obligatoire",
-     formiksignup6 : "Le mot de passe est obligatoire",
-     formiksignup7 : "Le mot de passe doit avoir au moins huit caractères dont un chiffre",
-     formiksignup8 : "La confirmation du mot de passe est requise",
-     formiksignup9 : "Le mot de passe ne correspond pas",
+    //formiktraductionsignup
+    formiksignup1: "Le nom doit comporter au moins 4 caractères",
+    formiksignup2: "Ce champ est obligatoire",
+    formiksignup3: "Ce champ doit être un email valide",
+    formiksignup4: "Ce champ est obligatoire",
+    formiksignup5: "Le téléphone est obligatoire",
+    formiksignup6: "Le mot de passe est obligatoire",
+    formiksignup7: "Le mot de passe doit avoir au moins huit caractères dont un chiffre",
+    formiksignup8: "La confirmation du mot de passe est requise",
+    formiksignup9: "Le mot de passe ne correspond pas",
 
-     //formiklogin
-     formikLogin1 : "ce champ doit être un email valide",
-     formikLogin2 : "ce champ est obligatoire",
-     formikLogin3 : "le mot de passe est requis",
-     formikLogin4 : "Le mot de passe doit avoir au moins huit caractères dont un chiffre",
+    //formiklogin
+    formikLogin1: "ce champ doit être un email valide",
+    formikLogin2: "ce champ est obligatoire",
+    formikLogin3: "le mot de passe est requis",
+    formikLogin4: "Le mot de passe doit avoir au moins huit caractères dont un chiffre",
 
-     //formikTraductionbuy
-     formikBuy1: "Adresse du wallet requise",
-     formikBuy2: "Adresse du wallet invalide",
-     formikBuy3: "Le montant de vente est requis",
-     formikBuy4: "Le montant de vente est reuquis",
-     formikBuy5: "Le montant en crypto est requis",
-     formikBuy6: "Le numéro est requis",
-     formikBuy7: "La confirmation du numéro est requise",
-     formikBuy8: "Doit être un numéro valide du pays",
-     formikBuy9: "Le numéro ne correspond pas",
-     formikBuy10: "Doit etre une adresse wallet valide",
-     formikBuy11: "Le montant doit être compris entre 5000 et 100000 XAF.",
+    //formikTraductionbuy
+    formikBuy1: "Adresse du wallet requise",
+    formikBuy2: "Adresse du wallet invalide",
+    formikBuy3: "Le montant de vente est requis",
+    formikBuy4: "Le montant de vente est reuquis",
+    formikBuy5: "Le montant en crypto est requis",
+    formikBuy6: "Le numéro est requis",
+    formikBuy7: "La confirmation du numéro est requise",
+    formikBuy8: "Doit être un numéro valide du pays",
+    formikBuy9: "Le numéro ne correspond pas",
+    formikBuy10: "Doit etre une adresse wallet valide",
+    formikBuy11: `Le montant doit être compris entre ${process.env.REACT_APP_BUY_MIN} et ${process.env.REACT_APP_BUY_MAX} XAF.`,
 
-      //formikTraductionsell
-      formikSell1: "Adresse du wallet requise",
-      formikSell2: "Adresse du wallet invalide",
-      formikSell3: "Le montant de vente est requis",
-      formikSell4: "Le montant de vente est reuquis",
-      formikSell5: "Le montant en crypto est requis",
-      formikSell6: "Le numéro est requis",
-      formikSell7: "La confirmation du numéro est requise",
-      formikSell8: "Doit être un numéro valide du pays",
-      formikSell9: "Le numéro ne correspond pas",
-      formikSell10: "Doit etre une adresse wallet valide",
-      formikSell11: "Le montant doit être compris entre 6550 et 100000 XAF.",
+    //formikTraductionsell
+    formikSell1: "Adresse du wallet requise",
+    formikSell2: "Adresse du wallet invalide",
+    formikSell3: "Le montant de vente est requis",
+    formikSell4: "Le montant de vente est reuquis",
+    formikSell5: "Le montant en crypto est requis",
+    formikSell6: "Le numéro est requis",
+    formikSell7: "La confirmation du numéro est requise",
+    formikSell8: "Doit être un numéro valide du pays",
+    formikSell9: "Le numéro ne correspond pas",
+    formikSell10: "Doit etre une adresse wallet valide",
+    formikSell11: `Le montant doit être compris entre ${process.env.REACT_APP_SELL_MIN} et ${process.env.REACT_APP_SELL_MAX} XAF.`,
 
-       //promocode
-     promotitle1: " AVEZ-VOUS UN CODE PROMO ?",
-     promotitle2: "Votre coupon à usage unique. Bravo!",
-     promotitle3: "Entrez votre code ici",
-     promotitle4: "VALIDER",
-     promotitle5: "CONTINUER SANS CODE",
+    //promocode
+    promotitle1: " AVEZ-VOUS UN CODE PROMO ?",
+    promotitle2: "Votre coupon à usage unique. Bravo!",
+    promotitle3: "Entrez votre code ici",
+    promotitle4: "VALIDER",
+    promotitle5: "CONTINUER SANS CODE",
+    promotitle6: "Nous sommes en promotion",
+    promotitle7: "Ce code n'est pas disponible essayez un autre",
 
-     //cabital
-     helpCabital: "Veuillez suivre toutes les procedures du support d'aide sur nos opérations chez Cabital !",
+    //cabital
+    helpCabital: "Veuillez suivre toutes les procedures du support d'aide sur nos opérations chez Cabital !",
 
-     //bilan
-     bilan1: "Résumé des transactions",
-     bilan2: "Opération",
-     bilan3: "Id de l'opération",
-     bilan4: "Montant",
-     bilan5: "Numéro",
-     bilan6: "Hash de la transaction",
-     bilan7: "Opération terminée, merci pour cela",
+    //bilan
+    bilan1: "Résumé des transactions",
+    bilan2: "Opération",
+    bilan3: "Id de l'opération",
+    bilan4: "Montant",
+    bilan5: "Numéro",
+    bilan6: "Hash de la transaction",
+    bilan7: "Opération terminée, merci pour cela",
 
-     //cabital
-     
-     //linked
-     linked1: "Assurez-vous d'avoir suffisamment de crypto avant d'effectuer un transfert vers votre compte mobile.",
-     linked2: "Vous pouvez acheter des crypto-monnaies par virement bancaire ou par carte de débit/crédit via Cabital. ",
-     linked3: "Acheter USDT",
+    //cabital
 
-      //payments
-      payments1: "Choisir le mode de paiement",
-      payments2: " Virement Sepa",
-      payments3: " Carte de Credit",
-      payments4: "Vous devez choisir le mode de paiement",
-      payments5: "Effectuer le paiement",
+    //linked
+    linked1: "Assurez-vous d'avoir suffisamment de crypto avant d'effectuer un transfert vers votre compte mobile.",
+    linked2: "Vous pouvez acheter des crypto-monnaies par virement bancaire ou par carte de débit/crédit via Cabital. ",
+    linked3: "Acheter USDT",
 
-      //renderInfo
-     renderInfo1: "Effectuer un transfert SEPA (EUR) vers ce compte",
-     renderInfo2: "Nom du compte :",
-     renderInfo3: "IBAN :",
-     renderInfo4: "Adresse de la banque :",
-     renderInfo5: "Pays :",
-     renderInfo6: "Nom de la  banque:",
-     renderInfo7: "BIC :",
-     renderInfo8: "Ref code :",
-     renderInfo9: "Le code de référence DOIT être écrit correctement, sinon votre dépôt ne sera pas pris en compte.",
-     renderInfo10: "Une erreur s'est produite, veuillez réessayer",
-     renderInfo11: "Procéder à l'achat dépuis le widget",
+    //payments
+    payments1: "Choisir le mode de paiement",
+    payments2: " Virement Sepa",
+    payments3: " Carte de Credit",
+    payments4: "Vous devez choisir le mode de paiement",
+    payments5: "Effectuer le paiement",
 
-     //kycMatch
-     kycMatch1: "Ce champ est requis",
-     kycMatch2: "Ce champ est requis",
-     kycMatch3: "Ce champ est requis",
-     kycMatch4: "Veuillez saisir un nom d'aumoins 1 caractère",
-     kycMatch5: "Ce champ est requis",
-     kycMatch6: "Ce champ est requis",
-     kycMatch7: "Vous avez passé avec succès le kyc sur Cabital veuillez remplir ce formulaire pour correspondre aux données que vous avez fournies sur Cabital",
-     kycMatch8: "nom",
-     kycMatch9: "type de document",
-     kycMatch10: "carte d'identité",
-     kycMatch11: "Passport",
-     kycMatch12: "id du document",
-     kycMatch13: "issued_by id",
-     kycMatch14: "date de naissance",
+    //renderInfo
+    renderInfo1: "Effectuer un transfert SEPA (EUR) vers ce compte",
+    renderInfo2: "Nom du compte :",
+    renderInfo3: "IBAN :",
+    renderInfo4: "Adresse de la banque :",
+    renderInfo5: "Pays :",
+    renderInfo6: "Nom de la  banque:",
+    renderInfo7: "BIC :",
+    renderInfo8: "Ref code :",
+    renderInfo9: "Le code de référence DOIT être écrit correctement, sinon votre dépôt ne sera pas pris en compte.",
+    renderInfo10: "Une erreur s'est produite, veuillez réessayer",
+    renderInfo11: "Procéder à l'achat dépuis le widget",
+
+    //kycMatch
+    kycMatch1: "Ce champ est requis",
+    kycMatch2: "Ce champ est requis",
+    kycMatch3: "Ce champ est requis",
+    kycMatch4: "Veuillez saisir un nom d'aumoins 1 caractère",
+    kycMatch5: "Ce champ est requis",
+    kycMatch6: "Ce champ est requis",
+    kycMatch7: "Vous avez passé avec succès le kyc sur Cabital veuillez remplir ce formulaire pour correspondre aux données que vous avez fournies sur Cabital",
+    kycMatch8: "nom",
+    kycMatch9: "type de document",
+    kycMatch10: "carte d'identité",
+    kycMatch11: "Passport",
+    kycMatch12: "id du document",
+    kycMatch13: "issued_by id",
+    kycMatch14: "date de naissance",
 
     //unlinked
     unlinked1: "Votre compte n'est pas encore associé à notre partenaire Cabital. Veuillez vous connecter en premier pour effectuer toutes opérations.",
@@ -584,19 +591,19 @@ const french = {
     renderOtp7: 'Fermer',
     renderOtp8: 'Un montant de',
 
-    
+
     //form
-    form1:  "Le montant doit être supérieur ou égal à 20",
-    form2:  "Ce champ est obligatoire",
-    form3:  "Ce champ est obligatoire",
-    form4:  "Ce champ est obligatoire",
-    form5:  "Informations sur le destinataire",
-    form6:  "Effectuer le transfert",
-    form7:  "Ce champ est obligatoire",
-    form8:  "Nom et prénom",
-    form9:  "Numéro de téléphone mobile du récepteur",
-    form10:  "Confirmer le numéro de téléphone",
-    form11:  "Montant USDT à transférer",
+    form1: "Le montant doit être supérieur ou égal à 20",
+    form2: "Ce champ est obligatoire",
+    form3: "Ce champ est obligatoire",
+    form4: "Ce champ est obligatoire",
+    form5: "Informations sur le destinataire",
+    form6: "Effectuer le transfert",
+    form7: "Ce champ est obligatoire",
+    form8: "Nom et prénom",
+    form9: "Numéro de téléphone mobile du récepteur",
+    form10: "Confirmer le numéro de téléphone",
+    form11: "Montant USDT à transférer",
 
     //slider
     slider1: "Vous êtes sur le point de créer un compte sur Cabital",
@@ -609,15 +616,15 @@ const french = {
     slider8: "Regarder le tutoriel",
     slider9: "Aller à Cabital",
 
-     //comingSoon1
-     comingSoon1: "Le Service Est En Cours de Maintenance",
-     comingSoon2: "Vous Serez Informé Lorsque Le Service Sera à Nouveau Disponible.",
+    //comingSoon1
+    comingSoon1: "Le Service Est En Cours de Maintenance",
+    comingSoon2: "Vous Serez Informé Lorsque Le Service Sera à Nouveau Disponible.",
 
 
 
 
 
-      
+
 
 
 

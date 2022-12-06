@@ -1,0 +1,12 @@
+const crypto = require('crypto')
+
+// const okay="-----BEGIN PUBLIC KEY-----MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAtn2Y3eTs3ZXLcC1m3BtUALSYisaQ4/0W8kAXO6biDrjqLvHc0Gax5xHdZQpw6BDa/OL1J2kAMJ4PNvYpT2DMcMduMgap41cCh7Lzm5Jq2Bm/aJECBJQXVoa7gLqdiqeTMY3SqDTafmpIlziRivxYR2RbIx0Fy+xgkH6mIvKf3NhViPcfBCaNy1IIIujqMzkLGCzG6doafpUTVYU9wVBlJWn16IqM2fVr4UDpkYW3zXlesZqDDRCEoX1IyN2SKtx6uXQAiQ6Og8wV19pVWIk3bx/tWziz/10URXGZlN6IlSSxIb/1nQaCPSNPelHlOBV0iq2hmeeOc4LUW8YVlryMaclbefXHJZ5CmUM1REZgu6mchWxg1g0LwlFe3uWlxeVvJNSBZ3D62NMC+foIX+fQYUdrWjkieYLP519p7NF68mdn/MT7MJRwhhUoEZ1c06jyguvSXv1r2k9+NSv2sDJdzku8wXYzPkplwIa5x7LGqJqmIzPKKYapCJeiCN+NI1k2inPgoXZnfDP1udYoc0NYNZa6oyKueEj3tTR9rNeMOGfAwbwFQTkZJNWMJqyUGmnUvqvteMAdvtAadbe/hrSqblF7buA4XEgMKNz2SZccPfmUs6Zjge+siU9fKi8F8Rr9DAeSoak71Nt4ZJmAYjOdbx6lQwWrn6QzgL0bC8AuLJECAwEAAQ==-----END PUBLIC KEY-----"
+
+const okay = "-----BEGIN PUBLIC KEY-----MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA8kB5qCFqDGt1RVMuyolZ5hB54Zhivjn0ITtPCRZ/BY9nQaxZ9CZpJ0z7u9zwMs42PZ9RyFr31xV4SvxD2VX+nZjhP/vzIZgWuhZDxjfzk62zW2xgZ6SAvxrZzHHvPZlm/u8xPVxv/69VmnTp5uOtUbObGCw5Hy1ur7uYU5gv1GUzrvvO5t58ghaCyAyN+icDM/Pd/Bik7TKYLGCvyhMOsVQYdZTGpvbqsAUeAllIdFb1vWYCLv2HHID8hzFpwsnK2PUXVqWotsbU1l1wLeLvSVByzkX3aZgagJ8aOB+Rhr6RHel6g4QakfilXtyx1wr54uBcv7C/0FE+PGMvuSDbcgeR+53mJ/UMu3pvhcm1Qz6IEunJa/reucLIbss6PfHZmaE12pCm2fvvNieFFxgqlqOeblAXj2RZGKzNchTNH5bUALmyDX1+bDGfiVx52Xc9FZxVIhPxu7vuB0oxgH5BamGuYGYe0TI0Xyvhnq5YtKtw8LTr06u5UQfQgLA4mSc9cu+ZnMJ1EHT9+8cudWAE6GS34wZTYCaWrMstJmx+5Rz+q6MCZ6N29Ok/K8qacKJnFmG+dNn9PMf58fvFe6Fv3V06VdCpna/WxssYd0N01BpEicpB75zarvP3lpo5m7rzgAKhCQl8a5BpIsI5IJv69F8NZuOChdb72w0lqj6xuMsCAwEAAQ==-----END PUBLIC KEY-----"
+
+const crypt = (message) => {
+    var encrypt = Buffer.from(message)
+    return crypto.publicEncrypt(okay, encrypt).toString('base64')
+}
+
+export default crypt

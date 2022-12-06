@@ -19,18 +19,19 @@ const english = {
 
     // Hero section
     // heroTitle: "BRIDGING MOBILE MONEY AND CRYPTO WORLDS",
-    heroTitle: "Buy and sell cryptocurrency by Mobile Money , Sepa transfer or Credit Card",
+    heroTitle: "Buy and sell cryptocurrency by Mobile Money, Sepa transfer or Credit Card",
     heroText: "Credit a Mobile Money Account (Orange Money, Mtn Money, Moov Money, Mobicash) with Cryptocurrency (Bitcoin, Usdt, Ethereum)",
     heroButton: "Get Started",
     available: "Mobile Money Available in theses",
     available2: " countries",
 
     // About section
-    aboutTitle: "ABOUT US",
+    // aboutTitle: "Acquire and exchange bitcoins with Orange Money, Mtn Mobile Money, Moov Money, Mobile Cash, Free. ",
+    aboutTitle2: "ABOUT US",
     aboutText: "IPERCash was born from the dual observation of the explosion of mobile money in Africa and the demand for cryptocurrency. Demand that IPERCash aims to meet.<br/>IPERCash is entirely based on blockchain and Decentralized Finance. Transactions are cheaper, safer and faster.<br/>",
     aboutButton: "Learn More",
     aboutSummary: "Summary of services",
-    aboutListe1: "Buy cryptocurrency (Bitcoin, Usdt, Ethereum) by paying by Credit Card, Sepa Transfer and Mobile Money(Orange Money, Mtn Money, Moov money, Mobicash).",
+    aboutListe1: "Buy cryptocurrency (Bitcoin, Usdt, Ethereum) by paying by Credit Card, Sepa Transfer and Mobile Money (Orange Money, Mtn Money, Moov money, Mobicash).",
     aboutListe2: "Withdraw cryptocurrency (Bitcoin, Usdt, Ethereum) to your Mobile Money Account (Senegal, Cote d'ivoire, Cameroon, Burkina Faso, Mali, Guinea) or to your Bank Account by Sepa transfer.",
     aboutListe3: "Buy Cryptocurrency (Bitcoin, Usdt, Ethereum) and transfer it to a Mobile Money account (Orange Money, Mtn Money, Moov Money, Mobicash) or to a Bank account by Sepa transfer.",
 
@@ -42,7 +43,7 @@ const english = {
     operationButton3: "Buy Cryptocurrency",
 
     //our services-titles
-    servicesTitle: 'OUR SERVICES',
+    servicesTitle: 'OUR ELECTRONICS SERVICES',
     servicesTitle1: 'BUY CRYPTO',
     servicesTitle2: 'SELL CRYPTO',
     servicesTitle3: 'CREDIT MOBILE ACCOUNT',
@@ -54,6 +55,7 @@ const english = {
 
     //steps 
     stepsTitle: 'HOW IT WORKS ?',
+    stepsTitle2: 'How to withdraw Bitcoins from Cfa in Africa via Mobile Money',
     sousSteps1: 'How to pass KYC verification for your account',
     sousSteps2: 'Make a deposit into your Mobile Money Account or into a Bank Account by Sepa Transfer',
     sousSteps3: 'Buy or Sell Cryptocurrency in Senegal, Cameroon, Burkina Faso, Mali, Ivory Coast and Guinea.',
@@ -62,9 +64,11 @@ const english = {
 
     //testimonial
     testimonialTitle: 'TESTIMONIALS',
+    testimonialTitle2: 'Buy and Withdraw Cryptocurrency Users Testify',
 
     //contacts
     contactsTitle: 'Contact Us',
+    contactsTitle2: 'Platform for exchanges between Cryptocurrency and Mobile Money by OM, Momo, Moov, Mobicash, Free',
     sousContact1: ' Our mission is to make cryptocurrency accessible throughout Africa and to popularize its use. Follow us on social networks to contribute.',
     sousContact2: '17, rue Pache',
     sousContact3: '75011 Paris',
@@ -198,7 +202,7 @@ const english = {
     buyCryptoMobileSous21: "Paste your wallet address here",
     buyCryptoError0: "operation fail",
     buyCryptoErrorundefined: "operation fail",
-    buyCryptoError1: "not enough funds",
+    buyCryptoError1: "Please retry later",
     buyCryptoError2: "bad address",
     buyCryptoError3: "can not get balance",
     buyCryptoError4: "invalid address",
@@ -485,7 +489,7 @@ const english = {
      formikBuy8: "Must be a valid country number",
      formikBuy9: "The number does not match",
      formikBuy10: "Must be a valid wallet address",
-     formikBuy11: "The amount must be between XAF 5000 and 100000.",
+     formikBuy11: `The amount must be between ${process.env.REACT_APP_BUY_MIN} and ${process.env.REACT_APP_BUY_MAX} XAF.`,
 
      //formiktraductionsell
      formikSell1: "Wallet address is required",
@@ -498,7 +502,7 @@ const english = {
      formikSell8: "Must be a valid country number",
      formikSell9: "The number does not match",
      formikSell10: "Must be a valid wallet address",
-     formikSell11: "The amount must be between XAF 6550 and 100000.",
+     formikSell11: `The amount must be between ${process.env.REACT_APP_SELL_MIN} and ${process.env.REACT_APP_SELL_MAX} XAF.`,
 
      //promocode
      promotitle1: " DO YOU HAVE A PROMOTIONAL CODE ?",
@@ -506,6 +510,8 @@ const english = {
      promotitle3: "Put your code here",
      promotitle4: "VALIDATE",
      promotitle5: "CONTINUE WITHOUT CODE",
+     promotitle6: "We are on promotion",
+     promotitle7: "This code is not available try one another",
 
      //cabital
      helpCabital: "Please follow all the procedures of the helpdesk on our operations at Cabital!",

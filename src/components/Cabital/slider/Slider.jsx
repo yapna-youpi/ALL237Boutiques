@@ -1,6 +1,6 @@
 import React from 'react'
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+// import { Swiper, SwiperSlide } from "swiper/react"
+// import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { useTranslation } from 'react-i18next'
 
 import './slide.css'

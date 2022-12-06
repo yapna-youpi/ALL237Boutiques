@@ -59,7 +59,8 @@ const { t } = useTranslation()
     }
     return (
         <div className="contacts" id="contacts">
-            <h2> <span></span>{ t('contactsTitle')} </h2>
+            <span className='finding'>{ t('contactsTitle')} </span>
+            <h2>{t('contactsTitle2')}</h2>
             <div className="contact-container">
                 <div className="details">
                     <div className="info">

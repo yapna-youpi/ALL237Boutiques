@@ -13,8 +13,9 @@ import { toastify } from '../addons/toast/Toast'
 import './sellmodal.css'
 import Timer from './Timer'
 
-const receiveWallet = "13tuVVNDH1PLfUEiTEPkMDRQfTRVHyiYn2"
-const FEES = 0.0395
+const receiveWallet = process.env.REACT_APP_RECEPT_WALLET;
+const fees = process.env.REACT_APP_SELL_FEES;
+const intouchFees = process.env.REACT_APP_INTOUCH_CI_FEES;
 
 function SellModal({ open, toogle, data, rate, User }) {
     const { t } = useTranslation()
@@ -238,7 +239,7 @@ function SellModal({ open, toogle, data, rate, User }) {
                                             <span>{t('sellModal16')} </span>  <span> {data.phone} </span>
                                         </div>
                                         <div className="">
-                                            <span>{t('sellModal17')} </span>  <span> {Intl.NumberFormat('de-DE').format(roundPrecision(cryptoChange(data.amount, rate).xaf * FEES, 0))} XAF </span>
+                                            <span>{t('sellModal17')} </span>  <span> {Intl.NumberFormat('de-DE').format(roundPrecision(cryptoChange(data.amount, rate).xaf * fees, 0))} XAF </span>
                                         </div>
                                     </div>
                                     <h3 className="message"> {setMessage()} </h3>

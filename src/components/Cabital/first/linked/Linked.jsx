@@ -30,7 +30,7 @@ function Linked({ data, User }) {
         <div className="linked">
             <div className="balances">
                 <span className='inlin'><FaEuroSign /> {roundPrecision(balance.eur, 2)}&ensp; EUR </span>
-                <span className='inlin'><img src={usdt} /> {roundPrecision(balance.usdt, 2)}&ensp; USDT </span>
+                <span className='inlin'><img src={usdt} alt="usdt" /> {roundPrecision(balance.usdt, 2)}&ensp; USDT </span>
             </div>
             <div className="purchase">
                 {payment.active ? <Payment back={() => setPayment({ ...payment, active: false })} process={startPayment} /> :
