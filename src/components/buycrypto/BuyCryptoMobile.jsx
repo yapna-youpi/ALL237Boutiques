@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import { Modal } from 'react-responsive-modal'
-import ReactLoading from 'react-loading'
-import { TiWarningOutline } from 'react-icons/ti'
-import { FaCheck, FaArrowLeft } from 'react-icons/fa'
-import { connect } from 'react-redux'
-import { isValidPhoneNumber } from 'react-phone-number-input'
-import 'react-phone-number-input/style.css'
-import { useTranslation } from 'react-i18next'
-import Modal2 from '../sendmoney/Modal2'
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Modal } from 'react-responsive-modal';
+import ReactLoading from 'react-loading';
+import { TiWarningOutline } from 'react-icons/ti';
+import { FaCheck, FaArrowLeft } from 'react-icons/fa';
+import { connect } from 'react-redux';
+import { isValidPhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import { useTranslation } from 'react-i18next';
+import Modal2 from '../sendmoney/Modal2';
+import { Helmet } from "react-helmet";
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -216,6 +217,9 @@ function BuyCryptoMobile({ Amount, country, User }) {
 
     return (
         <div className="buycrypto">
+            <Helmet>
+                <title>Achat de crypto-actifs en francs FCFA</title>
+            </Helmet>
             {enable === "FALSE" ? <h3 className='disjoint'>{t("sellCrypto18")} </h3> : ""}
             <Modal2 mode={mode} close={() => setMode(false)} />
             {/* {promo.show && <PromoCode openPromo={code} closePromo={() => setPromo({...promo, show: false})} activePromotion={activePromotion} />} */}

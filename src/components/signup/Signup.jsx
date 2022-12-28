@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import ReactLoading from 'react-loading'
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { Helmet } from "react-helmet";
 
 import { sendToApi, regPassword } from '../../utils/utilFunctions'
 import { toastify } from '../addons/toast/Toast'
@@ -137,6 +138,9 @@ function Signup({ Country, match }) {
     return (
         <>
             <div className="signup">
+                <Helmet>
+                    <title>Investir dans la cryptomonnaie au Cameroun Sénégal Mali Burkina Cote d’Ivoire Guinée</title>
+                </Helmet>
                 <div className="signup-content">
                     {show ? (<div className="resend-content">
                         <div className="resend-title">

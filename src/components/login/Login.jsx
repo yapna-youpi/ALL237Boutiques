@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 import ReactLoading from 'react-loading';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { Helmet } from "react-helmet";
 
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next';
@@ -103,6 +104,9 @@ function Login({ dispatch }) {
 
     return (
         <div className="login">
+            <Helmet>
+                <title>Site d’échange de crypto-monnaie en Afrique</title>
+            </Helmet>
             <div className="login-content">
                 <div className="login-title">
                     <h1 style={{ color: '#0F394C', fontFamilly: 'Segoe UI' }}>{t('LoginTitle')}</h1>

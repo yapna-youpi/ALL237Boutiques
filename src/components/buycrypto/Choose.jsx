@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import { FiSmartphone } from 'react-icons/fi';
 import { FaRegCreditCard } from 'react-icons/fa';
-import { CgChevronDoubleDownR } from 'react-icons/cg'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 import { ImForward } from "react-icons/im";
+import { Helmet } from "react-helmet";
 
 import './chooses.css'
 import visa from './images/visa.webp';
@@ -53,6 +53,9 @@ function Choose() {
 
     return (
         <div id="choose" className="choose" style={{ color: '#707070' }}>
+            <Helmet>
+                <title>Comment avoir bitcoin et usdt par paiement mobile</title>
+            </Helmet>
             <h1>{t('choosesTitle')}</h1>
             <div className="chooses">
                 <div className="credit-card way">

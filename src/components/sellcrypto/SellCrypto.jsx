@@ -1,11 +1,12 @@
-import React, { useState, useEffect, createRef } from 'react'
-import 'react-phone-number-input/style.css'
-import { isValidPhoneNumber } from 'react-phone-number-input'
-import { connect } from 'react-redux'
-import { useTranslation } from 'react-i18next'
-import { Modal } from 'react-responsive-modal'
-import Modal2 from '../sendmoney/Modal2'
-import Button from '@material-ui/core/Button'
+import React, { useState, useEffect, createRef } from 'react';
+import 'react-phone-number-input/style.css';
+import { isValidPhoneNumber } from 'react-phone-number-input';
+import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { Modal } from 'react-responsive-modal';
+import Modal2 from '../sendmoney/Modal2';
+import Button from '@material-ui/core/Button';
+import { Helmet } from "react-helmet";
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -206,6 +207,9 @@ function SellCrypto({ Amount, country, User }) {
 
     return (
         <div id="sellcrypto" className="sellcrypto" ref={myRef}>
+            <Helmet>
+                <title>Echanger sa crypto en Orange Money, MTN Mobile Money, Moov, Mobicash et Free</title>
+            </Helmet>
             {enable === "FALSE" ? <h3 className='disjoint'>{t("sellCrypto18")} </h3> : ""}
 
             <Modal2 mode={mode} close={() => setMode(false)} />

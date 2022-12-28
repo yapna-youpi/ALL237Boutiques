@@ -12,21 +12,25 @@ import Services from './services/Services';
 import Testimonials from './testimonials/Testimonials';
 import Steps from './steps/Steps';
 import Contacts from './contacts/Contacts';
+import { Helmet } from "react-helmet";
 
 function Home() {
-    React.useEffect(()=>{
-		AOS.init({
-			scrollContainer: "#approot",
-			duration: 1000,
-		})
+    React.useEffect(() => {
+        AOS.init({
+            scrollContainer: "#approot",
+            duration: 1000,
+        })
     }, [])
 
     return (
         <div className='home'>
+            <Helmet>
+                <title>Acheter et vendre sa cryptomonnaie par Mobile Money, SEPA ou Visa</title>
+            </Helmet>
             <Hero />
             <Operations />
             <About />
-            <Cookies/>
+            <Cookies />
             <Partner />
             <Services />
             <Testimonials />
