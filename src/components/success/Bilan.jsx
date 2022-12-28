@@ -5,33 +5,33 @@ function Bilan({data}) {
     const { t } = useTranslation()
 
     return (
-        <div className="bilan">
-            <h2>{t(' bilan1')}</h2>
+       <div className="bilan" >
+            <h2 className='bilanTitle'>{t('bilan1')}</h2>
             <div className="row">
-                <span>{t(' bilan2')} </span>
+                <span>{t('bilan2')} </span>
                 <span> {data.operation} </span>
             </div>
             <div className="row">
-                <span>{t(' bilan3')}</span>
+                <span>{t('bilan3')}</span>&ensp;
                 <span> {data.id} </span>
             </div>
             <div className="row">
-                <span>{t(' bilan4')}</span>
+                <span>{t('bilan4')}</span>
                 <span> {data.amount} XAF </span>
             </div>
             <div className="row">
-                <span>{t(' bilan5')}</span>
+                <span>{t('bilan5')}</span>
                 <span> {data.phone} </span>
             </div>
             {data.hash && <div className="row">
-                <span>{t(' bilan6')}</span>
+                <span>{t('bilan6')}</span>
                 <span>
-                    <a title='See operation progression' href={`https://www.blockchain.com/btc/tx/${data.hash}`} target="_blank">
+                    <a title='See operation progression' href={`${process.env.REACT_APP_MEMPOOL_URL}/tx/${data.hash}`} target="_blank">
                     { data.hash.substr(0, 6)+'...'+data.hash.substr(54) }
                     </a>
                 </span>
             </div>}
-            <span className='span'>{t(' bilan7')}</span>
+            <span className='span'>{t('bilan7')}</span>
         </div>
     )
 }

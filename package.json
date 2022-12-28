@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.1.10",
     "aos": "^2.3.4",
     "axios": "^0.24.0",
+    "bitcoin-address-validation": "^2.2.1",
     "country-list-js": "^3.1.7",
     "formik": "^2.2.9",
     "i18next": "^21.3.2",

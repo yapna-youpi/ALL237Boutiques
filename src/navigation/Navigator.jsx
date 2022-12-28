@@ -8,8 +8,8 @@ import Toast from '../components/addons/toast/Toast';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import Home from '../components/home/Home';
-import SendMoney from '../components/sendmoney/SendMoney';
-import SendCabital from '../components/sendmoney/SendCabital';
+// import SendMoney from '../components/sendmoney/SendMoney';
+// import SendCabital from '../components/sendmoney/SendCabital';
 import Choose from '../components/buycrypto/Choose';
 import BuyCryptoMobile from '../components/buycrypto/BuyCryptoMobile';
 import BuyCryptoCard from '../components/buycrypto/BuyCryptoCard';
@@ -24,8 +24,8 @@ import Forget from '../components/forget/Forget';
 import Reset from '../components/forget/Reset';
 import More from '../components/home/more/More';
 import Valid from '../components/valid/Valid';
-import Cabital from '../components/Cabital/Cabital'
-import SendNavigator from '../components/sendnavigator/SendNavigator'
+// import Cabital from '../components/Cabital/Cabital'
+// import SendNavigator from '../components/sendnavigator/SendNavigator'
 import ComingSoon from '../components/coming/ComingSoon'
 
 const SWITCH_INTOUCH = process.env.REACT_APP_SWITCH_INTOUCH === 'TRUE'
@@ -55,7 +55,7 @@ function Main({ User, Country }) {
                     <Route path='/buycrypto/card' exact component={checkUser(BuyCryptoCard)} />
                     <Route path='/sellcrypto*' exact component={checkUser(SellCrypto)} />
                     <Route path='/purchase' exact component={SWITCH_INTOUCH ? PayCinet : Pay} />
-                    <Route path='/complete' exact component={Success} />
+                    <Route path='/complete' exact component={checkUser(Success)} />
                     <Route path='/signup*' exact component={Signup} />
                     <Route path='/signup/:id' exact component={Signup} />
                     <Route path='/login*' exact component={Login} />

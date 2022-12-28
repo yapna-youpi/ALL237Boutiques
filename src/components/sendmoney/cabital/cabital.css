@@ -34,15 +34,16 @@
 }
 
 /* -- début du style du composant RenderkycMatch --*/
-.react-responsive-modal-modal {
+/* .react-responsive-modal-modal {
     display: flex;
     justify-content: center;
+    padding: 10px!important;
     margin: 10vh auto !important;
     width: 95%;
     padding: 0 !important;
     border-radius: 8px;
     border: none;
-}
+} */
 
 .kycmatch, .cabitalcontent {
     border-radius: 8px;
@@ -372,13 +373,13 @@ select, option:checked {
 
 @media only screen and (min-width:550px) {
 
-    .react-responsive-modal-modal {
+    /* .react-responsive-modal-modal {
         width: 70% !important;
         margin: 5vh auto !important;
         display: flex;
         justify-content: center;
         align-items: center;
-    }
+    } */
     .backyc{
         transform: translate(-194px, -25px);
     }
@@ -437,24 +438,4 @@ select, option:checked {
     width: inherit;
 }
     
-}
-
-@media only screen and (min-width:992px) {
-
-
-    .react-responsive-modal-modal {
-        width: 48% !important;
-        margin: 5vh auto !important;
-    }
-
-}
-
-@media only screen and (min-width:1260px) {
-
-
-    .react-responsive-modal-modal {
-        width: 40% !important;
-        margin: 5vh auto !important;
-    }
-
 }

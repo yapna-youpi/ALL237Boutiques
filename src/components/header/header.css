@@ -1,6 +1,7 @@
 .header {
   /* border: 2px solid green; */
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  border-bottom: 1px solid var(--yellow);
 }
 nav {
   /* retirer ca pour voir l'enseigne */

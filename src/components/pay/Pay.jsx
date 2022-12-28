@@ -26,7 +26,7 @@ function Pay({ User }) {
     let ref = React.createRef()
     useEffect(() => {
         let data = JSON.parse(sessionStorage.getItem('data'))
-        console.log("les data ", data)
+        // console.log("les data ", data)
         data ? start(data) : history.push("/buycrypto/mobile")
         sessionStorage.removeItem("data")
     }, [])
@@ -49,16 +49,16 @@ function Pay({ User }) {
     }
     const success = async (data) => {
         // success function 
-        let params = {
-            transaction_id: data.id,
-            txid: data.txid,
-            status: 'complete',
-            userId: User.userId,
-        }
-        sendToApi('buymobile/updatetransaction', params, User.token)
-            .then(data => {
-                if (!data.success) createAgain(params)
-            })
+        // let params = {
+        //     transaction_id: data.id,
+        //     txid: data.txid,
+        //     status: 'complete',
+        //     userId: User.userId,
+        // }
+        // sendToApi('buymobile/updatetransaction', params, User.token)
+        //     .then(data => {
+        //         if (!data.success) createAgain(params)
+        //     })
         let pm = {
             operation: 'Buy Crypto',
             id: data.id,
@@ -76,14 +76,21 @@ function Pay({ User }) {
     }
     const cancel = (data, i) => {
         let witness = i > 1
+        // console.log("error step ", i)
         setTrace({ status: true, error: data, traceStep: i, backFund: witness, mobilePaid: false })
-        if (witness) backFunds(data, i, witness)
-        else {
-            sendToApi('buymobile/updatetransaction', { transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId }, User.token)
+        if (i <= 3) {
+            sendToApi('buymobile/updatetransaction', { transaction_id: params.id, status: 'fail', errorStep: i, userId: User.userId }, User.token)
                 .then(data => {
-                    if (!data.success) createAgain({ transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId })
+                    if (!data.success) createAgain({ transaction_id: params.id, status: 'fail', errorStep: i, userId: User.userId })
                 })
         }
+        // if (witness) backFunds(data, i, witness)
+        // else {
+        //     sendToApi('buymobile/updatetransaction', { transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId }, User.token)
+        //         .then(data => {
+        //             if (!data.success) createAgain({ transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId })
+        //         })
+        // }
     }
     const changeStep = (i, text) => {
         text ? setStep({ step: i, url: text }) : setStep({ ...step, step: i })
@@ -94,6 +101,18 @@ function Pay({ User }) {
         else return <FaCheck size={50} color="#CC1616" />
     }
     const backFunds = (err, i, witness) => {
+        let payload = {
+            transaction_id: params.id,
+            status: 'fail',
+            errorStep: 4,
+        }
+        setTrace({ status: true, error: err, traceStep: i, backFund: true, mobilePaid: true })
+        sendToApi('buymobile/updatetransaction', { ...payload, backFunds: false, userId: User.userId }, User.token)
+            .then(data => {
+                if (!data.success)
+                    createAgain({ ...payload, backFunds: false, userId: User.userId })
+            })
+        /* this handle backfund function
         let data = {
             partner_id: randomId(),
             amount: params.xaf,
@@ -122,7 +141,7 @@ function Pay({ User }) {
                             createAgain({ ...payload, backFunds: false, userId: User.userId })
                     })
             }
-        })
+        })*/
         return
     }
     const createAgain = async (data) => {
@@ -156,11 +175,11 @@ function Pay({ User }) {
                     <p>{t('payTitle')}</p>
                 </div>
                 <p>
-                    {/* {trace.backFund ? backFunds() : (null)} */}
-                    {trace.backFund && <h3 className="backfunds" >{t('paySous1')}  &ensp; &ensp; {
+                    {trace.backFund && <h3 className="backfunds" >{t('paySous1a')} <span className='bulet' href="mailto:info@ipercash.fr"> contact@ipercash.fr </span>{t('paySous2a')}</h3>}
+                    {/* {trace.backFund && <h3 className="backfunds" >{t('paySous1')}  &ensp; &ensp; {
                         trace.mobilePaid ? <FaCheck size={20} color="#CC1616" />
                             : <ReactLoading type="spinningBubbles" color='#CC1616' height={20} width={20} />
-                    } </h3>}
+                    } </h3>} */}
                 </p>
             </div>
         </div>
@@ -185,18 +204,24 @@ function Pay({ User }) {
                             <StepLabel icon={<span className="icon-step" >1</span>}>
                                 <h2>{t('paySous5')}{setIcon(step.step, 0)} </h2>
                             </StepLabel>
-                            <StepContent>
+                            {/* <StepContent>
                                 <div className="">
                                     &raquo;{t('paySous6')}
-                                </div> <br />
+                                </div> 
+                                <br />
                                 <div className="">
                                     &raquo;{t('paySous7')}
                                 </div>
-                            </StepContent>
+                            </StepContent> */}
                         </Step>
                         <Step>
                             <StepLabel icon={<span className="icon-step" >2</span>}>
-                                <h2>{t('paySous8')} {setIcon(step.step, 1)} </h2>
+                                <h2>{t('paySous6').toUpperCase()}{setIcon(step.step, 1)} </h2>
+                            </StepLabel>
+                        </Step>
+                        <Step>
+                            <StepLabel icon={<span className="icon-step" >3</span>}>
+                                <h2>{t('paySous8')} {setIcon(step.step, 2)} </h2>
                             </StepLabel>
                             <StepContent>
                                 <h3>{t('paySous9')}  </h3>
@@ -208,13 +233,13 @@ function Pay({ User }) {
                             </StepContent>
                         </Step>
                         <Step>
-                            <StepLabel icon={<span className="icon-step" >3</span>}>
-                                <h2>{t('paySous13')} {setIcon(step.step, 2)} </h2>
+                            <StepLabel icon={<span className="icon-step" >4</span>}>
+                                <h2>{t('paySous13')} {setIcon(step.step, 3)} </h2>
                             </StepLabel>
                         </Step>
                         <Step>
-                            <StepLabel icon={<span className="icon-step" >4</span>}>
-                                <h2>{t('paySous14')} {setIcon(step.step, 3)} </h2>
+                            <StepLabel icon={<span className="icon-step" >5</span>}>
+                                <h2>{t('paySous14')} {setIcon(step.step, 4)} </h2>
                             </StepLabel>
                         </Step>
                     </Stepper>

@@ -109,5 +109,12 @@ input::-o-outer-spin-button {
 	margin:0
 }
 
+/*-- le modal--*/
+.react-responsive-modal-modal {
+  border-radius: 2%;
+  margin: 0;
+  padding: 0!important;
+}
+
 
 

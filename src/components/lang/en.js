@@ -158,7 +158,7 @@ const english = {
     sellModal18: 'Confirm',
     sellModal19: 'We could not send money to your mobile money',
     sellModal20: 'there are an conflict',
-    sellModal21: 'no transaction found check sender address or resend it. \n Note : Transaction can make some time before to be detected. Wait a moment and click again ',
+    sellModal21: 'No transactions have been detected so far. It may take some time for the transaction to be found in the blockchain. Make sûre you have sent transaction.',
     sellModal22: 'Close',
 
     // buycryptoCard
@@ -355,6 +355,8 @@ const english = {
     //pay
     payTitle: 'The operation could be completed',
     paySous1: 'Send back payment',
+    paySous1a: 'Please send an email to',
+    paySous2a: 'for any complain',
     paySous2: 'You operation id is :',
     paySous3: 'Use it for any claim',
     paySous4: 'TRANSACTION IN PROGRESS',

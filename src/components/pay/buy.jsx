@@ -1,10 +1,7 @@
 import { cashOut } from '../../intouch/api'
 import { sendToApi, trackStatus } from '../../utils/utilFunctions'
 import { checkBalance, checkAddress } from '../../bitcoins/process'
-// import crypt from '../../utils/crypt'
 
-const mainNetUrl = 'https://api.blockcypher.com/v1/btc/main/txs/push'
-// const testNetUrl='https://api.blockcypher.com/v1/btc/test3/txs/push'
 
 // fonction principale de l'achat
 const buy = async (state, User, callback, cancel, success) => {
@@ -14,10 +11,8 @@ const buy = async (state, User, callback, cancel, success) => {
     let params = {
         partner_id: state.id,
         amount: state.xaf,
-        // amount: 500,
         number: state.phone,
         userId: User.userId
-        // service: checkServiceId(state.number.substring(4)),
     }
     let crypto = state.amount * 100000000
     // let crypto=0.01*100000000 
@@ -42,6 +37,7 @@ const buy = async (state, User, callback, cancel, success) => {
         }
         // fin de la verification de l'adresse
         attemps = 0
+        i++
         // verification du solde
         do {
             result = await checkBalance(crypto)
@@ -60,8 +56,7 @@ const buy = async (state, User, callback, cancel, success) => {
         attemps = 0
         // fin de la premiere etape 
         i++
-        callback(i)  // c'est la callback ci qu'il faut modifier
-
+        callback(i)
         // reception du payment
         do {
             let cashout = await cashOut(params, User.token)
@@ -72,17 +67,20 @@ const buy = async (state, User, callback, cancel, success) => {
             }
         } while (attemps < 3)
         if (partner_id) {
-            trackStatus({ ...params, id: params.partner_id }, User.token, () => afterBuy(i, callback, wallet, crypto, cancel, success, User), cancel)
+            // console.log("we enter on track status ...")
+            trackStatus({ ...params, id: params.partner_id }, User.token, () => afterBuy(i, callback, state.id, cancel, success, User), cancel)
         }
         else {
             cancel({ status: 'fail', cause: "payment demand has fail", cn: 8 }, i)
             return 10
-        } 
+        }
         // comment above in test or under in production
         // callback(i)
-        /* fin de l'operation */
+        /*  fin de l'operation  */
 
-        // afterBuy(i, callback, wallet, crypto, cancel, success, User)
+        // setTimeout(() => {
+        //     afterBuy(i, callback, state.id, cancel, success, User)
+        // }, 5000);
 
 
     } catch (error) {
@@ -90,7 +88,7 @@ const buy = async (state, User, callback, cancel, success) => {
     }
 }
 
-const afterBuy = async (i, callback, wallet, crypto, cancel, success, User) => {
+const afterBuy = async (i, callback, id, cancel, success, User) => {
     let result
     // fin de la deuxieme etape
     i++
@@ -98,7 +96,7 @@ const afterBuy = async (i, callback, wallet, crypto, cancel, success, User) => {
 
 
     // construction de la transaction
-    result = await getHash(wallet, crypto, User)
+    result = await getHash(id, User)
     if (result.status === 'fail') {
         cancel(result, i)
         return result
@@ -117,21 +115,9 @@ const afterBuy = async (i, callback, wallet, crypto, cancel, success, User) => {
 }
 
 
-const sendCrypto = async (hash) => {
-    var decodetx = {
-        tx: hash
-    }
-    return await fetch(mainNetUrl, { method: "POST", body: JSON.stringify(decodetx) })
-        .then(response => response.json())
-        .then(data => {
-            if (data.tx) return { status: 'success', txid: data.tx.hash }
-            else return { status: 'fail', cause: "can't send funds", cn: 7 }
-        })
-}
-
-const getHash = async (wallet, crypto, User) => {
-    let params = { recipient: wallet, amount: crypto, userId: User.userId }
-    return await sendToApi('hash', params, User.token).then(result => {
+const getHash = async (id, User) => {
+    let params = { id, userId: User.userId }
+    return await sendToApi('buymobile/hash', params, User.token).then(result => {
         if (result === "error") return { status: 'fail', cause: "can't get hash", cn: 7 }
         return result
 

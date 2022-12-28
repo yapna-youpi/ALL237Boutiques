@@ -4,7 +4,7 @@ import { roundDecimal } from '../../utils/utilFunctions';
 const percent=1    //1.15
 const inverPercent=1    //0.85
 
-const cryptoChange=(value, rate)=>{
+const cryptoChange=(value, rate,forex)=>{
     if(value<0.00033) {
         return {
             xaf: 0,
@@ -14,7 +14,7 @@ const cryptoChange=(value, rate)=>{
     }
     else {
         return {
-            xaf: Math.round(value*rate*655*percent),
+            xaf: Math.round(value*rate*forex*percent),
             eu: roundDecimal(value*rate*percent),
             amount: value,
         }
@@ -22,36 +22,36 @@ const cryptoChange=(value, rate)=>{
 
 }
 
-const euroChange=(value, rate)=>{
+const euroChange=(value, rate,forex)=>{
     if(value<25) {
         return {
-            xaf: value*655,
+            xaf: value*forex,
             eu: value,
             amount: 0
         }
     }
     else {
         return {
-            xaf: value*655,
+            xaf: value*forex,
             eu: value,
             amount: roundDecimal(value*inverPercent/rate),
         }
     }
 }
 
-const xafChange=(value, rate)=>{
+const xafChange=(value, rate,forex)=>{
     if(value<16500 || rate===0 ) {
         return {
             xaf: value,
-            eu: roundDecimal(value/655),
+            eu: roundDecimal(value/forex),
             amount: 0
         }
     }
     else {
         return {
             xaf: value,
-            eu: roundDecimal(value/655),
-            amount: roundDecimal(value*inverPercent/rate/655),
+            eu: roundDecimal(value/forex),
+            amount: roundDecimal(value*inverPercent/rate/forex),
         }
     }
 }

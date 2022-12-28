@@ -20,7 +20,6 @@ import iperFot from './assets/undraw_Mobile_login_re_9ntv.svg'
 let deferredPrompt = null
 
 window.addEventListener('beforeinstallprompt', function (e) {
-    // alert("deferred props enable")
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     e.preventDefault()
     // Stash the event so it can be triggered later.

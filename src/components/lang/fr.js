@@ -158,7 +158,7 @@ const french = {
     sellModal18: 'Confirmer',
     sellModal19: 'Nous ne parvenons pas a envoyer l\'argent vers votre compte',
     sellModal20: 'Impossible de vendre ce montant pour l\'instant \n Veuillez essayer avec un autre montant',
-    sellModal21: 'Aucune transaction n\'a ete trouvée. verifiez l\'adresse ou renvoyez. \n Note : la transaction peut mettre du temps avant d\'etre detectée patientez et cliquze à nouveau ',
+    sellModal21: "Aucune transaction n'a pour le moment été détectée. La transaction peut mettre un certain temps avant d'être détectée. Assurez vous d'avoir effectué la transaction. ",
     sellModal22: 'Fermer',
 
     // buycryptoCard
@@ -354,6 +354,8 @@ const french = {
     //pay
     payTitle: "l'opération n'a pas pu se terminer",
     paySous1: 'Renvoyer le paiement',
+    paySous1a: "S'il vous plaît envoyez un email à ",
+    paySous2a: "pour toutes reclamations",
     paySous2: "votre identifiant d'opération est :",
     paySous3: "L'utiliser pour toute réclamation",
     paySous4: 'TRANSACTION EN COURS',

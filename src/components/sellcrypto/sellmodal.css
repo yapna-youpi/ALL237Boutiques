@@ -13,7 +13,7 @@
 }
 .modal-container {
   color: var(--night-blue);
-  margin: 10px 6px;
+  background-color: var(--berge);
 }
 .timer {
   font-weight: 600;
@@ -21,14 +21,31 @@
   color: var(--red);
 }
 .waiter {
+  /* transform: translateY(-25px); */
   max-width: 400px;
   text-align: center;
+}
+.modal-container .waiter .titlewaiter{
+  margin-top: 0;
+  padding: 3%;
+  font-size: 22px;
+  font-weight: 600;
 }
 .modal-container .qrcode {
   text-align: center;
 }
-.modal-container h3 {
+.modal-container .titleh3 {
   text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--night-blue);
+  color: var(--white);
+  padding: 15px 0;
+  z-index: 5;
+  opacity: 0.9;
+}
+.modal-details {
+  background-color: var(--berge);
 }
 .modal-container .operation-id {
   color: var(--red);
@@ -43,8 +60,11 @@
 .modal-details > div {
   display: flex;
   justify-content: space-between;
-  margin: 30px 0px;
+  /* margin: 30px 0px; */
   font-size: 1.5em;
+  padding: 20px 20px;
+  border-top: 1px solid aliceblue;
+  border-bottom: 1px solid aliceblue;
 }
 .modal-container > div span:nth-child(2) {
   font-weight: 600;
@@ -83,7 +103,7 @@
   max-width: 500px;
   padding: 2%;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1em;
   line-height: 1.5em;
 }
 .send-bloc .wadd {
@@ -97,25 +117,31 @@
   background: var(--transparent2);
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 992px) {
   .modal-details {
     font-size: 1.1em;
   }
   .modal-details > div {
     display: flex;
     justify-content: space-between;
-    margin: 50px 0px;
+    padding: 20px 30px;
   }
-  .modal-container{
+  /* .modal-container{
     margin: 10px 30px;
-  }
+  } */
   .modal-container > div span:nth-child(2) {
     font-weight: 600;
     margin-left: 150px;
   }
   .modal-controls button {
-    font-size: 1.7em;
+    font-size: 1.5em;
     margin: 15px 30px;
+  }
+  .send-bloc {
+    padding: 2%;
+    text-align: center;
+    font-size: 1.3em;
+    line-height: 1.5em;
   }
 }
 

@@ -7,6 +7,7 @@
 .modal-confirm {
   padding: 6% 0;
   text-align: center;
+  background-color: var(--berge);
 }
 .transparent-modal {
   background-color: transparent;
@@ -94,6 +95,9 @@
   text-align: center;
   font-weight: unset!important;
 }
+.buy-title,.wallet-div{
+  padding: 0 20px;
+}
 
 @media screen and (min-width: 768px) {
   .disjoint {
@@ -113,6 +117,7 @@
   }
   .buy-title{
     font-size: 35px;
+    padding: 0 35px;
   }
   .wallet-div{
     font-size: 25px;

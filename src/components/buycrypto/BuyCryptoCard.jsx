@@ -15,6 +15,17 @@ function BuyCryptoCard({Amount, User}) {
     const [operationId, setId]=useState({id: randomId('BC'), status: false})
     // initialisation des taux de changes
     const [rate, setRate] = useState({BCH: 575.69, BTC: 0, ETH: 2075.48})
+    //initialisation de la valeur reele de usdt en francs
+    const [forex, setForex] = useState({ USD: 0, XAF: 0, XOF: 0 })
+
+    useEffect(() => {
+        let result = fetch("https://api-beta-05.herokuapp.com/api/currencies")
+            .then(resp => resp.json())
+            .then( data => setForex(data))
+            .catch(err => 0)
+        }, [])
+        console.log(forex, 'le forex sur mesure')
+
     // initialisation du state du composants
     const [state, setState] = useState({
         crypto: "BTC", operator: "", amount: 0, xaf: 0, eu: 0, rate: rate.BTC, wallet: ""
@@ -31,7 +42,7 @@ function BuyCryptoCard({Amount, User}) {
             if(rate) {
                 //setState
                 setRate({...rate, BTC: newRate})
-                setState({...state, rate: newRate, ...xafChange(Amount, newRate)})
+                setState({...state, rate: newRate, ...xafChange(Amount, newRate,forex)})
 
             }
         })
@@ -68,16 +79,16 @@ function BuyCryptoCard({Amount, User}) {
         let result
         switch (e.name) { // amount c'est le montant en crypto monnaie 
             case "crypto":
-                result=cryptoChange(e.value, rate.BTC)
+                result=cryptoChange(e.value, rate.BTC,forex.XAF)
                 setState({...state, ...result})
             break
             case "xaf":
-                result=xafChange(e.value, rate.BTC)
+                result=xafChange(e.value, rate.BTC,forex.XAF)
                 setState({...state, ...result})
             break;
             
             case "eu":
-                result=euroChange(e.value, rate.BTC)
+                result=euroChange(e.value, rate.BTC,forex.XAF)
                 setState({...state, ...result})
             break;
             default:
@@ -117,7 +128,7 @@ function BuyCryptoCard({Amount, User}) {
             <div className="buy-container">
                 <div className="rate">
                     <h3>{t('buyCryptoCardSous1')}</h3>
-                    <div className=""> 1 BTC === {Math.round(rate.BTC*655)} XAF === {rate.BTC} EU </div>
+                    <div className=""> 1 BTC === {Math.round(rate.BTC*forex.XAF)} XAF === {rate.BTC} EU </div>
                     <span>{t('buyCryptoCardSous3')}  <a href="https://www.coindesk.com/coindesk-api" target="_blank">{t('buyCryptoCardSous2')}  </a> </span> 
                 </div>
                 <div className="form">

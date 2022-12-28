@@ -1,6 +1,7 @@
 import React from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { Helmet } from "react-helmet";
 
 import './home.css'
 import Hero from './hero/Hero';
@@ -12,7 +13,6 @@ import Services from './services/Services';
 import Testimonials from './testimonials/Testimonials';
 import Steps from './steps/Steps';
 import Contacts from './contacts/Contacts';
-import { Helmet } from "react-helmet";
 
 function Home() {
     React.useEffect(() => {

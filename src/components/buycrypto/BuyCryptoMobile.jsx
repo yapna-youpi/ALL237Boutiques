@@ -9,22 +9,18 @@ import { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { useTranslation } from 'react-i18next';
 import Modal2 from '../sendmoney/Modal2';
-import { Helmet } from "react-helmet";
-
+import { validate } from 'bitcoin-address-validation';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-// import Button from '@material-ui/core/Button'
+import { Helmet } from "react-helmet";
 
 import './buycrypto.css'
 import Sumsub from '../sumsub/Sumsub'
 import PromoCode from '../promocode/PromoCode'
 import { Input, Input2 } from '../addons/input/Input'
-// import { Input } from '../addons/input/Input';
 import InputPhone from '../addons/input/PhoneInput'
-// import PhoneInput from '../addons/input/PhoneInput'
 import Fiats from '../addons/Fiats/Fiats'
 import { randomId, getCryptoRate } from '../../utils/utilFunctions'
-import { regWallet, regPhone } from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleMobile'
 
 const max = parseInt(process.env.REACT_APP_BUY_MAX)
@@ -32,12 +28,14 @@ const min = parseInt(process.env.REACT_APP_BUY_MIN)
 const enable = process.env.REACT_APP_BUY_ENABLE
 
 
-
+let interval
 function BuyCryptoMobile({ Amount, country, User }) {
+
+
     const { t } = useTranslation()
 
     const validationSchema = yup.object({
-        wallet: yup.string().required(`${t('formikBuy1')}`).matches(regWallet, `${t('formikBuy2')}`),
+        wallet: yup.string().required(`${t('formikBuy1')}`), //.matches(regWallet, `${t('formikBuy2')}`),
         xaf: yup.string().required(`${t('formikBuy3')}`),
         eu: yup.string().required(`${t('formikBuy4')}`),
         amount: yup.string().required(`${t('formikBuy5')}`),
@@ -47,7 +45,8 @@ function BuyCryptoMobile({ Amount, country, User }) {
 
     //initialisation de variabl d'environnement
     const [mode, setMode] = useState(false)
-
+    //initialisation de la valeur reele de usdt en francs
+    const [forex, setForex] = useState({ USD: 0, XAF: 0, XOF: 0 })
 
     // initialisation des taux de changes
     const [rate, setRate] = useState({ EUR: 0, USD: 0 })
@@ -74,7 +73,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
         initialValues: {
             wallet: "", xaf: "0", eu: "0",
             amount: "0", phone: "", cfphone: "",
-            rate: rate.EUR, fiat: 'EUR', crypto: "BTC",
+            rate: { EUR: 0, USD: 0 }, fiat: 'EUR', crypto: "BTC",
         },
         validationSchema,
         onSubmit: async () => {
@@ -82,52 +81,63 @@ function BuyCryptoMobile({ Amount, country, User }) {
         }
     })
     let history = useHistory()
-    useEffect(async () => {
+    useEffect(() => {
+        // console.log("buy crypto se monte ...", interval)
         getCryptoRate().then(newRate => {
             if (!newRate) return
             setRate({ ...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float })
             // formik.setValues({...formik, rate: newRate[state.fiat].rate_float, ...xafChange(Amount, newRate)})
-            formik.setFieldValue('rate', newRate[formik.values.fiat].rate_float)
-            // setState({ ...state, rate: newRate[state.fiat].rate_float, ...xafChange(Amount, newRate) })
+            formik.setFieldValue({ ...formik.values, rate: { EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float } }, true)
+            // setState({ ...state, rate: newRate[state.fiat].rate_float, ...xafChange(Amount, newRate) }
         })
-        let interval = setInterval(() => {
+
+        interval = setInterval(() => {
             getCryptoRate().then(newRate => {
                 if (!newRate) return
                 setRate({ ...rate, EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float })
-                formik.setFieldValue('rate', newRate[formik.values.fiat].rate_float)
+                // formik.setValues({ ...formik.values, rate: { EUR: newRate.EUR.rate_float, USD: newRate.USD.rate_float }}, true)
             })
         }, 30 * 1000)
-        // if(User.parrain_id) window.alert('the parrain id : '+User.parrain_id+', '+User.percent)
+
         return () => {
+            // console.log("buy crypto se demonte ...", interval)
             clearInterval(interval)
         }
     }, [])
+
     useEffect(() => {
+        let result = fetch("https://api-beta-05.herokuapp.com/api/currencies")
+            .then(resp => resp.json())
+            .then(data => setForex({ ...data, USD: Math.round((data.USD) * 100) / 100, usdXaf: Math.round((data.XAF / data.USD) * 100) / 100 }))
+            .catch(err => 0)
+
         const target = { name: "xaf", value: parseInt(formik.values.xaf) }
         amountChange({ target })
-    }, [formik.values.rate, promo])
+    }, [promo])
 
     const openModal = () => setModal(!modal)
     // function that manage the change of amount on each field
     const amountChange = e => {
+        let unit = formik.values.fiat == 'EUR' ? forex.XAF : forex.usdXaf
         let result
         // console.log(e.target.name)
         switch (e.target.name) { // amount c'est le montant en crypto monnaie 
             case "amount":
-                formik.setFieldValue(e.target.name, e.target.value)
-                result = cryptoChange(e.target.value, rate[formik.values.fiat], promo.promotion, User.percent)
+                // formik.setFieldValue(e.target.name, e.target.value)
+                result = cryptoChange(e.target.value, rate[formik.values.fiat], promo.promotion, User.percent, forex.XAF, rate.EUR)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break
+
             case "xaf":
                 // console.log("xaf has changed")
                 // formik.setFieldValue(e.target.name, e.target.value)
-                result = xafChange(e.target.value, rate[formik.values.fiat], promo.promotion, User.percent)
+                result = xafChange(e.target.value, rate[formik.values.fiat], promo.promotion, User.percent, unit)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break;
 
             case "eu":
-                formik.setFieldValue(e.target.name, e.target.value)
-                result = euroChange(e.target.value, rate[formik.values.fiat], promo.promotion, User.percent)
+                // formik.setFieldValue(e.target.name, e.target.value)
+                result = euroChange(e.target.value, rate[formik.values.fiat], promo.promotion, User.percent, unit)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break;
             default:
@@ -136,7 +146,9 @@ function BuyCryptoMobile({ Amount, country, User }) {
     }
     // function that manages the activation of the button
     const active = () => {
-        if (!(min > parseFloat(formik.values.xaf) || parseFloat(formik.values.xaf) > max) && formik.values.wallet.match(regPhone) && isValidPhoneNumber(formik.values.phone || '') && formik.values.cfphone === formik.values.phone) {
+        if (!(min > parseFloat(formik.values.xaf) || parseFloat(formik.values.xaf) > max)
+            // && formik.values.wallet.match(regWallet) && isValidPhoneNumber(formik.values.phone || '') && formik.values.cfphone === formik.values.phone) {
+            && validate(formik.values.wallet) && isValidPhoneNumber(formik.values.phone || '') && formik.values.cfphone === formik.values.phone) {
             return false
         } else return true
 
@@ -156,7 +168,8 @@ function BuyCryptoMobile({ Amount, country, User }) {
             formik.values.cfphone !== formik.values.phone && formik.setFieldError('cfphone', `${t('formikBuy9')}`)
         }
         if (formik.values.wallet && !formik.errors.wallet) {
-            !formik.values.wallet.match(regPhone) && formik.setFieldError('wallet', `${t('formikBuy10')}`)
+            !validate(formik.values.wallet) && formik.setFieldError('wallet', `${t('formikBuy10')}`)
+            // !formik.values.wallet.match(regWallet) && formik.setFieldError('wallet', `${t('formikBuy10')}`)
         }
         if (formik.values.xaf && !formik.errors.xaf) {
             (min > montant || montant > max) && formik.setFieldError('xaf', `${t('formikBuy11')}`)
@@ -168,7 +181,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
             formik.setFieldTouched(field, true)
     }
 
-    // fonction qui verifie la correspondance des addresse
+    // fonction qui verifie la correspondance des addresses
     const checkAddress = e => {
         if (e.value === formik.values.wallet) {
             // sessionStorage.clear()
@@ -178,6 +191,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
             setValid(true)
             // console.log("the values stored ", JSON.parse(sessionStorage.getItem('data')))
             setTimeout(() => history.push('/purchase'), 2000)
+            clearInterval(interval)
 
             // !User.kyc ? setTimeout(() => {
             //     setModal(false)
@@ -188,8 +202,11 @@ function BuyCryptoMobile({ Amount, country, User }) {
     }
     const changeFiat = (f) => {
         let result = cryptoChange(formik.values.amount, rate[f])
-        formik.setValues({ ...formik, ...result, fiat: f, rate: rate[f] })
+        // formik.setValues({ ...formik, ...result, fiat: f, rate: rate })
         // setState({ ...formik, ...result, fiat: f, rate: rate[f] })
+        formik.setFieldValue('result', result)
+        formik.setFieldValue('fiat', f)
+        formik.setFieldValue('rate', rate[f])
     }
     const noCopy = (e) => {
         e.preventDefault()
@@ -214,7 +231,6 @@ function BuyCryptoMobile({ Amount, country, User }) {
     (() => {
         if (!active() && !promo.code && !promo.show) setPromo({ ...promo, show: true })
     })()
-
     return (
         <div className="buycrypto">
             <Helmet>
@@ -256,7 +272,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
                 <div className="rate">
                     <Fiats action={changeFiat} fiat={formik.values.fiat} />
                     <h3>{t('buyCryptoMobileSous5')}</h3>
-                    <div className=""> 1 BTC === {Intl.NumberFormat('de-DE').format(Math.round(rate[formik.values.fiat] * 655))} XAF === {Intl.NumberFormat('de-DE').format(rate[formik.values.fiat])} {formik.values.fiat} </div>
+                    <div className=""> 1 BTC === {Intl.NumberFormat('de-DE').format(Math.round(rate.EUR * forex.XAF))} XAF === {Intl.NumberFormat('de-DE').format(rate[formik.values.fiat])} {formik.values.fiat} </div>
                     <span>
                         {t('buyCryptoMobileSous6')} <a href="https://www.coindesk.com" target="_blank">{t('buyCryptoMobileSous4')}</a>
                     </span>
@@ -270,7 +286,8 @@ function BuyCryptoMobile({ Amount, country, User }) {
                         />
                     </div>
                     <div className="form-group">
-                        <Input val={formik.values.eu} type="text" label={t('buyCryptoMobileSous9') + ' ' + formik.values.fiat} name="eu" id="eu"
+                        <Input type="text" label={t('buyCryptoMobileSous9') + ' ' + formik.values.fiat} name="eu" id="eu"
+                            val={formik.values.fiat === "EUR" ? formik.values.eu : formik.values.eu * forex.USD}
                             help={formik.errors.eu} error={formik.errors.eu && formik.touched.eu}
                             change={amountChange} handBlur={() => setTouched('eu')}
                         />
@@ -330,5 +347,6 @@ const mapStateToProps = state => ({
 
 
 export default connect(mapStateToProps)(BuyCryptoMobile)
+
 
 

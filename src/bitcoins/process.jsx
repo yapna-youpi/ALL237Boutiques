@@ -1,7 +1,7 @@
 
 // fonction qui verifie la presence des fonds
-let myaddress = process.env.REACT_APP_DIST_WALLET
-const checkBalance = async (amount) => fetch('https://api.blockcypher.com/v1/btc/main/addrs/' + myaddress)
+let myAddress = process.env.REACT_APP_DIST_WALLET
+const checkBalance = async (amount) => fetch(process.env.REACT_APP_BLOCKCYPHER_ADDRESS + myAddress)
     .then(response => response.json())
     .then(data => {
         if (data.address) {
@@ -18,7 +18,7 @@ const checkBalance = async (amount) => fetch('https://api.blockcypher.com/v1/btc
 
 
 
-const checkAddress = async (address) => fetch('https://api.blockcypher.com/v1/btc/main/addrs/' + address, { method: 'GET' })
+const checkAddress = async (address) => fetch(process.env.REACT_APP_BLOCKCYPHER_ADDRESS + address, { method: 'GET' })
     .then(response => response.json())
     .then(data => {
         //console.log("l'adresse ", data)
