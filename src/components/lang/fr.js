@@ -354,8 +354,8 @@ const french = {
     //pay
     payTitle: "l'opération n'a pas pu se terminer",
     paySous1: 'Renvoyer le paiement',
-    paySous1a: "S'il vous plaît envoyez un email à ",
-    paySous2a: "pour toutes reclamations",
+    paySous1a: "Envoyez un email à ",
+    paySous2a: " pour toutes reclamations",
     paySous2: "votre identifiant d'opération est :",
     paySous3: "L'utiliser pour toute réclamation",
     paySous4: 'TRANSACTION EN COURS',

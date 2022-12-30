@@ -4,10 +4,11 @@ import { roundDecimal } from '../../utils/utilFunctions';
 
 const FEES = 0.0395
 const INTOUCHFEES = 250 // les frais intouch sont de 250 XAF
+const min=process.env.REACT_APP_SELL_MIN
 
-const cryptoChange = (value, rate, promotion, royalties = 0,forex,eurRate) => {
+const cryptoChange = (value, rate, promotion, royalties = 0, forex) => {
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
-    let usedIntouchFees = promotion ? 0 : INTOUCHFEES 
+    let usedIntouchFees = promotion ? 0 : INTOUCHFEES
     if (value < 0.000296) {
         return {
             xaf: 0,
@@ -17,7 +18,7 @@ const cryptoChange = (value, rate, promotion, royalties = 0,forex,eurRate) => {
     }
     else {
         return {
-            xaf: Math.round(value * eurRate * forex * (1 - usedFees) - usedIntouchFees),
+            xaf: Math.round(value * rate * forex * (1 - usedFees) - usedIntouchFees),
             eu: roundDecimal(value * rate * (1 - usedFees) - usedIntouchFees / forex),
             amount: value,
         }
@@ -25,7 +26,8 @@ const cryptoChange = (value, rate, promotion, royalties = 0,forex,eurRate) => {
 
 }
 
-const euroChange = (value, rate, promotion, royalties = 0,unit) => {
+const euroChange = (value, rate, promotion, royalties = 0, unit) => {
+    console.log("the value ", value, unit)
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
     let usedIntouchFees = promotion ? 0 : INTOUCHFEES
     if (value < 10) {
@@ -44,10 +46,11 @@ const euroChange = (value, rate, promotion, royalties = 0,unit) => {
     }
 }
 
-const xafChange = (value, rate, promotion, royalties = 0,forex) => {
+const xafChange = (value, rate, promotion, royalties = 0, forex) => {
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
     let usedIntouchFees = promotion ? 0 : INTOUCHFEES
-    if (value < 6550 || rate === 0) {
+    console.log("the usedIntouchFees ", usedFees, usedIntouchFees)
+    if (value < parseInt(min) || rate === 0) {
         return {
             xaf: value,
             eu: roundDecimal(value / forex),
