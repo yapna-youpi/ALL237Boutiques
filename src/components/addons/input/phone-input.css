@@ -14,7 +14,15 @@
     letter-spacing: 0.01em;    
     color: rgba(0, 0, 0, 0.54);
 }
-
+.input-phone .phono {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+    width: 100%;
+}
+.input-phone .phono .phono-input {
+    flex: 1;
+}
 .input-phone label {
     display: block;
     /* margin-left: 12%; */
