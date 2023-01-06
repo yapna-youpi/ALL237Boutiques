@@ -275,7 +275,7 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
                                             <span>{t('sellModal16')} </span>  <span> {data.phone} </span>
                                         </div>
                                         <div className="">
-                                            <span>{t('sellModal17')} </span>  <span> {!promotion ? Intl.NumberFormat('de-DE').format(roundPrecision(cryptoChange(data.amount, rate, promotion).xaf * fees + 251, 0)) : 0} XAF </span>
+                                            <span>{t('sellModal17')} </span>  <span> {!promotion ? Intl.NumberFormat('de-DE').format(roundPrecision(data.xaf * fees + 251, 0)) : 0} XAF </span>
                                         </div>
                                     </div>
                                     <h3 className="message"> {setMessage()} </h3>
