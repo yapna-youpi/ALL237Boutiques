@@ -13,7 +13,7 @@ import { toastify } from '../addons/toast/Toast'
 import './sellmodal.css'
 import Timer from './Timer'
 
-const receiveWallet = process.env.REACT_APP_RECEPT_WALLET;
+// const receiveWallet = process.env.REACT_APP_RECEPT_WALLET;
 const fees = process.env.REACT_APP_SELL_FEES;
 const intouchFees = process.env.REACT_APP_INTOUCH_CI_FEES;
 
@@ -27,7 +27,7 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
     let ref1 = React.createRef()
     let ref2 = React.createRef()
     let ref3 = React.createRef()
-    // console.log(data)
+    // console.log('les datas sont:',data)
     useEffect(async () => {
         checkConflict()
         return () => {
@@ -37,7 +37,7 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
     const checkConflict = async () => {
         let result = await sendToApi('sellcrypto/conflict', {
             amount: data.amount, xaf: data.xaf, number: data.phone,
-            userId: User.userId
+            userId: User.userId, provider: process.env.REACT_APP_MOBILE_PROVIDER
         }, User.token)
         if (!result.response || result === 'error') {
             toogle()
@@ -53,7 +53,8 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
             address: data.wallet,
             amount: data.amount,
             id: state.id,
-            userId: User.userId
+            userId: User.userId,
+            crypto: data.crypto
         }
         let result = await sendToApi('sellcrypto/gettx', params, User.token)
         if (result.response) {
@@ -233,6 +234,18 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
         navigator.clipboard.writeText(text)
         toastify('info', "text copied", 3 * 1000)
     }
+    const setReceiveWallet = () => {
+        switch (data.crypto) {
+            case "BTC":
+                return process.env.REACT_APP_RECEPT_WALLET;
+            case "ETH":
+                return process.env.REACT_APP_ETH_RECEPT_WALLET;
+            case "USDT":
+                return process.env.REACT_APP_ETH_RECEPT_WALLET;
+            default:
+                return process.env.REACT_APP_RECEPT_WALLET;
+        }
+    }
 
     return (
         <Modal open={open} onClose={() => toogle(!open)} showCloseIcon={false} closeOnOverlayClick={false}
@@ -263,7 +276,7 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
                                     <div className="modal-details">
                                         <h3 className='titleh3'>{t('sellModal4')}</h3>
                                         <div className="">
-                                            <span>{t('sellModal13')} </span>  <span> {Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 8 }).format(data.amount)} BTC</span>
+                                            <span>{t('sellModal13')} </span>  <span> {Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 8 }).format(data.amount)} {data.crypto}</span>
                                         </div>
                                         <div className="">
                                             <span>{t('sellModal14')}  </span>  <span className="wallet"> {data.wallet.substr(0, 6) + '...' + data.wallet.substr(30)} </span>
@@ -290,11 +303,11 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
                                 <div className="send-bloc">
                                     {!state.txid && <><Timer stamp={600 * 1000} action={cancel} />
                                         <p>
-                                            {t('sellModal7')} <input ref={ref1} defaultValue={data.amount} className="icopy" onClick={() => copy(data.amount)} contentEditable={false} />{/* <FaRegCopy size={25} /> */}
-                                            {t('sellModal6')} <b className="wadd" onClick={() => copy(receiveWallet)} ref={ref3} >{receiveWallet} </b> <br />
+                                            {t('sellModal7')} <span className="icopy" onClick={() => copy(data.amount)} >{data.amount + " " + data.crypto}</span>
+                                            {t('sellModal6')} <b className="wadd" onClick={() => copy(setReceiveWallet())} ref={ref3} >{setReceiveWallet()} </b> <br />
                                             {t('sellModal8')} <br />
                                             {t('sellModal9')} <br /><br />
-                                            <QRCode value={receiveWallet} size={150} fgColor="#0f394c" />
+                                            <QRCode value={setReceiveWallet()} size={150} fgColor="#0f394c" />
                                         </p></>}
                                     <div className="op-id">
                                         {t('sellModal10')}

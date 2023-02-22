@@ -9,3 +9,23 @@ les fichiers sensible :
 
     mettre la meta tag dans le head du site
     	<meta name="google-site-verification" content="tLNxNvQMU_oyulQujjaYVDlrEAgJKeq8fp9EfEzBgbQ" />
+
+// const rateChange = (rate, crypto, unit) => {
+//     switch (crypto) {
+//         case "BTC":
+//             return {
+                
+//             }
+//             break;
+//         case "USDT":
+            
+//             break;
+//         case "ETH":
+            
+//             break;
+    
+//         default:
+//             break;
+//     }
+
+// } 

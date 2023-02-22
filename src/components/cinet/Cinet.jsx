@@ -51,6 +51,7 @@ function Cinet({ data, close, cancel }) {
 
     return (
         <div className="cinet">
+            {/* @audit pay attention at the amount of transaction */}
             <Helmet> <script id="cinet-script">{`
                         function checkout() {
                             CinetPay.setConfig({

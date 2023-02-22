@@ -124,7 +124,7 @@ const english = {
     sellCrypto7: "Invalid wallet adress",
     sellCrypto8: "Amount in XAF",
     sellCrypto9: "The amount should be between 6550 and 2000000 XAF",
-    sellCrypto10: "Amount in BTC",
+    sellCrypto10: "Amount in ",
     sellCrypto11: "the min value is 0.000296",
     sellCrypto12: "Fees in XAF",
     sellCrypto13: "Receiver Mobile Phone Number",
@@ -189,7 +189,7 @@ const english = {
     buyCryptoMobileSous8: "The value should be between 5000 and 2000000 XAF",
     buyCryptoMobileSous9: "Amount in",
     buyCryptoMobileSous10: "The min value is 15.26 EUR",
-    buyCryptoMobileSous11: "Amount in BTC",
+    buyCryptoMobileSous11: "Amount in ",
     buyCryptoMobileSous12: "The min value is 0.00033",
     buyCryptoMobileSous13: "Receiver Mobile Phone Number",
     buyCryptoMobileSous14: "Invalid number",
@@ -355,8 +355,8 @@ const english = {
     //pay
     payTitle: 'The operation could be completed',
     paySous1: 'Send back payment',
-    paySous1a: 'Please send an email to',
-    paySous2a: 'for any complain',
+    paySous1a: 'Please send an email to  ',
+    paySous2a: '  for any complain ',
     paySous2: 'You operation id is :',
     paySous3: 'Use it for any claim',
     paySous4: 'TRANSACTION IN PROGRESS',
@@ -490,8 +490,9 @@ const english = {
      formikBuy7: "Confirmation of the number is required",
      formikBuy8: "Must be a valid country number",
      formikBuy9: "The number does not match",
-     formikBuy10: "Must be a valid wallet address",
+     formikBuy10: "Must be a valid ",
      formikBuy11: `The amount must be between ${process.env.REACT_APP_BUY_MIN} and ${process.env.REACT_APP_BUY_MAX} XAF.`,
+     formikBuy12: " wallet address",
 
      //formiktraductionsell
      formikSell1: "Wallet address is required",
@@ -503,8 +504,9 @@ const english = {
      formikSell7: "Confirmation of the number is required",
      formikSell8: "Must be a valid country number",
      formikSell9: "The number does not match",
-     formikSell10: "Must be a valid wallet address",
+     formikSell10: "Must be a valid ",
      formikSell11: `The amount must be between ${process.env.REACT_APP_SELL_MIN} and ${process.env.REACT_APP_SELL_MAX} XAF.`,
+     formikSell12: " wallet address",
 
      //promocode
      promotitle1: " DO YOU HAVE A PROMOTIONAL CODE ?",

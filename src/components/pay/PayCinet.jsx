@@ -18,6 +18,7 @@ import { cashIn } from '../../intouch/api';
 import { randomId, checkServiceId, sendToApi, cutChain } from '../../utils/utilFunctions';
 
 import mobile from './assets/acheter_bitcoin_usdt_ethereum_moin_cher.svg'
+import { toastify } from '../addons/toast/Toast'
 
 function Pay({ User }) {
     const { t } = useTranslation();
@@ -31,7 +32,7 @@ function Pay({ User }) {
         let data = JSON.parse(sessionStorage.getItem('data'))
         data ? start(data) : history.push("/buycrypto/mobile")
         sessionStorage.removeItem("data")
-        return ()=>{
+        return () => {
             closeCinet()
         }
     }, [])
@@ -43,32 +44,23 @@ function Pay({ User }) {
             amountCrypto: data.amount,
             amountFiat: data.xaf,
             rate: data.rate,
-            phone: data.number,
+            phone: data.phone,
             wallet: data.wallet,
             status: 'init',
             provider: 'cinetpay',
             userId: User.userId,
         }
+        if (data.promotion) params = { ...params, promotion: data.promotion, code: data.code }
         let result = await sendToApi('buymobile/settransaction', params, User.token)
     }
     const success = async (data) => {
-        // success function 
-        let params = {
-            transaction_id: data.id,
-            txid: data.txid,
-            status: 'complete',
-            userId: User.userId,
-        }
-        sendToApi('buymobile/updatetransaction', params, User.token)
-            .then(data => {
-                if (!data.success) createAgain(params)
-            })
         let pm = {
             operation: 'Buy Crypto',
             id: data.id,
             amount: data.xaf,
-            phone: data.number,
-            hash: data.txid
+            phone: data.phone,
+            hash: data.txid,
+            crypto: data.crypto
         }
         sessionStorage.setItem('data', JSON.stringify(pm))
         history.push('/complete')
@@ -78,15 +70,12 @@ function Pay({ User }) {
         buyCinet(data, User, changeStep, cashout, closeCinet, cancel, (txid) => success({ ...data, txid: txid }))
     }
     const cancel = (data, i) => {
-        i===1 && closeCinet()
         let witness = i > 1
         setTrace({ status: true, error: data, traceStep: i, backFund: witness, mobilePaid: false })
-        
-        if (false) backFunds(data, i, witness) // here: set witness to condition
-        else {
-            sendToApi('buymobile/updatetransaction', { transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId }, User.token)
+        if (i <= 3) {
+            sendToApi('buymobile/updatetransaction', { transaction_id: params.id, status: 'fail', errorStep: i, userId: User.userId }, User.token)
                 .then(data => {
-                    if (!data.success) createAgain({ transaction_id: params.id, status: 'fail', errorStep: 1, userId: User.userId })
+                    if (!data.success) createAgain({ transaction_id: params.id, status: 'fail', errorStep: i, userId: User.userId })
                 })
         }
     }
@@ -99,38 +88,17 @@ function Pay({ User }) {
         else return <FaCheck size={50} color="#CC1616" />
     }
     const backFunds = (err, i, witness) => {
-        alert("should send back funds")
-        return // here: set this process
-        let data = {
-            partner_id: randomId(),
-            amount: params.xaf,
-            number: params.number,
-            service: checkServiceId(params.number)
+        let payload = {
+            transaction_id: params.id,
+            status: 'fail',
+            errorStep: 4,
         }
-        cashIn(data, User.token).then(result => {
-            let payload = {
-                transaction_id: params.id,
-                status: 'fail',
-                errorStep: 4,
-                backFundsId: data.partner_id
-            }
-            if (result) {
-                setTrace({ status: true, error: err, traceStep: i, backFund: witness, mobilePaid: true })
-                sendToApi('buymobile/updatetransaction', { ...payload, backFunds: true, userId: User.userId }, User.token)
-                    .then(data => {
-                        if (!data.success)
-                            createAgain({ ...payload, backFunds: true, userId: User.userId })
-                    })
-            }
-            else {
-                sendToApi('buymobile/updatetransaction', { ...payload, backFunds: false, userId: User.userId }, User.token)
-                    .then(data => {
-                        if (!data.success)
-                            createAgain({ ...payload, backFunds: false, userId: User.userId })
-                    })
-            }
-        })
-        return
+        setTrace({ status: true, error: err, traceStep: i, backFund: true, mobilePaid: true })
+        sendToApi('buymobile/updatetransaction', { ...payload, backFunds: false, userId: User.userId }, User.token)
+            .then(data => {
+                if (!data.success)
+                    createAgain({ ...payload, backFunds: false, userId: User.userId })
+            })
     }
     const createAgain = async (data) => {
         let params2 = {
@@ -139,16 +107,14 @@ function Pay({ User }) {
             amountCrypto: params.amount,
             amountFiat: params.xaf,
             rate: params.rate,
-            phone: params.number,
+            phone: params.phone,
             wallet: params.wallet,
         }
         sendToApi('buymobile/settransaction', params2, User.token)
     }
-    const copy = () => {
-        if (ref) {
-            ref.current.select()
-            document.execCommand('copy')
-        }
+    const copy = (text) => {
+        navigator.clipboard.writeText(text)
+        toastify('info', "text copied", 3 * 1000)
     }
     const cashout = () => {
         setCinet(true)
@@ -178,11 +144,11 @@ function Pay({ User }) {
                     <p>{t('payTitle')}</p>
                 </div>
                 <p>
-                    {/* {trace.backFund ? backFunds() : (null)} */}
-                    {trace.backFund && <h3 className="backfunds" >{t('paySous1')}  &ensp; &ensp; {
-                        trace.mobilePaid ? <FaCheck size={20} color="#CC1616" />
-                            : <ReactLoading type="spinningBubbles" color='#CC1616' height={20} width={20} />
-                    } </h3>}
+                    {trace.backFund && <h3 className="backfunds" >{t('paySous1a')} <span className='bulet' href="mailto:info@ipercash.fr"> contact@ipercash.fr </span> {t('paySous2a')} </h3>}
+                    {/* {trace.backFund && <h3 className="backfunds" >{t('paySous1')}  &ensp; &ensp; {
+                    trace.mobilePaid ? <FaCheck size={20} color="#CC1616" />
+                        : <ReactLoading type="spinningBubbles" color='#CC1616' height={20} width={20} />
+                } </h3>} */}
                 </p>
             </div>
         </div>
@@ -192,7 +158,7 @@ function Pay({ User }) {
                 {t('paySous2')}
                 <h3>
                     <span className="deco"></span>
-                    <input ref={ref} value={params.id} className="iid" onClick={copy} contentEditable={false} /><FaRegCopy onClick={copy} size={25} />
+                    <span className="op-id" onClick={() => copy(params.id)}>{params.id}<FaRegCopy onClick={() => copy(params.id)} size={25} /></span>
                     <span className="deco"></span>
                 </h3>
                 {t('paySous3')}

@@ -2,10 +2,8 @@ import { trackCinet } from "../../utils/trackStatus"
 import { sendToApi } from "../../utils/utilFunctions"
 import { checkBalance, checkAddress } from '../../bitcoins/process'
 
-const mainNetUrl = 'https://api.blockcypher.com/v1/btc/main/txs/push'
-// const testNetUrl='https://api.blockcypher.com/v1/btc/test3/txs/push'
 
-
+// fonction principale de l'achat
 const buyCinet = async (state, User, callback, cashout, closeWidget, cancel, success) => {
     let i = 0
     let attemps = 0
@@ -13,13 +11,10 @@ const buyCinet = async (state, User, callback, cashout, closeWidget, cancel, suc
     let params = {
         partner_id: state.id,
         amount: state.xaf,
-        // amount: 100,
         number: state.number,
         userId: User.userId
-        // service: checkServiceId(state.number.substring(4)),
     }
-    let crypto = state.amount * 100000000
-    // let crypto=0.01*100000000 
+    let cryptoAmount = setCryptoAmount(state.amount, state.crypto);
     let wallet = state.wallet
     let result, partner_id
 
@@ -28,7 +23,7 @@ const buyCinet = async (state, User, callback, cashout, closeWidget, cancel, suc
         // verification de la validite de l'adresse
 
         do {
-            result = await checkAddress(wallet)
+            result = await checkAddress(wallet, state.crypto)
             if (result.status === 'fail') {
                 attemps++
             }
@@ -42,22 +37,26 @@ const buyCinet = async (state, User, callback, cashout, closeWidget, cancel, suc
         }
         // fin de la verification de l'adresse
         attemps = 0
+        i++
+        // verification que le montant est valide
+        if (!cryptoAmount) {
+            cancel({ status: 'fail', cause: 'Please retry later', cn: 1 }, i);
+            return { status: 'fail', cause: 'Please retry later', cn: 1 };
+        }
         // verification du solde
         do {
-            result = await checkBalance(crypto)
+            result = await checkBalance(cryptoAmount, state.crypto)
             if (result.status === 'fail') {
                 attemps++
             }
             else {
                 attemps = 3
             }
-
         } while (attemps < 3)
-        if(result.status==='fail') {
+        if (result.status === 'fail') {
             cancel(result, i)
-            return result 
-        } 
-
+            return result
+        }
         attemps = 0
         // fin de la premiere etape 
         i++
@@ -67,14 +66,18 @@ const buyCinet = async (state, User, callback, cashout, closeWidget, cancel, suc
         cashout()
         setTimeout(() => {
             trackCinet({ ...params, id: params.partner_id }, User.token, () => afterBuy(i, callback, wallet, crypto, closeWidget, cancel, success, User), cancel)
-        }, 10*1000);
+        }, 10 * 1000);
+
+        // setTimeout(() => {
+        //     afterBuy(i, callback, state.id, closeWidget, cancel, success, User)
+        // }, 5000);
 
     } catch (error) {
         cancel({ status: 'fail', cause: "unknow error", cn: 0 }, i)
     }
 }
 
-const afterBuy = async (i, callback, wallet, crypto, closeWidget, cancel, success, User) => {
+const afterBuy = async (i, callback, id, closeWidget, cancel, success, User) => {
 
     let result
     // fin de la deuxieme etape
@@ -84,7 +87,7 @@ const afterBuy = async (i, callback, wallet, crypto, closeWidget, cancel, succes
 
 
     // construction de la transaction
-    result = await getHash(wallet, crypto, User)
+    result = await getHash(id, User)
     if (result.status === 'fail') {
         cancel(result, i)
         return result
@@ -102,13 +105,28 @@ const afterBuy = async (i, callback, wallet, crypto, closeWidget, cancel, succes
 
 }
 
-const getHash = async (wallet, crypto, User) => {
-    let params = { recipient: wallet, amount: crypto, userId: User.userId }
-    return await sendToApi('hash', params, User.token).then(result => {
-        if (result === "error") return { status: 'fail', cause: "can't get hash", cn: 7 }
+
+const getHash = async (id, User) => {
+    let params = { id, userId: User.userId }
+    return await sendToApi('buymobile/hash', params, User.token).then(result => {
+        if (result.status !== "success") return { status: 'fail', cause: "can't get hash", cn: 7 }
         return result
 
     })
+}
+
+const setCryptoAmount = (amount, crypto) => {
+    switch (crypto) {
+        case 'BTC':
+            return amount * 100000000;
+        case 'ETH':
+            return amount;  // @audit set a good amount here
+        case 'USDT':
+            return amount;  // @audit set a good amount here
+        default:
+            return 0;
+    }
+
 }
 
 export default buyCinet

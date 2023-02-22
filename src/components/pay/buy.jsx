@@ -14,8 +14,8 @@ const buy = async (state, User, callback, cancel, success) => {
         number: state.phone,
         userId: User.userId
     }
-    let crypto = state.amount * 100000000
-    // let crypto=0.01*100000000 
+    // let cryptoAmount = state.amount * 100000000
+    let cryptoAmount = setCryptoAmount(state.amount, state.crypto);
     let wallet = state.wallet
     let result, partner_id
 
@@ -23,7 +23,7 @@ const buy = async (state, User, callback, cancel, success) => {
     try {
         // verification de la validite de l'adresse
         do {
-            result = await checkAddress(wallet)
+            result = await checkAddress(wallet, state.crypto)
             if (result.status === 'fail') {
                 attemps++
             }
@@ -38,16 +38,20 @@ const buy = async (state, User, callback, cancel, success) => {
         // fin de la verification de l'adresse
         attemps = 0
         i++
+        // verification que le montant est valide
+        if (!cryptoAmount) {
+            cancel({ status: 'fail', cause: 'Please retry later', cn: 1 }, i);
+            return { status: 'fail', cause: 'Please retry later', cn: 1 };
+        }
         // verification du solde
         do {
-            result = await checkBalance(crypto)
+            result = await checkBalance(cryptoAmount, state.crypto)
             if (result.status === 'fail') {
                 attemps++
             }
             else {
                 attemps = 3
             }
-
         } while (attemps < 3)
         if (result.status === 'fail') {
             cancel(result, i)
@@ -77,6 +81,11 @@ const buy = async (state, User, callback, cancel, success) => {
         // comment above in test or under in production
         // callback(i)
         /*  fin de l'operation  */
+
+
+        // console.log("the state ", state)
+        // console.log("the crypto amount ", cryptoAmount)
+        // return
 
         // setTimeout(() => {
         //     afterBuy(i, callback, state.id, cancel, success, User)
@@ -122,6 +131,20 @@ const getHash = async (id, User) => {
         return result
 
     })
+}
+
+const setCryptoAmount = (amount, crypto) => {
+    switch (crypto) {
+        case 'BTC':
+            return amount * 100000000;
+        case 'ETH':
+            return amount;  // @audit set a good amount here
+        case 'USDT':
+            return amount;  // @audit set a good amount here
+        default:
+            return 0;
+    }
+
 }
 
 export default buy

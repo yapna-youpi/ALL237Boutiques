@@ -152,6 +152,23 @@ const regPhone = /^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/
 
 const regPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@%*+-_]{8,}$/
 
+export const rateApi = {
+    "BTC": {
+        "USD": "22952.7432",
+        "EUR": "22359.3230",
+        "XAF": "14025412"
+    },
+    "USDT": {
+        "USD": "1.001",
+        "EUR": "0.92",
+        "XAF": "603"
+    },
+    "ETH": {
+        "USD": "1581.31",
+        "EUR": "1553.42",
+        "XAF": "14025412"
+    }
+}
 
 
 export {

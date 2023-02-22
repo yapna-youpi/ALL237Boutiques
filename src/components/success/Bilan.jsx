@@ -1,9 +1,12 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-function Bilan({data}) {
-    const { t } = useTranslation()
 
+function Bilan({data}) {
+
+    const { t } = useTranslation()
+    let lienHash = data.crypto == 'BTC' ? (`${process.env.REACT_APP_MEMPOOL_URL}/tx/${data.hash}`) : ( `https://www.etherscan.io/tx/${data.hash}`)
+  
     return (
        <div className="bilan" >
             <h2 className='bilanTitle'>{t('bilan1')}</h2>
@@ -26,7 +29,7 @@ function Bilan({data}) {
             {data.hash && <div className="row">
                 <span>{t('bilan6')}</span>
                 <span>
-                    <a title='See operation progression' href={`${process.env.REACT_APP_MEMPOOL_URL}/tx/${data.hash}`} target="_blank">
+                    <a title='See operation progression' href={lienHash} target="_blank">
                     { data.hash.substr(0, 6)+'...'+data.hash.substr(54) }
                     </a>
                 </span>

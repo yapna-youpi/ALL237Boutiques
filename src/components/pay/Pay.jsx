@@ -49,30 +49,19 @@ function Pay({ User }) {
         let result = await sendToApi('buymobile/settransaction', params, User.token)
     }
     const success = async (data) => {
-        // success function 
-        // let params = {
-        //     transaction_id: data.id,
-        //     txid: data.txid,
-        //     status: 'complete',
-        //     userId: User.userId,
-        // }
-        // sendToApi('buymobile/updatetransaction', params, User.token)
-        //     .then(data => {
-        //         if (!data.success) createAgain(params)
-        //     })
         let pm = {
             operation: 'Buy Crypto',
             id: data.id,
             amount: data.xaf,
             phone: data.phone,
-            hash: data.txid
+            hash: data.txid,
+            crypto: data.crypto
         }
         sessionStorage.setItem('data', JSON.stringify(pm))
         history.push('/complete')
     }
     const start = (data) => {
         storeData(data)
-        // return
         buy(data, User, changeStep, cancel, (txid) => success({ ...data, txid: txid }))
     }
     const cancel = (data, i) => {
@@ -157,7 +146,7 @@ function Pay({ User }) {
         }
         sendToApi('buymobile/settransaction', params2, User.token)
     }
-    
+
     const copy = (text) => {
         navigator.clipboard.writeText(text)
         toastify('info', "text copied", 3 * 1000)
@@ -189,8 +178,7 @@ function Pay({ User }) {
                 {t('paySous2')}
                 <h3>
                     <span className="deco"></span>
-                    <span className="op-id" onClick={()=>copy(params.id)}>{params.id}<FaRegCopy onClick={copy} size={25} /></span>
-                    {/* <input ref={ref} value={params.id} className="iid" onClick={copy} contentEditable={false} /><FaRegCopy onClick={copy} size={25} /> */}
+                    <span className="op-id" onClick={() => copy(params.id)}>{params.id}<FaRegCopy onClick={()=>copy(params.id)} size={25} /></span>
                     <span className="deco"></span>
                 </h3>
                 {t('paySous3')}

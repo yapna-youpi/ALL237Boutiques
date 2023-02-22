@@ -73,6 +73,44 @@
   font-weight: unset!important;
 }
 
+.sellcrypto .choisix  {
+  display: flex;
+}
+.sellcrypto .choisix .choix1  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2% 5%;
+  width: 33.3%;
+  background-color: #F6EFEF;
+}
+.sellcrypto .choisix .choix1  input{
+  width: 100%;
+  padding: 0% ;
+  color: var(--red);
+  font-weight: bold;
+  transition: ease 0.3s;
+  cursor: pointer;
+}
+.sellcrypto .choisix .choix1  input:hover{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  border-radius: 2px;
+  font-weight: bold;
+  /* font-size: x-large; */
+  color: var(--red);
+  opacity: 0.8;
+  border: 1px solid black;
+}
+.cryptoActif{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px!important;
+  background-color: var(--red)!important;
+  border-radius: 2px!important;
+  font-weight: bold!important;
+  color: var(--white)!important;
+  border: 1px solid var(--red)!important;
+}
+
+
 @media screen and (min-width: 768px) {
   .sellcrypto .disjoint{
     width: 77.5%;
@@ -89,5 +127,12 @@
     width: 80%;
     margin: 15px auto;
     font-size: 1.7em;
+  }
+  .sellcrypto .choisix  {
+    margin-top: 10px;
+  }
+  .sellcrypto .choisix .choix1  input{
+    font-size: x-large;
+    padding: 4%;
   }
 }
