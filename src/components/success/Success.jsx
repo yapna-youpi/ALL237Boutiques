@@ -5,9 +5,9 @@ import Modal from 'react-responsive-modal';
 
 import './success.css'
 import Bilan from './Bilan';
-import complete from './complete.png';
-import trusty from './trusty.png'
-import google from './googleform.png'
+import complete from './transactions_electroniques_mobile_cryptomonnaies.png';
+import trusty from './echanger_les_devises_euro_dollars_avec_bitcoins_usdt_ethereum.png'
+import google from './transferer_devises_euro_dollards_moins_cheres.png'
 
 function Success() {
     const { t } = useTranslation();

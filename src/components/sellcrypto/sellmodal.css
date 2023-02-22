@@ -80,6 +80,7 @@
   font-size: 1em;
   font-weight: bold;
   color: var(--red);
+  cursor: pointer;
 }
 .modal-controls button {
   padding: 2% 4%;

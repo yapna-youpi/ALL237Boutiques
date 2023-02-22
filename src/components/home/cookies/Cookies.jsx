@@ -46,7 +46,7 @@ function Cookies() {
 				(<div className='cookie '>
 					<div className='cookie-1'>
 						<h6 className='cook-text'>{t('cookie1')}</h6>
-						<h1 className='cook-test2'>{t('cookie5')}</h1>
+						<h5 className='cook-test2'>{t('cookie5')}</h5>
 						{showCookie2 ?
 
 							(<span className='cook-text3'>{t('cookie2')}<br />{t('cookie3')}
@@ -54,7 +54,7 @@ function Cookies() {
 							</span>)
 							:
 
-							(<div className='cook-lig' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'space-around' }}>
+							(<div className='cook-lig'>
 								<div className='cook-lig'>
 									<div>{t('cookie6')}</div>
 									<div>

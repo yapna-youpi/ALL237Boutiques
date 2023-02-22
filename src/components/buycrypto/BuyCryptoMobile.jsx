@@ -70,8 +70,8 @@ function BuyCryptoMobile({ Amount, country, User }) {
     //initialisation of formik validation
     const formik = useFormik({
         initialValues: {
-            wallet: "", xaf: "0", eu: "0",
-            amount: "0", phone: "", cfphone: "",
+            wallet: "", xaf: 0, eu: 0,
+            amount: 0, phone: "", cfphone: "",
             rate: { EUR: 0, USD: 0 }, fiat: 'EUR', crypto: "BTC",
         },
         validationSchema,

@@ -14,7 +14,7 @@ import { GiArchiveRegister } from 'react-icons/gi'
 import { MdHelpCenter, MdMiscellaneousServices } from 'react-icons/md'
 import UserIcon from './User'
 import Lang from './Lang'
-import enseigne from './assets/enseigne.png'
+import enseigne from './assets/acheter_bitcoin_usdt_etherium.png'
 
 let beta = process.env.REACT_APP_IS_BETA === "TRUE"
 let interval
@@ -89,7 +89,7 @@ function Header({ User, Country, dispatch }) {
             <header>
                 <nav>
                     <div className="banner">
-                        <a href="/"><img src={enseigne} alt="enseigne" srcSet="" className="enseigne" /></a>
+                        <a href="/"><img src={enseigne} alt="acheter et vendre sa cryptomonnaie electronique sur IPERCash" srcSet="" className="enseigne" /></a>
                         <Lang />
                     </div>
                     <div className="hamburger" onClick={anim} >

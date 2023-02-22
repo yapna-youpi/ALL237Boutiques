@@ -275,7 +275,7 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
                                             <span>{t('sellModal16')} </span>  <span> {data.phone} </span>
                                         </div>
                                         <div className="">
-                                            <span>{t('sellModal17')} </span>  <span> {!promotion ? Intl.NumberFormat('de-DE').format(roundPrecision(data.xaf * fees + 251, 0)) : 0} XAF </span>
+                                            <span>{t('sellModal17')} </span>  <span> {!promotion ? Intl.NumberFormat('de-DE').format(roundPrecision(data.xaf * fees + 250, 0)) : 0} XAF </span>
                                         </div>
                                     </div>
                                     <h3 className="message"> {setMessage()} </h3>
@@ -298,7 +298,7 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
                                         </p></>}
                                     <div className="op-id">
                                         {t('sellModal10')}
-                                        <span onClick={() => copy(state.id)}> <input ref={ref2} defaultValue={state.id} className="iid" onClick={() => copy(state.id)} contentEditable={false} /><FaRegCopy size={25} /> </span>
+                                        <span onClick={() => copy(state.id)}>{state.id} <FaRegCopy size={25} /> </span>
                                     </div>
                                     {!error && (<>
                                         <h4 className="message"> {setMessage()} </h4>

@@ -364,7 +364,7 @@ const french = {
     paySous7: "vérification du portefeuille de l'utilisateur",
     paySous8: 'DEMANDE DE PAIEMENT MOBILE',
     paySous9: 'veuillez vérifier la demande de paiement sur votre téléphone',
-    paySous10: "S'il n'ya aucune demande, executez le code ussd",
+    paySous10: "Si vous ne recevez pas de demande de confirmation, veuillez exécuter le code d'accès à votre compte Mobile Money",
     paySous11: ' Veuillez suivre',
     paySous12: ' Pour terminer le paiement',
     paySous13: 'PRÉPARATION DE LA TRANSACTION',
@@ -606,7 +606,6 @@ const french = {
     form9: "Numéro de téléphone mobile du récepteur",
     form10: "Confirmer le numéro de téléphone",
     form11: "Montant USDT à transférer",
-
     //slider
     slider1: "Vous êtes sur le point de créer un compte sur Cabital",
     slider2: "Voici quelques informations sur votre compte",

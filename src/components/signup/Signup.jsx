@@ -14,7 +14,7 @@ import { toastify } from '../addons/toast/Toast'
 
 import './signup.css'
 import './resend.css'
-import iperFot from './assets/undraw_Mobile_login_re_9ntv.svg'
+import iperFot from './assets/vendre_bitcoin_usdt_ethereum_mobile_money_orange_money.svg'
 import { Input, Input2 } from '../addons/input/Input'
 import InputPhone from '../addons/input/PhoneInput'
 import { parsePhoneNumber } from 'react-phone-number-input'
@@ -55,8 +55,13 @@ function Signup({ Country, match }) {
     useEffect(() => {
         setParrain()
 
+        if ( show ) {
+            replacer();
+        }else{
+            replacer();
+        }
     }, [])
-
+    console.log(show)
     let history = useHistory()
 
     const signup = async (userData) => {
@@ -134,6 +139,12 @@ function Signup({ Country, match }) {
         fr: ["http://ftp.ipercash.fr/politiques//terms_fr.pdf"]
     }
     let lang = JSON.parse(localStorage.getItem("lang") || '{"lang":"fr"}').lang
+
+    const replacer = () =>{
+        setTimeout(()=>{
+            document.querySelector('.signup-img').classList.toggle('replacer');
+        },150)
+    }
 
     return (
         <>

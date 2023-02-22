@@ -17,7 +17,7 @@ import buyCinet from './buyCinet'
 import { cashIn } from '../../intouch/api';
 import { randomId, checkServiceId, sendToApi, cutChain } from '../../utils/utilFunctions';
 
-import mobile from './assets/mobile_pay.svg'
+import mobile from './assets/acheter_bitcoin_usdt_ethereum_moin_cher.svg'
 
 function Pay({ User }) {
     const { t } = useTranslation();

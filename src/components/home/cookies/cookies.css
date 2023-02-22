@@ -1,5 +1,5 @@
 .cookie{
-    background-image: url('./perso.png');
+    background-image: url('./transferer_argent_mobile_avec_bitcoin.png');
     background-repeat: no-repeat;
     background-position: top right;
     background-size: 35%;
@@ -43,7 +43,7 @@
     text-align: center;
 }
 #cookie-cook{
-     -webkit-appearance: none;
+     /* -webkit-appearance: none; */
      visibility: hidden;
      display: none;
 }
@@ -53,6 +53,10 @@
     min-height: 30px;
     margin: 5px 0;
     animation: cookanim2 .5s ease-in-out ;
+    display: 'flex';
+    flex-direction: 'column';
+    justify-content: 'center';
+    align-items: 'space-around';
 }
 .cookie-check{
     position: relative;
@@ -89,7 +93,9 @@
     margin-bottom: -25px;
 }
 .cook-test2{
+    margin-top: 25px;
     margin-bottom: 1rem;
+    font-size: 34px;
 }
 .cook-text3{
     margin: 16px auto;

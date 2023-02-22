@@ -3,10 +3,10 @@ import ReactPlayer from 'react-player'
 import { useTranslation } from 'react-i18next'
 import {VscDebugBreakpointLog, VscDebugBreakpointLogUnverified} from 'react-icons/vsc'
 
-import phone from './imojies/emoji_u1f44b.svg'
-import applaude from './imojies/1f44f.svg'
-import femme from './imojies/femme.png'
-import note from './imojies/270d.svg'
+import phone from './imojies/echange_cryptomonnaie_bictcoin_usdt_ethereum.svg'
+import applaude from './imojies/acheter_usdt_bitcoin_etherum_moin_chere.svg'
+import femme from './imojies/plate_forme_echange_cryptomonnaie_electronique.png'
+import note from './imojies/vendre_bitcoin_ethereum_usdt_moin_chere.svg'
 import './more.css' 
 
 

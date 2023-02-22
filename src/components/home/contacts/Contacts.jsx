@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './contacts.css'
 import Form from './Form';
-import enseigne from './images/enseigne.png';
+import enseigne from './images/acheter_bitcoin_usdt_ethereum_par_mobile_money.png';
 
 import { apiUrl } from '../../../utils/utilFunctions';
 

@@ -3,8 +3,8 @@ import { GoChevronUp } from 'react-icons/go'
 import { useTranslation } from 'react-i18next'
 
 import './hero.css'
-import image from './images/hero.svg';
-import video from './images/hero.mp4';
+import image from './images/transfert_argent_international_moin_cher.svg';
+// import video from './images/hero.mp4';
 import camer from './images/camer.png';
 import sene from './images/sene.png';
 import ivc from './images/ivc.png';

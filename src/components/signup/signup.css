@@ -134,7 +134,9 @@
       display: inline-block;
       width: 100%;
       transform: translateY(76px);
-
+  }
+  .signup .replacer{
+    transform: translateY(0);
   }
   .visible{
     visibility: hidden;

@@ -3,8 +3,8 @@ import { useTranslation, Trans } from 'react-i18next'
 import { useHistory, Link} from 'react-router-dom'
 
 import './about.css'
-import image from './undraw_startup_life_2du2.svg';
-import chevron from './stylish-right.svg';
+import image from './achat_cryptomonnaie_electronique_mobile.svg';
+import chevron from './changer_cryptomonnaie_mobile.svg';
 
 function About() {
     const { t }=useTranslation()

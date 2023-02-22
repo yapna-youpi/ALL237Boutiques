@@ -15,7 +15,8 @@ import buy from './buy'
 import { cashIn } from '../../intouch/api';
 import { randomId, checkServiceId, sendToApi, cutChain } from '../../utils/utilFunctions';
 
-import mobile from './assets/mobile_pay.svg'
+import mobile from './assets/acheter_bitcoin_usdt_ethereum_moin_cher.svg'
+import { toastify } from '../addons/toast/Toast'
 
 function Pay({ User }) {
     const { t } = useTranslation();
@@ -156,11 +157,10 @@ function Pay({ User }) {
         }
         sendToApi('buymobile/settransaction', params2, User.token)
     }
-    const copy = () => {
-        if (ref) {
-            ref.current.select()
-            document.execCommand('copy')
-        }
+    
+    const copy = (text) => {
+        navigator.clipboard.writeText(text)
+        toastify('info', "text copied", 3 * 1000)
     }
 
     return trace.status ? (
@@ -189,7 +189,8 @@ function Pay({ User }) {
                 {t('paySous2')}
                 <h3>
                     <span className="deco"></span>
-                    <input ref={ref} value={params.id} className="iid" onClick={copy} contentEditable={false} /><FaRegCopy onClick={copy} size={25} />
+                    <span className="op-id" onClick={()=>copy(params.id)}>{params.id}<FaRegCopy onClick={copy} size={25} /></span>
+                    {/* <input ref={ref} value={params.id} className="iid" onClick={copy} contentEditable={false} /><FaRegCopy onClick={copy} size={25} /> */}
                     <span className="deco"></span>
                 </h3>
                 {t('paySous3')}

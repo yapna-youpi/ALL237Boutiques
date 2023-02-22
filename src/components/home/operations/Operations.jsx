@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import './operations.css'
 import Countries from './Countries'
 import { changeAmount, changeCrypto } from '../../../store/actions';
-import image from './undraw_Mobile_pay_re_sjb8.svg';
+import image from './acheter_bitcoin_au_cameroun.svg';
 
 const appUrl = "http://localhost:3000/"
 

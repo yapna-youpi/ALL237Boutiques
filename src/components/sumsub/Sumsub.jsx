@@ -7,7 +7,7 @@ import { sendToApi } from '../../utils/utilFunctions'
 import { setUser } from '../../store/actions'
 
 import './sumsub.css'
-import kyc from './KYC1.png'
+import kyc from './vendre_ses_cryptomonnaies_en_devises_euro_dollards.png'
 
 // customise the widget
 const widgetOptions = {
@@ -98,7 +98,7 @@ function Sumsub({ User, dispatch, call, close }) {
     return (
         <div id="sumsub" className="sumsub">
             {show ? (<div className='sub-text'>
-                <img src={kyc} className="img-sumsub" alt="kyc" />
+                <img src={kyc} className="img-sumsub" alt="faire vente des devises en cryptomonnaies" />
                 <div className='sub-div1'>{t('sumsub1')}</div>
                 <div className='sub-div2'>{t('sumsub2')}</div>
                 <button className='btn-sub' onClick={() => setShow(!show)} style={{ color: '#cc1616' }}>{t('sumsub3')}</button>

@@ -2,6 +2,7 @@
   padding: 3%;
   min-height: 85vh;
 }
+
 .pay .error {
   width: 80%;
   padding: 3%;
@@ -10,10 +11,12 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 8px;
 }
+
 .pay .transaction {
   border: 5px solid var(--red);
   border-radius: 8px;
 }
+
 .pay .modal-head {
   padding: 3%;
   background: var(--red);
@@ -22,12 +25,14 @@
   color: var(--white);
   text-align: center;
 }
+
 .content-modal h2 {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
 }
+
 .icon-step {
   display: flex;
   justify-content: center;
@@ -41,6 +46,7 @@
   color: var(--white);
   transform: translate(-15px, 0px);
 }
+
 /* .content-modal h3 {
   text-align: justify;
 } */
@@ -48,9 +54,11 @@
   color: var(--blue);
   text-decoration: underline;
 }
-.bulet{
+
+.bulet {
   cursor: pointer;
 }
+
 .phone-step {
   display: flex;
   flex-flow: row nowrap;
@@ -60,20 +68,24 @@
   overflow: hidden;
   transition: all 2s ease-out;
 }
+
 .phone-step img {
   display: block;
   width: 100%;
 }
+
 .backfunds {
   display: flex;
   justify-content: center;
 }
+
 .pay .operation-id {
   margin: 15px 0px;
   text-align: center;
   font-size: 1.1em;
   font-weight: bold;
 }
+
 .pay .operation-id h3 {
   display: flex;
   flex-flow: row nowrap;
@@ -82,6 +94,15 @@
   margin: 10px 0px;
   color: var(--red);
 }
+
+h3 .op-id {
+  /* display: block; */
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--red);
+  cursor: pointer;
+}
+
 .deco {
   display: inline-block;
   width: 10%;
@@ -96,14 +117,17 @@
   .pay .error {
     width: 60%;
   }
+
   .pay .transaction {
     width: 80%;
     margin: auto;
   }
+
   .content-modal {
     padding: 2% 5%;
     font-size: 1.5em;
   }
+
   .content-modal h2 {
     font-size: 2.5em;
   }
@@ -114,6 +138,7 @@
     width: 75%;
     margin: auto;
   }
+
   .pay .operation-id h3 {
     font-size: 1.5em;
   }

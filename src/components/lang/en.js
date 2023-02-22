@@ -365,7 +365,7 @@ const english = {
     paySous7: ' User wallet checking',
     paySous8: 'REQUEST OF MOBILE PAYMENT',
     paySous9: 'please check payment request on your phone',
-    paySous10: ' If there is no request type ussd code',
+    paySous10: 'If you do not receive a confirmation request, please execute the access code to your Mobile Money account',
     paySous11: ' Please follow',
     paySous12: ' To complete the payment',
     paySous13: 'PREPARATION OF THE TRANSACTION ',

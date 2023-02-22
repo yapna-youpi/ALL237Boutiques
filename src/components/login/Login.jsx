@@ -15,7 +15,7 @@ import { sendToApi, regPassword } from '../../utils/utilFunctions'
 import { setUser } from '../../store/actions'
 
 import './login.css'
-import iperFot from './assets/undraw_Mobile_login_re_9ntv.svg'
+import iperFot from './assets/envoyer_argent_en_afrique_europe_moin_cher.svg'
 
 let deferredPrompt = null
 
