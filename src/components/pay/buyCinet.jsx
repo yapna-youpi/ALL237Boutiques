@@ -14,6 +14,7 @@ const buyCinet = async (state, User, callback, cashout, closeWidget, cancel, suc
         number: state.number,
         userId: User.userId
     }
+    console.log("..... the data ", params, ".....")
     let cryptoAmount = setCryptoAmount(state.amount, state.crypto);
     let wallet = state.wallet
     let result, partner_id
@@ -65,7 +66,7 @@ const buyCinet = async (state, User, callback, cashout, closeWidget, cancel, suc
         // reception du payment
         cashout()
         setTimeout(() => {
-            trackCinet({ ...params, id: params.partner_id }, User.token, () => afterBuy(i, callback, wallet, crypto, closeWidget, cancel, success, User), cancel)
+            trackCinet({ ...params, id: params.partner_id }, User.token, () => afterBuy(i, callback, state.id, closeWidget, cancel, success, User), cancel)
         }, 10 * 1000);
 
         // setTimeout(() => {

@@ -48,7 +48,7 @@ function Cinet({ data, close, cancel }) {
         cinetModal.parentNode.removeChild(cinetModal)
         close()
     }
-
+    console.log("..... the data ", data, ".....")
     return (
         <div className="cinet">
             {/* @audit pay attention at the amount of transaction */}
@@ -62,11 +62,11 @@ function Cinet({ data, close, cancel }) {
                             });
                             CinetPay.getCheckout({
                                 transaction_id: '${data.id}', // YOUR TRANSACTION ID
-                                amount: 100,
+                                amount: ${data.xaf},
                                 currency: 'XAF',
                                 channels: 'MOBILE_MONEY',
                                 // "lock_phone_number": true,
-                                "customer_phone_number" : "237651851676",
+                                "customer_phone_number" : "${data.phone}",
                                 description: 'Test de paiement',
                             });
                             CinetPay.waitResponse(function (data) {
