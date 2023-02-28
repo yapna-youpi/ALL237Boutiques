@@ -14,7 +14,6 @@ const buyCinet = async (state, User, callback, cashout, closeWidget, cancel, suc
         number: state.number,
         userId: User.userId
     }
-    console.log("..... the data ", params, ".....")
     let cryptoAmount = setCryptoAmount(state.amount, state.crypto);
     let wallet = state.wallet
     let result, partner_id
@@ -121,9 +120,9 @@ const setCryptoAmount = (amount, crypto) => {
         case 'BTC':
             return amount * 100000000;
         case 'ETH':
-            return amount;  // @audit set a good amount here
+            return amount;
         case 'USDT':
-            return amount;  // @audit set a good amount here
+            return amount;
         default:
             return 0;
     }

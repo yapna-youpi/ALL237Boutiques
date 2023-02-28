@@ -9,8 +9,8 @@ function Footer() {
     const History = useHistory();
 
     let AmList={
-        en: ["http://ftp.ipercash.fr/politiques//aml_en.pdf","http://ftp.ipercash.fr/politiques//ploicy_fr.pdf" , "http://ftp.ipercash.fr/politiques//term_en.pdf"],
-        fr: ["http://ftp.ipercash.fr/politiques//aml_fr.pdf","http://ftp.ipercash.fr/politiques//policy_en.pdf" , "http://ftp.ipercash.fr/politiques//terms_fr.pdf" ]
+        en: ["http://ipercash.fr/politiques/aml_en.pdf","http://ipercash.fr/politiques/ploicy_en.pdf" , "http://ipercash.fr/politiques/term_en.pdf"],
+        fr: ["http://ipercash.fr/politiques/aml_fr.pdf","http://ipercash.fr/politiques/policy_fr.pdf" , "http://ipercash.fr/politiques/terms_fr.pdf" ]
     }
     let lang=JSON.parse(localStorage.getItem("lang")||'{"lang":"en"}').lang
 

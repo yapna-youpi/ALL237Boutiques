@@ -138,9 +138,9 @@ const setCryptoAmount = (amount, crypto) => {
         case 'BTC':
             return amount * 100000000;
         case 'ETH':
-            return amount;  // @audit set a good amount here
+            return amount;
         case 'USDT':
-            return amount;  // @audit set a good amount here
+            return amount;
         default:
             return 0;
     }

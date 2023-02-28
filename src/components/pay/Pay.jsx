@@ -164,7 +164,7 @@ function Pay({ User }) {
                     <p>{t('payTitle')}</p>
                 </div>
                 <p>
-                    {trace.backFund && <h3 className="backfunds" >{t('paySous1a')} <span className='bulet' href="mailto:info@ipercash.fr"> contact@ipercash.fr </span> {t('paySous2a')} </h3>}
+                    {trace.backFund && <h3 className="backfunds" >{t('paySous1a')+'  '} <span className='bulet' href="mailto:info@ipercash.fr"> Info@ipercash.fr </span> {'  '+t('paySous2a')} </h3>}
                     {/* {trace.backFund && <h3 className="backfunds" >{t('paySous1')}  &ensp; &ensp; {
                         trace.mobilePaid ? <FaCheck size={20} color="#CC1616" />
                             : <ReactLoading type="spinningBubbles" color='#CC1616' height={20} width={20} />
