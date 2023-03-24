@@ -95,8 +95,9 @@ const Forget =({type, color}) => {
                         </div>
                     </div> 
                 :
-                    <> <span className="forget-title">{t('forgetTitle')}</span>
+                    <> 
                         <div className="forget-form">
+                            <h2 className="forget-title">{t('forgetTitle')}</h2>
                             <p className="forget-paragraph">{t('forgetSous1')}</p>
                             <form className="login-form" onSubmit={formik.handleSubmit} >
                                 <div className="form-inp">

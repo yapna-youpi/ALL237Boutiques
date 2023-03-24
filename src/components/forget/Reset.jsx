@@ -67,16 +67,15 @@ const Forget =({history, match, type, color}) => {
     }
     
     const active=() => !(formik.values.cPassword === formik.values.password) ? true : false
-    console.log(formik.values.password)
-    console.log(formik.values.cPassword)
-    console.log(match.params.id)
+    // console.log(formik.values.password)
+    // console.log(formik.values.cPassword)
+    // console.log(match.params.id)
 
     return(
         <div className="reset">
-            <span className="reset-title">{t('resetTitle')}</span>
+            <h1 className="reset-title">{t('resetTitle')}</h1>
             <div className="reset-form">
-                <p className="reset-paragraph">{t('resetSous1')}
-                </p>
+                <p className="reset-paragraph">{t('resetSous1')}</p>
                 <form className="login-form" onSubmit={formik.handleSubmit} >
                     <div className="form-groupe">
                         {/* <Input type="password" name="password" label={t('resetSous5')} help={t('resetSous2')} val={state.password}

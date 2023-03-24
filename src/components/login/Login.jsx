@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, createRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import ReactLoading from 'react-loading';
@@ -8,6 +8,8 @@ import { Helmet } from "react-helmet";
 
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next';
+import { IoMailOutline } from 'react-icons/io5'
+import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi'
 
 import { Input } from '../addons/input/Input'
 import { toastify } from '../addons/toast/Toast'
@@ -28,6 +30,9 @@ window.addEventListener('beforeinstallprompt', function (e) {
 
 
 function Login({ dispatch }) {
+    const [load, setLoad] = useState(false)
+    const [showPassword, setshowPassword] = useState(false)
+    let history = useHistory()
 
     const { t } = useTranslation()
 
@@ -35,10 +40,6 @@ function Login({ dispatch }) {
         email: yup.string().email(`${t('formikLogin1')}`).required(`${t('formikLogin2')}`),
         password: yup.string().required(`${t('formikLogin3')}`).matches(regPassword, `${t('formikLogin4')}`),
     })
-
-    let history = useHistory()
-
-    const [load, setLoad] = useState(false)
 
     const formik = useFormik({
         initialValues: {
@@ -52,10 +53,10 @@ function Login({ dispatch }) {
     })
 
     const setTouched = (field) => {
-        if (!formik.touched[field])
+        if (!formik.touched[field]) {
             formik.setFieldTouched(field, true)
+        }
     }
-
     const login = (userdata) => {
         let percent = 0
         setLoad(true)
@@ -101,6 +102,10 @@ function Login({ dispatch }) {
     const active = () => (!formik.values.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
         || !formik.values.password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@%*+-_]{8,}$/))
 
+    const handleShowPassword = () => {
+        console.log("clicked ");
+        setshowPassword(!showPassword);
+    }
     return (
         <div className="login">
             <Helmet>
@@ -112,16 +117,23 @@ function Login({ dispatch }) {
                     <p className="login-paragrap">{t('LoginSous10')}</p>
                     <form onSubmit={formik.handleSubmit}>
                         <div className="form-groupe">
-                            <Input val={formik.values.email} type="email" label={t('SignUpSous6')} name="email" id="email"
-                                help={formik.errors.email} error={formik.errors.email && formik.touched.email}
-                                change={formik.handleChange} handBlur={() => setTouched('email')}
-                            />
+                            <div className='form-groupe-box'>
+                                <Input val={formik.values.email} type="email" label={t('SignUpSous6')} name="email" id="email"
+                                    help={formik.errors.email} error={formik.errors.email && formik.touched.email}
+                                    change={formik.handleChange} handBlur={() => setTouched('email')}
+                                />
+                                <span className='login-show-mail'> <IoMailOutline /> </span>
+                            </div>
                         </div>
                         <div className="form-groupe">
-                            <Input val={formik.values.password} type="password" label={t('SignUpSous8')} name="password" id="Password"
-                                help={formik.errors.password} error={formik.errors.password && formik.touched.password}
-                                change={formik.handleChange} handBlur={() => setTouched('password')}
-                            />
+                            <div className='form-groupe-box'>
+                                <Input val={formik.values.password} type={showPassword ? 'text' : 'password'} label={t('SignUpSous8')} name="password" id="Password"
+                                    change={formik.handleChange}
+                                    help={formik.errors.password} error={formik.errors.password && formik.touched.password}
+                                    handBlur={() => setTouched('password')}
+                                />
+                                <span className='login-show-password' onClick={handleShowPassword} > {showPassword ? <HiOutlineEye /> : <HiOutlineEyeOff />} </span>
+                            </div>
                             <div className="login-checkbox">
                                 <span className="login-forget-password" onClick={() => history.push('/forget')} style={{ textDecoration: 'underline', lineHeight: '15px' }}>{t('LoginSous9')}</span>
                             </div>

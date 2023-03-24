@@ -60,6 +60,28 @@
   text-align: center;
   font-size: 39.3px;
 }
+.login  .form-groupe-box{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  position: relative;
+}
+.login .login-show-password{
+  position: absolute;
+  color: #58585a;
+  cursor: pointer;
+  top: 28px;
+  right: 0;
+}
+.login .login-show-mail{
+  position: absolute;
+  color: #58585a;
+  top: 28px;
+  right: 0;
+}
+.red{
+  color: var(--red)!important;
+}
 @media only screen and (min-width: 768px) {
   .login .login-content {
     padding: 0 5% 2% 5%;

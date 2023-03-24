@@ -72,6 +72,19 @@
 .signup .lie:hover{
     text-decoration: underline;
 }
+.signup .form-groupe-box{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  position: relative;
+}
+.signup .signup-show-password{
+position: absolute;
+  color: #58585a;
+  cursor: pointer;
+  top: 28px;
+  right: 0;
+}
 
 @media only screen and (min-width: 768px) {
   .signup {

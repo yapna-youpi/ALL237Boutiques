@@ -39,9 +39,8 @@
     color: var(--white);
 }
 .reset-title{
-    padding-left: 20px;
     margin-top:50px;
-    /* font-family: 'montserat'; */
+    text-align: center;
     color: #262626;
     display: block;
     font-size: 1.5em;
@@ -132,7 +131,7 @@ styling resend components
         box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,rgba(17, 17, 26, 0.05) 0px 8px 32px;
     }
     .reset-title{
-        padding-left: 25%;
+        text-align: center;
         /* font-family: 'montserat'; */
         color: #262626;
         display: block;
@@ -188,7 +187,7 @@ styling resend components
         box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,rgba(17, 17, 26, 0.05) 0px 8px 32px;
     }
     .reset-title{
-        padding-left: 32%;
+        text-align: center;
         /* font-family: 'montserat'; */
         color: #262626;
         display: block;

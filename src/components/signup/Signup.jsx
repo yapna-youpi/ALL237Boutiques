@@ -18,6 +18,7 @@ import iperFot from './assets/vendre_bitcoin_usdt_ethereum_mobile_money_orange_m
 import { Input, Input2 } from '../addons/input/Input'
 import InputPhone from '../addons/input/PhoneInput'
 import { parsePhoneNumber } from 'react-phone-number-input'
+import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi'
 
 
 
@@ -37,6 +38,8 @@ function Signup({ Country, match }) {
     // const [state, setState] = useState({ name: "", email: "", phone: "", password: "", cPassword: "", check: false })
     const [lode, setLode] = useState(false)
     const [show, setShow] = useState(false)
+    const [ showPassword , setshowPassword] = useState(false)
+    const [ showCFpassword , setshowCFpassword] = useState(false)
     //initialisation of formik validation
     const formik = useFormik({
         initialValues: {
@@ -61,7 +64,6 @@ function Signup({ Country, match }) {
             replacer();
         }
     }, [])
-    console.log(show)
     let history = useHistory()
 
     const signup = async (userData) => {
@@ -146,6 +148,12 @@ function Signup({ Country, match }) {
         },150)
     }
 
+    const handleShowPassword = () => {
+        setshowPassword(!showPassword);
+    }
+    const handleShowCFpassword = () => {
+        setshowCFpassword(!showCFpassword)
+    }
     return (
         <>
             <div className="signup">
@@ -186,14 +194,20 @@ function Signup({ Country, match }) {
                                     change={(name, value) => setPhone(name, value)}
                                     handBlur={() => setTouched('phone')}
                                 />
-                                <Input val={formik.values.password} type="password" label={t('SignUpSous8')} name="password" id="Password"
-                                    help={formik.errors.password} error={formik.errors.password && formik.touched.password}
-                                    change={formik.handleChange} handBlur={() => setTouched('password')}
-                                />
-                                <Input val={formik.values.cPassword} type="password" label={t('SignUpSous9')} name="cPassword" id="confirPassword"
-                                    help={formik.errors.cPassword} error={formik.errors.cPassword && formik.touched.cPassword}
-                                    change={formik.handleChange} handBlur={() => setTouched('cPassword')}
-                                />
+                                <div className='form-groupe-box'>
+                                    <Input val={formik.values.password} type={ showPassword ? "text" : "password" } label={t('SignUpSous8')} name="password" id="Password"
+                                        help={formik.errors.password} error={formik.errors.password && formik.touched.password}
+                                        change={formik.handleChange} handBlur={() => setTouched('password')}
+                                    />
+                                     <span className='signup-show-password' onClick={handleShowPassword} > { showPassword ? <HiOutlineEye /> : <HiOutlineEyeOff /> } </span>
+                                </div>
+                                <div className='form-groupe-box'>
+                                    <Input val={formik.values.cPassword} type={ showCFpassword ? "text" : "password" }  label={t('SignUpSous9')} name="cPassword" id="confirPassword"
+                                        help={formik.errors.cPassword} error={formik.errors.cPassword && formik.touched.cPassword}
+                                        change={formik.handleChange} handBlur={() => setTouched('cPassword')}
+                                    />
+                                    <span className='signup-show-password' onClick={handleShowCFpassword} > { showCFpassword ? <HiOutlineEye /> : <HiOutlineEyeOff /> } </span>
+                                </div>
                                 <div className="checkbox">
                                     <input className='check' type="checkbox" id="check" onChange={() => formik.setFieldValue('check', !formik.values.check)} />
                                     <label htmlFor="check"><a className='lie' href={AmList[lang][0]} target="_blank"> {t('SignUpSous17')} {t('SignUpSous18')}</a></label>
