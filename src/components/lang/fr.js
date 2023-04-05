@@ -481,22 +481,22 @@ const french = {
     //formikTraductionbuy
     formikBuy1: "Adresse du wallet requise",
     formikBuy2: "Adresse du wallet invalide",
-    formikBuy3: "Le montant de vente est requis",
-    formikBuy4: "Le montant de vente est reuquis",
+    formikBuy3: "Le montant d'achat est requis",
+    formikBuy4: "Le montant d'achat est requis",
     formikBuy5: "Le montant en crypto est requis",
     formikBuy6: "Le numéro est requis",
     formikBuy7: "La confirmation du numéro est requise",
     formikBuy8: "Doit être un numéro valide du pays",
     formikBuy9: "Le numéro ne correspond pas",
     formikBuy10: "Doit etre une adresse ",
-    formikBuy11: `Le montant doit être compris entre ${process.env.REACT_APP_BUY_MIN} et ${process.env.REACT_APP_BUY_MAX} XAF.`,
+    formikBuy11: "Le montant doit être compris entre ",
     formikBuy12: " wallet valide",
 
     //formikTraductionsell
     formikSell1: "Adresse du wallet requise",
     formikSell2: "Adresse du wallet invalide",
     formikSell3: "Le montant de vente est requis",
-    formikSell4: "Le montant de vente est reuquis",
+    formikSell4: "Le montant de vente est requis",
     formikSell5: "Le montant en crypto est requis",
     formikSell6: "Le numéro est requis",
     formikSell7: "La confirmation du numéro est requise",
@@ -526,6 +526,7 @@ const french = {
     bilan5: "Numéro",
     bilan6: "Hash de la transaction",
     bilan7: "Opération terminée, merci pour cela",
+    bilan8: "crypto engagée",
 
     //cabital
 

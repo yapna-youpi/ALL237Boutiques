@@ -19,18 +19,26 @@ import PromoCode from '../promocode/PromoCode'
 import { Input, Input2 } from '../addons/input/Input'
 import InputPhone from '../addons/input/PhoneInput'
 import Fiats from '../addons/Fiats/Fiats'
-import { randomId, getCryptoRate} from '../../utils/utilFunctions'
+import { randomId, getCryptoRate, roundPrecision,roundDecimal} from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleMobile'
 
-import imgBtc from '../../assets/bitcoin.png'
+    var WAValidator = require('multicoin-address-validator');
+    const max = {
+        BTC: parseInt(process.env.REACT_APP_BUY_BTC_MAX),
+        ETH: parseInt(process.env.REACT_APP_BUY_ETH_MAX),
+        USDT: parseInt(process.env.REACT_APP_BUY_USDT_MAX)
+    }
+    const min = {
+        BTC: parseInt(process.env.REACT_APP_BUY_BTC_MIN),
+        ETH: parseInt(process.env.REACT_APP_BUY_ETH_MIN),
+        USDT: parseInt(process.env.REACT_APP_BUY_USDT_MIN)
+    }
+    const enable = process.env.REACT_APP_BUY_ENABLE
 
-var WAValidator = require('multicoin-address-validator');
-const max = parseInt(process.env.REACT_APP_BUY_MAX)
-const min = parseInt(process.env.REACT_APP_BUY_MIN)
-const enable = process.env.REACT_APP_BUY_ENABLE
-
-let interval
+    let interval
 function BuyCryptoMobile({ Amount, country, User }) {
+
+    const FEES = roundDecimal(roundDecimal(process.env.REACT_APP_BUY_FEES, 3) + roundDecimal(process.env.REACT_APP_INTOUCH_CO_FEES, 3))  //  frais de l'operation
 
     const { t } = useTranslation()
 
@@ -98,7 +106,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
                 .then(data => {
                     setForex(data)
                     formik.setFieldValue( { rateApi: data } , true) 
-                    console.log('les valeurs de formik', formik.values)
+                    
                 })
                 .catch(err => 0)
 
@@ -110,7 +118,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
         }
 
     }, [])
-
+    // console.log('les valeurs de formik', formik)
     const openModal = () => setModal(!modal)
     // function that manage the change of amount on each field
     const amountChange = e => {
@@ -134,10 +142,10 @@ function BuyCryptoMobile({ Amount, country, User }) {
                 break
         }
     }
-    console.log("les nouvelles valeurs de amount dans formik",formik.values)
+    // console.log("les nouvelles valeurs de amount dans formik",formik.values)
     // function that manages the activation of the button
     const active = () => {
-        if (!(min > parseFloat(formik.values.xaf) || parseFloat(formik.values.xaf) > max)
+        if (!(min[formik.values.crypto] > parseFloat(formik.values.xaf) || parseFloat(formik.values.xaf) > max[formik.values.crypto])
             && WAValidator.validate(`${formik.values.wallet}`, `${formik.values.crypto }`, 'both') && isValidPhoneNumber(formik.values.phone || '') && formik.values.cfphone === formik.values.phone) {
             return false
         } else return true
@@ -163,7 +171,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
             // !formik.values.wallet.match(regWallet) && formik.setFieldError('wallet', `${t('formikBuy10')}`)
         }
         if (formik.values.xaf && !formik.errors.xaf) {
-            (min > montant || montant > max) && formik.setFieldError('xaf', `${t('formikBuy11')}`)
+            (min[formik.values.crypto] > montant || montant > max[formik.values.crypto]) && formik.setFieldError('xaf', `${ t('formikBuy11') + min[formik.values.crypto] + " et " + max[formik.values.crypto] + " XAF." }`)
         }
 
     })()
@@ -217,7 +225,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
     }
     const showFee = () => {
         if (promo.promotion) return 0
-        else return formik.values.xaf * (0.065 + User.percent / 100)
+        else return formik.values.xaf * (FEES + User.percent / 100)
     }
     // promo.promotion ? 0 : formik.values.xaf * (0.065 + User.percent / 100)
     (() => {

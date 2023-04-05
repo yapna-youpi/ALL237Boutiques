@@ -8,7 +8,7 @@ const INTOUCHFEES = process.env.REACT_APP_INTOUCH_CI_FEES // les frais intouch s
 const min=process.env.REACT_APP_SELL_MIN
 
 const cryptoChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
-    console.log("rate and rate dans cryptoChange ", rate, rate)
+    // console.log("rate and rate dans cryptoChange ", rate, rate)
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
     let usedIntouchFees = promotion ? 0 : INTOUCHFEES
     if (value < 0.000296) {
@@ -35,7 +35,7 @@ const cryptoChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
 }
 
 const euroChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
-    console.log("the value dans eurohange ", value, unit)
+    // console.log("the value dans eurohange ", value, unit)
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
     let usedIntouchFees = promotion ? 0 : INTOUCHFEES
     if (value < 10) {
@@ -63,7 +63,7 @@ const euroChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
 const xafChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
     let usedIntouchFees = promotion ? 0 : INTOUCHFEES
-    console.log("the usedIntouchFees dansxafChange ", usedFees, usedIntouchFees)
+    // console.log("the usedIntouchFees dans xafChange ", usedFees, usedIntouchFees)
     if (value < parseInt(min) || rate === 0) {
         return {
             xaf: value,

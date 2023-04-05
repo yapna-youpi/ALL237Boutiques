@@ -483,15 +483,15 @@ const english = {
      //formikTraductionbuy
      formikBuy1: "Wallet address is required",
      formikBuy2: "Invalid wallet address",
-     formikBuy3: "The sales amount is required",
-     formikBuy4: "The sales amount is required",
+     formikBuy3: "The buy amount is required",
+     formikBuy4: "The buy amount is required",
      formikBuy5: "The amount in crypto is required",
      formikBuy6: "The number is required",
      formikBuy7: "Confirmation of the number is required",
      formikBuy8: "Must be a valid country number",
      formikBuy9: "The number does not match",
      formikBuy10: "Must be a valid ",
-     formikBuy11: `The amount must be between ${process.env.REACT_APP_BUY_MIN} and ${process.env.REACT_APP_BUY_MAX} XAF.`,
+     formikBuy11: "The amount must be between ",
      formikBuy12: " wallet address",
 
      //formiktraductionsell
@@ -529,6 +529,9 @@ const english = {
      bilan5: "Number",
      bilan6: "Transaction Hash",
      bilan7: "Transaction completed, thank you for this",
+     bilan8: "committed crypto ",
+     bilan9: "buy crypto",
+     bilan10: "withdraw mobile",
 
      //cabital
      

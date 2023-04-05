@@ -1,8 +1,19 @@
 # https://www.robotstxt.org/robotstxt.html
+Sitemap: https://www.ipercah.io.com/sitemap.xml
+
 User-agent: Googlebot
 allow:/
 
 User-agent: *
+allow:/
+
+User-agent: Googlebot-Image
+allow:/
+User-agent: Googlebot-News
+allow:/
+User-agent: Googlebot-Video
+allow:/
+User-agent: Mediapartners-Google
 allow:/
 
 User-agent: AdsBot-Google
@@ -11,4 +22,5 @@ allow:/
 Sitemap: https://www.ipercash.io/sitemap.xml
 Sitemap: https://www.ipercash.io/sitemap.txt
 Sitemap: https://www.ipercash.io/sitemap.rss
+Sitemap: https://www.ipercash.io/sitemap.html
 Sitemap: https://www.ipercash.io/sitemap.report-sitemap.html

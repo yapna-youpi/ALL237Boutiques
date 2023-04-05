@@ -2,9 +2,12 @@ import { roundDecimal, roundPrecision } from '../../utils/utilFunctions';
 
 
 const FEES = roundPrecision(process.env.REACT_APP_BUY_FEES, 4) + roundPrecision(process.env.REACT_APP_INTOUCH_CO_FEES, 4)  //  frais de l'operation
-const min = process.env.REACT_APP_BUY_MIN;
-const max = process.env.REACT_APP_BUY_MAX;
-
+const min = {
+    BTC: parseInt(process.env.REACT_APP_BUY_BTC_MIN),
+    ETH: parseInt(process.env.REACT_APP_BUY_ETH_MIN),
+    USDT: parseInt(process.env.REACT_APP_BUY_USDT_MIN)
+}
+console.log('first fees',process.env.REACT_APP_BUY_FEES, "second fees",process.env.REACT_APP_INTOUCH_CO_FEES,"les frais global",FEES)
 const cryptoChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
     console.log("rate and rate ", rate, rate)
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
@@ -57,7 +60,7 @@ const euroChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
 
 const xafChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
-    if (value < parseInt(min) || rate === 0) {
+    if (value < parseInt(min[crypto]) || rate === 0) {
         return {
             xaf: value,
             eu: roundDecimal(value / unit),

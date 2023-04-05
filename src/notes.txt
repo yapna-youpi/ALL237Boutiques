@@ -3,29 +3,3 @@ les fichiers sensible :
     header.css
 
 
-
- Copiez l'enregistrement TXT ci-dessous dans la configuration DNS de ipercash.io
-    google-site-verification=tLNxNvQMU_oyulQujjaYVDlrEAgJKeq8fp9EfEzBgbQ   
-
-    mettre la meta tag dans le head du site
-    	<meta name="google-site-verification" content="tLNxNvQMU_oyulQujjaYVDlrEAgJKeq8fp9EfEzBgbQ" />
-
-// const rateChange = (rate, crypto, unit) => {
-//     switch (crypto) {
-//         case "BTC":
-//             return {
-                
-//             }
-//             break;
-//         case "USDT":
-            
-//             break;
-//         case "ETH":
-            
-//             break;
-    
-//         default:
-//             break;
-//     }
-
-// } 

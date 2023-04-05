@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal } from 'react-responsive-modal'
 import ReactPlayer from 'react-player'
 import { useTranslation } from 'react-i18next'
@@ -16,19 +16,18 @@ let videoList={
 
 function Steps() {
     const { t } = useTranslation()
-    const [state, setState]=useState({open: false, video: 0})
+    const [state, setState]=useState({open: false, video: 0, lang: 'en'})
 
     const showVideo=(number)=>{
-        setState({open: true, video: number})
+        let lang=JSON.parse(localStorage.getItem("lang")).lang;
+        setState({open: true, video: number, lang: lang});
+        
     }
-    let lang='en'
-    try {
-        let lang=JSON.parse(localStorage.getItem("lang")).lang
-    } catch (error) {
-    }
-    console.log(videoList[lang][state.video])
+    
+    // console.log(videoList[state.lang][state.video],videoList[state.lang],state.lang)
     const hideVideo=()=>setState({...state, open: false})
     return (
+        <>
         <div className="steps">
             <span className='ligu'></span>
             <span className='retir'>  {t('stepsTitle')}</span>
@@ -58,11 +57,12 @@ function Steps() {
                     <a data-aos="fade-left" data-aos-delay="800" data-aos-once="true" href="https://support.ipercash.io/" target="_blank"><span className='coli'>{t('sousSteps5')}</span></a>
                 </div>
                 <Modal open={state.open} onClose={hideVideo} showCloseIcon={false} closeOnOverlayClick={true} center classNames={{overlay: "step-overlay", modal: 'step-modal'}} >
-                    <ReactPlayer url={videoList[lang][state.video]} controls />
+                    <ReactPlayer url={videoList[state.lang][state.video]} controls />
                 </Modal>
             </div>
             <h5>{ t('sousSteps4')}</h5>
         </div>
+        </>
     )
 }
 

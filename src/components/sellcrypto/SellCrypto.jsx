@@ -73,7 +73,7 @@ function SellCrypto({ Amount, country, User }) {
             Eclip()
         }
     })
-    console.log('la valeur de objet formik',formik.values)
+    // console.log('la valeur de objet formik',formik.values)
     useEffect(async () => {
         setTimeout(()=>{document.getElementById('BTC').classList.toggle('cryptoActif')},1)
         
@@ -103,7 +103,7 @@ function SellCrypto({ Amount, country, User }) {
         }
 
         }, [])
-        console.log('les valeurs du currencies', process.env.REACT_APP_API_URL)
+        // console.log('les valeurs du currencies', process.env.REACT_APP_API_URL)
     // useLayoutEffect(() => {
     //     const target = { name: "xaf", value: parseInt(formik.values.xaf) }
     //     amountChange({ target })
@@ -134,7 +134,7 @@ function SellCrypto({ Amount, country, User }) {
                 break
         }
     }
-    console.log('le rate', formik.values.rateApi[formik.values.crypto][formik.values.fiat])
+    // console.log('le rate', formik.values.rateApi[formik.values.crypto][formik.values.fiat])
     // console.log('objet formik initiale',formik.initialValues)
     // console.log('objet formik',formik)
     // function that manages the activation of the button
