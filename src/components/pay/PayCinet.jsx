@@ -14,8 +14,7 @@ import './pay.css'
 import Cinet from '../cinet/Cinet'
 
 import buyCinet from './buyCinet'
-import { cashIn } from '../../intouch/api';
-import { randomId, checkServiceId, sendToApi, cutChain } from '../../utils/utilFunctions';
+import { sendToApi, cutChain } from '../../utils/utilFunctions';
 
 import mobile from './assets/acheter_bitcoin_usdt_ethereum_moin_cher.svg'
 import { toastify } from '../addons/toast/Toast'
@@ -49,6 +48,7 @@ function Pay({ User }) {
             status: 'init',
             provider: 'cinetpay',
             userId: User.userId,
+            parrain: User.parrain_id
         }
         if (data.promotion) params = { ...params, promotion: data.promotion, code: data.code }
         let result = await sendToApi('buymobile/settransaction', params, User.token)
@@ -139,7 +139,7 @@ function Pay({ User }) {
                     <MdError size={150} color="#CC1616" />
                 </div>
                 <div className="">
-                    <h2> {t('buyCryptoError' + trace.error.cn)} </h2>
+                    <h1> {t('buyCryptoError' + trace.error.cn)} </h1>
                     <h3>  </h3>
                     <p>{t('payTitle')}</p>
                 </div>

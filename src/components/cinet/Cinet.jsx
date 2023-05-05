@@ -48,7 +48,7 @@ function Cinet({ data, close, cancel }) {
         cinetModal.parentNode.removeChild(cinetModal)
         close()
     }
-    console.log("..... the data ", data, ".....")
+    // console.log("..... the data ", data, ".....")
     return (
         <div className="cinet">
             <Helmet> <script id="cinet-script">{`
@@ -61,7 +61,7 @@ function Cinet({ data, close, cancel }) {
                             });
                             CinetPay.getCheckout({
                                 transaction_id: '${data.id}', // YOUR TRANSACTION ID
-                                amount: ${data.xaf},
+                                amount: ${parseInt(data.xaf)},
                                 currency: 'XAF',
                                 channels: 'MOBILE_MONEY',
                                 // "lock_phone_number": true,

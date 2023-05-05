@@ -12,8 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 import './pay.css'
 import buy from './buy'
-import { cashIn } from '../../intouch/api';
-import { randomId, checkServiceId, sendToApi, cutChain } from '../../utils/utilFunctions';
+import { sendToApi, cutChain } from '../../utils/utilFunctions';
 
 import mobile from './assets/acheter_bitcoin_usdt_ethereum_moin_cher.svg'
 import { toastify } from '../addons/toast/Toast'
@@ -44,6 +43,7 @@ function Pay({ User }) {
             status: 'init',
             provider: 'intouch',
             userId: User.userId,
+            parrain: User.parrain_id
         }
         if (data.promotion) params = { ...params, promotion: data.promotion, code: data.code }
         let result = await sendToApi('buymobile/settransaction', params, User.token)
@@ -159,12 +159,12 @@ function Pay({ User }) {
                     <MdError size={150} color="#CC1616" />
                 </div>
                 <div className="">
-                    <h2> {t('buyCryptoError' + trace.error.cn)} </h2>
+                    <h1> {t('buyCryptoError' + trace.error.cn)} </h1>
                     <h3>  </h3>
                     <p>{t('payTitle')}</p>
                 </div>
                 <p>
-                    {trace.backFund && <h3 className="backfunds" >{t('paySous1a')+'  '} <span className='bulet' href="mailto:info@ipercash.fr"> Info@ipercash.fr </span> {'  '+t('paySous2a')} </h3>}
+                    {trace.backFund && <h3 className="backfunds" >{t('paySous1a') + '  '} <span className='bulet' href="mailto:info@ipercash.fr"> info@ipercash.fr </span> {'  ' + t('paySous2a')} </h3>}
                     {/* {trace.backFund && <h3 className="backfunds" >{t('paySous1')}  &ensp; &ensp; {
                         trace.mobilePaid ? <FaCheck size={20} color="#CC1616" />
                             : <ReactLoading type="spinningBubbles" color='#CC1616' height={20} width={20} />
@@ -178,7 +178,7 @@ function Pay({ User }) {
                 {t('paySous2')}
                 <h3>
                     <span className="deco"></span>
-                    <span className="op-id" onClick={() => copy(params.id)}>{params.id}<FaRegCopy onClick={()=>copy(params.id)} size={25} /></span>
+                    <span className="op-id" onClick={() => copy(params.id)}>{params.id}<FaRegCopy onClick={() => copy(params.id)} size={25} /></span>
                     <span className="deco"></span>
                 </h3>
                 {t('paySous3')}

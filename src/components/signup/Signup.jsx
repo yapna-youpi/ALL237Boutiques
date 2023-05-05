@@ -68,8 +68,6 @@ function Signup({ Country, match }) {
 
     const signup = async (userData) => {
         let params = ParrainRef.current ? { ...userData, parrain_id: ParrainRef.current.id } : userData
-        // console.log("the params ", params)
-        // return
         setLode(true)
         sendToApi('user/signup', params)
             .then((data) => {
@@ -108,15 +106,18 @@ function Signup({ Country, match }) {
 
     const setParrain = async () => {
         let parrain_id = match.params.id
-        if (!parrain_id) parrain_id = localStorage.getItem('pr')
-        console.log("the parrain ", parrain_id)
+        if (!parrain_id) parrain_id = localStorage.getItem('pr') // look at line 118
         if (parrain_id) {
-            let res = await sendToApi('parrain/get', { parrain_id })
+            // let res = await sendToApi('parrain/getone/', { parrain_id })
+            let res=await fetch(process.env.REACT_APP_API_URL+'parrain/getone/:'+parrain_id)
+                .then(res=>res.json())
+                .catch(error=>{})
+            console.log("the parrain ", res.parrain.parrain_id)
             if (res.parrain) {
                 ParrainRef.current = { id: res.parrain.parrain_id, percent: res.parrain.percent }
                 localStorage.setItem('pr', res.parrain.parrain_id)
             }
-            else console.log("Bad identifier")
+            // else console.log("Bad identifier")
         }
     }
 
@@ -137,8 +138,8 @@ function Signup({ Country, match }) {
     const active = () => !formik.values.check || (!isValidPhoneNumber(formik.values.phone) || (formik.values.cPassword !== formik.values.password))
 
     let AmList = {
-        en: ["http://ftp.ipercash.fr/politiques//term_en.pdf"],
-        fr: ["http://ftp.ipercash.fr/politiques//terms_fr.pdf"]
+        en: ["http://ipercash.fr/politiques/terms_en.pdf"],
+        fr: ["http://ipercash.fr/politiques/terms_fr.pdf"]
     }
     let lang = JSON.parse(localStorage.getItem("lang") || '{"lang":"fr"}').lang
 

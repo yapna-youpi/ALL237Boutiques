@@ -21,12 +21,12 @@ const cryptoChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
     else {
         if ( crypto === 'USDT') {
             return {
-                xaf: Math.trunc(value * rate * unit * (1 - usedFees) - usedIntouchFees - value * rate * unit * 0.0377),
+                xaf: parseInt(Math.trunc(value * rate * unit * (1 - usedFees) - usedIntouchFees - value * rate * unit * 0.0377)),
                 eu: roundDecimal(value * rate * (1 - usedFees) - usedIntouchFees / unit - value * rate * 0.04) ,
                 amount: value,
             }
         } else return {
-            xaf: Math.round(value * rate * unit * (1 - usedFees) - usedIntouchFees) ,
+            xaf: parseInt(Math.round(value * rate * unit * (1 - usedFees) - usedIntouchFees)) ,
             eu: roundDecimal(value * rate * (1 - usedFees) - usedIntouchFees/unit),
             amount: value,
         }
@@ -40,7 +40,7 @@ const euroChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
     let usedIntouchFees = promotion ? 0 : INTOUCHFEES
     if (value < 10) {
         return {
-            xaf: Math.round(value * unit),
+            xaf: parseInt(Math.round(value * unit)),
             eu: value,
             amount: 0
         }
@@ -48,12 +48,12 @@ const euroChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
     else {
         if ( crypto === 'USDT') {
             return {
-                xaf: Math.round(value * unit),
+                xaf: parseInt(Math.round(value * unit)),
                 eu: value,
                 amount: Math.ceil((value/rate) + usedFees * value/rate + INTOUCHFEES/rate/unit )  ,
             }
         } else return {
-            xaf: Math.round(value * unit),
+            xaf: parseInt(Math.round(value * unit)),
             eu: value,
             amount: roundDecimal((value/rate) + usedFees * value/rate + INTOUCHFEES/rate/unit),
         }
@@ -66,7 +66,7 @@ const xafChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
     // console.log("the usedIntouchFees dans xafChange ", usedFees, usedIntouchFees)
     if (value < parseInt(min) || rate === 0) {
         return {
-            xaf: value,
+            xaf: parseInt(value),
             eu: roundDecimal(value / unit),
             amount: 0
         }
@@ -74,12 +74,12 @@ const xafChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
     else {
         if ( crypto === 'USDT') {
             return {
-                xaf: value,
+                xaf: parseInt(value),
                 eu: roundDecimal(value / unit),
                 amount: Math.ceil(roundDecimal(( value / rate) + value * usedFees/rate  + INTOUCHFEES/rate))
             }
         } else return {
-            xaf: value,
+            xaf: parseInt(value),
             eu: roundDecimal(value / unit),
             amount:  roundDecimal(( value / rate) + value * usedFees/rate  + INTOUCHFEES/rate),
         }

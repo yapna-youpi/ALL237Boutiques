@@ -148,7 +148,7 @@
 
 .icopy {
   display: inline-block;
-  max-width: 125px;
+  /* max-width: 125px; */
   padding: 0px;
   border: none;
   resize: none;

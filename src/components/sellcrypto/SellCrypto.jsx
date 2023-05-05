@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, createRef } from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 import 'react-phone-number-input/style.css'
 import { isValidPhoneNumber } from 'react-phone-number-input'
 import { connect } from 'react-redux'
@@ -7,7 +7,7 @@ import { Modal } from 'react-responsive-modal'
 import Modal2 from '../sendmoney/Modal2'
 import { Helmet } from "react-helmet";
 
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import './sellcrypto.css'
@@ -16,7 +16,6 @@ import { Input } from '../addons/input/Input';
 import PromoCode from '../promocode/PromoCode'
 import InputPhone from '../addons/input/PhoneInput'
 import Fiats from '../addons/Fiats/Fiats'
-import { getCryptoRate, roundPrecision } from '../../utils/utilFunctions'
 import { xafChange, euroChange, cryptoChange } from './handleAmount'
 import Sumsub from '../sumsub/Sumsub'
 
@@ -73,7 +72,6 @@ function SellCrypto({ Amount, country, User }) {
             Eclip()
         }
     })
-    // console.log('la valeur de objet formik',formik.values)
     useEffect(async () => {
         setTimeout(()=>{document.getElementById('BTC').classList.toggle('cryptoActif')},1)
         
@@ -84,7 +82,6 @@ function SellCrypto({ Amount, country, User }) {
             formik.setValues( {...formik.values, rateApi: data } , true) 
         })
         .catch(err => 0)
-        // console.log(state)
 
         interval = setInterval(() => {
 
@@ -103,11 +100,6 @@ function SellCrypto({ Amount, country, User }) {
         }
 
         }, [])
-        // console.log('les valeurs du currencies', process.env.REACT_APP_API_URL)
-    // useLayoutEffect(() => {
-    //     const target = { name: "xaf", value: parseInt(formik.values.xaf) }
-    //     amountChange({ target })
-    // }, [promo])
 
     const openModal = () => {
         setModal(!modal)
@@ -127,16 +119,12 @@ function SellCrypto({ Amount, country, User }) {
                 break;
             case "eu":
                 result = euroChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit,formik.values.crypto)
-                // console.log("the result of euroChange ", result)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break;
             default:
                 break
         }
     }
-    // console.log('le rate', formik.values.rateApi[formik.values.crypto][formik.values.fiat])
-    // console.log('objet formik initiale',formik.initialValues)
-    // console.log('objet formik',formik)
     // function that manages the activation of the button
     const active = () => {
         if (!(min > parseFloat(formik.values.xaf) || parseFloat(formik.values.xaf) > max)
@@ -150,14 +138,10 @@ function SellCrypto({ Amount, country, User }) {
         
         let unit = formik.values.fiat == 'EUR' ? forex.XAF/forex.USD : forex.XAF 
         let result = xafChange(formik.values.xaf, formik.values.rateApi[formik.values.crypto][f], promo.promotion, User.percent, unit,formik.values.crypto)
-        // console.log("the result at changeFiat ", result)
         formik.setFieldValue('eu', result.eu)
         formik.setFieldValue('fiat', f)
         formik.setFieldValue('rate', formik.values.rateApi[formik.values.crypto][f])
-        // console.log('le new resultat', result,result.eu)
-        console.log('la valeur du unit', unit)
     }
-    // console.log('les valeurs de formik',formik.values)
     const Eclip = () => {
         if (enable == "FALSE") {
             setMode(!mode)
@@ -200,7 +184,6 @@ function SellCrypto({ Amount, country, User }) {
     }
     (() => {
         if (!active() && !promo.code && !promo.show) {
-            // console.log("the promo state ", promo)
             setPromo({ ...promo, show: true })
         }
     })()
@@ -257,7 +240,7 @@ function SellCrypto({ Amount, country, User }) {
             {sum && <Modal open={true} onClose={() => setSum(false)} center={true} container={myRef.current} >
                 <Sumsub call={openModal} close={() => setSum(false)} />
             </Modal>}
-            {modal && <SellModal open={modal} toogle={setModal} data={{ ...formik.values, ...promo }} rate={formik.values.rateApi[formik.values.crypto][formik.values.fiat]} User={User} promotion={promo.promotion} />}
+            {modal && <SellModal open={modal} toogle={setModal} data={{ ...formik.values, ...promo }} rate={formik.values.rateApi[formik.values.crypto]['XAF']} User={User} promotion={promo.promotion} />}
 
             <h1>{t('sellCrypto')}</h1>
             <h2 className='crypt-sell'>{t('sellCrypto19')}</h2>

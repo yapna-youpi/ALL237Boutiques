@@ -56,8 +56,9 @@ function Main({ User, Country }) {
                     <Route path='/sellcrypto*' exact component={checkUser(SellCrypto)} />
                     <Route path='/purchase' exact component={SWITCH_INTOUCH ? PayCinet : Pay} />
                     <Route path='/complete' exact component={checkUser(Success)} />
-                    <Route path='/signup*' exact component={Signup} />
                     <Route path='/signup/:id' exact component={Signup} />
+                    {/* the route /signup/:id should be before the route /signup* */}
+                    <Route path='/signup*' exact component={Signup} />
                     <Route path='/login*' exact component={Login} />
                     <Route path='/valid/help/:id' component={Valid} />
                     <Route path='/forget' exact component={Forget} />

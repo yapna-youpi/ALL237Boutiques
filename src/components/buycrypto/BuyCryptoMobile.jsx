@@ -186,7 +186,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
             // sessionStorage.clear()
             sessionStorage.removeItem('data')
             // sessionStorage.setItem('data',JSON.stringify(formik.setValues(({ ...formik, id: randomId('BM'), rate: rate[formik.values.fiat] }))))
-            sessionStorage.setItem('data', JSON.stringify({ ...formik.values, id: randomId('BM'), rate: formik.values.rateApi[formik.values.crypto][formik.values.fiat], ...promo }))
+            sessionStorage.setItem('data', JSON.stringify({ ...formik.values, id: randomId('BM'), rate: formik.values.rateApi[formik.values.crypto]['XAF'], ...promo }))
             setValid(true)
             // console.log("the values stored ", JSON.parse(sessionStorage.getItem('data')))
             setTimeout(() => history.push('/purchase'), 2000)
@@ -266,7 +266,6 @@ function BuyCryptoMobile({ Amount, country, User }) {
         
     }
     
-    // console.log(formik.values)
     return (
         <div className="buycrypto">
             <Helmet>

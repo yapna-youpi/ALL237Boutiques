@@ -6,14 +6,12 @@ import ReactLoading from 'react-loading'
 import { FaRegCopy } from 'react-icons/fa'
 import { useTranslation } from 'react-i18next'
 
-import { sendToApi, roundPrecision, randomId, activeButtonSend } from '../../utils/utilFunctions'
-import { cryptoChange } from './handleAmount'
+import { sendToApi, roundPrecision, randomId } from '../../utils/utilFunctions'
 import { toastify } from '../addons/toast/Toast'
 
 import './sellmodal.css'
 import Timer from './Timer'
 
-// const receiveWallet = process.env.REACT_APP_RECEPT_WALLET;
 const fees = process.env.REACT_APP_SELL_FEES;
 const intouchFees = process.env.REACT_APP_INTOUCH_CI_FEES;
 
@@ -27,7 +25,6 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
     let ref1 = React.createRef()
     let ref2 = React.createRef()
     let ref3 = React.createRef()
-    // console.log('les datas sont:',data)
     useEffect(async () => {
         checkConflict()
         return () => {
@@ -69,15 +66,11 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
     }
     const startChecking = async () => {
         setChecking(true)
-        console.log("start checking payment ...")
         let result = await checkPayment()
-        console.log("the result of checkpayment ", result)
         if (!result) {
             let time = 0
             let left = ((+new Date) - state.time) / 1000
-            console.log("the remaining time and requests ", left, Math.ceil(left / 60))
             let interval = setInterval(async () => {
-                console.log("the time ", time)
                 result = await checkPayment()
                 time++
                 if (result || time === (10 - Math.ceil(left / 60))) {
@@ -120,10 +113,8 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
     // function that check confirmation of transaction
 
     const intervalFunction = (data, time) => {
-        console.log("start checking confirmation ...")
         time++
         if (time === 11) { // when time reach 11 transaction have 10 min
-            console.log("we lauch confirmation ....")
             setTimeout(() => success(), 20 * 1000) // waiting for api make payment and change status of operation in database
             return
         }
@@ -136,14 +127,12 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
                 setTimeout(() => intervalFunction(data, time), 60 * 1 * 1000)
             }
         }).catch((error => {
-            console.error("error on check confirmation ", error)
             setTimeout(() => intervalFunction(data, time), 60 * 1 * 1000)
         }))
     }
     const success = async (time = 0) => {
         // if time is greater than 2 we show an error
         if (time > 1) {
-            console.log("the bad success application")
             let p = {
                 operation: 'Sell Crypto',
                 id: state.id,
@@ -162,7 +151,6 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
             // rate: rate,
         }
         // show the result to client
-        console.log("we check the status ...")
         sendToApi('sellcrypto/status', successParams, User.token)
             .then(res => {
                 if (res) {
@@ -189,7 +177,6 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
                     }, 5000)
                 }
             }).catch(error => {
-                console.log("error on success ", error)
                 setTimeout(() => {
                     success(time)
                 }, 5000)
@@ -210,9 +197,9 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
             status: 'init',
             rate: rate,
             provider: process.env.REACT_APP_MOBILE_PROVIDER,
-            userId: User.userId
+            userId: User.userId,
+            parrain: User.parrain_id
         }
-        console.log("the data to store ", storeData)
         if (data.promotion) storeData = { ...storeData, promotion: data.promotion, code: data.code }
         let storeResult = await sendToApi('sellcrypto/create', storeData, User.token)
         if (storeResult !== 'error') {
@@ -276,7 +263,7 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
                                     <div className="modal-details">
                                         <h3 className='titleh3'>{t('sellModal4')}</h3>
                                         <div className="">
-                                            <span>{t('sellModal13')} </span>  <span> {Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 8 }).format(data.amount)} {data.crypto}</span>
+                                            <span>{t('sellModal13')} </span>  <span> {Intl.NumberFormat('fr-FR', { maximumSignificantDigits: 8 }).format(data.amount)} {data.crypto} </span>
                                         </div>
                                         <div className="">
                                             <span>{t('sellModal14')}  </span>  <span className="wallet"> {data.wallet.substr(0, 6) + '...' + data.wallet.substr(30)} </span>
@@ -303,7 +290,7 @@ function SellModal({ open, toogle, data, rate, User, promotion }) {
                                 <div className="send-bloc">
                                     {!state.txid && <><Timer stamp={600 * 1000} action={cancel} />
                                         <p>
-                                            {t('sellModal7')} <span className="icopy" onClick={() => copy(data.amount)} >{data.amount + " " + data.crypto}</span>
+                                            {t('sellModal7')} <span className="icopy" onClick={() => copy(data.amount)} >{data.amount + " " + data.crypto +" "}</span>
                                             {t('sellModal6')} <b className="wadd" onClick={() => copy(setReceiveWallet())} ref={ref3} >{setReceiveWallet()} </b> <br />
                                             {t('sellModal8')} <br />
                                             {t('sellModal9')} <br /><br />
