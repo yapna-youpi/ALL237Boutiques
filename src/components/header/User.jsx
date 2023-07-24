@@ -28,9 +28,8 @@ function User({user, nav, logout}) {
         logout()
         // nav('/login')
     }
-    
     return (
-        <>
+    <>
         {/* <li className={user.userId ? "nav-link user-button connected" : "nav-link user-button" } onClick={(e)=>show(e)} >
             <FaUser color="#fff" />
             ACCOUNT
@@ -40,26 +39,34 @@ function User({user, nav, logout}) {
             {t('accountButton')}
         </li>
         <div className="user-menu">
-        <Menu id="basic-menu" anchorEl={anchor} open={open}
-                transformOrigin={{
-                    vertical: -50,
-                    horizontal: 10,
-                }}
-                onClose={close}
-            >
-                <MenuItem onClick={user.userName ? null : ()=>click('/login/' +process.env.REACT_APP_LOGIN_LINK )}>
-                    <span className="menu-text"><FaUser fontSize="large" /> &ensp;  {user.userName ? user.userName : t('user1') } </span>
-                </MenuItem>
-                <MenuItem onClick={()=>click('/signup/' +process.env.REACT_APP_SIGUNP_LINK )}>
-                <span className="menu-text"><HiPencilAlt fontSize="large" /> &ensp;{t('user2')} </span>
-                </MenuItem>
-                <Divider />
-                <MenuItem onClick={logOut}>
-                <span className="menu-text"><FaSignOutAlt fontSize="large" /> &ensp;{t('user3')}  </span>
-                </MenuItem>
-        </Menu>
+            <Menu id="basic-menu" anchorEl={anchor} open={open}
+                    transformOrigin={{
+                        vertical: -50,
+                        horizontal: 10,
+                    }}
+                    onClose={close}
+                >
+                    <MenuItem onClick={user.userName ? ()=>nav("/Dashboard") : ()=>click('/login/' +process.env.REACT_APP_LOGIN_LINK )}>
+                        <span className="menu-text">
+                            {   user.userName ? (<span className='text-us'>
+                                                    {user.userName.charAt(0)}
+                                                </span>)  
+                                :   (<span><FaUser fontSize="large"/></span>) 
+                            }
+                             &ensp;  
+                            {user.userName ? "Dashboard " : t('user1') }  </span>
+                    
+                    </MenuItem>
+                    <MenuItem onClick={()=>click('/signup/' +process.env.REACT_APP_SIGUNP_LINK )}>
+                    <span className="menu-text"><HiPencilAlt fontSize="large" /> &ensp;{t('user2')} </span>
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem onClick={logOut}>
+                    <span className="menu-text"><FaSignOutAlt fontSize="large" /> &ensp;{t('user3')}  </span>
+                    </MenuItem>
+            </Menu>
         </div>
-        </>
+    </>
 
     )
 }

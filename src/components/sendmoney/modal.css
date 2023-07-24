@@ -1,8 +1,8 @@
 .customOverlay {
 }
 .customModal {
-    width: 70vw;
-    max-width: 350px;
+    /* width: 70vw; */
+    /* max-width: 350px; */
     margin: auto;
     padding: 1%;
     text-align: center;
@@ -66,5 +66,12 @@
 .body-content p:nth-child(5) {
     font-weight: bold;
 }
+#mercuryo-widget{
+    display: flex;
+    justify-content: center;
+}
+/* #mercuryo-widget .customModal{
+    width: inherit;
+} */
 
 

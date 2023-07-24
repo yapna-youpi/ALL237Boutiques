@@ -1,7 +1,6 @@
 .m2customModal{
     border-radius: 8px;
-    padding-top: 10px;
-    /* max-width: 32vw; */
+    max-width: 32vw;
     text-align: center;
 }
 .m2customModal h2 {

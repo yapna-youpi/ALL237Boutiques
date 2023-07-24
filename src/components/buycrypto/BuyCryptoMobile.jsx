@@ -57,9 +57,9 @@ function BuyCryptoMobile({ Amount, country, User }) {
     const [forex, setForex] = useState([])
 
     //for active promocode
-    const [code, setCode] = useState(false)
     const [modal, setModal] = useState(false)
     const [valid, setValid] = useState(false)
+    const [reduction, setReduction] = React.useState('')
     // state of sumsub
     const [sum, setSum] = useState(false)
     // promo state
@@ -127,15 +127,15 @@ function BuyCryptoMobile({ Amount, country, User }) {
         let result
         switch (e.target.name) { // amount c'est le montant en crypto monnaie 
             case "amount":
-                result = cryptoChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto)
+                result = cryptoChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto,reduction)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break
             case "xaf":
-                result = xafChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto)
+                result = xafChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto,reduction)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break;
             case "eu":
-                result = euroChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto)
+                result = euroChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto,reduction)
                 // console.log("the result of euroChange ", result)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break;
@@ -187,7 +187,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
             // sessionStorage.clear()
             sessionStorage.removeItem('data')
             // sessionStorage.setItem('data',JSON.stringify(formik.setValues(({ ...formik, id: randomId('BM'), rate: rate[formik.values.fiat] }))))
-            sessionStorage.setItem('data', JSON.stringify({ ...formik.values, id: randomId('BM'), rate: formik.values.rateApi[formik.values.crypto]['XAF'], ...promo }))
+            sessionStorage.setItem('data', JSON.stringify({ ...formik.values, id: randomId('BM'), rate: formik.values.rateApi[formik.values.crypto][formik.values.fiat], ...promo }))
             setValid(true)
             // console.log("the values stored ", JSON.parse(sessionStorage.getItem('data')))
             setTimeout(() => history.push('/purchase'), 2000)
@@ -203,7 +203,7 @@ function BuyCryptoMobile({ Amount, country, User }) {
     const changeFiat = (f) => {
         // console.log("the new fiat and forex ", f, forex)
         let unit = formik.values.fiat == 'EUR' ? forex.XAF / forex.USD : forex.XAF
-        let result = xafChange(formik.values.xaf, formik.values.rateApi[formik.values.crypto][f], promo.promotion, User.percent, unit, formik.values.crypto)
+        let result = xafChange(formik.values.xaf, formik.values.rateApi[formik.values.crypto][f], promo.promotion, User.percent, unit, formik.values.crypto,reduction)
         // console.log("the result at changeFiat ", result)
         formik.setFieldValue('eu', result.eu)
         formik.setFieldValue('fiat', f)
@@ -221,20 +221,27 @@ function BuyCryptoMobile({ Amount, country, User }) {
             openModal();
         }
     }
-    const activePromotion = (code) => {
-        setPromo({ promotion: !promo.promotion, code: code })
+    const activePromotion = (code,response) => {
+        // console.log('la reduction du buycrypto',response.reduction)
+        setPromo({ promotion: true, code: code, show: false })
+        setReduction(response.reduction)
+        let unit = formik.values.fiat == 'EUR' ? forex.XAF : forex.XAF / forex.USD
+        let result = xafChange(formik.values.xaf, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.show, User.percent, unit, formik.values.crypto,response.reduction)
+        formik.setFieldValue('amount', result.amount)
+    }
+    const showFee = () => {
+        let nowFees = formik.values.xaf * (FEES + User.percent / 100) // normal fees without codepromo 
+        if (promo.promotion) {
+            return nowFees - (formik.values.xaf * reduction/100 )
+        }
+        else return  nowFees 
     }
 
-    const showFee = () => {
-        // console.log("the normal fees ", FEES)
-        if (promo.promotion) return 0
-        else return formik.values.xaf * (FEES + User.percent / 100)
-    }
-    // promo.promotion ? 0 : formik.values.xaf * (0.065 + User.percent / 100)
     (() => {
         if (!active() && !promo.code && !promo.show) setPromo({ ...promo, show: true })
     })()
-
+    // console.log("le user",User)
+    // console.log("le formik",formik)
     // function to choose with crypto to make transaction
     const handleCrypto = e => {
 
@@ -275,24 +282,8 @@ function BuyCryptoMobile({ Amount, country, User }) {
 
     }
 
-
-    // const testAll=()=>{
-    //     sendToApi('user/getalltx', {id: User.userId}, User.token)
-    // }
-    // const testClaim=()=>{
-    //     const claim = {
-    //         transaction_id: 'id to put',
-    //         clientId: 'tx.userId',
-    //         clientName: 'user.name',
-    //         amountFiat: 5000,
-    //         amountCrypto: 0.005,
-    //         currency: 'BTC',
-    //         authorId: 'User.userId',
-    //         authorName: 'User.userName'
-    //     }
-    //     sendToApi('user/setclaim', claim, User.token)
-    // }
-    // console.log(User)
+    // console.log('les frais reduis',reduction)
+   
     return (
         <div className="buycrypto">
             <Helmet>
@@ -300,10 +291,8 @@ function BuyCryptoMobile({ Amount, country, User }) {
             </Helmet>
             {enable === "FALSE" ? <h3 className='disjoint'>{t("sellCrypto18")} </h3> : ""}
             <Modal2 mode={mode} close={() => setMode(false)} />
-            {promo.show && <PromoCode openPromo={code} amount={formik.values.xaf}
-                closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })}
-                activePromotion={activePromotion}
-            />}
+            {/* {promo.show && <PromoCode openPromo={code} closePromo={() => setPromo({...promo, show: false})} activePromotion={activePromotion} />} */}
+            {promo.show && <PromoCode  closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })} activePromotion={activePromotion} />}
             <Modal open={modal} onClose={() => setModal(!modal)} showCloseIcon={false} center classNames={{ modal: 'custom-modal' }}>
                 <div className="modal-confirm">
                     <div className="modal-head">

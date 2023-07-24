@@ -24,6 +24,7 @@ var WAValidator = require('multicoin-address-validator');
 const max = parseInt(process.env.REACT_APP_SELL_MAX);
 const min = parseInt(process.env.REACT_APP_SELL_MIN);
 const enable = process.env.REACT_APP_SELL_ENABLE;
+const FEES = process.env.REACT_APP_SELL_FEES + parseInt(process.env.REACT_APP_INTOUCH_CI_FEES);
 const fees = process.env.REACT_APP_SELL_FEES;
 const intouchFees = process.env.REACT_APP_INTOUCH_CI_FEES;
 
@@ -50,6 +51,7 @@ function SellCrypto({ Amount, country, User }) {
     //for active promocode
     const [modal, setModal] = useState(false)
     const [sum, setSum] = useState(false)
+    const [reduction, setReduction] = React.useState('')
     // promo state
     const [promo, setPromo] = useState({ promotion: false, code: '', show: false })
     const myRef = createRef(null)
@@ -111,15 +113,15 @@ function SellCrypto({ Amount, country, User }) {
         let unit = formik.values.fiat == 'EUR' ? forex.XAF : forex.XAF / forex.USD
         switch (e.target.name) { // amount c'est le montant en crypto monnaie 
             case "amount":
-                result = cryptoChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto)
+                result = cryptoChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto,reduction)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break
             case "xaf":
-                result = xafChange(e.target.value, formik.values.rateApi[formik.values.crypto].XAF, promo.promotion, User.percent, unit, formik.values.crypto)
+                result = xafChange(e.target.value, formik.values.rateApi[formik.values.crypto].XAF, promo.promotion, User.percent, unit, formik.values.crypto,reduction)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break;
             case "eu":
-                result = euroChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto)
+                result = euroChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto,reduction)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break;
             default:
@@ -138,7 +140,7 @@ function SellCrypto({ Amount, country, User }) {
     const changeFiat = (f) => {
 
         let unit = formik.values.fiat == 'EUR' ? forex.XAF / forex.USD : forex.XAF
-        let result = xafChange(formik.values.xaf, formik.values.rateApi[formik.values.crypto][f], promo.promotion, User.percent, unit, formik.values.crypto)
+        let result = xafChange(formik.values.xaf, formik.values.rateApi[formik.values.crypto][f], promo.promotion, User.percent, unit, formik.values.crypto,reduction)
         formik.setFieldValue('eu', result.eu)
         formik.setFieldValue('fiat', f)
         formik.setFieldValue('rate', formik.values.rateApi[formik.values.crypto][f])
@@ -159,6 +161,7 @@ function SellCrypto({ Amount, country, User }) {
 
         if (formik.values.phone && !formik.errors.phone) {
             !isValidPhoneNumber(formik.values.phone) && formik.setFieldError('phone', `${t('formikSell8')}`)
+            setMode(true)
         }
         if (formik.values.cfphone && !formik.errors.cfphone) {
             formik.values.cfphone !== formik.values.phone && formik.setFieldError('cfphone', `${t('formikSell9')}`)
@@ -176,18 +179,29 @@ function SellCrypto({ Amount, country, User }) {
         if (!formik.touched[field])
             formik.setFieldTouched(field, true)
     }
-    const activePromotion = (code) => {
-        setPromo({ ...promo, promotion: !promo.promotion, code: code, show: false })
+    const activePromotion = (code, response) => {
+        setPromo({ promotion: true, code: code, show: true })
+        setReduction(response.reduction)
+        let unit = formik.values.fiat == 'EUR' ? forex.XAF/forex.USD : forex.XAF 
+        setTimeout(() => {
+            let result = xafChange(formik.values.xaf, formik.values.rateApi[formik.values.crypto].XAF, promo.show, User.percent, unit, formik.values.crypto,response.reduction)
+            formik.setFieldValue('amount', result.amount)
+        }, 100);
     }
     const showFee = () => {
-        if (promo.promotion) return 0
-        else return formik.values.xaf ? Math.round(formik.values.xaf * (fees + User.percent / 100)) + parseInt(intouchFees) : 0
+        let nowFees = formik.values.xaf ? Math.round(formik.values.xaf * (fees + User.percent / 100)) + parseInt(intouchFees) : 0 // normal fees without codepromo 
+        if (promo.promotion) {
+            return nowFees - (formik.values.xaf * reduction/100 )
+        }else return  nowFees 
+
+        // if (promo.promotion) return 0
+        // else return formik.values.xaf ? Math.round(formik.values.xaf * (fees + User.percent / 100)) + parseInt(intouchFees) : 0
     }
-    (() => {
-        if (!active() && !promo.code && !promo.show) {
-            setPromo({ ...promo, show: true })
-        }
-    })()
+    // (() => {
+    //     if (!active() && !promo.code && !promo.show) {
+    //         setPromo({ ...promo, show: true })
+    //     }
+    // })()
 
     // function to choose with crypto to make transaction
     const handleCrypto = e => {
@@ -237,9 +251,7 @@ function SellCrypto({ Amount, country, User }) {
             {enable === "FALSE" ? <h3 className='disjoint'>{t("sellCrypto18")} </h3> : ""}
 
             <Modal2 mode={mode} close={() => setMode(false)} />
-            {promo.show && <PromoCode activePromotion={activePromotion} amount={formik.values.xaf}
-                closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })}
-            />}
+            {promo.show && <PromoCode  activePromotion={activePromotion} closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })} />}
             {sum && <Modal open={true} onClose={() => setSum(false)} center={true} container={myRef.current} >
                 <Sumsub call={openModal} close={() => setSum(false)} />
             </Modal>}

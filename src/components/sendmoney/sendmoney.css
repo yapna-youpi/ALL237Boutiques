@@ -1,7 +1,5 @@
 .sendmoney {
     padding: 5%;
-    display: flex;
-    flex-direction: column-reverse;
 }
 
 .sendmoney .form {
@@ -42,6 +40,7 @@
     font-size: 1.2em;
     font-weight: bold;
     color: var(--white);
+    text-align: center;
     transition: all 1s ease-out;
 }
 
@@ -50,7 +49,58 @@
     background: var(--transparent2);
 }
 
+.summary {
+    margin: 20px 0px;
+    padding: 3% 5%;
+    background: var(--red);
+    border-radius: 5px;
+    color: white;
+}
 
+.summary .row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding: 1%;
+    border-top: 3px solid var(--white);
+    font-size: 1.2em;
+}
+.summary .row1{
+    font-size: 1.3em;
+    margin-top: 15px;
+}
+
+.summary .warning {
+    background: var(--white);
+    border-radius: 8px;
+    color: var(--black);
+    /* margin-top: 20px; */
+}
+
+.warning h2 {
+    padding: 2.5% 5%;
+    border-bottom: 1px solid var(--transparent2);
+    color: var(--red);
+}
+
+.warning p {
+    padding: 3% 5%;
+    margin: 0px;
+}
+
+.warning h2 {
+    margin: 10px 0px;
+}
+
+.sendmoney .sign {
+    display: inline;
+    margin: 0px;
+}
+
+.eclips {
+    padding: 10px;
+}
 .disjointe{
   width: 82.5%;
   color: #842029;
@@ -64,15 +114,13 @@
   border-radius: 0.25rem;
 }
 
-
-
 @media screen and (min-width: 992px) {
     .disjointe{
         width: 91.5%;
         margin: 0 auto;
     }
     .sendmoney {
-        flex-direction: row;
+        display: flex;
         justify-content: space-between;
         padding: 3%;
     }
@@ -81,5 +129,31 @@
         width: 48%;
     }
 
-    
+    .summary {
+        width: 48%;
+        margin: 0px;
+        margin-left: 20px;
+    }
+
+    .eclips {
+        padding: 10px;
+    }
+
+    .delay {
+        animation: eclip 0.5s cubic-bezier(.17, .67, .82, -0.04);
+
+    }
+
+    @keyframes eclip {
+        0% {
+            transform: translateX(25px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(-25px);
+            opacity: 1;
+        }
+
+    }
 }

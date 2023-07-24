@@ -2,4 +2,8 @@ les fichiers sensible :
     Header.jsx
     header.css
 
+file to add translation :
+    sendmoney
+        SendMoney.jsx
+        Modal.jsx
 

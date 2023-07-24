@@ -11,6 +11,7 @@ const cryptoChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
     // console.log("rate and rate dans cryptoChange ", rate, rate)
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
     let usedIntouchFees = promotion ? 0 : INTOUCHFEES
+    
     if (value < 0.000296) {
         return {
             xaf: 0,
@@ -50,12 +51,12 @@ const euroChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
             return {
                 xaf: parseInt(Math.round(value * unit)),
                 eu: value,
-                amount: Math.ceil((value/rate) + usedFees * value/rate + INTOUCHFEES/rate/unit )  ,
+                amount: Math.ceil((value/rate) + usedFees * value/rate + usedIntouchFees/rate/unit )  ,
             }
         } else return {
             xaf: parseInt(Math.round(value * unit)),
             eu: value,
-            amount: roundDecimal((value/rate) + usedFees * value/rate + INTOUCHFEES/rate/unit),
+            amount: roundDecimal((value/rate) + usedFees * value/rate + usedIntouchFees/rate/unit),
         }
     }
 }
@@ -63,7 +64,6 @@ const euroChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
 const xafChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
     let usedFees = promotion ? 0 : FEES + (royalties / 100)
     let usedIntouchFees = promotion ? 0 : INTOUCHFEES
-    // console.log("the usedIntouchFees dans xafChange ", usedFees, usedIntouchFees)
     if (value < parseInt(min) || rate === 0) {
         return {
             xaf: parseInt(value),
@@ -76,12 +76,12 @@ const xafChange = (value, rate, promotion, royalties = 0, unit,crypto) => {
             return {
                 xaf: parseInt(value),
                 eu: roundDecimal(value / unit),
-                amount: Math.ceil(roundDecimal(( value / rate) + value * usedFees/rate  + INTOUCHFEES/rate))
+                amount: Math.ceil(roundDecimal(( value / rate) + value * usedFees/rate  + usedIntouchFees/rate))
             }
         } else return {
             xaf: parseInt(value),
             eu: roundDecimal(value / unit),
-            amount:  roundDecimal(( value / rate) + value * usedFees/rate  + INTOUCHFEES/rate),
+            amount:  roundDecimal(( value / rate) + value * usedFees/rate  + usedIntouchFees/rate),
         }
     }
 }

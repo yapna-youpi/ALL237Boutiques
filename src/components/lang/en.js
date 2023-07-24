@@ -84,7 +84,7 @@ const english = {
 
     // sendMONEY
     sendMoneyTitle: "Receiver's informations",
-    sendMoneySous1: "Continue",
+    sendMoneySous1: "Credit",
     sendMoneySous2: "TRANSACTION SUMMARY",
     sendMoneySous3: "TRANSFERT AMOUNT",
     sendMoneySous4: "FEES",
@@ -99,7 +99,9 @@ const english = {
     sendMoneySous13: "Confirm Mobile Phone",
     sendMoneySous14: "Should match to phone number",
     sendMoneySous15: "The value should be between 25 and 150 EUR",
-    sendText1: "from 25 to 50  ",
+    sendMoneySous16: "The service is unavailable",
+    sendMoneySous17: "invalid number",
+    sendText1: "Fixed rate for all transactions",
     sendText2: "from 51 to 150  ",
     sendText3: "from 151 to 300  ",
     sendText4: "from atleast 300  ",
@@ -113,6 +115,8 @@ const english = {
     coverModalSous3: 'Success',
     coverModalSous4: "Operation completed",
     coverModalSous5: "Finalize the operation on the widget",
+    coverModalSous6: "Operation failed",
+    coverModalSous7: "Something weng wrong during the operation",
 
     //sellrypto 
     sellCrypto: 'SELL YOUR CRYPTO-CURRENCY AND RECEIVE FRANCS CFA IN YOUR MOBILE MONEY',
@@ -261,7 +265,7 @@ const english = {
     LoginSous3: 'Email',
     LoginSous4: "Password",
     LoginSous5: 'Remember me',
-    LoginSous6: 'Login',
+    LoginSous6: 'Connexion',
     LoginSous7: 'Create account',
     LoginSous8: 'Passord should have at least heigth characters with one number',
     LoginSous9: "Forgot Password",
@@ -515,7 +519,9 @@ const english = {
      promotitle4: "VALIDATE",
      promotitle5: "CONTINUE WITHOUT CODE",
      promotitle6: "We are on promotion",
-     promotitle7: "This code is not available try one another",
+     promotitle7: "This code is no longer available try another",
+     promotitle8: "you can't use this code",
+     promotitle9: "% of costs",
 
      //cabital
      helpCabital: "Please follow all the procedures of the helpdesk on our operations at Cabital!",
@@ -630,13 +636,38 @@ const english = {
      comingSoon1: "The Service Is Being Maintained",
      comingSoon2: "You will be notified when the service becomes available again.",
 
+    //modalList
+    modaList1: "great your claim has been sent",
+    modaList2: "your claim already exists",
+    modaList3: "great your claim failed",
+    modaList4: "Claim details",
+    modaList5: "Status:",
+    modaList6: "User ID:",
+    modaList7: "Service:",
+    modaList8: "Crypto amount:",
+    modaList9: "XAF amount:",
+    modaList10: "Customer name:",
+    modaList11: "Buy Crypto",
+    modaList12: "Withdrawing Crypto",
+    modaList13: "Initiate a claim",
 
-     
+    //Dashboard
+    Dashboard1: "Transaction Summary",
+    Dashboard2: "Your Cryptocurrency Purchase and Withdrawal Transactions are listed here",
+    Dashboard3: "",
+    Dashboard4: "Date",
+    Dashboard5: "Identifier",
+    Dashboard6: "Amount",
+    Dashboard7: "Crypto",
+    Dashboard8: "Status",
+    Dashboard9: "Blockchain link",
+    Dashboard10: "Please make your first transaction to be active on our platform thank you",
+    Dashboard11: "More Details",
 
-
-
-
-
+    //error
+    error1:  "OOPS! SOMETHING WENT WRONG",
+    error2:  "Sorry but the page you are looking for don't exist",
+    error3:  "Back to home page",
   }
 }
 

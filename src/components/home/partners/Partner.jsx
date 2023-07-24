@@ -11,6 +11,8 @@ import mobi from './images/mobi.svg'
 import moov from './images/moov.svg';
 import wizall from './images/master2.svg';
 import visa from './images/visa.svg';
+import cinetpay from './images/cinetpay.svg'
+import intouch from './images/intouch.svg'
 
 function Partner() {
     return (
@@ -20,18 +22,18 @@ function Partner() {
                 <img src={orange} alt="orange"/>
                 <img src={mobi} alt="mobimali"/>
                 <img src={wizall} alt="wizall"/>
-                <img src={mobiBurki} alt="mobiburki"/>
+                <img src={cinetpay} alt="cinetpay"/>
                 <img src={free} alt="free"/>
                 <img src={mtn} style={{marginRight:"60px"}} alt="mtn"/>
                 <img src={sepa} alt="sepa"/>
                 <img src={moov} style={{marginRight:"75px"}} alt="moov"/>
                 <img src={visa} style={{marginRight:"75px",maxWidth:"150px"}} alt="visa"/>
+                <img src={intouch} alt="intouch"/>
                 <img src={mercuryo} alt="mercurio"/>
                 <img src={orange} style={{marginRight:"30px"}} alt="orange"/>
                 <img src={mobi} alt="mobimali"/>
                 <img src={wizall} alt="wizall"/>
                 <img src={mobiBurki} style={{marginRight:"120px"}} alt="mobiburki"/>
-                <img src={free} alt="free"/>
                 <img src={mtn} alt="mtn"/>
                 <img src={sepa} alt="sepa"/>
                 <img src={moov} alt="moov"/>

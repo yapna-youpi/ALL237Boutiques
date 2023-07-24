@@ -118,7 +118,7 @@ function Header({ User, Country, dispatch }) {
                                 <div className="first-sub" ></div>
                                 <div className="sub">
                                     <span className="arrow"></span>
-                                    {/* <div onClick={() => nav('/' + process.env.REACT_APP_SEND_LINK)} >{t('link6')}</div> */}
+                                    <div onClick={() => nav('/sendmoney/' + process.env.REACT_APP_SEND_LINK)} >{t('link6')}</div>
                                     <div onClick={() => nav('/buycrypto')} >{t('link7')}</div>
                                     <div onClick={() => nav('/sellcrypto/' + process.env.REACT_APP_SELL_LINK)} >{t('link8')}</div>
                                 </div>

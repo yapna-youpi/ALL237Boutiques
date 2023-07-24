@@ -224,6 +224,9 @@
     .address-field {
         transform: translateX(5px);
     }
+    .info img {
+        width: 45%;
+    }
 }
 
 @media screen and (min-width: 1200px) {

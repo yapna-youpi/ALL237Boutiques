@@ -10,7 +10,7 @@ import { IoMdClose } from 'react-icons/io'
 import { useTranslation } from 'react-i18next'
 import { sendToApi } from '../../utils/utilFunctions'
 
-function PromoCode({ User, openPromo, closePromo, activePromotion, amount }) {
+function PromoCode({ User , closePromo, activePromotion }) {
 
 	const { t } = useTranslation();
 	const [loading, setLoading] = React.useState(false)
@@ -37,20 +37,24 @@ function PromoCode({ User, openPromo, closePromo, activePromotion, amount }) {
 
 	const validate = async (code) => {
 		// console.log("the code ", code)
-		let usable = await checkCode(code)
+		let response=await checkCode(code)
 		setLoading(false);
-		if (usable) {
+		
+		if (response.usable) {
 			// close()
 			document.getElementById('promocode').classList.toggle('hide')
-			return activePromotion(code)
+			return activePromotion(code,response)
 		}
-		else formik.setFieldError('code', `${t('promotitle7')}`)
+		else {
+			if (response.messageCode == 1) {
+				formik.setFieldError('code', `${t('promotitle8')}`)
+			} else if (response.messageCode == 2) {formik.setFieldError('code', `${t('promotitle7')}`)}
+		}
 	}
 
 	const checkCode = async (code) => {
-		let response = await sendToApi('promo/testcode', { userId: User.userId, code, amount })
-		console.log("the response ", response)
-		return response.usable
+		let response = await sendToApi('promo/testcode', { userId: User.userId, code })
+		return response
 	}
 	const close = () => {
 		document.getElementById('promocode').classList.toggle('hide')
@@ -63,7 +67,7 @@ function PromoCode({ User, openPromo, closePromo, activePromotion, amount }) {
 				<div><i className='icopromo' onClick={close}><IoMdClose /></i></div>
 				<h5 style={{ paddingLeft: "8px" }}>{t('promotitle6')}</h5>
 				<h3 style={{ paddingTop: "25px" }}>{t('promotitle1')}</h3>
-				<span className='frais'> <span style={{ fontSize: 40 }}>0</span> % des frais</span>
+				<span className='frais'> <span style={{ fontSize: 40 }}>0</span>{t('promotitle9')}</span>
 				<div className="poli">
 					{/* <label className='til'>{t('promotitle2')}</label> */}
 					<input className='inp' value={formik.values.code} type="text" id="code" name="code" placeholder={t('promotitle3')}

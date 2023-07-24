@@ -146,6 +146,11 @@ const checkPassword = (password) => {
     return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d$@%*+-_]{8,}$/
 }
 
+export const cancelForm=(e)=>{
+    e.preventDefault();
+    return false;
+}
+
 const regWallet = /^[123mn][1-9A-HJ-NP-Za-km-z]{26,48}$/
 
 const regPhone = /^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$/

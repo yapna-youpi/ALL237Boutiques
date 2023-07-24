@@ -112,7 +112,6 @@ function Signup({ Country, match }) {
             let res=await fetch(process.env.REACT_APP_API_URL+'parrain/getone/:'+parrain_id)
                 .then(res=>res.json())
                 .catch(error=>{})
-            console.log("the parrain ", res.parrain.parrain_id)
             if (res.parrain) {
                 ParrainRef.current = { id: res.parrain.parrain_id, percent: res.parrain.percent }
                 localStorage.setItem('pr', res.parrain.parrain_id)

@@ -85,7 +85,7 @@ const french = {
 
     // sendMONEY
     sendMoneyTitle: "Informations sur le destinataire",
-    sendMoneySous1: "Continuer",
+    sendMoneySous1: "Creditez",
     sendMoneySous2: "RÉCAPITULATIF DE LA TRANSACTION",
     sendMoneySous3: "MONTANT DU TRANSFERT",
     sendMoneySous4: "FRAIS",
@@ -100,7 +100,9 @@ const french = {
     sendMoneySous13: "Confirmer le téléphone portable",
     sendMoneySous14: "Doit correspondre au numéro de téléphone",
     sendMoneySous15: "Le montant doit etre entre 25 et 150 EUR",
-    sendText1: "de 25 à 50  ",
+    sendMoneySous16: "Le service est indisponible",
+    sendMoneySous17 : "numéro invalide",
+    sendText1: "Taux fixe Pour toutes  transactions",
     sendText2: "de 51 à 150  ",
     sendText3: "de 151 à 300  ",
     sendText4: "de 300 EUR à PLUS ",
@@ -114,6 +116,8 @@ const french = {
     coverModalSous3: 'Succès',
     coverModalSous4: "Opération terminée",
     coverModalSous5: "Inaliser l'opération sur le widget",
+    coverModalSous6 : "L'opération a échoué",
+    coverModalSous7 : "Quelque chose n'a pas fonctionné pendant l'opération",
 
     //sellrypto 
     sellCrypto: 'VENDRE SA CRYPTO-MONNAIE ET RECEVOIR DU FRANCS CFA DANS SON MOBILE MONEY',
@@ -281,7 +285,7 @@ const french = {
     SignUpSous6: "Email",
     SignUpSous7: "Téléphone",
     SignUpSous8: "Mot de passe",
-    SignUpSous9: "Confirmé le mot de passe",
+    SignUpSous9: "Confirmez le mot de passe",
     SignUpSous10: "Connectez-vous",
     SignUpSous11: "Verification De Votre Mail!",
     SignUpSous13: "Chère cliente, cher client",
@@ -289,7 +293,7 @@ const french = {
     SignUpSous15: "Renvoyer le Mail",
     SignUpSous16: "Le mot de passe doit avoir au moins huit caractères dont un chiffre",
     SignUpSous17: "J'accepte",
-    SignUpSous18: "les condition d'utilisation",
+    SignUpSous18: "les conditions d'utilisations",
     SignUpSous19: "Inscrit avec succès.",
     SignUpSous20: "vérifier",
     SignUpSous21: "pour compléter l'inscription",
@@ -513,7 +517,9 @@ const french = {
     promotitle4: "VALIDER",
     promotitle5: "CONTINUER SANS CODE",
     promotitle6: "Nous sommes en promotion",
-    promotitle7: "Ce code n'est pas disponible essayez un autre",
+    promotitle7: "Ce code n'est plus disponible essayez un autre",
+    promotitle8: "vous ne pouvez utiliser ce code",
+    promotitle9: " % des frais",
 
     //cabital
     helpCabital: "Veuillez suivre toutes les procedures du support d'aide sur nos opérations chez Cabital !",
@@ -624,13 +630,38 @@ const french = {
     comingSoon1: "Le Service Est En Cours de Maintenance",
     comingSoon2: "Vous Serez Informé Lorsque Le Service Sera à Nouveau Disponible.",
 
+    //modalList
+    modaList1: "super votre reclamation à été envoyé",
+    modaList2: "votre reclamation existe déja",
+    modaList3: "super votre reclamation à échoué",
+    modaList4: "Details de la reclamation",
+    modaList5: "Status:",
+    modaList6: "Identifiant:",
+    modaList7: "Service:",
+    modaList8: "Montant de crypto:",
+    modaList9: "Montant de XAF:",
+    modaList10: "Nom du client:",
+    modaList11: "Achat de Crypto",
+    modaList12: "Retrait de Crypto",
+    modaList13: "Initier une reclamation",
 
+    //Dashboard
+    Dashboard1: "Récapitulatif des Transactions",
+    Dashboard2: "Vos Opérations d'achat et de Retrait de crypto-monnaies sont listées ici.",
+    Dashboard3: "",
+    Dashboard4: "Date",
+    Dashboard5: "Identifiant",
+    Dashboard6: "Montant",
+    Dashboard7: "Crypto",
+    Dashboard8: "Status",
+    Dashboard9: "lien Blockchain",
+    Dashboard10: "veuillez effectuer votre première transaction pour être actif sur notre plate-forme  merci!",
+    Dashboard11: "Plus de Détails",
 
-
-
-
-
-
+    //erreur
+    error1 : "OOPS ! QUELQUE CHOSE S'EST MAL PASSÉ",
+    error2 : "Désolé, mais la page que vous cherchez n'existe pas",
+    error3 : "Retour à la page d'accueil",
 
   }
 }

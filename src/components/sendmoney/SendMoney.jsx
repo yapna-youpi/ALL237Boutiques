@@ -4,78 +4,74 @@ import { connect } from 'react-redux'
 import { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import { useTranslation } from 'react-i18next'
+import ReactLoading from 'react-loading';
 
-import { randomId, randomChain, roundPrecision, apiUrl, sendToApi } from '../../utils/utilFunctions'
-import crypt from '../../utils/crypt'
+import { randomId, sendToApi, cancelForm } from '../../utils/utilFunctions'
 import { toastify } from '../addons/toast/Toast'
 
 import './sendmoney.css'
-import Summary from './summary/Summary'
-import PromoCode from '../promocode/PromoCode'
 import { Input2 } from '../addons/input/Input'
 import PhoneInputool from '../addons/input/PhoneInputool'
 import Modal from './Modal'
 import Modal2 from './Modal2'
+import PromoCode from '../promocode/PromoCode'
+// import Widget from './Widget'
 
-import CabitalModal from './CabitalModal'
-
-const EUR = 655
+// const EUR = 655
 // const EuroFees=655*0.964
 const FEES = 0.0396
 // const INTOUCHFEES=250 XAF (0.38 EUR)
 
 // mercuryo fee up to 3.8%
 
-// let widgetUrl = 'https://ipercash-api.herokuapp.com/'
-let widgetUrl = process.env.REACT_APP_MERCURYO_URL
+let widgetUrl = 'https://mercuryo.ipercash.fr/'
+// let widgetUrl = process.env.REACT_APP_MERCURYO_URL
 // console.log("the widget url ", widgetUrl)
-
-const max = parseInt(process.env.REACT_APP_SEND_MAX)
-const min = parseInt(process.env.REACT_APP_SEND_MIN)
-const enable = process.env.REACT_APP_SEND_ENABLE
 
 var interval = null
 
 function SendMoney({ amount, country, User }) {
+    let enable = process.env.REACT_APP_SEND_ENABLE;
 
     const { t } = useTranslation()
-    //value showwing for sender mercurio or cabital
-    const [sender, setSender] = useState({ mer: false, cab: false })
     // value of differents field in the form 
     const [state, setState] = useState({
-        amount: amount, name: "", phone: "", cPhone: "", fees: amount * FEES, newAmount: amount
+        amount: amount, name: "", phone: "", cPhone: "", fees: amount * FEES, newAmount: amount, EUR: "",
     })
+    const [load, setLoad] = useState(false)
     // handling error on different field 
     const [errors, setErrors] = useState({
         amount: false, name: false, phone: false, cPhone: false
     })
     // show waiting modal
-    const [modal, setModal] = useState({ open: false, closable: false, operationId: null, status: null })
-
+    const [modal, setModal] = useState({ open: false, closable: false, operationId: "IPercashid123456", status: 'init' })
     // showing for show or not to taxations
     const [showing, setShowing] = useState(true)
-
-    //actively of button for summary
-    const [summer, setSummer] = useState(false)
-
-    //for active promocode
-    const [code, setCode] = useState(false)
-
-    const [mode, setMode] = useState(false)
-    const [cabital, setCabital] = useState(false)
     // promo state
     const [promo, setPromo] = useState({ promotion: false, code: '', show: false })
+
+    const [mode, setMode] = useState(false)
     useEffect(() => {
         amountTaxation()
 
+        fetch(process.env.REACT_APP_API_URL + "currencies")
+            .then(resp => resp.json())
+            .then(data => {
+                // console.log('les data', data.XAF)
+                setState({ ...state, EUR: data.XAF })
+            })
+            .catch(err => 0)
+
     }, [])
-    useEffect(() => {
-        handleChange({ name: 'amount', value: state.amount })
-    }, [promo])
+
+    const cancelForm = () => {
+        setState({ amount: amount, name: "", phone: "", cPhone: "", newAmount: amount })
+    }
 
     let history = useHistory()
     // handle change on different field, update mactching field in state
     const handleChange = e => {
+        // console.log(`${e.name} and ${e.value}`)
         let newState = state
         newState[e.name] = e.value
         setState({ ...state })
@@ -97,79 +93,77 @@ function SendMoney({ amount, country, User }) {
 
     // this function send the data operation on api, open the widget and show the modal
     const send = () => {
+        setLoad(true)
         let params = {
             "transaction_id": randomId('C'), "phone": state.phone,
             "name": state.name, userId: User.userId,
-            "fiat_pay": Math.floor(EUR * state.amount),
-            "initial_amount": state.amount
+            "fiat_pay": Math.floor(state.EUR * state.newAmount),
+            "initial_amount": Math.floor(parseInt(state.amount)+ 1),
+            "promotion": promo.promotion ? true : null,
+            "code": promo.promotion ? promo.code : null,
+            "provider": process.env.REACT_APP_MOBILE_PROVIDER
+
         }
-        let message = crypt(JSON.stringify(params))
-        const requestOption = {
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": "Bearer " + User.token
-            },
-            "body": JSON.stringify({ send: message })
-        }
-        setModal({ ...modal, open: true, closable: false, operationId: params.transaction_id })
         // TODO : make that page open after getting request response ( use await )
-        window.open(widgetUrl + 'hello?d=' + randomChain() + ';' + (Math.ceil(parseFloat(state.amount) + parseFloat(state.fees))) * 0.579 + ';' + params.transaction_id, '_blank')
-        fetch(apiUrl + 'send/init', requestOption)
-            .then(response => response.json()).then(data => {
+        // window.open(widgetUrl + '?d=' + randomChain() + ';' + (Math.ceil(parseFloat(state.amount) + parseFloat(state.fees))) * 0.579 + ';' + params.transaction_id, '_blank')
+        sendToApi('send/init', params, User.token)
+            .then(data => {
+                // console.log("the response ", data)
                 if (data.success) {
+                    // console.log("we are in the if ")
+                    setModal({ ...modal, open: true, closable: false, operationId: params.transaction_id, status: 'pending' })
                     interval = setInterval(async () => {
                         getStatus(params.transaction_id)
-                    }, 60000)
-                }
+                    }, 60 * 1000)
+                } else toastify("error", "An error is occured please try again")
+                setLoad(false)
             })
             .catch(err => {
                 closeModal()
-                toastify("error", "An error are occur please try again")
+                toastify("error", "An error is occured please try again")
+                setLoad(false)
             })
-    }
 
+    }
     // this get the staus of operation at mercuryo
     const getStatus = (id) => {
-        let message = crypt(JSON.stringify({ id: id, userId: User.userId }))
-        const requestOption = {
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": "Bearer " + User.token
-            },
-            "body": JSON.stringify({ send: message })
-        }
-        fetch(apiUrl + 'send/status', requestOption)
-            .then(response => response.json()).then(data => {
+        let message = { id: id, userId: User.userId }
+        sendToApi('send/status', message, User.token)
+            .then(data => {
+                // console.log("les data de get status ", data)
                 if (data.status === 'completed') {
                     clearInterval(interval)
                     let params = {
                         ...state,
                         id: id,
                         operation: 'credit',
-                        amount: Math.floor(EUR * (1 - FEES) * Math.round(state.amount) - 250)
+                        amount: Math.floor(state.EUR * (1 - FEES) * Math.round(state.amount) - 250)
                     }
                     sessionStorage.setItem('data', JSON.stringify(params))
                     history.push('/complete')
                     return data
-                }
-                if (data.status === 'error') {
+                } else if (data.status === 'cancelled') {
+                    // console.log("c'est cancelled")
+                    setModal({ ...modal, open: true, closable: false, operationId: id, status: 'failed' })
                     clearInterval(interval)
+                } else if (data.status === 'error') {
+                    clearInterval(interval)
+                    setModal({ ...modal, open: true, closable: false, operationId: id, status: 'failed' })
+                } else {
+                    /* may be should do something here */
                 }
             })
             .catch(err => {
+                // console.log("there is an error", err)
                 clearInterval(interval)
+                setModal({ ...modal, status: 'failed' })
             })
-
     }
 
     // this function handle disabled propertie of button
     const active = () => {
-        if ((state.amount >= min && state.amount <= max) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone) && (summer == true)) return false
-        else return true
+        if ((state.amount >= 25 && state.amount <= 150) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone)) return false
+        else return true;
     }
     // this function check phone number
     const validPhone = (value, func) => {
@@ -187,39 +181,40 @@ function SendMoney({ amount, country, User }) {
     }
     const closeModal = () => {
         clearInterval(interval)
-        setState({ amount: amount, name: "", phone: "", cPhone: "" })
+        setState({ amount: amount, name: "", phone: "", cPhone: "", newAmount: amount })
         setModal({ open: false, closable: false })
         document.location.reload()
     }
 
+    const handleSubmit = (e, enable) => {
+        e.preventDefault()
+
+        if (enable == "FALSE") {
+            return false
+        }
+        eclips()
+    }
     // la function du submit au boutton pour changer le taux
     const eclips = () => {
-        if (showing === true) {
+        if (showing == true) {
             setShowing(!showing)
+
             // return false
         } else {
 
             if (enable == 'FALSE') {
                 setMode(!mode)
             } else {
-                if (sender.mer) {
-                    send()
-                } else setCabital(true)
+                send()
             }
+
         }
-    }
 
-    // la function qui soummet le formulaire en fonction de mercurio ou cabital
-    const handleSubmit = (e, enable) => {
-        e.preventDefault()
-        eclips();
 
     }
-
     // la function qui gere le taxe sur le montant
     const amountTaxation = () => {
         let fees, newAmount
-        if (promo.promotion) return setState({ ...state, fees: 0, newAmount })
         switch (true) {
             case (state.amount === ''):
                 // console.log("the empty case ", state.amount)
@@ -228,30 +223,9 @@ function SendMoney({ amount, country, User }) {
                 setState({ ...state, fees: 0, newAmount: 0 })
                 break
 
-            case (state.amount <= 50):
+            case (25 <= state.amount && state.amount <= 150):
                 // console.log("the case ", state.amount)
-                fees = Math.ceil(state.amount * 0.0396 + 0.38)
-                newAmount = state.amount - fees
-                setState({ ...state, fees, newAmount })
-                break
-
-            case (51 <= state.amount && state.amount <= 150):
-                // console.log("the case ", state.amount)
-                fees = 1.95
-                newAmount = state.amount - fees
-                setState({ ...state, fees, newAmount })
-                break
-
-            case (151 <= state.amount && state.amount < 300):
-                // console.log("the case ", state.amount)
-                fees = 2.95
-                newAmount = state.amount - fees
-                setState({ ...state, fees, newAmount })
-                break
-
-            case (300 <= state.amount):
-                // console.log("the last case ", state.amount)
-                fees = 3.95
+                fees = 0.99
                 newAmount = state.amount - fees
                 setState({ ...state, fees, newAmount })
                 break
@@ -262,32 +236,62 @@ function SendMoney({ amount, country, User }) {
                 newAmount = 0
                 setState({ ...state, fees: 0, newAmount: 0 })
                 break
+
+
+            // case (state.amount <= 50):
+            //     // console.log("the case ", state.amount)
+            //     fees = Math.ceil(state.amount * 0.0396 + 0.38)
+            //     newAmount = state.amount - fees
+            //     setState({ ...state, fees, newAmount })
+            //     break
+
+            // case (51 <= state.amount && state.amount < 150):
+            //     // console.log("the case ", state.amount)
+            //     fees = 1.95
+            //     newAmount = state.amount - fees
+            //     setState({ ...state, fees, newAmount })
+            //     break
+
+            // case (151 <= state.amount && state.amount < 300):
+            //     // console.log("the case ", state.amount)
+            //     fees = 2.95
+            //     newAmount = state.amount - fees
+            //     setState({ ...state, fees, newAmount })
+            //     break
+
+            // case (300 <= state.amount):
+            //     // console.log("the last case ", state.amount)
+            //     fees = 3.95
+            //     newAmount = state.amount - fees
+            //     setState({ ...state, fees, newAmount })
+            //     break
+
+
         }
     }
-    const activePromotion = () => { setPromo({ ...promo, promotion: !promo.promotion, show: false }) }
-    (() => {
-        if (!active() && !promo.code && !promo.show) setPromo({ ...promo, show: true })
-    })()
+
+    const activePromotion = (code, response) => {
+        setPromo({ promotion: true, code: code, show: true })
+        // console.log('les données de retour activePromotio',code,response)
+        setState({ ...state, fees: 0 })
+    }
 
     // console.log("the state ", state)
     return (
         <>
-            {promo.show && <PromoCode closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })} activePromotion={activePromotion} />}
-            {enable === "FALSE" ? <h3 className='disjointe'>Le service est indisponible</h3> : ""}
+            {enable === "FALSE" ? <h3 className='disjointe'>{t('sendMoneySous16')}</h3> : ""}
             <div className="sendmoney">
-                <Modal option={modal} close={closeModal} />
+                <Modal option={{ ...modal, amount: state.amount }} close={closeModal} />
                 <Modal2 mode={mode} close={() => setMode(false)} />
-                {cabital && <CabitalModal User={User} close={() => setCabital(false)} type="sepa"
-                    state={{ ...state, transaction_id: randomId('C'), fiat_pay: Math.floor(EUR * state.amount) }}
-                />}
+                {!active() && <PromoCode activePromotion={activePromotion} closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })} />}
                 <form className="form">
                     <div className="form-head">
                         <div className="form-group">
                             <Input2 val={state.amount} name="amount" label={t('sendMoneySous9')} type='number' help={t('sendMoneySous15')}
-                                error={state.amount < min || state.amount > max} change={handleChange} handBlur={handleBlur}
+                                error={state.amount < 25 || state.amount > 150} change={handleChange} handBlur={handleBlur}
                             />
                         </div>
-                        <div className="">1,OO EUR <h3 className="sign">&cong;</h3> 655,957 XAF</div>
+                        <div className="">1,OO EUR <h3 className="sign">&cong;</h3> {state.EUR} XAF</div>
                     </div>
                     <h3> {t('sendMoneyTitle')} </h3>
                     <div className="form-body">
@@ -295,7 +299,7 @@ function SendMoney({ amount, country, User }) {
                             <Input2 val={state.name} name="name" label={t('sendMoneySous10')} error={errors.name} change={handleChange} handBlur={handleBlur} help={t('sendMoneySous12')} />
                         </div>
                         <div className="form-group">
-                            <PhoneInputool val={state.phone} label={t('sendMoneySous11')} name="phone" id="phone" help="invalid number"
+                            <PhoneInputool val={state.phone} label={t('sendMoneySous11')} name="phone" id="phone" help={t('sendMoneySous17')}
                                 change={handleChange} error={validPhone(state.number, isValidPhoneNumber)} cm={true} alert={country !== 'CM'}
                             />
                         </div>
@@ -305,11 +309,69 @@ function SendMoney({ amount, country, User }) {
                             />
                         </div>
                         <div className="form-group" >
-                            <button disabled={active()} onClick={handleSubmit} > Continue </button>
+                            <button disabled={active()} onClick={load ? cancelForm : handleSubmit} >
+                                {load ? (<center>
+                                    <ReactLoading type="spin" color="#ffffff" width="28px" height="28px"
+                                    /></center>) : t('sendMoneySous1')}
+                            </button>
                         </div>
                     </div>
                 </form>
-                <Summary showing={showing} state={state} EUR={EUR} setSummer={setSummer} setSender={setSender} />
+
+                <div className="summary">
+                    <h2>{t('sendMoneySous2')}</h2>
+                    <div className="row">
+                        <span>{t('sendMoneySous3')}</span>
+                        <span> {Intl.NumberFormat('de-DE').format(Math.ceil(state.amount))} EUR </span>
+                    </div>
+                    <div className="row">
+                        <span>{t('sendMoneySous4')}</span>
+                        {/* <span> { promo.show ? 0 : Intl.NumberFormat('de-DE').format((state.fees)) }  EUR </span> */}
+                        <span> {Intl.NumberFormat('de-DE').format((state.fees))}  EUR </span>
+                    </div>
+                    <div className="row">
+                        <span>{t('sendMoneySous5')} </span>
+                        <span> {Intl.NumberFormat('de-DE').format((parseFloat(state.amount) + parseFloat(state.fees)) || 0)} EUR </span>
+                    </div>
+                    <div className="row">
+                        <span>{t('sendMoneySous6')}</span>
+                        <span>  {Intl.NumberFormat('de-DE').format(Math.floor(state.EUR * state.newAmount))} XAF </span>
+                    </div>
+
+                    <h2>{t('sendText5')}</h2>
+                    {showing ? (
+                        <div className='warning eclips'>
+                            <div className="row row1">
+                                <span>{t('sendText1')} </span>
+                                <span> {"0.99  "}EUR </span>
+                            </div>
+                            {/* <div className="row">
+                                <span>{t('sendText2')}EUR </span>
+                                <span> {"2 "}EUR </span>
+                            </div> */}
+                            {/*
+                            <div className="row">
+                                <span>{t('sendText3')}EUR </span>
+                                <span> {"3 "}EUR </span>
+                            </div>
+                            <div className="row">
+                                <span>{t('sendText4')} </span>
+                                <span> {"4 "}EUR </span>
+                            </div> */}
+                        </div>
+                    )
+                        :
+                        (
+                            <div className="warning delay">
+                                <h2>{t('sendMoneySous7')}</h2>
+                                <p>
+                                    {t('sendMoneySous8')}
+                                </p>
+                            </div>
+                        )
+                    }
+                </div>
+
             </div>
         </>
     )

@@ -8,7 +8,7 @@ import Toast from '../components/addons/toast/Toast';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import Home from '../components/home/Home';
-// import SendMoney from '../components/sendmoney/SendMoney';
+import SendMoney from '../components/sendmoney/SendMoney';
 // import SendCabital from '../components/sendmoney/SendCabital';
 import Choose from '../components/buycrypto/Choose';
 import BuyCryptoMobile from '../components/buycrypto/BuyCryptoMobile';
@@ -24,6 +24,7 @@ import Forget from '../components/forget/Forget';
 import Reset from '../components/forget/Reset';
 import More from '../components/home/more/More';
 import Valid from '../components/valid/Valid';
+import Dashboard  from '../components/dash/Dashboard'
 // import Cabital from '../components/Cabital/Cabital'
 // import SendNavigator from '../components/sendnavigator/SendNavigator'
 import ComingSoon from '../components/coming/ComingSoon'
@@ -49,7 +50,7 @@ function Main({ User, Country }) {
                     <Route path='/' exact component={Home} />
                     <Route path='/home' exact component={Home} />
                     {/* <Route path='/sendmoney*' exact component={checkUser(SendNavigator)} /> */}
-                    {/* <Route path='/sendmoney*' exact component={checkUser(SendMoney)} /> */}
+                    <Route path='/sendmoney*' exact component={checkUser(SendMoney)} />
                     <Route path='/buycrypto' exact component={Choose} />
                     <Route path='/buycrypto/mobile*' exact component={checkUser(BuyCryptoMobile)} />
                     <Route path='/buycrypto/card' exact component={checkUser(BuyCryptoCard)} />
@@ -64,6 +65,7 @@ function Main({ User, Country }) {
                     <Route path='/forget' exact component={Forget} />
                     <Route path="/reset/:id" exact component={Reset} />
                     <Route path='/More' exact component={More} />
+                    <Route path='/Dashboard' exact component={Dashboard} />
                     {/* <Route path='/express' exact component={checkUser(Cabital)} /> */}
                     <Route path='/coming*' exact component={ComingSoon} />
                     {/* <Route path='/sumsub' exact component={Sumsub} />  */}

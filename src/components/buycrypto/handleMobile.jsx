@@ -7,8 +7,8 @@ const min = {
     ETH: parseInt(process.env.REACT_APP_BUY_ETH_MIN),
     USDT: parseInt(process.env.REACT_APP_BUY_USDT_MIN)
 }
-const cryptoChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
-    let usedFees = promotion ? 0 : FEES + (royalties / 100)
+const cryptoChange = (value, rate, promotion, royalties = 0, unit, crypto, reduction) => {
+    let usedFees = promotion ? FEES - reduction/100 : FEES + (royalties / 100)
     if (value < 0.00007266) {    // here put 0.00033
         return {
             xaf: 0,
@@ -30,8 +30,9 @@ const cryptoChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
         }
     }
 }
-const euroChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
-    let usedFees = promotion ? 0 : FEES + (royalties / 100)
+
+const euroChange = (value, rate, promotion, royalties = 0, unit, crypto, reduction) => {
+    let usedFees = promotion ? FEES - reduction/100 : FEES + (royalties / 100)
     if (value < 7.63) {    // here put 15.26
         return {
             xaf: parseInt(Math.round(value * unit)),
@@ -54,8 +55,12 @@ const euroChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
     }
 }
 
-const xafChange = (value, rate, promotion, royalties = 0, unit, crypto) => {
-    let usedFees = promotion ? 0 : FEES + (royalties / 100)
+const xafChange = (value, rate, promotion, royalties = 0, unit, crypto, reduction) => {
+    let usedFees = promotion ?  FEES - reduction/100 : FEES + (royalties / 100)
+    // console.log("les frais", FEES)
+    console.log("frais apres promotion", usedFees)
+    console.log("la nouvelle reduction", reduction)
+    console.log("la nouvelle reduction traites parcalcul", FEES - reduction/100)
     if (value < parseInt(min[crypto]) || rate === 0) {
         return {
             xaf: parseInt(value),
