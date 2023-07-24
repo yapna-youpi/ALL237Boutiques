@@ -46,7 +46,7 @@ function SellCrypto({ Amount, country, User }) {
 
     //initialisation de la valeur reele de usdt en francs
     const [forex, setForex] = useState([])
-    
+
     //for active promocode
     const [modal, setModal] = useState(false)
     const [sum, setSum] = useState(false)
@@ -60,12 +60,13 @@ function SellCrypto({ Amount, country, User }) {
             wallet: "", xaf: 0, eu: 0,
             amount: 0, phone: "", cfphone: "",
             rate: { EUR: 0, USD: 0 }, fiat: 'EUR', crypto: "BTC",
-            operator: "" ,
-            rateApi: {  "USD": 0,"XAF": 0,"XOF": 0,
-                        "BTC": {"USD": 0,"EUR": 0,"XAF": 0},
-                        "ETH": {"USD": 0,"EUR": 0,"XAF": 0},
-                        "USDT": {"USD": 0,"EUR": 0,"XAF": 0}
-                    }
+            operator: "",
+            rateApi: {
+                "USD": 0, "XAF": 0, "XOF": 0,
+                "BTC": { "USD": 0, "EUR": 0, "XAF": 0 },
+                "ETH": { "USD": 0, "EUR": 0, "XAF": 0 },
+                "USDT": { "USD": 0, "EUR": 0, "XAF": 0 }
+            }
         },
         validationSchema,
         onSubmit: async () => {
@@ -73,25 +74,25 @@ function SellCrypto({ Amount, country, User }) {
         }
     })
     useEffect(async () => {
-        setTimeout(()=>{document.getElementById('BTC').classList.toggle('cryptoActif')},1)
-        
-        fetch(process.env.REACT_APP_API_URL+"currencies")
-        .then(resp => resp.json())
-        .then(data => {
-            setForex(data)
-            formik.setValues( {...formik.values, rateApi: data } , true) 
-        })
-        .catch(err => 0)
+        setTimeout(() => { document.getElementById('BTC').classList.toggle('cryptoActif') }, 1)
 
-        interval = setInterval(() => {
-
-            fetch(process.env.REACT_APP_API_URL+"currencies")
+        fetch(process.env.REACT_APP_API_URL + "currencies")
             .then(resp => resp.json())
             .then(data => {
                 setForex(data)
-                formik.setFieldValue( { rateApi: data } , true) 
+                formik.setValues({ ...formik.values, rateApi: data }, true)
             })
             .catch(err => 0)
+
+        interval = setInterval(() => {
+
+            fetch(process.env.REACT_APP_API_URL + "currencies")
+                .then(resp => resp.json())
+                .then(data => {
+                    setForex(data)
+                    formik.setFieldValue({ rateApi: data }, true)
+                })
+                .catch(err => 0)
 
         }, 60 * 1000)
 
@@ -99,7 +100,7 @@ function SellCrypto({ Amount, country, User }) {
             clearInterval(interval)
         }
 
-        }, [])
+    }, [])
 
     const openModal = () => {
         setModal(!modal)
@@ -114,11 +115,11 @@ function SellCrypto({ Amount, country, User }) {
                 formik.setValues({ ...formik.values, ...result }, true)
                 break
             case "xaf":
-                result = xafChange(e.target.value, formik.values.rateApi[formik.values.crypto].XAF, promo.promotion, User.percent, unit,formik.values.crypto)
+                result = xafChange(e.target.value, formik.values.rateApi[formik.values.crypto].XAF, promo.promotion, User.percent, unit, formik.values.crypto)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break;
             case "eu":
-                result = euroChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit,formik.values.crypto)
+                result = euroChange(e.target.value, formik.values.rateApi[formik.values.crypto][formik.values.fiat], promo.promotion, User.percent, unit, formik.values.crypto)
                 formik.setValues({ ...formik.values, ...result }, true)
                 break;
             default:
@@ -135,9 +136,9 @@ function SellCrypto({ Amount, country, User }) {
     }
 
     const changeFiat = (f) => {
-        
-        let unit = formik.values.fiat == 'EUR' ? forex.XAF/forex.USD : forex.XAF 
-        let result = xafChange(formik.values.xaf, formik.values.rateApi[formik.values.crypto][f], promo.promotion, User.percent, unit,formik.values.crypto)
+
+        let unit = formik.values.fiat == 'EUR' ? forex.XAF / forex.USD : forex.XAF
+        let result = xafChange(formik.values.xaf, formik.values.rateApi[formik.values.crypto][f], promo.promotion, User.percent, unit, formik.values.crypto)
         formik.setFieldValue('eu', result.eu)
         formik.setFieldValue('fiat', f)
         formik.setFieldValue('rate', formik.values.rateApi[formik.values.crypto][f])
@@ -236,7 +237,9 @@ function SellCrypto({ Amount, country, User }) {
             {enable === "FALSE" ? <h3 className='disjoint'>{t("sellCrypto18")} </h3> : ""}
 
             <Modal2 mode={mode} close={() => setMode(false)} />
-            {promo.show && <PromoCode closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })} activePromotion={activePromotion} />}
+            {promo.show && <PromoCode activePromotion={activePromotion} amount={formik.values.xaf}
+                closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })}
+            />}
             {sum && <Modal open={true} onClose={() => setSum(false)} center={true} container={myRef.current} >
                 <Sumsub call={openModal} close={() => setSum(false)} />
             </Modal>}
@@ -288,7 +291,7 @@ function SellCrypto({ Amount, country, User }) {
                             />
                         </div>
                         <div className="form-group">
-                            <Input val={ formik.values.crypto === 'USDT' ? Math.trunc(formik.values.amount) : (formik.values.amount)} type="text" label={t('sellCrypto10') + formik.values.crypto} name="amount" id="amount"
+                            <Input val={formik.values.crypto === 'USDT' ? Math.trunc(formik.values.amount) : (formik.values.amount)} type="text" label={t('sellCrypto10') + formik.values.crypto} name="amount" id="amount"
                                 help={formik.errors.amount} error={formik.errors.amount && formik.touched.amount}
                                 change={amountChange} handBlur={() => setTouched('amount')}
                             />

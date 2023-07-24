@@ -10,7 +10,7 @@ import { IoMdClose } from 'react-icons/io'
 import { useTranslation } from 'react-i18next'
 import { sendToApi } from '../../utils/utilFunctions'
 
-function PromoCode({ User, openPromo, closePromo, activePromotion }) {
+function PromoCode({ User, openPromo, closePromo, activePromotion, amount }) {
 
 	const { t } = useTranslation();
 	const [loading, setLoading] = React.useState(false)
@@ -37,7 +37,7 @@ function PromoCode({ User, openPromo, closePromo, activePromotion }) {
 
 	const validate = async (code) => {
 		// console.log("the code ", code)
-		let usable=await checkCode(code)
+		let usable = await checkCode(code)
 		setLoading(false);
 		if (usable) {
 			// close()
@@ -48,7 +48,7 @@ function PromoCode({ User, openPromo, closePromo, activePromotion }) {
 	}
 
 	const checkCode = async (code) => {
-		let response = await sendToApi('promo/testcode', { userId: User.userId, code })
+		let response = await sendToApi('promo/testcode', { userId: User.userId, code, amount })
 		console.log("the response ", response)
 		return response.usable
 	}
