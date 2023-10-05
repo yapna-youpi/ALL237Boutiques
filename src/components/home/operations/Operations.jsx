@@ -35,7 +35,7 @@ function Operations({ dispatch, Amount, crypto }) {
                         <div className='contri'><Countries /></div>
                     </div>
                     <div className="button-operation">
-                        <button className='btn-neon' onClick={() => startOperation('/coming/' +process.env.REACT_APP_SEND_LINK)} >
+                        <button className='btn-neon' onClick={() => startOperation('/sendmoney/' +process.env.REACT_APP_SEND_LINK)} >
                             <span></span>
                             <span></span>
                             <span></span>

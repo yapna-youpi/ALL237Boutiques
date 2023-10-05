@@ -39,7 +39,7 @@ function PromoCode({ User , closePromo, activePromotion }) {
 		// console.log("the code ", code)
 		let response=await checkCode(code)
 		setLoading(false);
-		
+		console.log("le code lancee! ")
 		if (response.usable) {
 			// close()
 			document.getElementById('promocode').classList.toggle('hide')
@@ -58,7 +58,7 @@ function PromoCode({ User , closePromo, activePromotion }) {
 	}
 	const close = () => {
 		document.getElementById('promocode').classList.toggle('hide')
-		setTimeout(() => closePromo(), 1000);
+		// setTimeout(() => closePromo(), 1000);
 	}
 
 	return (

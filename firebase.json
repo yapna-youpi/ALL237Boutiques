@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "site": "betasite-05",
     "public": "build",
+    "site": "betasite-05",
     "ignore": [
       "firebase.json",
       "**/.*",

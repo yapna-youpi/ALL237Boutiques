@@ -98,7 +98,7 @@ function SendMoney({ amount, country, User }) {
             "transaction_id": randomId('C'), "phone": state.phone,
             "name": state.name, userId: User.userId,
             "fiat_pay": Math.floor(state.EUR * state.newAmount),
-            "initial_amount": Math.floor(parseInt(state.amount)+ 1),
+            "initial_amount": Math.floor(parseInt(state.amount) + 1),
             "promotion": promo.promotion ? true : null,
             "code": promo.promotion ? promo.code : null,
             "provider": process.env.REACT_APP_MOBILE_PROVIDER
@@ -281,7 +281,7 @@ function SendMoney({ amount, country, User }) {
         <>
             {enable === "FALSE" ? <h3 className='disjointe'>{t('sendMoneySous16')}</h3> : ""}
             <div className="sendmoney">
-                <Modal option={{ ...modal, amount: state.amount }} close={closeModal} />
+                <Modal option={{ ...modal, amount: promo.promotion ? state.amount : parseInt(state.amount) + 1 }} close={closeModal} />
                 <Modal2 mode={mode} close={() => setMode(false)} />
                 {!active() && <PromoCode activePromotion={activePromotion} closePromo={() => setPromo({ ...promo, show: false, code: "NO_CODE" })} />}
                 <form className="form">

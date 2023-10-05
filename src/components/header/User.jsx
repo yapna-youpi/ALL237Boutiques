@@ -46,7 +46,7 @@ function User({user, nav, logout}) {
                     }}
                     onClose={close}
                 >
-                    <MenuItem onClick={user.userName ? ()=>nav("/Dashboard") : ()=>click('/login/' +process.env.REACT_APP_LOGIN_LINK )}>
+                    <MenuItem onClick={user.userName ? ()=>{}: ()=>click('/login/' +process.env.REACT_APP_LOGIN_LINK )}>
                         <span className="menu-text">
                             {   user.userName ? (<span className='text-us'>
                                                     {user.userName.charAt(0)}
@@ -54,7 +54,8 @@ function User({user, nav, logout}) {
                                 :   (<span><FaUser fontSize="large"/></span>) 
                             }
                              &ensp;  
-                            {user.userName ? "Dashboard " : t('user1') }  </span>
+                            {/* {user.userName ? "Dashboard " : t('user1') }  </span> */}
+                            {user.userName ? user.userName : t('user1') }  </span>
                     
                     </MenuItem>
                     <MenuItem onClick={()=>click('/signup/' +process.env.REACT_APP_SIGUNP_LINK )}>

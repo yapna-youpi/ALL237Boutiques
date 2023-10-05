@@ -28,7 +28,7 @@ function Services() {
                     <p>{t('sousService2')} </p>
                     <div className="icone" ><img src={sell} alt='sell' width='40px' /> </div>
                 </div>
-                <div className="service" onClick={()=>hisoty.push('/coming/'+process.env.REACT_APP_SEND_LINK)} data-aos="flip-left" data-aos-duration="2000" data-aos-once="true" >
+                <div className="service" onClick={()=>hisoty.push('/sendmoney/'+process.env.REACT_APP_SEND_LINK)} data-aos="flip-left" data-aos-duration="2000" data-aos-once="true" >
                     <h3> {t('servicesTitle3')} </h3>
                     <p> {t('sousService3')} </p>
                     

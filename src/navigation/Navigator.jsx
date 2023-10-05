@@ -65,7 +65,7 @@ function Main({ User, Country }) {
                     <Route path='/forget' exact component={Forget} />
                     <Route path="/reset/:id" exact component={Reset} />
                     <Route path='/More' exact component={More} />
-                    <Route path='/Dashboard' exact component={Dashboard} />
+                    {/* <Route path='/Dashboard' exact component={Dashboard} /> */}
                     {/* <Route path='/express' exact component={checkUser(Cabital)} /> */}
                     <Route path='/coming*' exact component={ComingSoon} />
                     {/* <Route path='/sumsub' exact component={Sumsub} />  */}

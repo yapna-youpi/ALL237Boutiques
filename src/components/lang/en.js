@@ -99,7 +99,7 @@ const english = {
     sendMoneySous13: "Confirm Mobile Phone",
     sendMoneySous14: "Should match to phone number",
     sendMoneySous15: "The value should be between 25 and 150 EUR",
-    sendMoneySous16: "The service is unavailable",
+    sendMoneySous16: "The service will soon be available",
     sendMoneySous17: "invalid number",
     sendText1: "Fixed rate for all transactions",
     sendText2: "from 51 to 150  ",
@@ -136,7 +136,7 @@ const english = {
     sellCrypto15: "Confirm Mobile Phone",
     sellCrypto16: "Should match to phone number",
     sellCrypto17: "The amount should be between 10 and 50 EUR",
-    sellCrypto18: "The service is unavailable",
+    sellCrypto18: "The service will soon be available",
     sellCrypto19: "By filling out this form, you will be able to convert crypto-currency (Bitcoin, Usdt, Ethereum) into CFA francs and receive it in your mobile money (Orange Money, Mtn Money, Moov, Mobicash) in Cameroon, Senegal, Burkina Faso, Mali, Cote d'Ivoire and Guinea.",
 
 
