@@ -86,7 +86,10 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-
+.hide{
+    animation: invisible .5s ease-in-out forwards;
+    display: none;
+}
 @media screen and (min-width: 560px) {
     .promocode{
         position: absolute;

@@ -154,14 +154,14 @@ function SellCrypto({ Amount, country, User }) {
     }
 
     const setPhone = (name, val) => {
-        formik.setFieldValue(name, val || '')
+        formik.setFieldValue(name, val)
     }
     (() => {
         const montant = parseFloat(formik.values.xaf)
 
         if (formik.values.phone && !formik.errors.phone) {
             !isValidPhoneNumber(formik.values.phone) && formik.setFieldError('phone', `${t('formikSell8')}`)
-            setMode(true)
+            
         }
         if (formik.values.cfphone && !formik.errors.cfphone) {
             formik.values.cfphone !== formik.values.phone && formik.setFieldError('cfphone', `${t('formikSell9')}`)
@@ -242,7 +242,9 @@ function SellCrypto({ Amount, country, User }) {
         }
 
     }
-
+    (() => {
+        if (!active() && !promo.code && !promo.show) setPromo({ ...promo, show: true })
+    })()
     return (
         <div id="sellcrypto" className="sellcrypto" ref={myRef}>
             <Helmet>
