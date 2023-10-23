@@ -1,0 +1,88 @@
+.common_section{
+    height: 470px;
+    /* background: linear-gradient(rgba(0,0,0,0.462), rgba(0,0,0,0.462)), url("../../../assets/image/common-section-bg.jpg") no-repeat center center; */
+    background: var(--hero-bg);
+    background-size: cover;
+}
+.img_common_section{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+.common_profil{
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+    transform: translate(100px,-100px);
+    object-fit: cover;
+    background-color: #fff;
+    border-radius: 50%;
+}
+.common_section span{
+    display: inline-flex;
+     color: var(--primary-color);
+     font-size: xx-large;
+     font-weight: 600;
+     transform: translate(150px,-40px);
+}
+.common_title{
+    /* background-color: aquamarine; */
+    text-align: left;
+}
+.common_name{
+    display: block;
+    /* width: 100%; */
+    font-size: 35px;
+}
+.common_category{
+    font-size: large;
+}
+.btn_common{
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    /* transform: translate(600px , -35px); */
+    border-radius: 5px;
+    background: #1E592B;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right,#1E592B ,#C7181B, #f9db51);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,#1E592B ,#C7181B, #f9db51);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 25px;
+    font-weight: 600;
+}
+.btn_common:hover{
+    background: linear-gradient(to right,#1E592B ,#850f11, #c4ab3e);
+}
+.colone{
+    width: 60%;
+    margin: 0 auto;
+    transform: translate(0,0);
+}
+@media only screen and (max-width: 768px) {
+    .common_section{
+        padding:  0;
+    }
+    .common_section h1{
+        font-size: 1.4rem;
+    }
+    .btn_common{
+        transform: translate(0);
+    }
+    .colone{
+        text-align: center;
+        transform: translate(50px,-215px);
+    }
+    .common_profil{
+        transform: translate(20px,-100px);
+    }
+    .common_title{
+        /* background-color: aquamarine; */
+        text-align: center;
+    }
+    .common_name{
+        text-align: center;
+    }
+}
+   

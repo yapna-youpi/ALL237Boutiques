@@ -1,0 +1,113 @@
+/* google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+@import url("httpq://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+/*  css variables */
+:root {
+  --card-bg-01: #fdefe6;
+  --card-bg-02: #d6e5fb;
+  --card-bg-03: #ceebe9;
+  --card-bg-04: #e2f2b2;
+  --primary-color: #0a1d37;
+  --secondary-color: #eeeeee ;
+  --hero-bg: #a5e673;
+  --hero-bg2: #d6e5fb;
+  --heading-fontSize: 2rem;
+  --small-text-color: #999;
+  --heading-text-color: #0a1d37;
+  --text-color: #9E9E9E;
+  --box-shadow: 0 12px 40px var(--color-main-border);
+  --color-theme: #098c26;
+  --color-theme2: #C7181B;
+  --color-theme3: #F7C219;
+  --color-theme4: #F9DB51;
+  --color-red:#FF768D;
+  --linear-gradient-theme: linear-gradient(to right, #C7181B, #098c26);
+  --family-theme: "poppins";
+  --family-theme2: "Montserrat",
+}
+
+/* reset browser default */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red!important; */
+}
+
+body {
+  font-family: "poppins", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  color: var(--small-text-color);
+  font-size: 1rem;
+}
+
+h1,
+h2 {
+  font-size: var(--heading-fontSize);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+img{
+  width: 100%;
+}
+section{
+  padding: 60px 0px;
+}
+.section_title{
+  color: var(--primary-color);
+  font-weight: 600;
+}
+::-webkit-scrollbar {
+  width: 7px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(150deg, #098c26 38%,#C7181B 18%, #f2be2f );
+  border-radius: 3px;
+}
+/*::-webkit-scrollbar-thumb:hover {
+  background: #b3afb3;
+}*/
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 0px 0px #f0f0f0;
+}
+.helmet{
+  background: var(--secondary-color);
+}
+
+@media only screen and (max-width: 768px) {
+  section{
+    padding: 0px 0;
+  }
+}
+
+.apple_container {
+  display: flex;
+  flex-flow: column nowrap;
+  /* height: 100vh; */
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}

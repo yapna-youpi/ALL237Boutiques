@@ -1,0 +1,14 @@
+.clock_data h1, .clock_data h5{
+    font-weight: 700;
+}
+@media only screen and (max-width: 574px) {
+    
+}
+@media only screen and (max-width: 768px) {
+    .clock_data h1, .clock_data h5{
+        font-size: 12px!important;
+    }
+    .timer_count{
+        padding: 2rem !important;
+    }
+}

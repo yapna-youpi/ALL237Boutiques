@@ -1,0 +1,32 @@
+.shape_y{
+}
+.shape_x{
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-top: 7px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 14px solid var(--text-color);
+    top: -9px;
+    left: 45%;
+    transform: rotate(32.5deg);
+    /* -webkit-transform: rotate(-30deg);
+    -webkit-animation: animo-x 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: animo-x 9s cubic-bezier(0.4, 0, 0.2, 1) infinite; */
+}
+@keyframes animo-x{
+    50% {
+        -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-transform: translateX(44px);
+        transform: translateX(44px);
+    }   
+}
+@keyframes animo-y{
+    50% {
+        -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-transform: translateY(70px);
+        transform: translateY(7Opx);
+    }   
+}

@@ -1,0 +1,22 @@
+.common_banner{
+    background: linear-gradient(rgba(0,0,0,0.462), rgba(0,0,0,0.462)), url("../../../assets/image/common-banner-bg.jpg") no-repeat center center;
+    background-size: cover;
+}
+.common_banner h1{
+     color: #fff;
+     font-weight: 600;
+     height: 150px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .common_banner{
+        padding: 70px 0;
+    }
+    .common_banner h1{
+        font-size: 1.4rem;
+    }
+}
+   

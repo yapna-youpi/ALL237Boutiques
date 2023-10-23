@@ -1,0 +1,62 @@
+.service_boutique{
+    transform: translateY(-50px);
+}
+.service_boutique .img_verte{
+    width: 80px;
+}
+.service_boutique .texto{
+    transform: translateX(-50px);
+    z-index: 5;
+    width: 80px;
+    display: inline-block;
+    transform: translateX(-20px);
+}
+.service_boutique .btq_content{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+}
+.service_boutique .btq_name{
+    cursor: pointer;
+    display: inline-flex;
+    padding: 3px;
+    font-size: larger;
+    /* background-color: aquamarine; */
+    flex-direction: row;
+    margin: 7px 20px;
+}
+.service_boutique .btq_active{
+    color: var(--color-theme);
+    text-decoration-color: var(--color-theme);
+    cursor: pointer;
+    font-weight: bolder;
+    display: inline-flex;
+    padding: 3px;
+    font-size: larger;
+    flex-direction: row;
+    margin: 7px 20px;
+}
+.service_boutique .btq_name:focus-visible{
+    color: var(--color-theme);
+    text-decoration-color: var(--color-theme);
+    cursor: pointer;
+    display: inline-flex;
+    padding: 3px;
+    flex-direction: row;
+    margin: 7px;
+}
+.service_boutique .btq_name:hover{
+    color: var(--color-theme);
+    text-decoration-color: var(--color-theme);
+}
+
+@media only screen and (max-width: 572px) {
+    .service_boutique {
+        transform: translateY(0);
+    }
+}
+@media only screen and (max-width: 772px) {
+    
+}

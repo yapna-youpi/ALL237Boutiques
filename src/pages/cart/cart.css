@@ -1,0 +1,51 @@
+.table tr td img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+td i{
+    cursor: pointer;
+}
+td,th{
+    color: var(--primary-color);
+}
+.btn_cart{
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    background: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 25px;
+    font-weight: 600;
+}
+.cart_add_idem{
+    padding: 5px 3px;
+    border: 1px solid rgba(22, 25, 25, 0.3);
+}
+.cart_left,.cart_rigth{
+    background-color: var(--hero-bg2);
+    color: #fff;
+    padding: 2px 8px;
+    cursor: pointer;
+}
+.cart_add_item{
+    width: 65%;
+    display: flex;
+    justify-content: space-around;
+}
+.cart_others{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+@media only screen and (max-width: 778px) {
+    .cart_add_item{
+        width: 65%;
+    }
+    .cart_others{
+        width: 100%;
+    }
+}
