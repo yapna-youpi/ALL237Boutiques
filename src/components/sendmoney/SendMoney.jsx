@@ -16,7 +16,6 @@ import Modal from './Modal'
 import Modal2 from './Modal2'
 import PromoCode from '../promocode/PromoCode'
 // import Widget from './Widget'
-
 // const EUR = 655
 // const EuroFees=655*0.964
 const FEES = 0.0396
@@ -32,6 +31,8 @@ var interval = null
 
 function SendMoney({ amount, country, User }) {
     let enable = process.env.REACT_APP_SEND_ENABLE;
+    const minValue = process.env.REACT_APP_SEND_MIN;
+    const maxValue = process.env.REACT_APP_SEND_MAX;
 
     const { t } = useTranslation()
     // value of differents field in the form 
@@ -162,7 +163,7 @@ function SendMoney({ amount, country, User }) {
 
     // this function handle disabled propertie of button
     const active = () => {
-        if ((state.amount >= 25 && state.amount <= 150) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone)) return false
+        if ((state.amount >= minValue && state.amount <= maxValue) && state.name && state.phone && isValidPhoneNumber(state.phone || 342) && (state.phone === state.cPhone)) return false
         else return true;
     }
     // this function check phone number
@@ -223,7 +224,7 @@ function SendMoney({ amount, country, User }) {
                 setState({ ...state, fees: 0, newAmount: 0 })
                 break
 
-            case (25 <= state.amount && state.amount <= 150):
+            case (minValue <= state.amount && state.amount <= maxValue):
                 // console.log("the case ", state.amount)
                 fees = 0.99
                 newAmount = state.amount - fees
@@ -252,14 +253,14 @@ function SendMoney({ amount, country, User }) {
             //     setState({ ...state, fees, newAmount })
             //     break
 
-            // case (151 <= state.amount && state.amount < 300):
+            // case (151 <= state.amount && state.amount < minValue0):
             //     // console.log("the case ", state.amount)
             //     fees = 2.95
             //     newAmount = state.amount - fees
             //     setState({ ...state, fees, newAmount })
             //     break
 
-            // case (300 <= state.amount):
+            // case (minValue0 <= state.amount):
             //     // console.log("the last case ", state.amount)
             //     fees = 3.95
             //     newAmount = state.amount - fees
@@ -288,7 +289,7 @@ function SendMoney({ amount, country, User }) {
                     <div className="form-head">
                         <div className="form-group">
                             <Input2 val={state.amount} name="amount" label={t('sendMoneySous9')} type='number' help={t('sendMoneySous15')}
-                                error={state.amount < 25 || state.amount > 150} change={handleChange} handBlur={handleBlur}
+                                error={state.amount < minValue || state.amount > maxValue} change={handleChange} handBlur={handleBlur}
                             />
                         </div>
                         <div className="">1,OO EUR <h3 className="sign">&cong;</h3> {state.EUR} XAF</div>

@@ -50,7 +50,7 @@ function Main({ User, Country }) {
                     <Route path='/' exact component={Home} />
                     <Route path='/home' exact component={Home} />
                     {/* <Route path='/sendmoney*' exact component={checkUser(SendNavigator)} /> */}
-                    <Route path='/sendmoney*' exact component={checkUser(SendMoney)} />
+                    <Route path='/sendmoney*' exact component={SendMoney} />
                     <Route path='/buycrypto' exact component={Choose} />
                     <Route path='/buycrypto/mobile*' exact component={checkUser(BuyCryptoMobile)} />
                     <Route path='/buycrypto/card' exact component={checkUser(BuyCryptoCard)} />
