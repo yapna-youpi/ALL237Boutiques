@@ -99,7 +99,7 @@ const french = {
     sendMoneySous12: "Numéro invalide",
     sendMoneySous13: "Confirmer le téléphone portable",
     sendMoneySous14: "Doit correspondre au numéro de téléphone",
-    sendMoneySous15: "Le montant doit etre entre 25 et 150 EUR",
+    sendMoneySous15: "Le montant doit etre entre 30 et 750 EUR",
     sendMoneySous16: "Service bientot disponible",
     sendMoneySous17 : "numéro invalide",
     sendText1: "Taux fixe Pour toutes  transactions",

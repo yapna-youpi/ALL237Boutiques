@@ -1,6 +1,6 @@
 import { SET_AMOUNT, SET_CRYPTO, SET_COUNTRY, SET_USER } from './constants';
 
-const initialState={amount: 25, crypto: 0, country: 'FR', user: {}, currencies: {}}
+const initialState={amount: 30, crypto: 0, country: 'FR', user: {}, currencies: {}}
 
 const amountReducer=(state=initialState, action)=>{
     switch (action.type) {

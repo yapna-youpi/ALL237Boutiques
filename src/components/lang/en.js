@@ -98,7 +98,7 @@ const english = {
     sendMoneySous12: "Invalid number",
     sendMoneySous13: "Confirm Mobile Phone",
     sendMoneySous14: "Should match to phone number",
-    sendMoneySous15: "The value should be between 25 and 150 EUR",
+    sendMoneySous15: "The value should be between 30 and 750 EUR",
     sendMoneySous16: "The service is unavailable",
     sendMoneySous17: "invalid number",
     sendText1: "Fixed rate for all transactions",
