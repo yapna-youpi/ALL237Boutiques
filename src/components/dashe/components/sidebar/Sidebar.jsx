@@ -1,6 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import Logo from '../imgs/enseigne.png'
+import Logo from '../imgs/logo.png'
 import './sidebar.css'
 
 import { UilEstate } from '@iconscout/react-unicons'
@@ -8,14 +7,14 @@ import { SidebarData } from '../../Data/Data'
 import {UilSignOutAlt} from '@iconscout/react-unicons'
 
 const Sidebar = ({setOption}) => {
-    const history = useHistory()
+
     const [selected, setSelected] = React.useState(0);
 
     const doneSelect = (item, index) =>{
         setSelected(index)
-        setOption(item.name)
+        setOption(item.heading.index)
         console.log('item et index',item,index)
-        // console.log(item.heading[index],'le rechercher')
+        console.log(item.heading[index],'le rechercher')
     }
     
 
@@ -24,7 +23,7 @@ const Sidebar = ({setOption}) => {
         <div className="logo">
             <img src={Logo} alt="embleme de la societe Ipercash" />
             <span>
-                {/* <span className='text-ico'>IPER</span><span className='text-ico2'>Cash</span> */}
+                <span className='text-ico'>IPER</span><span className='text-ico2'>Cash</span>
                 {/* sh<span>o</span>ps */}
             </span>
         </div>
@@ -48,7 +47,7 @@ const Sidebar = ({setOption}) => {
                 })
            }
 
-           <div className="menuItem" onClick={()=>history.push('/')}>
+           <div className="menuItem">
             <UilSignOutAlt />
            </div>
         </div>

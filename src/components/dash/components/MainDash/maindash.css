@@ -1,5 +1,24 @@
 .maindash{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
+}
+.btn_dashboard-close{
+    margin-right: 0;
+    position: absolute;
+    top: 65px;
+    right: 5%;
+    cursor: pointer;
+}
+.main_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main_top h2{
+    margin: 15px 0;
+    text-align: left;
+}
+.main_top .btn_close-dashboard{
+    cursor: pointer;
 }
