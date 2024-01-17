@@ -88,15 +88,3 @@
 .chartContainer{
     width: 70%;
 }
-
-
-@media only screen and (max-width: 768px) {
-    .cards{
-        flex-direction: column;
-        display: none;
-    }
-    .parentContainer{
-        height: 9rem;
-        display: none;
-    }
-}

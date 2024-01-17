@@ -1,0 +1,197 @@
+#dashboard{
+    height: 800px;
+    overflow-y: scroll;
+    width: 100%;
+    padding: 15px 0px 20px 0;
+    margin: 35px 0px;
+    box-shadow:  rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+.entetelist{
+    text-align: center;
+    padding: 0 10px;
+}
+.dashH2{
+    text-align: center;
+    margin: 40px auto 0;
+}
+.dashH3{
+    line-height: 1.2;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 13px;
+    padding: auto 35px;
+    text-transform: uppercase;
+    color: #5D5C61;
+    text-align: left;
+    border-block-end: 1px solid #e8e9ea;
+    min-height: 1.7rem;
+    margin: 55px 0 0!important;
+    padding: 0 0 0 35px;
+}
+.dashLigne{
+    margin: 35px;
+    background-color:  rgba(0, 0, 0, 0.025);
+    border-radius: 8px;
+    padding: 15px 10px 15px 10px;
+    /* border-block-end: 1px solid #031b33; */
+    font-size: 17px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.dashContent :nth-child(3){
+    margin-top: 10px;
+    color: slategray;
+}
+.dashContent :nth-child(4){
+    color: slategray;
+    margin: 1px 0;
+}
+.dashContent :nth-child(5){
+    color: slategray;
+    margin: 1px 0;
+}
+.dashLigne1{
+    padding: 15px 10px;
+    margin: 15px auto;
+    border-block-end: 1px solid #031b33;
+    font-size: 17px;
+    display: none;
+}
+.dashLigne:hover{
+    background-color:  rgba(0, 0, 0, 0.075);
+}
+.dashContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: bolder;
+} 
+.dashContent1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: bolder;
+} 
+.lignewin{
+    margin: 35px;
+    border-radius: 8px;
+    background-color:  rgba(0, 0, 0, 0.075);
+    padding: 15px 10px 15px 10px;
+    /* border-block-end: 1px solid #031b33; */
+    font-size: 17px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.center{
+    margin-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imglist{
+    width: 30px;
+    height: 30px;
+    margin: 10px 0 5px 0;
+    cursor: pointer;
+}
+.text-non{
+    text-align: center;
+    padding: 30px;
+    font-size: 22px;
+}
+.text-none{
+    display: none;
+}
+.claimButton{
+    font-size: 15px;
+    z-index: 15;
+    background-color: var(--red);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-top: 15px;
+    padding: 7px;
+    /* transform: translateX(-23px); */
+}
+
+@media only screen and (min-width: 768px) {
+    .lignewin{
+        padding: 10px 10px 10px 15px;
+        border-block-end: 1px solid #e8e9ea;
+    }
+    #dashboard{
+        width: 99%;
+        height: 500px;
+        overflow-y: scroll;
+        padding: 15px 0px 0 0;
+        margin: 55px auto;
+        padding-bottom: 15px;
+        box-shadow:  rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    }
+    .dashLigne{
+        border-block-end: 1px solid #e8e9ea;
+    }
+    .dashContent :nth-child(2){
+        color: var(--night-blue);
+    }
+    .dashContent :nth-child(3){
+        margin-top: 0;
+        color: initial;
+        margin: initial;
+    }
+    .dashContent :nth-child(4){
+        color: var(--night-blue);
+        margin: initial;
+    }
+    .dashContent :nth-child(5){
+        color: var(--night-blue);
+        margin: initial;
+    }
+    .dashLigne1{
+        display: block;
+        border-block-end: 1px solid #c7d3df;
+    }
+    .list-data{
+        margin-top: 40px;
+    }
+    .dashContent{
+        display: grid;
+        grid-template-columns: 15% 17% 15% 9% 11% 22% 10%;
+        text-align: center;
+    }
+    .dashContent1{
+        display: grid;
+        grid-template-columns: 15% 17% 15% 9% 11% 22% 10%;
+        text-align: center;
+    }
+    .imglist{
+        margin: 0;
+    }
+    .claimButton{
+        font-size: 9px;
+        margin-top: 0;
+        /* transform: translateX(-10px); */
+    }
+    .dashContent span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .dashContent button{
+        width: 80px;
+        justify-content: center;
+        display: flex;
+    }
+    .text-non{
+        font-size: 24px;
+    }
+    
+}
+
+
+
+
+
+
+

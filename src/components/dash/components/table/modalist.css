@@ -1,0 +1,54 @@
+.handle-claim {
+    font-size: 1.1em;
+    width: 100%;
+}
+button.details {
+    background-color: var(--red);
+    padding: 5%;
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-weight: bolder;
+}
+.handle-claim .claim-actions {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin: 22px 15px;
+}
+.handle-claim .modal-button {
+    width: 85%;
+    display: flex;
+    background-color: var(--red);
+    margin: 0 2%;
+    justify-content: center;
+    border: none;
+    align-items: center;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+.react-loa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.refunds {
+    margin: 2%;
+    padding: 2%;
+    background-color: var(--white);
+}
+.txt{
+    padding: 0 15px;
+    margin-top: 15px;
+}
+@media only screen and (min-width: 768px) {
+    .handle-claim {
+        width: 450px;
+    }
+    .handle-claim .modal-button {
+        padding: 2% 0 2% 0;
+    }
+}

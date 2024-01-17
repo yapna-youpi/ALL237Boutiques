@@ -8,13 +8,15 @@
 
 .sidebar .logo{
     display: flex;
+    height: 5rem;
     font-weight: bold;
     font-size: 22px;
     justify-content: center;
     align-items: center;
+    height: 4%;
 }
 .sidebar .logo>img{
-   width: 10rem;
+   width: 3rem;
    height: 3rem; 
 }
 .sidebar .logo>span>span{
@@ -23,7 +25,7 @@
 
 /*---menu sidebar--*/
 .sidebar .menu{
-    margin-top: 2rem;
+    margin-top: 4rem;
     display: flex;
     flex-direction: column;
     gap:2rem;
@@ -60,13 +62,4 @@
 }
 .sidebar .text-ico2{
     color: #cc1616!important;
-}
-
-@media only screen and (max-width: 768px) {  
-    .menuItem>span {
-        display: none;
-    }
-    .sidebar .logo{
-        display: none;
-    }
 }
